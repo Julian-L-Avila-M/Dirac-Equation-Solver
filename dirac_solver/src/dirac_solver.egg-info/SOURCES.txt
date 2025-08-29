@@ -1,4 +1,3 @@
-LICENSE
 README.md
 pyproject.toml
 src/dirac_solver/__init__.py
