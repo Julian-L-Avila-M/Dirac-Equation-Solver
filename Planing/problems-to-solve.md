@@ -22,16 +22,16 @@ configuración mediante un boost de Lorentz.
 * **Masa de la Partícula** ($m$)
 * **Momento Inicial** ($p$)
 * **Distribución Espacial**: Los estados iniciales incluirán tanto una simple
-  onda plana como un paquete de ondas Gaussiano más físicamente realista.
+onda plana como un paquete de ondas Gaussiano más físicamente realista.
 * **Estado de Espín**: La configuración inicial del espín del bispinor.
 
 ### Salidas
 * **Densidades de Probabilidad y Corriente**: La evolución temporal de la
-  densidad de probabilidad $\rho = \psi^\dagger \psi$ y la densidad de corriente
-  $J = \psi^\dagger \alpha \psi$.
+densidad de probabilidad $\rho = \psi^\dagger \psi$ y la densidad de corriente
+$J = \psi^\dagger \alpha \psi$.
 * **Valores Esperados**: Los valores esperados para la energía, el momento y la
-  posición a lo largo del tiempo, que se utilizarán para observar fenómenos
-  relativistas como la Zitterbewegung.
+posición a lo largo del tiempo, que se utilizarán para observar fenómenos
+relativistas como la Zitterbewegung.
 
 ---
 
@@ -50,12 +50,12 @@ paredes del pozo.
 
 ### Salidas
 * **Niveles de Energía Cuantizados**: Los valores propios de energía discretos
-	del	sistema.
+del	sistema.
 * **Autofunciones**: Las funciones de onda del bispinor correspondientes a
-  cada nivel de energía.
+cada nivel de energía.
 * **Evolución Temporal**: La evolución temporal de la densidad de probabilidad
-  para un estado inicial, demostrando el comportamiento oscilatorio dentro del
-  pozo.
+para un estado inicial, demostrando el comportamiento oscilatorio dentro del
+pozo.
 
 ---
 
@@ -74,10 +74,9 @@ altura de la barrera, un resultado clásicamente imposible.
 * **Masa de la Partícula** ($m$) y Estado de Espín Inicial.
 
 ### Salidas
-* **Coeficientes de Reflexión (R) y Transmisión (T)**: La salida principal,
-  que demuestra que la transmisión puede ocurrir incluso cuando $V_0 > E+m$.
-* **Visualización de la Función de Onda**: Un gráfico de la función de onda del
-  bispinor que muestra los componentes entrante, reflejado y transmitido.
+* **Coeficientes de Reflexión (R) y Transmisión (T)**: La salida principal, que
+demuestra que la transmisión puede ocurrir incluso cuando $V_0 > E+m$.
+* **Visualización de la Función de Onda**: Un gráfico de la función de onda del bispinor que muestra los componentes entrante, reflejado y transmitido.
 
 ---
 
@@ -97,12 +96,12 @@ específicamente el potencial de Coulomb $V(r) = -Z\alpha/r$.
 
 ### Salidas
 * **Niveles de Energía Cuantizados**: Los valores propios de energía discretos,
-	que deben coincidir con la fórmula de la estructura fina de Sommerfeld.
+que deben coincidir con la fórmula de la estructura fina de Sommerfeld.
 * **Funciones de Onda**: Los componentes radiales de la función de onda del
-  bispinor.
+bispinor.
 * **Desdoblamiento Espín-Órbita**: El solucionador debe reproducir
-  correctamente el desdoblamiento de los niveles de energía debido a la
-  interacción espín-órbita.
+correctamente el desdoblamiento de los niveles de energía debido a la
+interacción espín-órbita.
 
 ---
 
@@ -116,15 +115,15 @@ alcance $V(r) = -g \frac{e^{-Mr}}{r}$.
 
 ### Parámetros de Entrada
 * **Constante de Acoplamiento** ($g$) y **Masa de la Partícula Mediadora**
-  ($M$): Estos parámetros definen la fuerza y el alcance del potencial.
+($M$): Estos parámetros definen la fuerza y el alcance del potencial.
 * **Masa de la Partícula** ($m$) y Estado Inicial.
 
 ### Salidas
 * **Energías de los Estados Ligados**: Los valores propios de energía discretos
-	para los estados ligados.
+para los estados ligados.
 * **Funciones de Onda**: Una visualización de las funciones de onda del bispinor,
-  mostrando cómo difieren del caso de Coulomb debido al decaimiento
-  exponencial del potencial.
+mostrando cómo difieren del caso de Coulomb debido al decaimiento
+exponencial del potencial.
 * **Verificación de Consistencia**: La salida debe demostrar que los resultados
-  convergen al caso de Coulomb cuando la masa de la partícula mediadora
-  $M \to 0$.
+convergen al caso de Coulomb cuando la masa de la partícula mediadora
+$M \to 0$.
