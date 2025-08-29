@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: dirac-solver
+Version: 0.0.1
+Summary: Librería de ejemplo para iniciar un solver de Dirac
+Author-email: Sebastisn Rodriguez Garcia <sebrodriguezg@udistrital.edu.co>, Julian Leonardo Avila Martinez <jlavila@udistrital.edu.co>, Camilo Andres Huertas Archila <cahuertasa@udistrital.edu.co>
+License: MIT
+Project-URL: Homepage, https://github.com/tuusuario/dirac-solver
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+Solo es para hacer la prueba de la instalacíon. 
