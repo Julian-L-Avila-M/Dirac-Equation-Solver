@@ -6,8 +6,8 @@ build-backend = "setuptools.build_meta"
 name = "dirac-solver"
 version = "0.0.1"
 authors = [
-  { name = "Sebastisn Rodriguez Garcia", email = "sebrodriguezg@udistrital.edu.co" },
-  { name = "Julian Leonardo Avila Martinez", email = "jlavila@udistrital.edu.co" },
+  { name = "Sebastian Rodriguez Garcia", email = "sebrodriguezg@udistrital.edu.co" },
+  { name = "Julian Leonardo Avila Martinez", email = "jlavilam@udistrital.edu.co" },
   { name = "Camilo Andres Huertas Archila", email = "cahuertasa@udistrital.edu.co" }
 ]
 description = "Librería de ejemplo para iniciar un solver de Dirac"
