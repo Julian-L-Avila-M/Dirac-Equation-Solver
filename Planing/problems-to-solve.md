@@ -49,8 +49,8 @@ paredes del pozo.
 * **Masa de la Partícula** ($m$) y Estado de Espín Inicial.
 
 ### Salidas
-* **Niveles de Energía Cuantizados**: Los autovalores de energía discretos del
-  sistema.
+* **Niveles de Energía Cuantizados**: Los valores propios de energía discretos
+	del	sistema.
 * **Autofunciones**: Las funciones de onda del bispinor correspondientes a
   cada nivel de energía.
 * **Evolución Temporal**: La evolución temporal de la densidad de probabilidad
@@ -96,8 +96,8 @@ específicamente el potencial de Coulomb $V(r) = -Z\alpha/r$.
   coordenadas esféricas.
 
 ### Salidas
-* **Niveles de Energía Cuantizados**: Los autovalores de energía discretos, que
-  deben coincidir con la fórmula de la estructura fina de Sommerfeld.
+* **Niveles de Energía Cuantizados**: Los valores propios de energía discretos,
+	que deben coincidir con la fórmula de la estructura fina de Sommerfeld.
 * **Funciones de Onda**: Los componentes radiales de la función de onda del
   bispinor.
 * **Desdoblamiento Espín-Órbita**: El solucionador debe reproducir
@@ -120,8 +120,8 @@ alcance $V(r) = -g \frac{e^{-Mr}}{r}$.
 * **Masa de la Partícula** ($m$) y Estado Inicial.
 
 ### Salidas
-* **Energías de los Estados Ligados**: Los autovalores de energía discretos para
-  los estados ligados.
+* **Energías de los Estados Ligados**: Los valores propios de energía discretos
+	para los estados ligados.
 * **Funciones de Onda**: Una visualización de las funciones de onda del bispinor,
   mostrando cómo difieren del caso de Coulomb debido al decaimiento
   exponencial del potencial.
