@@ -6,7 +6,7 @@ class InitialState:
     """
     pass
 
-class PlaneWave(InitialState)
+class PlaneWave(InitialState):
     """
     make planewave initialstate (for 1+1D free particle dirac)
     """
@@ -15,7 +15,7 @@ class PlaneWave(InitialState)
     def __init__(self):
         print("planewave created")
     
-    def create_state(self)
+    def create_state(self):
         """
         for create state
         """

@@ -1,8 +1,9 @@
-LICENSE
 README.md
 pyproject.toml
 src/dirac_solver/__init__.py
 src/dirac_solver/core.py
+src/dirac_solver/geometry.py
+src/dirac_solver/initial_state.py
 src/dirac_solver.egg-info/PKG-INFO
 src/dirac_solver.egg-info/SOURCES.txt
 src/dirac_solver.egg-info/dependency_links.txt
