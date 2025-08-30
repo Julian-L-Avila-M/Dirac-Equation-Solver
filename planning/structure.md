@@ -1,6 +1,9 @@
 # Estructura del Proyecto `dirac_solver`
 
-Este documento describe la estructura modular del proyecto `dirac_solver`, inspirada en el diseño de librerías como **DeepXDE**. La idea es mantener una organización clara, extensible y reutilizable para resolver la ecuación de Dirac en diferentes escenarios físicos.
+Este documento describe la estructura modular del proyecto `dirac_solver`,
+inspirada en el diseño de librerías como **DeepXDE**. La idea es mantener una
+organización clara, extensible y reutilizable para resolver la ecuación de Dirac
+en diferentes escenarios físicos.
 
 ---
 
@@ -93,10 +96,12 @@ dirac_solver/
 ## Raíz del Proyecto
 
 - **pyproject.toml**  
-  Archivo de configuración para empaquetar e instalar la librería (`pip install dirac_solver`). Define dependencias, metadatos y backend de construcción.
+  Archivo de configuración para empaquetar e instalar la librería (`pip install
+  dirac_solver`). Define dependencias, metadatos y backend de construcción.
 
 - **README.md**  
-  Introducción general al proyecto, instalación, ejemplos rápidos de uso y enlaces a documentación.
+  Introducción general al proyecto, instalación, ejemplos rápidos de uso y
+  enlaces a documentación.
 
 - **LICENSE**  
   Licencia del proyecto (ejemplo: MIT, GPL, BSD).
@@ -153,7 +158,8 @@ Contiene el **código fuente principal** de la librería.
 
 ## `tests/`
 
-Tests unitarios organizados por módulos. Verifican consistencia, conservación de probabilidad y reproducción de fenómenos físicos.
+Tests unitarios organizados por módulos. Verifican consistencia, conservación de
+probabilidad y reproducción de fenómenos físicos.
 
 - **test_potentials.py**: Comprueba la implementación de los potenciales.  
 - **test_geometry.py**: Valida discretizaciones espaciales.  
