@@ -1,10 +1,3 @@
-"""
-@file __init__.py
-@brief Archivo de inicialización del paquete.
-
-Este archivo expone las funciones principales del paquete.
-"""
-
-from .core import hola_mundo
-
-__all__ = ["hola_mundo"]
+from .geometry import Geometry, Interval1D
+from .initial_state import InitialState, PlaneWave
+from .core import DiracSolver
