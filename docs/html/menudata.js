@@ -25,11 +25,18 @@
 var menudata={children:[
 {text:"Página principal",url:"index.html"},
 {text:"Páginas relacionadas",url:"pages.html"},
-{text:"Espacios de nombres",url:"namespaces.html",children:[
-{text:"Lista de espacios de nombres",url:"namespaces.html"},
-{text:"Miembros del espacio de nombres ",url:"namespacemembers.html",children:[
-{text:"Todos",url:"namespacemembers.html"},
-{text:"Funciones",url:"namespacemembers_func.html"},
+{text:"Namespaces",url:"namespaces.html",children:[
+{text:"Lista de 'namespaces'",url:"namespaces.html"},
+{text:"Miembros del Namespace ",url:"namespacemembers.html",children:[
+{text:"Todo",url:"namespacemembers.html"},
 {text:"Variables",url:"namespacemembers_vars.html"}]}]},
+{text:"Clases",url:"annotated.html",children:[
+{text:"Lista de clases",url:"annotated.html"},
+{text:"Índice de clases",url:"classes.html"},
+{text:"Jerarquía de la clase",url:"inherits.html"},
+{text:"Miembros de las clases",url:"functions.html",children:[
+{text:"Todo",url:"functions.html"},
+{text:"Funciones",url:"functions_func.html"},
+{text:"Variables",url:"functions_vars.html"}]}]},
 {text:"Archivos",url:"files.html",children:[
 {text:"Lista de archivos",url:"files.html"}]}]}

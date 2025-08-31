@@ -39,3 +39,8 @@
 
 # debug information files
 *.dwo
+
+# artefactos de construccion y distribucción
+*.egg-info/
+*.egg
+

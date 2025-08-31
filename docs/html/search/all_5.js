@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hola_5fmundo_0',['hola_mundo',['../namespacedirac__solver_1_1core.html#a2307ed9540ed146b10ae4c09f44d2eed',1,'dirac_solver::core']]]
+  ['geometry_0',['Geometry',['../classdirac__solver_1_1geometry_1_1Geometry.html',1,'dirac_solver::geometry']]],
+  ['geometry_2epy_1',['geometry.py',['../geometry_8py.html',1,'']]]
 ];

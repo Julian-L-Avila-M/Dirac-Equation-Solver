@@ -1,0 +1,95 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}README}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Plan del Proyecto para un Solucionador de la Ecuación de Dirac}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}1. Partícula Libre}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Descripción del Problema}{3}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Parámetros de Entrada}{3}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Salidas}{3}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}2. Pozo de Potencial Infinito}{3}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Descripción del Problema}{4}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Parámetros de Entrada}{4}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Salidas}{4}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}3. Potencial a Trozos (\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Efecto Klein)}{4}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Descripción del Problema}{4}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Parámetros de Entrada}{4}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Salidas}{4}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}4. Potencial Central (\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interacción de Coulomb)}{4}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Descripción del Problema}{4}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Parámetros de Entrada}{5}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Salidas}{5}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}5. Potencial de Yukawa}{5}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Descripción del Problema}{5}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Parámetros de Entrada}{5}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Salidas}{5}{subsection.2.5.3}%
+\contentsline {chapter}{\numberline {3}Estructura del Proyecto dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}📂 Esquema Visual}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Raíz del Proyecto}{8}{section.3.2}%
+\contentsline {section}{\numberline {3.3}$<$tt$>$src/dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/$<$/tt$>$}{8}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}1. $<$tt$>$solvers/$<$/tt$>$ – Núcleo numérico}{8}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}2. $<$tt$>$physics/$<$/tt$>$ – Definiciones físicas}{8}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}3. $<$tt$>$potentials/$<$/tt$>$ – Potenciales}{8}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}4. $<$tt$>$geometry/$<$/tt$>$ – Geometrías y dominios}{9}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}5. $<$tt$>$conditions/$<$/tt$>$ – Condiciones}{9}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}6. $<$tt$>$io/$<$/tt$>$ – Entrada/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Salida}{9}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.7}7. $<$tt$>$visualization/$<$/tt$>$ – Gráficos y análisis}{9}{subsection.3.3.7}%
+\contentsline {subsection}{\numberline {3.3.8}8. $<$tt$>$utils/$<$/tt$>$ – Utilidades generales}{9}{subsection.3.3.8}%
+\contentsline {section}{\numberline {3.4}$<$tt$>$tests/$<$/tt$>$}{10}{section.3.4}%
+\contentsline {section}{\numberline {3.5}$<$tt$>$examples/$<$/tt$>$}{10}{section.3.5}%
+\contentsline {section}{\numberline {3.6}$<$tt$>$docs/$<$/tt$>$}{10}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Dirac-\/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Solver\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}: Solucionador numérico de la Ecuación de Dirac.}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Documentación}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Instalación de la libreria}{11}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Indice de namespaces}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Lista de \textquotesingle {}namespaces\textquotesingle {}}{13}{section.5.1}%
+\contentsline {chapter}{\numberline {6}Indice jerárquico}{15}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Jerarquía de la clase}{15}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Índice de clases}{17}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Lista de clases}{17}{section.7.1}%
+\contentsline {chapter}{\numberline {8}Indice de archivos}{19}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Lista de archivos}{19}{section.8.1}%
+\contentsline {chapter}{\numberline {9}Documentación de namespaces}{21}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Referencia del Namespace check\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}package}{21}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Documentación de las variables}{21}{subsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.1.1}base\_path}{21}{subsubsection.9.1.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.1.2}encoding}{21}{subsubsection.9.1.1.2}%
+\contentsline {subsubsection}{\numberline {9.1.1.3}init\_path}{21}{subsubsection.9.1.1.3}%
+\contentsline {section}{\numberline {9.2}Referencia del Namespace dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver}{21}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Referencia del Namespace dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}core}{21}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Referencia del Namespace dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}geometry}{22}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Referencia del Namespace dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}initial\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}state}{22}{section.9.5}%
+\contentsline {chapter}{\numberline {10}Documentación de las clases}{23}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Referencia de la Clase dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}core.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Solver}{23}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}Descripción detallada}{23}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}Documentación de las funciones miembro}{23}{subsection.10.1.2}%
+\contentsline {subsubsection}{\numberline {10.1.2.1}\_\_initial\_\_()}{23}{subsubsection.10.1.2.1}%
+\contentsline {subsubsection}{\numberline {10.1.2.2}plot\_probability\_density()}{23}{subsubsection.10.1.2.2}%
+\contentsline {subsubsection}{\numberline {10.1.2.3}run\_simulation()}{23}{subsubsection.10.1.2.3}%
+\contentsline {section}{\numberline {10.2}Referencia de la Clase dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}geometry.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Geometry}{24}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}Descripción detallada}{24}{subsection.10.2.1}%
+\contentsline {section}{\numberline {10.3}Referencia de la Clase dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}initial\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}state.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Initial\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}State}{24}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Descripción detallada}{24}{subsection.10.3.1}%
+\contentsline {section}{\numberline {10.4}Referencia de la Clase dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}geometry.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Interval1D}{25}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}Descripción detallada}{25}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}Documentación del constructor y destructor}{25}{subsection.10.4.2}%
+\contentsline {subsubsection}{\numberline {10.4.2.1}\_\_init\_\_()}{25}{subsubsection.10.4.2.1}%
+\contentsline {subsection}{\numberline {10.4.3}Documentación de los datos miembro}{26}{subsection.10.4.3}%
+\contentsline {subsubsection}{\numberline {10.4.3.1}max}{26}{subsubsection.10.4.3.1}%
+\contentsline {subsubsection}{\numberline {10.4.3.2}min}{26}{subsubsection.10.4.3.2}%
+\contentsline {section}{\numberline {10.5}Referencia de la Clase dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}initial\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}state.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Plane\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Wave}{26}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}Descripción detallada}{27}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}Documentación del constructor y destructor}{27}{subsection.10.5.2}%
+\contentsline {subsubsection}{\numberline {10.5.2.1}\_\_init\_\_()}{27}{subsubsection.10.5.2.1}%
+\contentsline {subsection}{\numberline {10.5.3}Documentación de las funciones miembro}{27}{subsection.10.5.3}%
+\contentsline {subsubsection}{\numberline {10.5.3.1}create\_state()}{27}{subsubsection.10.5.3.1}%
+\contentsline {chapter}{\numberline {11}Documentación de archivos}{29}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Referencia del Archivo dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/check\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}package.py}{29}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Referencia del Archivo dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/src/dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}init\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}.py}{29}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Referencia del Archivo dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/src/dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/core.py}{29}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Referencia del Archivo dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/src/dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/geometry.py}{29}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Referencia del Archivo dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/src/dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/initial\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}state.py}{30}{section.11.5}%
+\contentsline {section}{\numberline {11.6}Referencia del Archivo planning/problems-\/to-\/solve.md}{30}{section.11.6}%
+\contentsline {section}{\numberline {11.7}Referencia del Archivo planning/structure.md}{30}{section.11.7}%
+\contentsline {section}{\numberline {11.8}Referencia del Archivo dirac\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}solver/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}README.md}{30}{section.11.8}%
+\contentsline {section}{\numberline {11.9}Referencia del Archivo README.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}md}{30}{section.11.9}%
+\contentsline {chapter}{Índice alfabético}{31}{section*.25}%

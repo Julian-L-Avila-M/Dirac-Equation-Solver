@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>dirac_solver: Leyenda del gráfico</title>
+<title>dirac_solver: Colores y flechas del Gráfico</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,10 +30,10 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.9.8 -->
+<!-- Generado por Doxygen 1.9.4 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+var searchBox = new SearchBox("searchBox", "search",'Buscar','.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -57,24 +57,17 @@ $(function() {
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<div id="MSearchResults">
-<div class="SRPage">
-<div id="SRIndex">
-<div id="SRResults"></div>
-<div class="SRStatus" id="Loading">Cargando...</div>
-<div class="SRStatus" id="Searching">Buscando...</div>
-<div class="SRStatus" id="NoMatches">Nada coincide</div>
-</div>
-</div>
-</div>
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Leyenda del gráfico</div></div>
+  <div class="headertitle"><div class="title">Colores y flechas del Gráfico</div></div>
 </div><!--header-->
 <div class="contents">
-<p>Esta página explica cómo interpretar los gráficos generados por doxygen.</p>
-<p>Considérese el siguiente ejemplo: </p><div class="fragment"><div class="line"><span class="comment">/*! Clase invisible por truncamiento */</span></div>
+<p >Esta página explica como interpretar los gráficos que son generados por doxygen.</p>
+<p >Considere el siguiente ejemplo: </p><div class="fragment"><div class="line"><span class="comment">/*! Clase invisible por truncamiento */</span></div>
 <div class="line"><span class="keyword">class </span>Invisible { };</div>
 <div class="line"><span class="comment"></span> </div>
 <div class="line"><span class="comment">/*! Clase truncada, relación de herencia escondida */</span></div>
@@ -86,7 +79,7 @@ $(function() {
 <div class="line"><span class="comment">/*! Clase que es heredera usando herencia publica */</span></div>
 <div class="line"><span class="keyword">class </span>PublicBase : <span class="keyword">public</span> Truncated { };</div>
 <div class="line"><span class="comment"></span> </div>
-<div class="line"><span class="comment">/*! Plantilla de clases */</span></div>
+<div class="line"><span class="comment">/*! Clase plantilla */</span></div>
 <div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span>Templ { };</div>
 <div class="line"><span class="comment"></span> </div>
 <div class="line"><span class="comment">/*! Clase que es heredera usando herencia protegida  */</span></div>
@@ -98,7 +91,7 @@ $(function() {
 <div class="line"><span class="comment">/*! Clase que es usada por la clase heredada */</span></div>
 <div class="line"><span class="keyword">class </span>Used { };</div>
 <div class="line"><span class="comment"></span> </div>
-<div class="line"><span class="comment">/*! Superclase que hereda de varias otras clases */</span></div>
+<div class="line"><span class="comment">/*! Super-Clase que hereda de varias otras clases */</span></div>
 <div class="line"><span class="keyword">class </span>Inherited : <span class="keyword">public</span> PublicBase,</div>
 <div class="line">                  <span class="keyword">protected</span> ProtectedBase,</div>
 <div class="line">                  <span class="keyword">private</span> PrivateBase,</div>
@@ -109,34 +102,34 @@ $(function() {
 <div class="line">    Used *m_usedClass;</div>
 <div class="line">};</div>
 </div><!-- fragment --><p> Dará como resultado el siguiente gráfico:</p>
-<center><img src="graph_legend.png" alt="" class="inline"/></center><p>Las cajas del gráfico superior tienen el siguiente significado: </p>
+<center><img src="graph_legend.png" alt="" class="inline"/></center><p >Las cajas en el gráfico arriba tienen el siguiente significado: </p>
 <ul>
 <li>
-Una caja gris rellena representa la estructura o clase para la cual se generó el gráfico. </li>
+Una caja llena gris representa la estructura o clase para la cuálse generó el gráfico. </li>
 <li>
-Una caja con borde negro indica una estructura o clase documentada. </li>
+Una caja con borde negro señala una estructura o clase documentada. </li>
 <li>
-Una caja con borde gris indica una estructura o clase no documentada. </li>
+Una caja con borde griz señala una estructura o clase no documentada. </li>
 <li>
-Una caja con borde rojo indica una estructura o clase documentada de la que no todas las relaciones de herencia/asociación se muestran. Un gráfico queda cortado si no encaja dentro de los límites especificados.</li>
+una caja con borde rojo señala una estructura o clase documentada de la cuál no toda las relaciones de jerarquía/contenido son mostradas. El gráfico sera truncado si este no calza dentro de los límites especificados.</li>
 </ul>
-<p>Las flechas tienen el siguiente significado: </p>
+<p >Las flechas tienen el siguiente significado: </p>
 <ul>
 <li>
-Una flecha azul oscuro se usa para mostrar una relación de herencia publica entre dos clases. </li>
+Una flecha azul oscuro es usada para visualizar una relación herencia publica entre dos clases. </li>
 <li>
-Una flecha verde oscuro se usa para una herencia protegida. </li>
+Una flecha verde oscuro es usada para herencia protegida. </li>
 <li>
-Una flecha rojo oscuro se usa para herencia privada. </li>
+Una flecha rojo oscuro es usada para herencia privada. </li>
 <li>
-Una flecha púrpura discontinua se usa si la clase está contenida o se usa por otra clase. La flecha está etiquetada por la variable con que se accede a la clase o estructura apuntada. </li>
+Una flecha segmentada púrpura se usa si la clase es contenida o usada por otra clase. La flecha está etiquetada por la variable con que se accede a la clase o estructura apuntada. </li>
 <li>
-Una flecha amarilla discontinua indica la relación entre una instancia de plantilla y la clase de plantilla de la que se ha instanciado. La flecha se etiqueta con los parámetros de plantilla de la instancia. </li>
+Una flecha segmentada amarilla indica la relación entre una instancia template y la clase template de la que se ha instanciado. La flecha se etiqueta con los parámetros con que se llama al template. </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>
