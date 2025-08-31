@@ -153,6 +153,7 @@ Contiene el **código fuente principal** de la librería.
 - **math_ops.py**: Operaciones auxiliares numéricas y algebraicas.  
 - **validators.py**: Validación de entradas y parámetros físicos.  
 - **constants.py**: Constantes físicas (ħ, c, α, etc.).
+- **coolftuf.py**: Comentarios chistosos. 
 
 ---
 
