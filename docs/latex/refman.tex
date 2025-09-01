@@ -1,6 +1,7 @@
   % Handle batch mode
   % to overcome problems with too many open files
   \let\mypdfximage\pdfximage\def\pdfximage{\immediate\mypdfximage}
+  \pdfminorversion=7
   % Set document class depending on configuration
   \documentclass[twoside]{book}
   %% moved from doxygen.sty due to workaround for LaTex 2019 version and unmaintained tabu package
@@ -12,7 +13,16 @@
   \fi
   %%
   % Packages required by doxygen
-  \usepackage{fixltx2e} % for \textsubscript
+  \makeatletter
+  \providecommand\IfFormatAtLeastTF{\@ifl@t@r\fmtversion}
+  % suppress package identification of infwarerr as it contains the word "warning"
+  \let\@@protected@wlog\protected@wlog
+  \def\protected@wlog#1{\wlog{package info suppressed}}
+  \RequirePackage{infwarerr}
+  \let\protected@wlog\@@protected@wlog
+  \makeatother
+  \IfFormatAtLeastTF{2016/01/01}{}{\usepackage{fixltx2e}} % for \textsubscript
+  \IfFormatAtLeastTF{2015/01/01}{\pdfsuppresswarningpagegroup=1}{}
   \usepackage{doxygen}
   \usepackage{graphicx}
   \usepackage[utf8]{inputenc}
@@ -30,8 +40,7 @@
   \usepackage[scaled=.90]{helvet}
 \usepackage{courier}
 \renewcommand{\familydefault}{\sfdefault}
-  \usepackage{sectsty}
-  \allsectionsfont{%
+  \doxyallsectionsfont{%
     \fontseries{bc}\selectfont%
     \color{darkgray}%
   }
@@ -56,6 +65,7 @@
     left=2.5cm,%
     right=2.5cm%
   }
+  \usepackage{changepage}
   % Allow a bit of overflow to go unnoticed by other means
   \tolerance=750
   \hfuzz=15pt
@@ -113,9 +123,24 @@
   % creating indexes
   \makeindex
   \usepackage{newunicodechar}
-  \newunicodechar{⁻}{${}^{-}$}% Superscript minus
-  \newunicodechar{²}{${}^{2}$}% Superscript two
-  \newunicodechar{³}{${}^{3}$}% Superscript three
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
   % Hyperlinks
     % Hyperlinks (required, but should be loaded last)
     \ifpdf
@@ -144,8 +169,14 @@
   \usepackage{caption}
   \captionsetup{labelsep=space,justification=centering,font={bf},singlelinecheck=off,skip=4pt,position=top}
   % in page table of contents
-  \usepackage{etoc}
+  \IfFormatAtLeastTF{2023/05/01}{\usepackage[deeplevels]{etoc}}{\usepackage[deeplevels]{etoc_doxygen}}
   \etocsettocstyle{\doxytocparskip}{\doxynormalparskip}
+  \etocsetlevel{subsubsubsection}{4}
+  \etocsetlevel{subsubsubsubsection}{5}
+  \etocsetlevel{subsubsubsubsubsection}{6}
+  \etocsetlevel{subsubsubsubsubsubsection}{7}
+  \etocsetlevel{paragraph}{8}
+  \etocsetlevel{subparagraph}{9}
   % prevent numbers overlap the titles in toc
   \renewcommand{\numberline}[1]{#1~}
 % End of preamble, now comes the document contents
@@ -164,8 +195,9 @@
   \vspace*{7cm}
   \begin{center}%
   {\Large dirac\+\_\+solver}\\
+  [1ex]\large 0.\+0.\+1 \\
   \vspace*{1cm}
-  {\large Generado por Doxygen 1.9.4}\\
+  {\large Generado por Doxygen 1.9.8}\\
   \end{center}
   \end{titlepage}
   \clearemptydoublepage
@@ -176,51 +208,42 @@
   % re-enable anchors again
   \hypersetup{pageanchor=true}
 %--- Begin generated contents ---
-\chapter{README}
-\label{md_dirac_solver_README}
-\Hypertarget{md_dirac_solver_README}
-\input{md_dirac_solver_README}
-\chapter{Plan del Proyecto para un Solucionador de la Ecuación de Dirac}
-\label{md_planning_problems_to_solve}
-\Hypertarget{md_planning_problems_to_solve}
-\input{md_planning_problems_to_solve}
-\chapter{Estructura del Proyecto dirac\+\_\+solver}
-\label{md_planning_structure}
-\Hypertarget{md_planning_structure}
-\input{md_planning_structure}
-\chapter{Dirac-\/\+Solver\+: Solucionador numérico de la Ecuación de Dirac.}
-\label{md_README}
-\Hypertarget{md_README}
+\input{md_planning_2problems-to-solve}
+\input{md_planning_2structure}
 \input{md_README}
-\chapter{Indice de namespaces}
+\chapter{Índice de espacios de nombres}
 \input{namespaces}
-\chapter{Indice jerárquico}
+\chapter{Índice jerárquico}
 \input{hierarchy}
 \chapter{Índice de clases}
 \input{annotated}
-\chapter{Indice de archivos}
+\chapter{Índice de archivos}
 \input{files}
-\chapter{Documentación de namespaces}
+\chapter{Documentación de espacios de nombres}
 \input{namespacecheck__package}
 \input{namespacedirac__solver}
+\input{namespacedirac__solver_1_1constants}
 \input{namespacedirac__solver_1_1core}
 \input{namespacedirac__solver_1_1geometry}
+\input{namespacedirac__solver_1_1init__geometry}
 \input{namespacedirac__solver_1_1initial__state}
-\chapter{Documentación de las clases}
+\chapter{Documentación de clases}
+\input{classdirac__solver_1_1constants_1_1Constants}
 \input{classdirac__solver_1_1core_1_1DiracSolver}
+\input{classdirac__solver_1_1initial__state_1_1GaussianWavePacket}
 \input{classdirac__solver_1_1geometry_1_1Geometry}
-\input{classdirac__solver_1_1initial__state_1_1InitialState}
+\input{classdirac__solver_1_1init__geometry_1_1Grid}
 \input{classdirac__solver_1_1geometry_1_1Interval1D}
-\input{classdirac__solver_1_1initial__state_1_1PlaneWave}
 \chapter{Documentación de archivos}
 \input{check__package_8py}
 \input{____init_____8py}
+\input{constants_8py}
 \input{core_8py}
 \input{geometry_8py}
+\input{init__geometry_8py}
 \input{initial__state_8py}
 \input{problems-to-solve_8md}
 \input{structure_8md}
-\input{dirac__solver_2README_8md}
 \input{README_8md}
 %--- End generated contents ---
 % Index

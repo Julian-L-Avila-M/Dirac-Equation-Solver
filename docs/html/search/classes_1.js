@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['geometry_0',['Geometry',['../classdirac__solver_1_1geometry_1_1Geometry.html',1,'dirac_solver::geometry']]]
+  ['diracsolver_0',['DiracSolver',['../classdirac__solver_1_1core_1_1DiracSolver.html',1,'dirac_solver::core']]]
 ];

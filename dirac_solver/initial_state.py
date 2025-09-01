@@ -7,6 +7,7 @@
 @ brief librerias importadas.
 """
 import numpy as np
+from .constants import Constants
 
 """
 @brief Aqui se prepara el estado inicial (sin considerar la geometria del espacio).
@@ -15,8 +16,6 @@ import numpy as np
 @param ELECTRON_MASS: masa del electron.
 """
 
-HBAR = 1.0
-c = 137.0 
 
 """
 @class GaussianWavePacket
@@ -41,6 +40,13 @@ class GaussianWavePacket:
         self.x0 = packet_width 
         self.spin = spin_orientation
 
+        consts = Constants()
+        self.c = consts.get("c")
+        self.HBAR = consts.get("HBAR")
+
+
+
+
         self._precompute_spinor()
 
     def _precompute_spinor(self):
@@ -58,9 +64,9 @@ class GaussianWavePacket:
             """
             @todo Este condicional se podria eliminar si el sqrt eliminara la potencia cuadrada al ser p_mag = 0
             """
-            self.energy = self.mass * (c**2)
+            self.energy = self.mass * (self.c**2)
         else:
-            self.energy = np.sqrt((p_mag * c)**2 + (self.mass * c**2)**2)
+            self.energy = np.sqrt((p_mag * self.c)**2 + (self.mass * self.c**2)**2)
 
         """
         @brief Se calcula la constante de normalización N:
@@ -70,7 +76,7 @@ class GaussianWavePacket:
         """
         @brief Se calcula el factor de normalización:
         """
-        norm_factor = np.sqrt((self.energy + self.mass*(c**2)) / (2 * self.energy))
+        norm_factor = np.sqrt((self.energy + self.mass*(self.c**2)) / (2 * self.energy))
 
         """
         @brief Se construye el spinor base:
@@ -82,8 +88,8 @@ class GaussianWavePacket:
         if self.spin == 'up_z':
             spinor[0] = 1.0 
             spinor[1] = 0.0
-            spinor[2] = ((pz * c)/(self.energy + (self.mass * (c**2)))) 
-            spinor[3] = ( ((px - (1j * py))*c ) / (self.energy + (self.mass*(c**2))) )
+            spinor[2] = ((pz * self.c)/(self.energy + (self.mass * (self.c**2)))) 
+            spinor[3] = ( ((px - (1j * py))*self.c ) / (self.energy + (self.mass*(self.c**2))) )
         else:
             raise NotImplementedError(f"Spin orientation '{self.spin}' is not supported.")
         """

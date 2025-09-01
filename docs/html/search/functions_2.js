@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plot_5fprobability_5fdensity_0',['plot_probability_density',['../classdirac__solver_1_1core_1_1DiracSolver.html#a2108eacb7ac8618fd48dfdc3c9f3084e',1,'dirac_solver::core::DiracSolver']]]
+  ['courant_5flimit_0',['courant_limit',['../classdirac__solver_1_1init__geometry_1_1Grid.html#a890bac69837047e8746ebb4e0f631273',1,'dirac_solver::init_geometry::Grid']]]
 ];

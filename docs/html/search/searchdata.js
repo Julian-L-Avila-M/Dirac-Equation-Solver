@@ -1,12 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "_bcdegimprs",
-  1: "dgip",
+  0: "12345678_abcdefghiklmnoprstuvxy–📂",
+  1: "cdgi",
   2: "cd",
   3: "_cgiprs",
-  4: "_cpr",
-  5: "beim",
-  6: "depr"
+  4: "_acdgprs",
+  5: "_bcdehimopsx",
+  6: "delnpsu"
 };
 
 var indexSectionNames =
@@ -22,9 +22,9 @@ var indexSectionNames =
 
 var indexSectionLabels =
 {
-  0: "Todo",
+  0: "Todos",
   1: "Clases",
-  2: "Namespaces",
+  2: "Espacios de nombres",
   3: "Archivos",
   4: "Funciones",
   5: "Variables",
