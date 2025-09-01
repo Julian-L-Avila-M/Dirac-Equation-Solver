@@ -40,7 +40,9 @@
 # debug information files
 *.dwo
 
-# artefactos de construccion y distribucción
+# Construction and Distribution
 *.egg-info/
 *.egg
 
+# Jupyter Notebooks
+.ipynb_checkpoints/
