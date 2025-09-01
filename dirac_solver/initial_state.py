@@ -16,7 +16,7 @@ import numpy as np
 """
 
 HBAR = 1.0
-c = 137.0 
+c = 137.0
 
 """
 @class GaussianWavePacket
@@ -38,7 +38,7 @@ class GaussianWavePacket:
 
         self.p_vec = np.array(momentum)
         self.mass = mass
-        self.x0 = packet_width 
+        self.x0 = packet_width
         self.spin = spin_orientation
 
         self._precompute_spinor()
@@ -80,9 +80,9 @@ class GaussianWavePacket:
         spinor = np.zeros(4, dtype=np.complex128)
 
         if self.spin == 'up_z':
-            spinor[0] = 1.0 
+            spinor[0] = 1.0
             spinor[1] = 0.0
-            spinor[2] = ((pz * c)/(self.energy + (self.mass * (c**2)))) 
+            spinor[2] = ((pz * c)/(self.energy + (self.mass * (c**2))))
             spinor[3] = ( ((px - (1j * py))*c ) / (self.energy + (self.mass*(c**2))) )
         else:
             raise NotImplementedError(f"Spin orientation '{self.spin}' is not supported.")
