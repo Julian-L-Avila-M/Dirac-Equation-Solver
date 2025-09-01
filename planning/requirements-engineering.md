@@ -84,7 +84,7 @@ uses `matplotlib` to generate:
   - Animations of the time evolution of $\rho(x,y,t)$.
   - Vector field plots for the probability current density $\vec{j}$.
 
-#### **D Advanced Performance Requirements**
+#### **D Advanced Performance Requirements (Optional)**
 
 - **FR-11:** Parallelization with **OpenMP** in C++ to accelerate simulations.
 
