@@ -1,0 +1,83 @@
+Este documento describe el plan del proyecto para un solucionador de la ecuación de Dirac. El solucionador manejará la ecuación \$(i\textbackslash{}gamma$^\wedge$\textbackslash{}mu \textbackslash{}partial\+\_\+\textbackslash{}mu -\/ m)\textbackslash{}psi=0\$ en unidades naturales, donde el bispinor \$\textbackslash{}psi \textbackslash{}in \textbackslash{}mathbb\{C\}$^\wedge$4\$ es un vector columna de valores complejos. Las siguientes secciones detallan los problemas a abordar, junto con sus respectivos requisitos computacionales.
+
+\DoxyHorRuler{0}
+\hypertarget{md_planning_problems_to_solve_autotoc_md2}{}\doxysection{1. Partícula Libre}\label{md_planning_problems_to_solve_autotoc_md2}
+El caso de la partícula libre es el problema fundamental, sirviendo como referencia para la funcionalidad central del solucionador.\hypertarget{md_planning_problems_to_solve_autotoc_md3}{}\doxysubsection{Descripción del Problema}\label{md_planning_problems_to_solve_autotoc_md3}
+Resolver la ecuación de Dirac para una partícula en ausencia de un potencial externo. El desarrollo inicial se centrará en el caso unidimensional (1+1D), ya que cualquier movimiento de una partícula libre puede ser transformado a esta configuración mediante un boost de Lorentz.\hypertarget{md_planning_problems_to_solve_autotoc_md4}{}\doxysubsection{Parámetros de Entrada}\label{md_planning_problems_to_solve_autotoc_md4}
+
+\begin{DoxyItemize}
+\item {\bfseries{Masa de la Partícula}} (\$m\$)
+\item {\bfseries{Momento Inicial}} (\$p\$)
+\item {\bfseries{Distribución Espacial}}\+: Los estados iniciales incluirán tanto una simple onda plana como un paquete de ondas Gaussiano más físicamente realista.
+\item {\bfseries{Estado de Espín}}\+: La configuración inicial del espín del bispinor.
+\end{DoxyItemize}\hypertarget{md_planning_problems_to_solve_autotoc_md5}{}\doxysubsection{Salidas}\label{md_planning_problems_to_solve_autotoc_md5}
+
+\begin{DoxyItemize}
+\item {\bfseries{Densidades de Probabilidad y Corriente}}\+: La evolución temporal de la densidad de probabilidad \$\textbackslash{}rho = \textbackslash{}psi$^\wedge$\textbackslash{}dagger \textbackslash{}psi\$ y la densidad de corriente \$J = \textbackslash{}psi$^\wedge$\textbackslash{}dagger \textbackslash{}alpha \textbackslash{}psi\$.
+\item {\bfseries{Valores Esperados}}\+: Los valores esperados para la energía, el momento y la posición a lo largo del tiempo, que se utilizarán para observar fenómenos relativistas como la Zitterbewegung.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_planning_problems_to_solve_autotoc_md7}{}\doxysection{2. Pozo de Potencial Infinito}\label{md_planning_problems_to_solve_autotoc_md7}
+Este problema introduce condiciones de contorno, probando la capacidad del solucionador para manejar el confinamiento.\hypertarget{md_planning_problems_to_solve_autotoc_md8}{}\doxysubsection{Descripción del Problema}\label{md_planning_problems_to_solve_autotoc_md8}
+Resolver la ecuación de Dirac para una partícula confinada dentro de un pozo de potencial infinito de ancho \$\+L\$. El bispinor \$\textbackslash{}psi\$ debe anularse en las paredes del pozo.\hypertarget{md_planning_problems_to_solve_autotoc_md9}{}\doxysubsection{Parámetros de Entrada}\label{md_planning_problems_to_solve_autotoc_md9}
+
+\begin{DoxyItemize}
+\item {\bfseries{Ancho del Pozo}} (\$\+L\$)
+\item {\bfseries{Masa de la Partícula}} (\$m\$) y Estado de Espín Inicial.
+\end{DoxyItemize}\hypertarget{md_planning_problems_to_solve_autotoc_md10}{}\doxysubsection{Salidas}\label{md_planning_problems_to_solve_autotoc_md10}
+
+\begin{DoxyItemize}
+\item {\bfseries{Niveles de Energía Cuantizados}}\+: Los valores propios de energía discretos del sistema.
+\item {\bfseries{Autofunciones}}\+: Las funciones de onda del bispinor correspondientes a cada nivel de energía.
+\item {\bfseries{Evolución Temporal}}\+: La evolución temporal de la densidad de probabilidad para un estado inicial, demostrando el comportamiento oscilatorio dentro del pozo.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_planning_problems_to_solve_autotoc_md12}{}\doxysection{3. Potencial a Trozos (\+Efecto Klein)}\label{md_planning_problems_to_solve_autotoc_md12}
+Este caso es crucial para demostrar el fenómeno relativista del Efecto Klein.\hypertarget{md_planning_problems_to_solve_autotoc_md13}{}\doxysubsection{Descripción del Problema}\label{md_planning_problems_to_solve_autotoc_md13}
+Resolver el comportamiento de una partícula que encuentra un escalón de potencial. El objetivo es demostrar que una partícula relativista puede atravesar una barrera de potencial incluso cuando su energía es menor que la altura de la barrera, un resultado clásicamente imposible.\hypertarget{md_planning_problems_to_solve_autotoc_md14}{}\doxysubsection{Parámetros de Entrada}\label{md_planning_problems_to_solve_autotoc_md14}
+
+\begin{DoxyItemize}
+\item {\bfseries{Altura del Potencial}} (\$\+V\+\_\+0\$)
+\item {\bfseries{Energía de la Partícula}} (\$\+E\$) y Momento Inicial (\$p\$)
+\item {\bfseries{Masa de la Partícula}} (\$m\$) y Estado de Espín Inicial.
+\end{DoxyItemize}\hypertarget{md_planning_problems_to_solve_autotoc_md15}{}\doxysubsection{Salidas}\label{md_planning_problems_to_solve_autotoc_md15}
+
+\begin{DoxyItemize}
+\item {\bfseries{Coeficientes de Reflexión (R) y Transmisión (T)}}\+: La salida principal, que demuestra que la transmisión puede ocurrir incluso cuando \$\+V\+\_\+0 \texorpdfstring{$>$}{>} E+m\$.
+\item {\bfseries{Visualización de la Función de Onda}}\+: Un gráfico de la función de onda del bispinor que muestra los componentes entrante, reflejado y transmitido.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_planning_problems_to_solve_autotoc_md17}{}\doxysection{4. Potencial Central (\+Interacción de Coulomb)}\label{md_planning_problems_to_solve_autotoc_md17}
+Este problema es una aplicación fundamental de la ecuación de Dirac, abordando la estructura fina del átomo de hidrógeno.\hypertarget{md_planning_problems_to_solve_autotoc_md18}{}\doxysubsection{Descripción del Problema}\label{md_planning_problems_to_solve_autotoc_md18}
+Resolver la ecuación de Dirac para un electrón en un potencial central, específicamente el potencial de Coulomb \$\+V(r) = -\/Z\textbackslash{}alpha/r\$.\hypertarget{md_planning_problems_to_solve_autotoc_md19}{}\doxysubsection{Parámetros de Entrada}\label{md_planning_problems_to_solve_autotoc_md19}
+
+\begin{DoxyItemize}
+\item {\bfseries{Carga Central}} (\$\+Z\$) (p.\+ej., \$Z=1\$ para el hidrógeno).
+\item {\bfseries{Masa de la Partícula}} (\$m\$) (la masa del electrón).
+\item {\bfseries{Número Cuántico del Momento Angular}} (\$j\$)\+: La solución se maneja mejor en   coordenadas esféricas.
+\end{DoxyItemize}\hypertarget{md_planning_problems_to_solve_autotoc_md20}{}\doxysubsection{Salidas}\label{md_planning_problems_to_solve_autotoc_md20}
+
+\begin{DoxyItemize}
+\item {\bfseries{Niveles de Energía Cuantizados}}\+: Los valores propios de energía discretos, que deben coincidir con la fórmula de la estructura fina de Sommerfeld.
+\item {\bfseries{Funciones de Onda}}\+: Los componentes radiales de la función de onda del bispinor.
+\item {\bfseries{Desdoblamiento Espín-\/Órbita}}\+: El solucionador debe reproducir correctamente el desdoblamiento de los niveles de energía debido a la interacción espín-\/órbita.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_planning_problems_to_solve_autotoc_md22}{}\doxysection{5. Potencial de Yukawa}\label{md_planning_problems_to_solve_autotoc_md22}
+Este problema proporciona una generalización crucial del potencial de Coulomb, relevante para la física nuclear.\hypertarget{md_planning_problems_to_solve_autotoc_md23}{}\doxysubsection{Descripción del Problema}\label{md_planning_problems_to_solve_autotoc_md23}
+Resolver el comportamiento de una partícula en un potencial de Yukawa de corto alcance \$\+V(r) = -\/g \textbackslash{}frac\{e$^\wedge$\{-\/Mr\}\}\{r\}\$.\hypertarget{md_planning_problems_to_solve_autotoc_md24}{}\doxysubsection{Parámetros de Entrada}\label{md_planning_problems_to_solve_autotoc_md24}
+
+\begin{DoxyItemize}
+\item {\bfseries{Constante de Acoplamiento}} (\$g\$) y {\bfseries{Masa de la Partícula Mediadora}} (\$\+M\$)\+: Estos parámetros definen la fuerza y el alcance del potencial.
+\item {\bfseries{Masa de la Partícula}} (\$m\$) y Estado Inicial.
+\end{DoxyItemize}\hypertarget{md_planning_problems_to_solve_autotoc_md25}{}\doxysubsection{Salidas}\label{md_planning_problems_to_solve_autotoc_md25}
+
+\begin{DoxyItemize}
+\item {\bfseries{Energías de los Estados Ligados}}\+: Los valores propios de energía discretos para los estados ligados.
+\item {\bfseries{Funciones de Onda}}\+: Una visualización de las funciones de onda del bispinor, mostrando cómo difieren del caso de Coulomb debido al decaimiento exponencial del potencial.
+\item {\bfseries{Verificación de Consistencia}}\+: La salida debe demostrar que los resultados convergen al caso de Coulomb cuando la masa de la partícula mediadora \$M \textbackslash{}to 0\$. 
+\end{DoxyItemize}

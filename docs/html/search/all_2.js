@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['check_5fpackage_0',['check_package',['../namespacecheck__package.html',1,'']]],
-  ['check_5fpackage_2epy_1',['check_package.py',['../check__package_8py.html',1,'']]],
-  ['core_2epy_2',['core.py',['../core_8py.html',1,'']]]
+  ['3_20potencial_20a_20trozos_20efecto_20klein_0',['3. Potencial a Trozos (Efecto Klein)',['../md_planning_2problems-to-solve.html#autotoc_md12',1,'']]],
+  ['3_20tt_20potentials_20tt_20–_20potenciales_1',['3. &lt;tt&gt;potentials/&lt;/tt&gt; – Potenciales',['../md_planning_2structure.html#autotoc_md34',1,'']]]
 ];

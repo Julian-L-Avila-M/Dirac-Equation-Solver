@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hola_5fmundo_0',['hola_mundo',['../namespacedirac__solver_1_1core.html#a2307ed9540ed146b10ae4c09f44d2eed',1,'dirac_solver::core']]]
+  ['6_20tt_20io_20tt_20–_20entrada_20salida_0',['6. &lt;tt&gt;io/&lt;/tt&gt; – Entrada/Salida',['../md_planning_2structure.html#autotoc_md37',1,'']]]
 ];

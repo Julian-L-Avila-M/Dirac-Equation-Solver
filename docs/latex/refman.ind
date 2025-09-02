@@ -1,0 +1,81 @@
+\begin{theindex}
+
+  \item {\_\_init\_\_}
+    \subitem {dirac\_solver.geometry.Interval1D}, \hyperpage{25}
+    \subitem {dirac\_solver.initial\_state.PlaneWave}, \hyperpage{27}
+  \item {\_\_initial\_\_}
+    \subitem {dirac\_solver.core.DiracSolver}, \hyperpage{23}
+
+  \indexspace
+
+  \item {base\_path}
+    \subitem {check\_package}, \hyperpage{21}
+
+  \indexspace
+
+  \item {check\_package}, \hyperpage{21}
+    \subitem {base\_path}, \hyperpage{21}
+    \subitem {encoding}, \hyperpage{21}
+    \subitem {init\_path}, \hyperpage{21}
+  \item {create\_state}
+    \subitem {dirac\_solver.initial\_state.PlaneWave}, \hyperpage{27}
+
+  \indexspace
+
+  \item {dirac\_solver}, \hyperpage{21}
+  \item {dirac\_solver.core}, \hyperpage{21}
+  \item {dirac\_solver.core.DiracSolver}, \hyperpage{23}
+    \subitem {\_\_initial\_\_}, \hyperpage{23}
+    \subitem {plot\_probability\_density}, \hyperpage{23}
+    \subitem {run\_simulation}, \hyperpage{23}
+  \item {dirac\_solver.geometry}, \hyperpage{22}
+  \item {dirac\_solver.geometry.Geometry}, \hyperpage{24}
+  \item {dirac\_solver.geometry.Interval1D}, \hyperpage{25}
+    \subitem {\_\_init\_\_}, \hyperpage{25}
+    \subitem {max}, \hyperpage{26}
+    \subitem {min}, \hyperpage{26}
+  \item {dirac\_solver.initial\_state}, \hyperpage{22}
+  \item {dirac\_solver.initial\_state.InitialState}, \hyperpage{24}
+  \item {dirac\_solver.initial\_state.PlaneWave}, \hyperpage{26}
+    \subitem {\_\_init\_\_}, \hyperpage{27}
+    \subitem {create\_state}, \hyperpage{27}
+  \item {dirac\_solver/check\_package.py}, \hyperpage{29}
+  \item {dirac\_solver/README.md}, \hyperpage{30}
+  \item {dirac\_solver/src/dirac\_solver/\_\_init\_\_.py}, 
+		\hyperpage{29}
+  \item {dirac\_solver/src/dirac\_solver/core.py}, \hyperpage{29}
+  \item {dirac\_solver/src/dirac\_solver/geometry.py}, \hyperpage{29}
+  \item {dirac\_solver/src/dirac\_solver/initial\_state.py}, 
+		\hyperpage{30}
+
+  \indexspace
+
+  \item {encoding}
+    \subitem {check\_package}, \hyperpage{21}
+
+  \indexspace
+
+  \item {init\_path}
+    \subitem {check\_package}, \hyperpage{21}
+
+  \indexspace
+
+  \item {max}
+    \subitem {dirac\_solver.geometry.Interval1D}, \hyperpage{26}
+  \item {min}
+    \subitem {dirac\_solver.geometry.Interval1D}, \hyperpage{26}
+
+  \indexspace
+
+  \item {planning/problems-\/to-\/solve.md}, \hyperpage{30}
+  \item {planning/structure.md}, \hyperpage{30}
+  \item {plot\_probability\_density}
+    \subitem {dirac\_solver.core.DiracSolver}, \hyperpage{23}
+
+  \indexspace
+
+  \item {README.md}, \hyperpage{30}
+  \item {run\_simulation}
+    \subitem {dirac\_solver.core.DiracSolver}, \hyperpage{23}
+
+\end{theindex}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init_5fpath_0',['init_path',['../namespacecheck__package.html#a18dda5a223e9db5b33e157bdc7466e03',1,'check_package']]]
+  ['7_20tt_20visualization_20tt_20–_20gráficos_20y_20análisis_0',['7. &lt;tt&gt;visualization/&lt;/tt&gt; – Gráficos y análisis',['../md_planning_2structure.html#autotoc_md38',1,'']]]
 ];

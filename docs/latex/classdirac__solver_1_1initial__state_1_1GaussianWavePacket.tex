@@ -1,0 +1,123 @@
+\doxysection{Referencia de la clase dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet}
+\hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket}{}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket}\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a2afbfa6f19d7becd3d6a809b3940ea71}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, momentum, \mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_ad6a2dd09bdcb09035456480132d650ae}{mass}}, packet\+\_\+width, spin\+\_\+orientation)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a5a8e19e3b1d7042ebf13f51f28a3095b}{p\+\_\+vec}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_ad6a2dd09bdcb09035456480132d650ae}{mass}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a4dcef3f6f3e58cd2c2cbd245d934672e}{x0}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_add4dba424cc94143935543226b4bd416}{spin}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a49623cf821258c54f76b7d79aef12714}{c}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a265b62a53292febcba3c311de605e705}{HBAR}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_ac476f8c7c13efd6fb29a0e6277096d96}{energy}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_af9658ccfc80f7ed41a4b5bdb5847393b}{spinor\+\_\+vector}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_aae657d6eb23dce346e7be3fd1694e3b5}{\+\_\+precompute\+\_\+spinor}} (self)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+\begin{DoxyVerb}@brief En esta clase se construye un paquete de ondas gaussiano.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a2afbfa6f19d7becd3d6a809b3940ea71}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a2afbfa6f19d7becd3d6a809b3940ea71} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{momentum,  }\item[{}]{mass,  }\item[{}]{packet\+\_\+width,  }\item[{}]{spin\+\_\+orientation }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Inicializa los parametros fisicos del paquete de ondas.
+@param momemtum:  Momentum del paquete de ondas (array)
+@param mass: Masa en reposo de la particula (float)
+@param packet_width: Ancho inicial del paquete (float)
+@param spin_orientation: Orientación del spin. (char)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_aae657d6eb23dce346e7be3fd1694e3b5}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_aae657d6eb23dce346e7be3fd1694e3b5} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!\_precompute\_spinor@{\_precompute\_spinor}}
+\index{\_precompute\_spinor@{\_precompute\_spinor}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{\_precompute\_spinor()}{\_precompute\_spinor()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+\_\+precompute\+\_\+spinor (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}@brief En este metodo se calcula la parte espinorial constante del paquete de ondas
+@note Se ejecuta al crearse el objeto, es de uso interno.
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}@brief Aqui calculamos la energia relativista del paquete de ondas:
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a49623cf821258c54f76b7d79aef12714}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a49623cf821258c54f76b7d79aef12714} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!c@{c}}
+\index{c@{c}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{c}{c}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+c}
+
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_ac476f8c7c13efd6fb29a0e6277096d96}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_ac476f8c7c13efd6fb29a0e6277096d96} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!energy@{energy}}
+\index{energy@{energy}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{energy}{energy}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+energy}
+
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a265b62a53292febcba3c311de605e705}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a265b62a53292febcba3c311de605e705} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!HBAR@{HBAR}}
+\index{HBAR@{HBAR}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{HBAR}{HBAR}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+HBAR}
+
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_ad6a2dd09bdcb09035456480132d650ae}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_ad6a2dd09bdcb09035456480132d650ae} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!mass@{mass}}
+\index{mass@{mass}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{mass}{mass}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+mass}
+
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a5a8e19e3b1d7042ebf13f51f28a3095b}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a5a8e19e3b1d7042ebf13f51f28a3095b} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!p\_vec@{p\_vec}}
+\index{p\_vec@{p\_vec}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{p\_vec}{p\_vec}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+p\+\_\+vec}
+
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_add4dba424cc94143935543226b4bd416}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_add4dba424cc94143935543226b4bd416} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!spin@{spin}}
+\index{spin@{spin}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{spin}{spin}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+spin}
+
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_af9658ccfc80f7ed41a4b5bdb5847393b}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_af9658ccfc80f7ed41a4b5bdb5847393b} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!spinor\_vector@{spinor\_vector}}
+\index{spinor\_vector@{spinor\_vector}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{spinor\_vector}{spinor\_vector}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+spinor\+\_\+vector}
+
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a4dcef3f6f3e58cd2c2cbd245d934672e}\label{classdirac__solver_1_1initial__state_1_1GaussianWavePacket_a4dcef3f6f3e58cd2c2cbd245d934672e} 
+\index{dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}!x0@{x0}}
+\index{x0@{x0}!dirac\_solver.initial\_state.GaussianWavePacket@{dirac\_solver.initial\_state.GaussianWavePacket}}
+\doxysubsubsection{\texorpdfstring{x0}{x0}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Wave\+Packet.\+x0}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+dirac\+\_\+solver/\mbox{\hyperlink{initial__state_8py}{initial\+\_\+state.\+py}}\end{DoxyCompactItemize}

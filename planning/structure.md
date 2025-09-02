@@ -1,4 +1,4 @@
-# Estructura del Proyecto `dirac_solver`
+# Estructura del Proyecto dirac_solver
 
 Este documento describe la estructura modular del proyecto `dirac_solver`,
 inspirada en el diseño de librerías como **DeepXDE**. La idea es mantener una

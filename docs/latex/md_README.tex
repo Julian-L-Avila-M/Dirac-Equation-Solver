@@ -1,0 +1,23 @@
+\chapter{Dirac-\/\+Solver\+: Solucionador numérico de la Ecuación de Dirac.}
+\hypertarget{md_README}{}\label{md_README}\index{Dirac-\/Solver: Solucionador numérico de la Ecuación de Dirac.@{Dirac-\/Solver: Solucionador numérico de la Ecuación de Dirac.}}
+\label{md_README_autotoc_md47}%
+\Hypertarget{md_README_autotoc_md47}%
+ Este documento describe el plan del proyecto para un solucionador de la ecuación de Dirac. El solucionador manejará la ecuación \$(i\textbackslash{}gamma\texorpdfstring{$^\wedge$}{\string^}\textbackslash{}mu \textbackslash{}partial\+\_\+\textbackslash{}mu -\/ m)\textbackslash{}psi=0\$ en unidades naturales, donde el bispinor \$\textbackslash{}psi \textbackslash{}in \textbackslash{}mathbb\{C\}\texorpdfstring{$^\wedge$}{\string^}4\$ es un vector columna de valores complejos. Las siguientes secciones detallan los problemas a abordar, junto con sus respectivos requisitos computacionales.\hypertarget{md_README_autotoc_md48}{}\doxysection{\texorpdfstring{Documentación}{Documentación}}\label{md_README_autotoc_md48}
+Para compilar la documentación, en el directorio principal ejecutar\+:
+
+-\/\texorpdfstring{$>$}{>} Doxigen
+
+Esto creará los subdirectorios ./docs/html y ./docs/latex
+
+Para obtener el .pdf de latex, desde el directorio principal\+:
+
+-\/\texorpdfstring{$>$}{>} cd ./docs/html -\/\texorpdfstring{$>$}{>} make\hypertarget{md_README_autotoc_md49}{}\doxysection{\texorpdfstring{Instalación de la libreria}{Instalación de la libreria}}\label{md_README_autotoc_md49}
+En el entorno principal ejecutar\+:
+
+-\/\texorpdfstring{$>$}{>} pip install .
+
+Para desarrollo\+:
+
+-\/\texorpdfstring{$>$}{>} pip install -\/e .
+
+"{}-\/e"{}\+: modo editable 

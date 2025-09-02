@@ -1,0 +1,105 @@
+"""
+@file initial_state.py
+@brief Creacion del estado inicial sin geometria del espacio.
+"""
+
+"""
+@ brief librerias importadas.
+"""
+import numpy as np
+from .constants import Constants
+
+"""
+@brief Aqui se prepara el estado inicial (sin considerar la geometria del espacio).
+@param HBAR: constante de planck
+@param c: velocidad de la luz
+@param ELECTRON_MASS: masa del electron.
+"""
+
+
+"""
+@class GaussianWavePacket
+@brief Clase para inicializar el paquete de ondas gaussiano.
+"""
+
+class GaussianWavePacket:
+    """
+    @brief En esta clase se construye un paquete de ondas gaussiano.
+    """
+    def __init__(self, momentum, mass, packet_width, spin_orientation):
+        """
+        @brief Inicializa los parametros fisicos del paquete de ondas.
+        @param momemtum:  Momentum del paquete de ondas (array)
+        @param mass: Masa en reposo de la particula (float)
+        @param packet_width: Ancho inicial del paquete (float)
+        @param spin_orientation: Orientación del spin. (char)
+        """
+
+        self.p_vec = np.array(momentum)
+        self.mass = mass
+        self.x0 = packet_width 
+        self.spin = spin_orientation
+
+        consts = Constants()
+        self.c = consts.get("c")
+        self.HBAR = consts.get("HBAR")
+
+
+
+
+        self._precompute_spinor()
+
+    def _precompute_spinor(self):
+        """
+        @brief En este metodo se calcula la parte espinorial constante del paquete de ondas
+        @note Se ejecuta al crearse el objeto, es de uso interno.
+        """
+        """
+        @brief Aqui calculamos la energia relativista del paquete de ondas:
+        """
+
+        p_mag = np.linalg.norm(self.p_vec)
+
+        if p_mag == 0:
+            """
+            @todo Este condicional se podria eliminar si el sqrt eliminara la potencia cuadrada al ser p_mag = 0
+            """
+            self.energy = self.mass * (self.c**2)
+        else:
+            self.energy = np.sqrt((p_mag * self.c)**2 + (self.mass * self.c**2)**2)
+
+        """
+        @brief Se calcula la constante de normalización N:
+        """
+        N = ( (2 * np.pi )**(3/2) * (self.x0)**3 )**(-1/2)
+
+        """
+        @brief Se calcula el factor de normalización:
+        """
+        norm_factor = np.sqrt((self.energy + self.mass*(self.c**2)) / (2 * self.energy))
+
+        """
+        @brief Se construye el spinor base:
+        """
+
+        px, py, pz = self.p_vec
+        spinor = np.zeros(4, dtype=np.complex128)
+
+        if self.spin == 'up_z':
+            spinor[0] = 1.0 
+            spinor[1] = 0.0
+            spinor[2] = ((pz * self.c)/(self.energy + (self.mass * (self.c**2)))) 
+            spinor[3] = ( ((px - (1j * py))*self.c ) / (self.energy + (self.mass*(self.c**2))) )
+        else:
+            raise NotImplementedError(f"Spin orientation '{self.spin}' is not supported.")
+        """
+            @warning Es necesario implementar las otras componentes
+            """
+
+        """
+        @brief Se aplica la normalizacion a nuestro vertor 4x1
+        @note Es necesario construir el termino faltante con al geometria.
+        """
+
+        self.spinor_vector = N * norm_factor * spinor
+        print("Objeto creado (falta aplicarle la geometria)")
