@@ -68,7 +68,7 @@ class Grid:
     """
     @brief construye las coordenadas de la malla en funcíon de la dimensiión.
     """
-    axes = [self.origin[i] + np.arangue(self.shape[i]) * self.spacing[i] for i in range(self.dim)]
+    axes = [self.origin[i] + np.arange(self.shape[i]) * self.spacing[i] for i in range(self.dim)]
     grids = np.meshgrid(*axes, indexing="ij")
 
     # self.coords se construyó en __init__ llamando a esta función.
