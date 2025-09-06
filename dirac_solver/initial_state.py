@@ -29,7 +29,7 @@ class GaussianWavePacket:
     """
     def __init__(self, momentum=[0,0,0], mass=1.0, packet_width=1.0, spin_orientation='up_z'):
         """
-        @brief Inicializa los parametros fisicos del paquete de ondas.
+        @brief Inicializa los parametros fisicos del paquete de ondas
         @param momemtum:  Momentum del paquete de ondas (array), por defecto: [0,0,0]
         @param mass: Masa en reposo de la particula (float), por defecto: 1.0
         @param packet_width: Ancho inicial del paquete (float), por defecto: 1.0
