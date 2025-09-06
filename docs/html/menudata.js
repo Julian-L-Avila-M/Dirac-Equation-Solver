@@ -25,17 +25,30 @@
 var menudata={children:[
 {text:"Página principal",url:"index.html"},
 {text:"Páginas relacionadas",url:"pages.html"},
-{text:"Namespaces",url:"namespaces.html",children:[
-{text:"Lista de 'namespaces'",url:"namespaces.html"},
-{text:"Miembros del Namespace ",url:"namespacemembers.html",children:[
-{text:"Todo",url:"namespacemembers.html"},
+{text:"Espacios de nombres",url:"namespaces.html",children:[
+{text:"Lista de espacios de nombres",url:"namespaces.html"},
+{text:"Miembros del espacio de nombres ",url:"namespacemembers.html",children:[
+{text:"Todos",url:"namespacemembers.html"},
 {text:"Variables",url:"namespacemembers_vars.html"}]}]},
 {text:"Clases",url:"annotated.html",children:[
 {text:"Lista de clases",url:"annotated.html"},
 {text:"Índice de clases",url:"classes.html"},
-{text:"Jerarquía de la clase",url:"inherits.html"},
-{text:"Miembros de las clases",url:"functions.html",children:[
-{text:"Todo",url:"functions.html"},
+{text:"Jerarquía de clases",url:"inherits.html"},
+{text:"Miembros de clases",url:"functions.html",children:[
+{text:"Todos",url:"functions.html",children:[
+{text:"_",url:"functions.html#index__5F"},
+{text:"a",url:"functions.html#index_a"},
+{text:"c",url:"functions.html#index_c"},
+{text:"d",url:"functions.html#index_d"},
+{text:"e",url:"functions.html#index_e"},
+{text:"g",url:"functions.html#index_g"},
+{text:"h",url:"functions.html#index_h"},
+{text:"m",url:"functions.html#index_m"},
+{text:"o",url:"functions.html#index_o"},
+{text:"p",url:"functions.html#index_p"},
+{text:"r",url:"functions.html#index_r"},
+{text:"s",url:"functions.html#index_s"},
+{text:"x",url:"functions.html#index_x"}]},
 {text:"Funciones",url:"functions_func.html"},
 {text:"Variables",url:"functions_vars.html"}]}]},
 {text:"Archivos",url:"files.html",children:[

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['base_5fpath_0',['base_path',['../namespacecheck__package.html#aa35263d4cb6b5643b04fcaec856f219b',1,'check_package']]]
+  ['_5finstance_0',['_instance',['../classdirac__solver_1_1constants_1_1Constants.html#a058edacbe6b8ee3dfaba7d9747a10832',1,'dirac_solver::constants::Constants']]],
+  ['_5fsystems_1',['_SYSTEMS',['../classdirac__solver_1_1constants_1_1Constants.html#a19254bc46094a260634f6f8879db2dd4',1,'dirac_solver::constants::Constants']]]
 ];

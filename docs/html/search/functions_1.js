@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['create_5fstate_0',['create_state',['../classdirac__solver_1_1initial__state_1_1PlaneWave.html#a9114caae7e00b2045efeea3167d7ac67',1,'dirac_solver::initial_state::PlaneWave']]]
+  ['as_5fdict_0',['as_dict',['../classdirac__solver_1_1constants_1_1Constants.html#a7d7832373c086f703308ce2aa9e1a2a4',1,'dirac_solver::constants::Constants']]]
 ];

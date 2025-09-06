@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>dirac_solver: Dirac-Solver: Solucionador numérico de la Ecuación de Dirac.</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -30,10 +30,10 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.9.4 -->
+<!-- Generado por Doxygen 1.9.8 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "search",'Buscar','.html');
+var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -56,33 +56,43 @@ $(function() {
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
 </div>
 
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">Dirac-Solver: Solucionador numérico de la Ecuación de Dirac. </div></div>
+  <div class="headertitle"><div class="title">Dirac-Solver: Solucionador numérico de la Ecuación de Dirac.</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >[aqui va una interesante introducción]</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md47"></a> Este documento describe el plan del proyecto para un solucionador de la ecuación de Dirac. El solucionador manejará la ecuación $(i\gamma^\mu \partial_\mu - m)\psi=0$ en unidades naturales, donde el bispinor $\psi \in \mathbb{C}^4$ es un vector columna de valores complejos. Las siguientes secciones detallan los problemas a abordar, junto con sus respectivos requisitos computacionales.</p>
 <h1><a class="anchor" id="autotoc_md48"></a>
 Documentación</h1>
-<p >Para compilar la documentación, en el directorio principal ejecutar:</p>
-<p >-&gt; Doxigen</p>
-<p >Esto creará los subdirectorios ./docs/html y ./docs/latex</p>
-<p >Para obtener el .pdf de latex, desde el directorio principal:</p>
-<p >-&gt; cd ./docs/html -&gt; make</p>
+<p>Para compilar la documentación, en el directorio principal ejecutar:</p>
+<p>-&gt; Doxigen</p>
+<p>Esto creará los subdirectorios ./docs/html y ./docs/latex</p>
+<p>Para obtener el .pdf de latex, desde el directorio principal:</p>
+<p>-&gt; cd ./docs/html -&gt; make</p>
 <h1><a class="anchor" id="autotoc_md49"></a>
 Instalación de la libreria</h1>
-<p >En el entorno principal ejecutar:</p>
-<p >-&gt; cd ./dirac_solver/ -&gt; pip install -e . </p>
+<p>En el entorno principal ejecutar:</p>
+<p>-&gt; pip install .</p>
+<p>Para desarrollo:</p>
+<p>-&gt; pip install -e .</p>
+<p>"-e": modo editable </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

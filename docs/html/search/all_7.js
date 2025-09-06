@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['max_0',['max',['../classdirac__solver_1_1geometry_1_1Interval1D.html#a1605a5620901c10f467b0b8bc90a9abc',1,'dirac_solver::geometry::Interval1D']]],
-  ['min_1',['min',['../classdirac__solver_1_1geometry_1_1Interval1D.html#a88b3def26f51d661aeecc2feb42f03a1',1,'dirac_solver::geometry::Interval1D']]]
+  ['8_20tt_20utils_20tt_20–_20utilidades_20generales_0',['8. &lt;tt&gt;utils/&lt;/tt&gt; – Utilidades generales',['../md_planning_2structure.html#autotoc_md39',1,'']]]
 ];
