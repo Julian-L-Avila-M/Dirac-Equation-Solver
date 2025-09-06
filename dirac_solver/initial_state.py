@@ -16,7 +16,7 @@ import numpy as np
 """
 
 HBAR = 1.0
-c = 137.0
+c = 137.0 
 
 """
 @class GaussianWavePacket
@@ -27,18 +27,18 @@ class GaussianWavePacket:
     """
     @brief En esta clase se construye un paquete de ondas gaussiano.
     """
-    def __init__(self, momentum, mass, packet_width, spin_orientation):
+    def __init__(self, momentum=[0,0,0], mass=1.0, packet_width=1.0, spin_orientation='up_z'):
         """
         @brief Inicializa los parametros fisicos del paquete de ondas.
-        @param momemtum:  Momentum del paquete de ondas (array)
-        @param mass: Masa en reposo de la particula (float)
-        @param packet_width: Ancho inicial del paquete (float)
-        @param spin_orientation: Orientación del spin. (char)
+        @param momemtum:  Momentum del paquete de ondas (array), por defecto: [0,0,0]
+        @param mass: Masa en reposo de la particula (float), por defecto: 1.0
+        @param packet_width: Ancho inicial del paquete (float), por defecto: 1.0
+        @param spin_orientation: Orientación del spin. (char), por defecto: 'up_z'
         """
 
         self.p_vec = np.array(momentum)
         self.mass = mass
-        self.x0 = packet_width
+        self.x0 = packet_width 
         self.spin = spin_orientation
 
         self._precompute_spinor()
@@ -80,9 +80,9 @@ class GaussianWavePacket:
         spinor = np.zeros(4, dtype=np.complex128)
 
         if self.spin == 'up_z':
-            spinor[0] = 1.0
+            spinor[0] = 1.0 
             spinor[1] = 0.0
-            spinor[2] = ((pz * c)/(self.energy + (self.mass * (c**2))))
+            spinor[2] = ((pz * c)/(self.energy + (self.mass * (c**2)))) 
             spinor[3] = ( ((px - (1j * py))*c ) / (self.energy + (self.mass*(c**2))) )
         else:
             raise NotImplementedError(f"Spin orientation '{self.spin}' is not supported.")
