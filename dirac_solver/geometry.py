@@ -7,7 +7,7 @@
 # se importan las librerias.
 
 import numpy as np
-from .constants import Constants
+from . import c ,hbar
 
 # Grid class definition.
 
@@ -21,9 +21,6 @@ class Grid:
     @param shape: tupla con el numero de puntos en cada direccion (nx , [ny],[nz] ).
     @param  spacing: tupla con el tamaño de la celda (dx, [dy], [dz]).
     @param origin: punto de inicio de la malla (default: centrado en 0)
-    @param units: "natural" (ħ=c=1) o "si"
-    @param c: velocidad de la luz (default: 1.0 en unidades naturales)
-    @param hbar: constante de Planck reducida (default: 1.0 en unidades naturales)
     """
 
     # self.shape guarda el numero de puntos en cada direccion del espacio
@@ -56,10 +53,9 @@ class Grid:
       """
       self.origin = tuple(origin)
 
-    # Toma las constantes globales ya configuradas
-    consts = Constants()
-    self.c = consts.get("c")
-    self.hbar = consts.get("HBAR")
+    # Constantes físicas en unidades naturales
+    self.c = c
+    self.hbar = hbar
 
     # self.coods guarda toda la información de las coordenadas de la malla en un arreglo Numpy con la fomra (nx, [ny], [nz], dim)
     self.coords = self._generate_coords()

@@ -1,0 +1,138 @@
+\chapter{Actualización de la librería Dirac Solver}
+\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants}{}\label{md_planning_2Actualizaci_xC3_xB3n__constants}\index{Actualización de la librería Dirac Solver@{Actualización de la librería Dirac Solver}}
+\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md0}%
+\Hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md0}%
+ \hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md1}{}\doxysection{\texorpdfstring{Resumen}{Resumen}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md1}
+Se realizaron modificaciones en la librería {\bfseries{Dirac Solver}} para simplificar el manejo de constantes y matrices de Pauli, eliminando la dependencia de la clase {\ttfamily Constants()}. La librería ahora\+:
+
+
+\begin{DoxyItemize}
+\item Funciona únicamente en {\bfseries{unidades naturales}}.
+\item Permite acceder a constantes globales directamente desde el paquete.
+\item Mantiene compatibilidad con las clases {\ttfamily Grid}, {\ttfamily Constant\+Spinor} y {\ttfamily Gaussian\+Packet}.
+\item Incluye documentación Doxygen en {\ttfamily \doxylink{____init_____8py}{\+\_\+\+\_\+init\+\_\+\+\_\+.\+py}} y {\ttfamily \doxylink{initial__state_8py}{initial\+\_\+state.\+py}}.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md3}{}\doxysection{\texorpdfstring{Cambios realizados}{Cambios realizados}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md3}
+\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md4}{}\doxysubsection{\texorpdfstring{1. Eliminación de $<$tt$>$constants.\+py$<$/tt$>$}{1. Eliminación de <tt>constants.py</tt>}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Se removió la clase {\ttfamily Constants()}.
+\item Todas las referencias a {\ttfamily Constants().get("{}c"{})}, {\ttfamily Constants().get("{}\+HBAR"{})}, etc., fueron reemplazadas por {\bfseries{constantes globales}}.
+\end{DoxyItemize}\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md5}{}\doxysubsection{\texorpdfstring{2. Nuevas constantes globales definidas en $<$tt$>$\+\_\+\+\_\+init\+\_\+\+\_\+.\+py$<$/tt$>$}{2. Nuevas constantes globales definidas en <tt>\_\_init\_\_.py</tt>}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{c\ =\ 1.0}
+\DoxyCodeLine{hbar\ =\ 1.0}
+\DoxyCodeLine{electron\_mass\ =\ 1.0}
+\DoxyCodeLine{electron\_charge\ =\ 1.0}
+\DoxyCodeLine{}
+\DoxyCodeLine{sigma\_1\ =\ np.array([[0,1],[1,0]],\ dtype=np.complex128)}
+\DoxyCodeLine{sigma\_2\ =\ np.array([[0,-\/1j],[1j,0]],\ dtype=np.complex128)}
+\DoxyCodeLine{sigma\_3\ =\ np.array([[1,0],[0,-\/1]],\ dtype=np.complex128)}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/\ Todas\ las\ clases\ que\ necesiten\ estas\ constantes\ pueden\ importarlas\ directamente:}
+
+\end{DoxyCode}
+ python import \doxylink{namespacedirac__solver}{dirac\+\_\+solver} as ds
+
+print(ds.\+c) print(ds.\+hbar) print(ds.\+electron\+\_\+mass) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ 3.\ Modificaciones\ en\ \`{}initial\_state.py`}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/\ **Uso\ de\ constantes\ globales**\ en\ lugar\ de\ \`{}Constants()`.}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{-\/\ Eliminación\ de\ definiciones\ locales\ de\ matrices\ de\ Pauli;\ ahora\ se\ usan\ \`{}sigma\_1`,\ \`{}sigma\_2`,\ \`{}sigma\_3`\ importadas\ desde\ el\ paquete.}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{-\/\ Por\ defecto,\ los\ spinors\ se\ crean\ en\ **unidades\ naturales**\ (`mass=electron\_mass`).}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{-\/\ Limpieza\ de\ redundancias\ y\ comentarios\ innecesarios.}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{-\/\ Documentación\ Doxygen\ añadida\ a:}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ -\/\ Clases:\ \`{}ConstantSpinor`,\ \`{}GaussianPacket`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ -\/\ Métodos:\ \`{}\_\_init\_\_`,\ \`{}\_base`,\ \`{}\_pauli\_spinor`,\ \`{}\_constant\_spinor`,\ \`{}evaluate`.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{**Ejemplo\ de\ creación\ de\ un\ spinor\ constante:**}
+
+\end{DoxyCode}
+ python spinor = ds.\+Constant\+Spinor(spin\+\_\+polarization=\mbox{[}0,0,1\mbox{]}, spin\+\_\+superposition=\mbox{[}1,0\mbox{]}, momentum=\mbox{[}1,0,0\mbox{]}) gauss = ds.\+Gaussian\+Packet(constant\+\_\+spinor=spinor, center=\mbox{[}0,0,0\mbox{]}, spatial\+\_\+width=1.\+0) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ 4.\ Modificaciones\ en\ \`{}geometry.py`}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/\ Eliminación\ de\ \`{}Constants()`.}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{-\/\ Uso\ directo\ de\ \`{}c`\ y\ \`{}hbar`\ importadas\ desde\ el\ paquete\ en\ la\ clase\ \`{}Grid`.}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{-\/\ Métodos\ como\ \`{}courant\_limit()`\ y\ \`{}dv`\ funcionan\ igual,\ ahora\ usando\ las\ constantes\ globales.}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{**Ejemplo\ de\ prueba\ interna\ de\ Courant\ 1D:**}
+
+\end{DoxyCode}
+ python grid\+\_\+test = ds.\+Grid(shape=(11,), spacing=0.\+1) dt\+\_\+calc = grid\+\_\+test.\+courant\+\_\+limit() print(dt\+\_\+calc) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/\ La\ prueba\ confirma\ que\ \`{}Grid.c`\ usa\ correctamente\ la\ constante\ global\ \`{}c`.}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ 5.\ Creación\ del\ notebook\ de\ prueba\ definitiva}
+\DoxyCodeLine{}
+\DoxyCodeLine{Se\ diseñó\ un\ **notebook\ de\ Jupyter**\ para\ validar\ que\ todas\ las\ clases\ y\ funciones\ funcionan\ correctamente\ con\ las\ **constantes\ globales**,\ sin\ depender\ de\ \`{}Constants()`.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\#\ Contenido\ del\ notebook:}
+\DoxyCodeLine{}
+\DoxyCodeLine{1.\ **Importar\ librería\ y\ constantes\ globales**}
+
+\end{DoxyCode}
+ python import \doxylink{namespacedirac__solver}{dirac\+\_\+solver} as ds print(ds.\+c, ds.\+hbar, ds.\+electron\+\_\+mass) \`{}\`{}\`{}
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Pruebas de Grid en 1D, 2D y 3D}}
+\begin{DoxyItemize}
+\item Validación de {\ttfamily coords} y {\ttfamily courant\+\_\+limit()}.
+\item Confirmación de dimensiones correctas de la malla.
+\end{DoxyItemize}
+\item {\bfseries{Prueba de Constant\+Spinor}}
+\begin{DoxyItemize}
+\item Creación de un spinor constante.
+\item Impresión del spinor 4x1 resultante.
+\end{DoxyItemize}
+\item {\bfseries{Prueba de Gaussian\+Packet}}
+\begin{DoxyItemize}
+\item Evaluación del paquete de ondas en múltiples puntos.
+\item Confirmación de que el cálculo del spinor y la parte espacial funcionan correctamente.
+\end{DoxyItemize}
+\item {\bfseries{Prueba de Dirac\+Solver (básica)}}
+\begin{DoxyItemize}
+\item Inicialización del solver con {\ttfamily Grid} y {\ttfamily Gaussian\+Packet}.
+\item Ejecución de {\ttfamily run\+\_\+simulation} (placeholder) y graficación de densidad de probabilidad.
+\end{DoxyItemize}
+\item {\bfseries{Validación de consistencia de constantes}}
+\begin{DoxyItemize}
+\item Se verifica que todas las clases usan las {\bfseries{constantes globales}} correctamente.
+\end{DoxyItemize}
+
+{\ttfamily python assert np.\+isclose(ds.\+c, solver.\+c) assert np.\+isclose(ds.\+hbar, solver.\+hbar) assert np.\+isclose(ds.\+electron\+\_\+mass, solver.\+mass) }
+\end{DoxyEnumerate}
+
+El notebook sirve como {\bfseries{prueba integral}} de la actualización de la librería enfocada en las constantes globales.
+
+\DoxyHorRuler{0}
+\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md7}{}\doxysection{\texorpdfstring{Conclusión}{Conclusión}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md7}
+
+\begin{DoxyItemize}
+\item La librería {\bfseries{ya no depende de sistemas de unidades ni de {\ttfamily Constants()}}}.
+\item Todas las funciones de {\ttfamily Grid}, {\ttfamily Constant\+Spinor} y {\ttfamily Gaussian\+Packet} funcionan correctamente con las {\bfseries{constantes globales en unidades naturales}}.
+\item Se creó un {\bfseries{notebook de prueba definitiva}} que permite validar rápidamente la correcta propagación de las constantes y el comportamiento esperado de los objetos de la librería. 
+\end{DoxyItemize}

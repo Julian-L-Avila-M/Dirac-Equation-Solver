@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dv_0',['dv',['../classdirac__solver_1_1init__geometry_1_1Grid.html#a022fe230afe197b890727e7bca02ef81',1,'dirac_solver::init_geometry::Grid']]]
+  ['dv_0',['dv',['../classdirac__solver_1_1geometry_1_1Grid.html#aa826a5837f24f73bb7ab5675cfdf34da',1,'dirac_solver::geometry::Grid']]]
 ];

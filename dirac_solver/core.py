@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 
 from . import geometry
 from . import initial_state
+# Importar constantes 
+from . import c, hbar, electron_mass
+
 
 class DiracSolver:
     """

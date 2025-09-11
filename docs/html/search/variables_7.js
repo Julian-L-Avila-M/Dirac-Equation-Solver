@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['mass_0',['mass',['../classdirac__solver_1_1initial__state_1_1GaussianWavePacket.html#ad6a2dd09bdcb09035456480132d650ae',1,'dirac_solver::initial_state::GaussianWavePacket']]],
-  ['max_1',['max',['../classdirac__solver_1_1geometry_1_1Interval1D.html#a1605a5620901c10f467b0b8bc90a9abc',1,'dirac_solver::geometry::Interval1D']]],
-  ['min_2',['min',['../classdirac__solver_1_1geometry_1_1Interval1D.html#a88b3def26f51d661aeecc2feb42f03a1',1,'dirac_solver::geometry::Interval1D']]]
+  ['mass_0',['mass',['../classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#afea6f6b8d96a576ae18c262d24a67c52',1,'dirac_solver::initial_state::ConstantSpinor']]],
+  ['momentum_1',['momentum',['../classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#af9f772e2fdabea91470f556e3152cc87',1,'dirac_solver::initial_state::ConstantSpinor']]]
 ];

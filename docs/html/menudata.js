@@ -33,7 +33,6 @@ var menudata={children:[
 {text:"Clases",url:"annotated.html",children:[
 {text:"Lista de clases",url:"annotated.html"},
 {text:"Índice de clases",url:"classes.html"},
-{text:"Jerarquía de clases",url:"inherits.html"},
 {text:"Miembros de clases",url:"functions.html",children:[
 {text:"Todos",url:"functions.html",children:[
 {text:"_",url:"functions.html#index__5F"},
@@ -47,8 +46,7 @@ var menudata={children:[
 {text:"o",url:"functions.html#index_o"},
 {text:"p",url:"functions.html#index_p"},
 {text:"r",url:"functions.html#index_r"},
-{text:"s",url:"functions.html#index_s"},
-{text:"x",url:"functions.html#index_x"}]},
+{text:"s",url:"functions.html#index_s"}]},
 {text:"Funciones",url:"functions_func.html"},
 {text:"Variables",url:"functions_vars.html"}]}]},
 {text:"Archivos",url:"files.html",children:[
