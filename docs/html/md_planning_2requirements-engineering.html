@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dirac_solver: Presentation Structure: Requirements Engineering for a Dirac Equation Solver</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">dirac_solver<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+   <div id="projectbrief">A Dirac ecuation Solver</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Presentation Structure: Requirements Engineering for a Dirac Equation Solver</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md34"></a> The core idea is to present the project not just as a piece of code, but as a solution to a well-defined problem. Categorising the requirements into three main areas: <b>Functional</b>, <b>Non-Functional</b>, and <b>System/Architectural</b>.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md36"></a>
+&lt;strong&gt;1. Introduction: Problem Statement &amp; Scope&lt;/strong&gt;</h2>
+<ul>
+<li><b>Goal:</b> To develop a medium-high-performance, user-friendly Python library, <code>Dirac-Solver</code> , for simulating the time evolution of a single-particle spinor field $\psi(t, \vec{r})$ governed by the (3+1)D Dirac equation.</li>
+<li><b>Motivation:</b> Address the need for an accessible tool for studying relativistic quantum phenomena in contexts like graphene, topological insulators, or for purely pedagogical purposes. The combination of a high-level Python API with a low-level C++ core aims to provide both ease of use and computational efficiency.</li>
+<li><b>Core Equation:</b> The solver will find numerical solutions to the time-dependent Dirac equation: $$i\hbar \frac{\partial \psi(\vec{r}, t)}{\partial t} = \hat{H} \psi(\vec{r}, t)$$ where the Dirac Hamiltonian $\hat{H}$ is: $$\hat{H} = c\vec{\alpha} \cdot \hat{\vec{p}} + \beta m_0 c^2 + V(\vec{r})I_4$$ Here, $\vec{\alpha}$ and $\beta$ are the standard $4 \times 4$ Dirac matrices, $\hat{\vec{p}} = -i\hbar\nabla$ is the momentum operator, and $V(\vec{r})$ is a scalar potential.</li>
+<li><b>Scope:</b> The initial release will focus on 1D and 2D systems for a single, non-interacting particle. The scope explicitly excludes many-body effects and field quantization (QED effects).</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md38"></a>
+&lt;strong&gt;2. Functional Requirements (What the System &lt;em&gt;Must Do&lt;/em&gt;)&lt;/strong&gt;</h2>
+<h3><a class="anchor" id="autotoc_md39"></a>
+&lt;strong&gt;A. Physics Engine Core (The C++ Backend)&lt;/strong&gt;</h3>
+<ul>
+<li><b>FR-1: Discretization Scheme:</b> Implement a Finite-Difference Time-Domain (FDTD) scheme to solve the Dirac equation. A staggered-leapfrog algorithm for the spatial and temporal derivatives is required to ensure numerical stability and second-order accuracy.</li>
+<li><b>FR-2: Boundary Conditions:</b> The user must be able to specify boundary conditions. At a minimum, <b>Perfectly Matched Layers (PML)</b> or <b>Absorbing Boundary Conditions (ABC)</b> must be implemented to prevent spurious reflections from the grid edges. Simple periodic boundary conditions should also be an option.</li>
+<li><b>FR-3: Supported Potentials:</b> The solver must correctly model the following potential types:<ul>
+<li><b>Free Particle:</b> $V(\vec{r}) = 0$.</li>
+<li><b>Scalar Potentials:</b> User-definable functions $V(\vec{r})$ representing barriers, steps, and quantum wells.</li>
+<li><b>Coulomb Potential:</b> $V(r) = -\frac{Z e^2}{4\pi\epsilon_0 r}$, with appropriate handling of the singularity at $r=0$ through regularization or a specialized grid.</li>
+</ul>
+</li>
+<li><b>FR-4: Initial State:</b> The library must provide helper functions to initialize the spinor field $\psi(\vec{r}, t=0)$ as a Gaussian wavepacket with user-specified momentum, position, and spin polarization.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md40"></a>
+&lt;strong&gt;B. Python API (The User Interface)&lt;/strong&gt;</h3>
+<ul>
+<li><b>FR-5: Simulation Setup:</b> Users must be able to define, configure, and run a simulation through a "Pythonic" API. This includes setting grid parameters (dimensions, spacing $dx, dy, dz$), time step $dt$, total simulation time, choice of potential, and initial conditions.</li>
+<li><b>FR-6: Solver Execution:</b> A clear and simple method, e.g., <code>solver.run()</code>, to execute the time-evolution loop. The method should provide progress feedback for long simulations.</li>
+<li><b>FR-7: Data Retrieval:</b> Post-simulation, the user must be able to access the full 4-component complex spinor field $\psi(\vec{r}, t)$ at specified time intervals.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md41"></a>
+&lt;strong&gt;C. Outputs and Analysis (What the System &lt;em&gt;Must Produce&lt;/em&gt;)&lt;/strong&gt;</h3>
+<ul>
+<li><b>FR-8: Observable Calculations:</b> The library must compute and provide access to key physical observables derived from $\psi$:<ul>
+<li><b>Probability Density:</b> $\rho(\vec{r}, t) = \psi^\dagger \psi$</li>
+<li><b>Probability Current Density:</b> $\vec{j}(\vec{r}, t) = c\psi^\dagger \vec{\alpha} \psi$</li>
+<li><b>Expectation Value of Energy:</b> $\langle E \rangle(t) = \int \psi^\dagger \hat{H} \psi \, d^V$</li>
+</ul>
+</li>
+<li><b>FR-9: Data Persistence:</b> Simulation results (the final spinor field and time-series of observables) must be exportable to a standard, high-performance file format like <b>HDF5</b> or a simple set of NumPy binary files (<code>.npy</code>).</li>
+<li><b>FR-10: Visualization:</b> The library must include a visualization module that uses <code>matplotlib</code> to generate:<ul>
+<li>2D plots (e.g., probability density $\rho(x, t)$ for a 1D simulation).</li>
+<li>Animations of the time evolution of $\rho(x,y,t)$.</li>
+<li>Vector field plots for the probability current density $\vec{j}$.</li>
+</ul>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md42"></a>
+&lt;strong&gt;D Advanced Performance Requirements (Optional)&lt;/strong&gt;</h3>
+<ul>
+<li><b>FR-11:</b> Parallelization with <b>OpenMP</b> in C++ to accelerate simulations.</li>
+<li><b>FR-12:</b> Future support for <b>GPU (CUDA/OpenCL)</b> for large-scale problems.</li>
+<li><b>FR-13:</b> Logging of memory usage and execution time for each simulation.</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md44"></a>
+&lt;strong&gt;3. Non-Functional Requirements (How &lt;em&gt;Well&lt;/em&gt; the System Performs)&lt;/strong&gt;</h2>
+<ul>
+<li><b>NFR-1: Performance:</b> For a benchmark 2D problem (e.g., a $512 \times 512$ grid), the C++ core must achieve a target number of timesteps per second on standard consumer hardware. This defines the "medium-high-performance" goal.</li>
+<li><b>NFR-2: Accuracy &amp; Validation:</b> The solver's accuracy must be verifiable.<ul>
+<li>It must demonstrate conservation of total probability ($\int \psi^\dagger \psi \, dV = 1$) to within a specified tolerance for bound states.</li>
+<li>Results for canonical problems (e.g., Zitterbewegung for a free particle, Klein tunneling for a potential step) must agree with analytical solutions to within a predictable error margin related to the grid spacing ($O(\Delta x^2, \Delta t^2)$).</li>
+<li>Robust error handling (e.g., invalid user inputs, numerical divergences).</li>
+</ul>
+</li>
+<li><b>NFR-3: Usability:</b><ul>
+<li>The API must be well-documented with docstrings and a tutorial in the form of a Jupyter Notebook.</li>
+<li>Installation must be straightforward via <code>pip</code>.</li>
+</ul>
+</li>
+<li><b>NFR-4: Portability:</b> The software must compile and run on major operating systems (Linux, macOS, and Windows) with common C++ compilers (GCC, Clang, MSVC) and supported Python versions (e.g., 3.8+).</li>
+<li><b>NFR-5:Documentation:</b> User guides (Getting Started, Advanced Tutorial), Technical manual of the C++ backend (including class diagram and FDTD algorithm flow) and use Doxygen for documentation.</li>
+<li><b>NFR-6: Community:</b> Code published on <b>GitHub</b> with a clear license (e.g., MIT or GPL). Issues and pull requests managed with priority labels.</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md46"></a>
+&lt;strong&gt;4. System &amp; Architectural Requirements&lt;/strong&gt;</h2>
+<ul>
+<li><b>SR-1: Hybrid Architecture:</b> A two-layer architecture is required:<ul>
+<li><b>Backend:</b> A C++ library containing the FDTD algorithm, data structures for the fields, and physics computations. This ensures maximum performance.</li>
+<li><b>Frontend:</b> A Python wrapper that provides the high-level API for users with examples.</li>
+</ul>
+</li>
+<li><b>SR-2: Interoperability Layer:</b> <b>pybind11</b> (or a similar tool like SWIG/CFFI) will be used to create the bindings between C++ and Python. This layer must efficiently handle the transfer of NumPy arrays to and from the C++ backend without significant memory copying overhead.</li>
+<li><b>SR-3: Testing Framework:</b> A comprehensive testing suite is required, using <b>Google Test</b> for the C++ backend and <b>pytest</b> for the Python API and integration tests. Continuous Integration (CI) via GitHub Actions should be set up to run these tests automatically.</li>
+<li><b>SR-4: Modularity:</b> Each module (potentials, boundary conditions, visualization) must be independent and loosely coupled.</li>
+<li><b>SR-5: Versioning:</b> Define a semantic versioning scheme (<b>SemVer</b>) to plan future releases.</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md48"></a>
+&lt;strong&gt;5. Project Management Requirements&lt;/strong&gt;</h2>
+<ul>
+<li><b>PM-1:</b> Initial timeline:<ul>
+<li>Phase 1: 1D solver + minimal API.</li>
+<li>Phase 2: Extension to 2D + visualization , magnetic vector potentials implementation.</li>
+<li>Phase 3: Documentation and public release.</li>
+</ul>
+</li>
+<li><b>PM-2:</b> Quality metrics (test coverage percentage, reproducible benchmarks).</li>
+<li><b>PM-3:</b> Risk plan (e.g., numerical instability, memory bottlenecks). </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

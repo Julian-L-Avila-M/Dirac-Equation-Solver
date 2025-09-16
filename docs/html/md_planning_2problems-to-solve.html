@@ -73,15 +73,15 @@ $(function() {
   <div class="headertitle"><div class="title">Plan del Proyecto para un Solucionador de la Ecuación de Dirac</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a>Este documento describe el plan del proyecto para un solucionador de la ecuación de Dirac. El solucionador manejará la ecuación $(i\gamma^\mu \partial_\mu - m)\psi=0$ en unidades naturales, donde el bispinor $\psi \in \mathbb{C}^4$ es un vector columna de valores complejos. Las siguientes secciones detallan los problemas a abordar, junto con sus respectivos requisitos computacionales.</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md8"></a>Este documento describe el plan del proyecto para un solucionador de la ecuación de Dirac. El solucionador manejará la ecuación $(i\gamma^\mu \partial_\mu - m)\psi=0$ en unidades naturales, donde el bispinor $\psi \in \mathbb{C}^4$ es un vector columna de valores complejos. Las siguientes secciones detallan los problemas a abordar, junto con sus respectivos requisitos computacionales.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 1. Partícula Libre</h1>
 <p>El caso de la partícula libre es el problema fundamental, sirviendo como referencia para la funcionalidad central del solucionador.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Descripción del Problema</h2>
 <p>Resolver la ecuación de Dirac para una partícula en ausencia de un potencial externo. El desarrollo inicial se centrará en el caso unidimensional (1+1D), ya que cualquier movimiento de una partícula libre puede ser transformado a esta configuración mediante un boost de Lorentz.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Parámetros de Entrada</h2>
 <ul>
 <li><b>Masa de la Partícula</b> ($m$)</li>
@@ -89,26 +89,26 @@ Parámetros de Entrada</h2>
 <li><b>Distribución Espacial</b>: Los estados iniciales incluirán tanto una simple onda plana como un paquete de ondas Gaussiano más físicamente realista.</li>
 <li><b>Estado de Espín</b>: La configuración inicial del espín del bispinor.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Salidas</h2>
 <ul>
 <li><b>Densidades de Probabilidad y Corriente</b>: La evolución temporal de la densidad de probabilidad $\rho = \psi^\dagger \psi$ y la densidad de corriente $J = \psi^\dagger \alpha \psi$.</li>
 <li><b>Valores Esperados</b>: Los valores esperados para la energía, el momento y la posición a lo largo del tiempo, que se utilizarán para observar fenómenos relativistas como la Zitterbewegung.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 2. Pozo de Potencial Infinito</h1>
 <p>Este problema introduce condiciones de contorno, probando la capacidad del solucionador para manejar el confinamiento.</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Descripción del Problema</h2>
 <p>Resolver la ecuación de Dirac para una partícula confinada dentro de un pozo de potencial infinito de ancho $L$. El bispinor $\psi$ debe anularse en las paredes del pozo.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 Parámetros de Entrada</h2>
 <ul>
 <li><b>Ancho del Pozo</b> ($L$)</li>
 <li><b>Masa de la Partícula</b> ($m$) y Estado de Espín Inicial.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Salidas</h2>
 <ul>
 <li><b>Niveles de Energía Cuantizados</b>: Los valores propios de energía discretos del sistema.</li>
@@ -116,40 +116,40 @@ Salidas</h2>
 <li><b>Evolución Temporal</b>: La evolución temporal de la densidad de probabilidad para un estado inicial, demostrando el comportamiento oscilatorio dentro del pozo.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md12"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 3. Potencial a Trozos (Efecto Klein)</h1>
 <p>Este caso es crucial para demostrar el fenómeno relativista del Efecto Klein.</p>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 Descripción del Problema</h2>
 <p>Resolver el comportamiento de una partícula que encuentra un escalón de potencial. El objetivo es demostrar que una partícula relativista puede atravesar una barrera de potencial incluso cuando su energía es menor que la altura de la barrera, un resultado clásicamente imposible.</p>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 Parámetros de Entrada</h2>
 <ul>
 <li><b>Altura del Potencial</b> ($V_0$)</li>
 <li><b>Energía de la Partícula</b> ($E$) y Momento Inicial ($p$)</li>
 <li><b>Masa de la Partícula</b> ($m$) y Estado de Espín Inicial.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 Salidas</h2>
 <ul>
 <li><b>Coeficientes de Reflexión (R) y Transmisión (T)</b>: La salida principal, que demuestra que la transmisión puede ocurrir incluso cuando $V_0 &gt; E+m$.</li>
 <li><b>Visualización de la Función de Onda</b>: Un gráfico de la función de onda del bispinor que muestra los componentes entrante, reflejado y transmitido.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md25"></a>
 4. Potencial Central (Interacción de Coulomb)</h1>
 <p>Este problema es una aplicación fundamental de la ecuación de Dirac, abordando la estructura fina del átomo de hidrógeno.</p>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 Descripción del Problema</h2>
 <p>Resolver la ecuación de Dirac para un electrón en un potencial central, específicamente el potencial de Coulomb $V(r) = -Z\alpha/r$.</p>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 Parámetros de Entrada</h2>
 <ul>
 <li><b>Carga Central</b> ($Z$) (p.ej., $Z=1$ para el hidrógeno).</li>
 <li><b>Masa de la Partícula</b> ($m$) (la masa del electrón).</li>
 <li><b>Número Cuántico del Momento Angular</b> ($j$): La solución se maneja mejor en   coordenadas esféricas.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 Salidas</h2>
 <ul>
 <li><b>Niveles de Energía Cuantizados</b>: Los valores propios de energía discretos, que deben coincidir con la fórmula de la estructura fina de Sommerfeld.</li>
@@ -157,19 +157,19 @@ Salidas</h2>
 <li><b>Desdoblamiento Espín-Órbita</b>: El solucionador debe reproducir correctamente el desdoblamiento de los niveles de energía debido a la interacción espín-órbita.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md30"></a>
 5. Potencial de Yukawa</h1>
 <p>Este problema proporciona una generalización crucial del potencial de Coulomb, relevante para la física nuclear.</p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md31"></a>
 Descripción del Problema</h2>
 <p>Resolver el comportamiento de una partícula en un potencial de Yukawa de corto alcance $V(r) = -g \frac{e^{-Mr}}{r}$.</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 Parámetros de Entrada</h2>
 <ul>
 <li><b>Constante de Acoplamiento</b> ($g$) y <b>Masa de la Partícula Mediadora</b> ($M$): Estos parámetros definen la fuerza y el alcance del potencial.</li>
 <li><b>Masa de la Partícula</b> ($m$) y Estado Inicial.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 Salidas</h2>
 <ul>
 <li><b>Energías de los Estados Ligados</b>: Los valores propios de energía discretos para los estados ligados.</li>

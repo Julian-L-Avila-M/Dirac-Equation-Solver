@@ -7,18 +7,16 @@
 @ brief librerias importadas.
 """
 import numpy as np
-from .constants import Constants
+#Importar constantes 
+from . import c, hbar, electron_mass, sigma_1, sigma_2, sigma_3
 
 """
 @brief Aqui se prepara el estado inicial (sin considerar la geometria del espacio).
-@param HBAR: constante de planck
-@param c: velocidad de la luz
-@param ELECTRON_MASS: masa del electron.
 """
 
 
 class ConstantSpinor:
-    def __init__(self, spin_polarization=[0,0,1], spin_superposition=[1 + 0j, 0 + 0j], momentum=[1,0,0], mass=0.511):
+    def __init__(self, spin_polarization=[0,0,1], spin_superposition=[1 + 0j, 0 + 0j], momentum=[1,0,0], mass=electron_mass):
 
         """
         @brief se normaliza el vector (al necesitarse un vector unitario)
@@ -69,33 +67,22 @@ class ConstantSpinor:
         self.pauli_spinor = (alpha * self.chi_up) + (beta * self.chi_down)
 
     def _constant_spinor(self):
-        """
-        @brief Definicion matrices de pauli
-        """
-        sigma_1= np.array([
-            [0,1],
-            [1,0]
-        ]) 
-
-        sigma_2= np.array([
-            [0,-1j],
-            [1j,0]
-        ], dtype = np.complex128 )
-
-        sigma_3= np.array([
-            [1,0],
-            [0,-1]
-        ]) 
-
+        
+        
+        #proyeccion del spin en la direccion del momentum 
         norm_momentum = np.linalg.norm(self.momentum)
 
         if norm_momentum == 0:
             proyection_spin = np.zeros((2,2), dtype=np.complex128)
         else:
-            proyection_spin = (self.momentum[0] * sigma_1 + self.momentum[1] * sigma_2 + self.momentum[2] * sigma_3) / norm_momentum 
+            proyection_spin = ((self.momentum[0] * sigma_1 +
+                                self.momentum[1] * sigma_2 +
+                                self.momentum[2] * sigma_3) / norm_momentum)
 
+        # Energía relativista
         energy = np.sqrt((norm_momentum)**2 + (self.mass)**2)
 
+        # Partes superior e inferior del spinor
         upper_part = np.sqrt(energy + self.mass) * self.pauli_spinor
         lower_part = np.sqrt(energy - self.mass) * (proyection_spin @ self.pauli_spinor)
         """

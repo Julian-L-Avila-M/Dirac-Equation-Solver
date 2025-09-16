@@ -1,0 +1,128 @@
+\doxysection{Referencia de la clase dirac\+\_\+solver.\+geometry.\+Grid}
+\hypertarget{classdirac__solver_1_1geometry_1_1Grid}{}\label{classdirac__solver_1_1geometry_1_1Grid}\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_aa92a506df4aa322106f16238fc5e90e3}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_a94af32dc44402ceb96b78d9794dc7e09}{shape}}, \mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_a46c2ebdf65d16fb361a69c2d41d2ddc8}{spacing}}, \mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_ae2d9d72099d3ad8e55a9ef44cd2b084c}{origin}}=None)
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_aa826a5837f24f73bb7ab5675cfdf34da}{dv}} (self)
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_ac810fb5567ca3cf14c648daf85a7436a}{courant\+\_\+limit}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_a94af32dc44402ceb96b78d9794dc7e09}{shape}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_a015c3ec7ba74fddfa326bde8a1b27cb6}{dim}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_a46c2ebdf65d16fb361a69c2d41d2ddc8}{spacing}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_ae2d9d72099d3ad8e55a9ef44cd2b084c}{origin}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_a919586f9f41ea5813a9131c14cf6b5c2}{c}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_ab9fb0b0b65ed952f527dffbd4f412d54}{hbar}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_a212fb2b076f994bfb667c9464471c455}{coords}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Métodos protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1geometry_1_1Grid_a90b4cd92aa9faaf717d93c45a32b5ef3}{\+\_\+generate\+\_\+coords}} (self)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+\begin{DoxyVerb}@brief lase que representa una malla espacial (1D ,2D ,3D).
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_aa92a506df4aa322106f16238fc5e90e3}\label{classdirac__solver_1_1geometry_1_1Grid_aa92a506df4aa322106f16238fc5e90e3} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{shape,  }\item[{}]{spacing,  }\item[{}]{origin = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@param shape: tupla con el numero de puntos en cada direccion (nx , [ny],[nz] ).
+@param  spacing: tupla con el tamaño de la celda (dx, [dy], [dz]).
+@param origin: punto de inicio de la malla (default: centrado en 0)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_a90b4cd92aa9faaf717d93c45a32b5ef3}\label{classdirac__solver_1_1geometry_1_1Grid_a90b4cd92aa9faaf717d93c45a32b5ef3} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!\_generate\_coords@{\_generate\_coords}}
+\index{\_generate\_coords@{\_generate\_coords}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{\_generate\_coords()}{\_generate\_coords()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+\_\+generate\+\_\+coords (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}@brief construye las coordenadas de la malla en funcíon de la dimensiión.
+\end{DoxyVerb}
+ \Hypertarget{classdirac__solver_1_1geometry_1_1Grid_ac810fb5567ca3cf14c648daf85a7436a}\label{classdirac__solver_1_1geometry_1_1Grid_ac810fb5567ca3cf14c648daf85a7436a} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!courant\_limit@{courant\_limit}}
+\index{courant\_limit@{courant\_limit}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{courant\_limit()}{courant\_limit()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+courant\+\_\+limit (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Calcula el paso de tiempo máximo por condición de estabilidad de Courant.
+\end{DoxyVerb}
+ \Hypertarget{classdirac__solver_1_1geometry_1_1Grid_aa826a5837f24f73bb7ab5675cfdf34da}\label{classdirac__solver_1_1geometry_1_1Grid_aa826a5837f24f73bb7ab5675cfdf34da} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!dv@{dv}}
+\index{dv@{dv}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{dv()}{dv()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+dv (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Elemento de volumen (dx * dy * dz).
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_a919586f9f41ea5813a9131c14cf6b5c2}\label{classdirac__solver_1_1geometry_1_1Grid_a919586f9f41ea5813a9131c14cf6b5c2} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!c@{c}}
+\index{c@{c}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{c}{c}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+c}
+
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_a212fb2b076f994bfb667c9464471c455}\label{classdirac__solver_1_1geometry_1_1Grid_a212fb2b076f994bfb667c9464471c455} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!coords@{coords}}
+\index{coords@{coords}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{coords}{coords}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+coords}
+
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_a015c3ec7ba74fddfa326bde8a1b27cb6}\label{classdirac__solver_1_1geometry_1_1Grid_a015c3ec7ba74fddfa326bde8a1b27cb6} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!dim@{dim}}
+\index{dim@{dim}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{dim}{dim}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+dim}
+
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_ab9fb0b0b65ed952f527dffbd4f412d54}\label{classdirac__solver_1_1geometry_1_1Grid_ab9fb0b0b65ed952f527dffbd4f412d54} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!hbar@{hbar}}
+\index{hbar@{hbar}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{hbar}{hbar}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+hbar}
+
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_ae2d9d72099d3ad8e55a9ef44cd2b084c}\label{classdirac__solver_1_1geometry_1_1Grid_ae2d9d72099d3ad8e55a9ef44cd2b084c} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!origin@{origin}}
+\index{origin@{origin}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{origin}{origin}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+origin}
+
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_a94af32dc44402ceb96b78d9794dc7e09}\label{classdirac__solver_1_1geometry_1_1Grid_a94af32dc44402ceb96b78d9794dc7e09} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!shape@{shape}}
+\index{shape@{shape}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{shape}{shape}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+shape}
+
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_a46c2ebdf65d16fb361a69c2d41d2ddc8}\label{classdirac__solver_1_1geometry_1_1Grid_a46c2ebdf65d16fb361a69c2d41d2ddc8} 
+\index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!spacing@{spacing}}
+\index{spacing@{spacing}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
+\doxysubsubsection{\texorpdfstring{spacing}{spacing}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+geometry.\+Grid.\+spacing}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+dirac\+\_\+solver/\mbox{\hyperlink{geometry_8py}{geometry.\+py}}\end{DoxyCompactItemize}

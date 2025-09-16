@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['de_20la_20ecuación_20de_20dirac_0',['de la ecuación de dirac',['../md_README.html',1,'Dirac-Solver: Solucionador numérico de la Ecuación de Dirac.'],['../md_planning_2problems-to-solve.html',1,'Plan del Proyecto para un Solucionador de la Ecuación de Dirac']]],
-  ['del_20proyecto_20dirac_5fsolver_1',['Estructura del Proyecto dirac_solver',['../md_planning_2structure.html',1,'']]],
-  ['del_20proyecto_20para_20un_20solucionador_20de_20la_20ecuación_20de_20dirac_2',['Plan del Proyecto para un Solucionador de la Ecuación de Dirac',['../md_planning_2problems-to-solve.html',1,'']]],
-  ['dirac_3',['Plan del Proyecto para un Solucionador de la Ecuación de Dirac',['../md_planning_2problems-to-solve.html',1,'']]],
-  ['dirac_20solver_3a_20solucionador_20numérico_20de_20la_20ecuación_20de_20dirac_4',['Dirac-Solver: Solucionador numérico de la Ecuación de Dirac.',['../md_README.html',1,'']]],
-  ['dirac_5fsolver_5',['Estructura del Proyecto dirac_solver',['../md_planning_2structure.html',1,'']]]
+  ['a_20dirac_20equation_20solver_0',['Presentation Structure: Requirements Engineering for a Dirac Equation Solver',['../md_planning_2requirements-engineering.html',1,'']]],
+  ['actualización_20de_20la_20librería_20dirac_20solver_1',['Actualización de la librería Dirac Solver',['../md_planning_2Actualizaci_xC3_xB3n__constants.html',1,'']]]
 ];
