@@ -8,29 +8,51 @@ la definición del problema físico se mantiene desacoplada de los algoritmos
 numéricos utilizados para resolverlo.
 Tabla de Contenidos
 
-  1. Patrón Builder - Configuración de la Simulación
 
-  2. Patrón Strategy - Flexibilidad en los Algoritmos
+  1. Resumen - Tabla Comparativa: Patrones y Problemas que Resuelven
 
-  3. Patrones Template y Factory Method - Extensibilidad de Componentes Físicos
+  2. Patrón Builder - Configuración de la Simulación
 
-  4. Patrón Observer - Visualización y Monitoreo
+  3. Patrón Strategy - Flexibilidad en los Algoritmos
 
-  5. Patrón Facade - Interfaz Simplificada de I/O
+  4. Patrones Template y Factory Method - Extensibilidad de Componentes Físicos
 
-  6. Patrón Decorator – Extensión Dinámica de Funcionalidades
+  5. Patrón Observer - Visualización y Monitoreo
 
-  7. Patrón Adapter – Interoperabilidad con Librerías Externas
+  6. Patrón Facade - Interfaz Simplificada de I/O
+
+  7. Patrón Decorator – Extensión Dinámica de Funcionalidades
+
+  8. Patrón Adapter – Interoperabilidad con Librerías Externas
+
+  9. Ecosistema - Relaciones entre patrones
+
+  10. Alternativas -  Consideradas y Descartadas
+
+  11. Conclusión 
+
+
  
 
 
+## 1. Tabla Comparativa: Patrones y Problemas que Resuelven
 
+| Patrón                        | Problema que resuelve                                                                                 |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Builder**                   | Construcción de objetos complejos sin constructores con demasiados parámetros.                        |
+| **Strategy**                  | Permite intercambiar algoritmos (ej. integradores, condiciones de frontera) sin modificar el cliente. |
+| **Template + Factory Method** | Extender nuevos componentes físicos de forma coherente y centralizada.                                |
+| **Observer**                  | Desacoplar la simulación de la visualización y el monitoreo de datos.                                 |
+| **Facade**                    | Ocultar la complejidad del sistema de entrada/salida detrás de una interfaz sencilla.                 |
+| **Decorator**                 | Extender funcionalidades dinámicamente (ej. logging, validaciones, profiling).                        |
+| **Adapter**                   | Interoperar con librerías externas que tienen APIs diferentes.                                        |
 
+---
 
 
 ---
 
-## 1. Patrón Builder - Configuración de la Simulación
+## 2. Patrón Builder - Configuración de la Simulación
 
 Propósito: Construir un objeto complejo (SimulationProblem) paso a paso,
 proporcionando una API fluida y legible que separa la construcción de la
@@ -57,7 +79,7 @@ results = simulation.run()
 ```
 ---
 
-## 2. Patrón Strategy - Flexibilidad en los Algoritmos
+## 3. Patrón Strategy - Flexibilidad en los Algoritmos
 
 Propósito: Definir una familia de algoritmos, encapsular cada uno y hacerlos
 intercambiables. Permite que el algoritmo varíe independientemente del cliente
@@ -70,7 +92,7 @@ vs. Absorbing) sin modificar el código del bucle de simulación principal.
 
 ---
 
-## 3. Patrones Template y Factory Method - Extensibilidad de Componentes Físicos
+## 4. Patrones Template y Factory Method - Extensibilidad de Componentes Físicos
 
 Propósito:
 
@@ -90,7 +112,7 @@ conditions/).
   
 ---
 
-## 4. Patrón Observer - Visualización y Monitoreo
+## 5. Patrón Observer - Visualización y Monitoreo
 
 Propósito: Definir una dependencia uno-a-muchos entre objetos, de modo que
 cuando un objeto (Subject) cambia de estado, todos sus dependientes (Observers)
@@ -103,7 +125,7 @@ observadores (ej. WavefunctionPlotter, EnergyLogger) en cada paso de tiempo.
 
 ---
 
-## 5. Patrón Facade - Interfaz Simplificada de I/O
+## 6. Patrón Facade - Interfaz Simplificada de I/O
 
 Propósito: Proporcionar una interfaz unificada y simplificada a un conjunto de
 interfaces en un subsistema.
@@ -115,7 +137,7 @@ métodos sencillos como save(simulation, path) y load(path).
 
 
 
-## 6. Patrón Decorator – Extensión Dinámica de Funcionalidades
+## 7. Patrón Decorator – Extensión Dinámica de Funcionalidades
 
 **Propósito:** Añadir responsabilidades a un objeto de manera dinámica sin modificar su estructura.
 
@@ -138,7 +160,7 @@ def solve(self):
 
 ---
 
-## 7. Patrón Adapter – Interoperabilidad con Librerías Externas
+## 8. Patrón Adapter – Interoperabilidad con Librerías Externas
 
 **Propósito:** Convertir la interfaz de una clase existente en otra que el cliente espera, permitiendo la colaboración entre clases incompatibles.
 
@@ -161,4 +183,75 @@ class PETScAdapter(LinearSolver):
 Esto facilita ofrecer múltiples backends (NumPy, SciPy, GPU) sin que el usuario final deba cambiar su código.
 
 
+---
 
+## 9. Relaciones entre los Patrones
+
+Los patrones no funcionan de forma aislada; se complementan para mantener la arquitectura coherente:
+
+* **Builder → Strategy / Template-Factory**:
+  El `DiracProblemBuilder` ensambla la simulación seleccionando estrategias numéricas y componentes físicos generados mediante fábricas.
+
+* **Strategy ↔ Observer**:
+  Cada estrategia de integración puede notificar cambios en la simulación que luego son procesados por observadores como `EnergyLogger`.
+
+* **Observer ↔ Decorator**:
+  Los observadores mismos pueden ser decorados para añadir validaciones o mediciones de rendimiento sin tocar su código base.
+
+* **Facade ↔ Adapter**:
+  El `IOManager` (Facade) puede usar adaptadores internos para guardar datos en distintos backends (HDF5, NumPy, etc.).
+
+* **Decorator ↔ Strategy**:
+  Un `Solver` puede envolverse con decoradores para medir tiempos de ejecución de cada algoritmo concreto.
+
+---
+
+## 10. Alternativas Consideradas y Descartadas
+
+### 1. Builder
+
+* **Alternativa:** Constructores telescópicos con muchos parámetros.
+* **Descartado porque:** Generan código ilegible, difícil de mantener y propenso a errores.
+
+### 2. Strategy
+
+* **Alternativa:** Uso de *flags* o `if/else` en el bucle principal.
+* **Descartado porque:** Acopla la lógica de alto nivel con algoritmos específicos, reduce extensibilidad.
+
+### 3. Template + Factory Method
+
+* **Alternativa:** Clases concretas instanciadas directamente por el cliente.
+* **Descartado porque:** Rompe la consistencia (el usuario tendría que conocer detalles internos para instanciar).
+
+### 4. Observer
+
+* **Alternativa:** Llamadas directas a funciones de visualización/logging dentro del bucle principal.
+* **Descartado porque:** Acopla la simulación con la visualización, volviendo el código rígido.
+
+### 5. Facade
+
+* **Alternativa:** Acceso directo a módulos `saver`, `loader`, `parser`.
+* **Descartado porque:** El usuario tendría que conocer la complejidad interna de I/O, aumentando la curva de aprendizaje.
+
+### 6. Decorator
+
+* **Alternativa:** Herencia múltiple para añadir funcionalidades adicionales.
+* **Descartado porque:** La herencia rígida genera duplicación de código y combinaciones explosivas (ej. `LoggingSolverWithValidation`).
+
+### 7. Adapter
+
+* **Alternativa:** Reescribir código para cada librería externa (SciPy, PETSc, CuPy).
+* **Descartado porque:** Rompe portabilidad, obliga a duplicar código cliente y reduce mantenibilidad.
+
+---
+
+## 11. Conclusión
+
+El uso de patrones de diseño en `dirac_solver` asegura:
+
+* **Modularidad:** cada componente cumple una responsabilidad clara.
+* **Extensibilidad:** fácil añadir nuevos algoritmos, potenciales o backends.
+* **Mantenibilidad:** menor duplicación de código y menor acoplamiento.
+* **Flexibilidad:** integración fluida con librerías externas y herramientas de depuración.
+
+Esto permite que la librería crezca de manera ordenada y soporte tanto investigación académica como aplicaciones en entornos de alto rendimiento.
