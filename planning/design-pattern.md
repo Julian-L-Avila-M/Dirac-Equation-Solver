@@ -50,7 +50,6 @@ Tabla de Contenidos
 ---
 
 
----
 
 ## 2. Patrón Builder - Configuración de la Simulación
 
