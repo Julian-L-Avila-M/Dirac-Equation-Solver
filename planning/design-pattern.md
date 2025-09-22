@@ -18,6 +18,16 @@ Tabla de Contenidos
 
   5. Patrón Facade - Interfaz Simplificada de I/O
 
+  6. Patrón Decorator – Extensión Dinámica de Funcionalidades
+
+  7. Patrón Adapter – Interoperabilidad con Librerías Externas
+ 
+
+
+
+
+
+
 ---
 
 ## 1. Patrón Builder - Configuración de la Simulación
@@ -102,3 +112,53 @@ Aplicación: El módulo io/ puede contener lógica compleja para guardar en
 diferentes formatos (HDF5, npz), cargar, y parsear archivos de configuración. El
 patrón Facade oculta esta complejidad detrás de una única clase IOManager con
 métodos sencillos como save(simulation, path) y load(path).
+
+
+
+## 6. Patrón Decorator – Extensión Dinámica de Funcionalidades
+
+**Propósito:** Añadir responsabilidades a un objeto de manera dinámica sin modificar su estructura.
+
+**Aplicación:** Permite extender solvers o visualizadores sin cambiar su código base. Por ejemplo:
+
+* Medir tiempos de ejecución de cualquier solver.
+* Añadir logging detallado a un `Potential` o `Solver` ya existente.
+* Incorporar validaciones numéricas (ej. estabilidad de la norma de la función de onda).
+
+Esto permite una instrumentación ligera y flexible, útil para depuración y optimización.
+
+Ejemplo hipotético:
+
+```python
+@log_runtime
+def solve(self):
+    # método original decorado con medición de tiempo
+    ...
+```
+
+---
+
+## 7. Patrón Adapter – Interoperabilidad con Librerías Externas
+
+**Propósito:** Convertir la interfaz de una clase existente en otra que el cliente espera, permitiendo la colaboración entre clases incompatibles.
+
+**Aplicación:**
+El solver puede necesitar interoperar con **bibliotecas externas** (SciPy, PETSc, CuPy, PyTorch). Cada una tiene interfaces distintas para vectores, matrices y rutinas de eigenvalores.
+
+El Adapter proporciona una capa intermedia que traduce entre la API de `dirac_solver` y la API de la librería de backend. Así, el código cliente no depende de la librería específica.
+
+Ejemplo hipotético:
+
+```python
+class PETScAdapter(LinearSolver):
+    def __init__(self, petsc_solver):
+        self._solver = petsc_solver
+    
+    def solve(self, A, b):
+        return self._solver.solve(A.to_petsc(), b.to_petsc())
+```
+
+Esto facilita ofrecer múltiples backends (NumPy, SciPy, GPU) sin que el usuario final deba cambiar su código.
+
+
+
