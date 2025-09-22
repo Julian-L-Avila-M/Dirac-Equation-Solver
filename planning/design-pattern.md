@@ -1,4 +1,4 @@
-Arquitectura y Patrones de Diseño de dirac_solver
+# Arquitectura y Patrones de Diseño de dirac_solver
 
 Este documento describe la arquitectura de software de la librería dirac_solver.
 El diseño se basa en un conjunto de patrones de diseño canónicos para garantizar
@@ -20,7 +20,7 @@ Tabla de Contenidos
 
 ---
 
-1. Patrón Builder - Configuración de la Simulación
+## 1. Patrón Builder - Configuración de la Simulación
 
 Propósito: Construir un objeto complejo (SimulationProblem) paso a paso,
 proporcionando una API fluida y legible que separa la construcción de la
@@ -34,7 +34,8 @@ simulación válida y cohesiva.
 
 Código de Ejemplo (examples/hydrogen_atom.py):
 
-# API fluida gracias al Patrón Builder
+### API fluida gracias al Patrón Builder
+´´´
 simulation = (DiracProblemBuilder()
               .set_geometry(Radial(r_max=100, N=1024))
               .set_potential("coulomb", Z=1)
@@ -43,8 +44,10 @@ simulation = (DiracProblemBuilder()
               .build())
 
 results = simulation.run()
+´´´
+---
 
-2. Patrón Strategy - Flexibilidad en los Algoritmos
+## 2. Patrón Strategy - Flexibilidad en los Algoritmos
 
 Propósito: Definir una familia de algoritmos, encapsular cada uno y hacerlos
 intercambiables. Permite que el algoritmo varíe independientemente del cliente
@@ -55,7 +58,9 @@ solvers/. Permite al usuario cambiar el método de integración temporal (ej.
 CrankNicolson vs. SplitOperator) o las condiciones de frontera (ej. Dirichlet
 vs. Absorbing) sin modificar el código del bucle de simulación principal.
 
-3. Patrones Template y Factory Method - Extensibilidad de Componentes Físicos
+---
+
+## 3. Patrones Template y Factory Method - Extensibilidad de Componentes Físicos
 
 Propósito:
 
@@ -72,8 +77,10 @@ conditions/).
   - Una función create_potential() (el Factory Method) centraliza la lógica de
 	instanciación, permitiendo crear potenciales a partir de un string (ej. desde
 	un archivo de configuración).
+  
+---
 
-4. Patrón Observer - Visualización y Monitoreo
+## 4. Patrón Observer - Visualización y Monitoreo
 
 Propósito: Definir una dependencia uno-a-muchos entre objetos, de modo que
 cuando un objeto (Subject) cambia de estado, todos sus dependientes (Observers)
@@ -84,7 +91,9 @@ visualización y registro de datos. El objeto Simulation (Subject) no necesita
 saber nada sobre cómo se muestran los datos. Simplemente notifica a sus
 observadores (ej. WavefunctionPlotter, EnergyLogger) en cada paso de tiempo.
 
-5. Patrón Facade - Interfaz Simplificada de I/O
+---
+
+## 5. Patrón Facade - Interfaz Simplificada de I/O
 
 Propósito: Proporcionar una interfaz unificada y simplificada a un conjunto de
 interfaces en un subsistema.
