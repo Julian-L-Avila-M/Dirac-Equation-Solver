@@ -35,7 +35,7 @@ simulación válida y cohesiva.
 Código de Ejemplo (examples/hydrogen_atom.py):
 
 ### API fluida gracias al Patrón Builder
-´´´
+```text
 simulation = (DiracProblemBuilder()
               .set_geometry(Radial(r_max=100, N=1024))
               .set_potential("coulomb", Z=1)
@@ -44,7 +44,7 @@ simulation = (DiracProblemBuilder()
               .build())
 
 results = simulation.run()
-´´´
+```
 ---
 
 ## 2. Patrón Strategy - Flexibilidad en los Algoritmos
