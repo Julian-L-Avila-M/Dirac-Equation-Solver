@@ -147,3 +147,79 @@ classDiagram
     IOManager --> Loader
     IOManager --> ConfigParser
 ```
+
+## 6. Patrón Decorator
+
+Aplicación: Un Decorator permite añadir funcionalidades adicionales a un objeto
+(Solver, Potential) sin modificar su estructura original. Esto facilita extender
+el sistema con instrumentación ligera (logging, profiling, validaciones
+numéricas).
+
+```text
+classDiagram
+    <<interface>> Solver
+    class Solver {
+        +solve()
+    }
+    class BaseSolver {
+        +solve()
+    }
+    class SolverDecorator {
+        -wrapped: Solver
+        +solve()
+    }
+    class LoggingSolver {
+        +solve()
+    }
+    class TimingSolver {
+        +solve()
+    }
+    class ValidationSolver {
+        +solve()
+    }
+
+    BaseSolver --|> Solver
+    SolverDecorator --|> Solver
+    LoggingSolver --|> SolverDecorator
+    TimingSolver --|> SolverDecorator
+    ValidationSolver --|> SolverDecorator
+    SolverDecorator o-- Solver : wraps
+```
+
+---
+
+## 7. Patrón Adapter
+
+Aplicación: El Adapter permite que `dirac_solver` interactúe con backends
+externos (SciPy, PETSc, CuPy, PyTorch) que poseen APIs distintas para resolver
+sistemas lineales o eigenvalores. El Adapter traduce las llamadas al formato que
+espera cada librería, asegurando interoperabilidad sin cambiar el código cliente.
+
+```text
+classDiagram
+    <<interface>> LinearSolver
+    class LinearSolver {
+        +solve(A, b)
+    }
+    class PETScAdapter {
+        +solve(A, b)
+    }
+    class SciPyAdapter {
+        +solve(A, b)
+    }
+    class CuPyAdapter {
+        +solve(A, b)
+    }
+    class PyTorchAdapter {
+        +solve(A, b)
+    }
+    class Client {
+        +run_simulation()
+    }
+
+    Client --> LinearSolver : uses
+    PETScAdapter --|> LinearSolver : adapts
+    SciPyAdapter --|> LinearSolver : adapts
+    CuPyAdapter --|> LinearSolver : adapts
+    PyTorchAdapter --|> LinearSolver : adapts
+```
