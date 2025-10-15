@@ -1,25 +1,67 @@
 import numpy as np
 from .geometry import Grid
 from .initial_state import GaussianPacket
+import matplotlib.pyplot as plt
+from . import _core, electron_mass
 
+
+###############################################################
+## @class SimulationProblem
+## @brief Contenedor de datos que agrupa todos los parámetros necesarios
+##        para una simulación del ecuación de Dirac.
+##
+## Esta clase no ejecuta la simulación directamente. Su propósito es
+## almacenar de forma consistente todos los parámetros de entrada del problema:
+## geometría, estado inicial, potencial, condiciones de borde y parámetros de tiempo.
+##
+## @note Este objeto es usualmente construido por @ref DiracProblemBuilder.
+###############################################################
 class SimulationProblem:
     """
     Clase de datos para contener todos los parámetros para una simulación de Dirac.
     Este objeto es construido por el DiracProblemBuilder.
     """
     def __init__(self, grid, initial_state, potential, boundary_condition, time_step, total_time):
+        ## @brief Malla espacial de la simulación.
         self.grid = grid
+
+        ## @brief Estado inicial (paquete gaussiano u otro tipo de campo espinorial).
         self.initial_state = initial_state
+
+        ## @brief Potencial escalar aplicado al campo de Dirac.
         self.potential = potential
+
+        ## @brief Condición de borde usada en los límites espaciales.
         self.boundary_condition = boundary_condition
+
+        ## @brief Paso de tiempo utilizado en la integración temporal.
         self.time_step = time_step
+
+        ## @brief Tiempo total de evolución de la simulación.
         self.total_time = total_time
 
+
+###############################################################
+## @class DiracProblemBuilder
+## @brief Implementación del patrón Builder para crear objetos @ref SimulationProblem.
+##
+## Esta clase ofrece una interfaz fluida para configurar los componentes
+## de una simulación del ecuación de Dirac. Facilita el proceso de validación
+## y permite un flujo de construcción más legible.
+##
+## Ejemplo de uso:
+## @code{.python}
+## builder = DiracProblemBuilder()
+## problem = (builder
+##           .set_grid(my_grid)
+##           .set_initial_state(my_packet)
+##           .set_potential(V)
+##           .set_boundary_condition("absorbing")
+##           .set_time_parameters(dt, T)
+##           .build())
+## @endcode
+###############################################################
 class DiracProblemBuilder:
-    """
-    Implementa el patrón Builder para construir un objeto SimulationProblem.
-    Esto proporciona una API fluida y legible para configurar una simulación.
-    """
     def __init__(self):
         self._grid = None
         self._initial_state = None
@@ -28,37 +70,48 @@ class DiracProblemBuilder:
         self._time_step = None
         self._total_time = None
 
+    ## @brief Define la malla espacial a utilizar.
+    ## @param grid Objeto @ref Grid que describe el dominio espacial.
+    ## @return Referencia al propio builder para encadenamiento de métodos.
     def set_grid(self, grid: Grid):
-        """Establece la malla espacial para la simulación."""
         self._grid = grid
         return self
 
+    ## @brief Define el estado inicial del campo espinorial.
+    ## @param initial_state Instancia de @ref GaussianPacket u otro estado inicial compatible.
+    ## @return Referencia al propio builder.
     def set_initial_state(self, initial_state: GaussianPacket):
-        """Establece la configuración inicial del campo espinorial."""
         self._initial_state = initial_state
         return self
 
+    ## @brief Define el potencial escalar.
+    ## @param potential Potencial espacialmente dependiente o constante (puede ser None).
+    ## @return Referencia al propio builder.
     def set_potential(self, potential):
-        """Establece el potencial escalar para la simulación."""
         self._potential = potential
         return self
 
+    ## @brief Define la condición de borde.
+    ## @param boundary_condition Cadena o estructura que especifica el tipo de condición (e.g. "absorbing").
+    ## @return Referencia al propio builder.
     def set_boundary_condition(self, boundary_condition):
-        """Establece la estrategia de condición de borde para la simulación."""
         self._boundary_condition = boundary_condition
         return self
 
+    ## @brief Define los parámetros de tiempo de la simulación.
+    ## @param time_step Paso de tiempo (Δt) utilizado por el integrador.
+    ## @param total_time Tiempo total de evolución.
+    ## @return Referencia al propio builder.
     def set_time_parameters(self, time_step: float, total_time: float):
-        """Establece el paso de tiempo (dt) y el tiempo total de la simulación."""
         self._time_step = time_step
         self._total_time = total_time
         return self
 
+    ## @brief Construye el objeto @ref SimulationProblem con los parámetros actuales.
+    ## @return Instancia de @ref SimulationProblem.
+    ## @throws ValueError Si algún parámetro requerido no fue establecido.
+    ## @warning Si el potencial no fue definido, se asume partícula libre (V=0).
     def build(self) -> SimulationProblem:
-        """
-        Construye y devuelve el objeto SimulationProblem configurado.
-        Realiza una validación para asegurar que todos los parámetros requeridos estén establecidos.
-        """
         if self._grid is None:
             raise ValueError("La malla debe ser establecida antes de construir el problema.")
         if self._initial_state is None:
@@ -68,7 +121,6 @@ class DiracProblemBuilder:
         if self._boundary_condition is None:
             raise ValueError("La condición de borde debe ser establecida.")
 
-        # Por ahora, el potencial es opcional (por defecto, partícula libre si no se establece)
         if self._potential is None:
             print("Advertencia: Potencial no establecido. Usando partícula libre (V=0) por defecto.")
 
@@ -81,39 +133,44 @@ class DiracProblemBuilder:
             total_time=self._total_time,
         )
 
-import matplotlib.pyplot as plt
-from . import _core, electron_mass
 
+###############################################################
+## @class DiracSolver
+## @brief Clase principal que orquesta la ejecución numérica del problema de Dirac.
+##
+## Este solver inicializa la función de onda, comunica los datos al backend C++,
+## ejecuta el bucle de integración temporal (FDTD) y proporciona utilidades
+## para análisis y visualización del resultado.
+###############################################################
 class DiracSolver:
-    """
-    La clase principal del solver que orquesta la simulación.
-    Toma un SimulationProblem e inicializa el backend de C++.
-    """
+    ## @brief Constructor del solver.
+    ## @param problem Instancia de @ref SimulationProblem previamente configurada.
+    ## @note Internamente inicializa el integrador C++ (FDTDLeapfrogIntegrator).
     def __init__(self, problem: SimulationProblem):
         self.problem = problem
 
-        # Generar la función de onda inicial en la malla
+        # Evaluar estado inicial sobre la malla
         psi_0 = problem.initial_state.evaluate_on_grid(problem.grid)
 
-        # Crear objeto Grid de C++
+        # Crear grid compatible con el backend C++
         cpp_grid = _core.Grid(problem.grid.shape, problem.grid.spacing)
 
-        # Instanciar el integrador FDTD de C++
+        # Inicializar el integrador Leapfrog de C++
         self.integrator = _core.FDTDLeapfrogIntegrator(
             psi_0,
             cpp_grid,
             problem.potential,
             problem.boundary_condition,
             problem.time_step,
-            electron_mass # Usando la constante global
+            electron_mass
         )
+
         print(f"DiracSolver inicializado con el motor C++ '{self.integrator.get_name()}'.")
 
-
+    ## @brief Ejecuta la simulación completa de tiempo.
+    ## @details Llama iterativamente al método `step()` del integrador C++.
+    ## @note Imprime información de progreso cada 10 pasos.
     def run_simulation(self):
-        """
-        Ejecuta el bucle de evolución temporal llamando a la función de paso de C++.
-        """
         num_steps = int(self.problem.total_time / self.problem.time_step)
         print(f"Ejecutando simulación por {num_steps} pasos...")
         for i in range(num_steps):
@@ -122,14 +179,20 @@ class DiracSolver:
                 print(f"  Paso {i+1}/{num_steps} completado.")
         print("Simulación finalizada.")
 
+    ## @brief Obtiene el estado actual del campo espinorial.
+    ## @return np.ndarray con la función de onda actual (espinor completo).
     def get_psi(self):
-        """Devuelve el campo espinorial actual desde el backend de C++."""
         return self.integrator.get_psi()
 
+    ## @brief Calcula y grafica la densidad de probabilidad asociada al campo espinorial.
+    ##
+    ## La representación visual depende de la dimensionalidad de la malla:
+    ## - 1D: gráfico lineal
+    ## - 2D: mapa de calor
+    ## - 3D: nube de puntos coloreada
+    ##
+    ## @warning Puede consumir mucha memoria para mallas 3D grandes.
     def plot_probability_density(self):
-        """
-        Calcula y grafica la densidad de probabilidad del campo espinorial.
-        """
         print("Graficando densidad de probabilidad...")
         psi = self.get_psi()
         rho = np.sum(psi.conj() * psi, axis=1).real

@@ -1,0 +1,22 @@
+\doxysection{Boundary\+Condition.\+h}
+\hypertarget{BoundaryCondition_8h_source}{}\label{BoundaryCondition_8h_source}\index{cpp\_src/boundaries/BoundaryCondition.h@{cpp\_src/boundaries/BoundaryCondition.h}}
+\mbox{\hyperlink{BoundaryCondition_8h}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../DiracMatrices.h"{}}\ \textcolor{comment}{//\ Para\ Dirac::Spinor}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../Grid.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBoundaryCondition}{BoundaryCondition}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\string~BoundaryCondition}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBoundaryCondition_a89c213d7d45fd7fdaed4021a030ea998}{apply}}(std::vector<Dirac::Spinor>\&\ psi,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGrid}{Grid}}\&\ grid)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classBoundaryCondition_a45ca828c4cc6c90627bdd0810552a034}{get\_name}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00033\ \};}
+
+\end{DoxyCode}

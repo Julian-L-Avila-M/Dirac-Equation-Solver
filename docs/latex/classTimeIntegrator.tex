@@ -1,0 +1,84 @@
+\doxysection{Referencia de la clase Time\+Integrator}
+\hypertarget{classTimeIntegrator}{}\label{classTimeIntegrator}\index{TimeIntegrator@{TimeIntegrator}}
+
+
+Clase base abstracta para algoritmos de evolución temporal (patrón Strategy).  
+
+
+
+
+{\ttfamily \#include $<$Time\+Integrator.\+h$>$}
+
+
+
+Diagrama de herencia de Time\+Integrator\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classTimeIntegrator__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classTimeIntegrator_a5aa91f429adebc6c8bdb73eb77583bad}{\texorpdfstring{$\sim$}{\string~}\+Time\+Integrator}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classTimeIntegrator_a20df1b79d2b1f2789c8bf5db04c67ed1}{step}} ()=0
+\begin{DoxyCompactList}\small\item\em Realiza un único paso de evolución temporal. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classTimeIntegrator_af3fc978491f9cdbaae29be11a4eff1ee}{get\+\_\+name}} () const =0
+\begin{DoxyCompactList}\small\item\em Devuelve el nombre del integrador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase base abstracta para algoritmos de evolución temporal (patrón Strategy). 
+
+Define la interfaz genérica para los integradores temporales utilizados en el solver de la ecuación de \doxylink{namespaceDirac}{Dirac}. Cada subclase concreta implementa su propio esquema numérico de evolución temporal.
+
+Este diseño permite desacoplar el método numérico del resto de la arquitectura del simulador. 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classTimeIntegrator_a5aa91f429adebc6c8bdb73eb77583bad}\label{classTimeIntegrator_a5aa91f429adebc6c8bdb73eb77583bad} 
+\index{TimeIntegrator@{TimeIntegrator}!````~TimeIntegrator@{\texorpdfstring{$\sim$}{\string~}TimeIntegrator}}
+\index{````~TimeIntegrator@{\texorpdfstring{$\sim$}{\string~}TimeIntegrator}!TimeIntegrator@{TimeIntegrator}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TimeIntegrator()}{\string~TimeIntegrator()}}
+{\footnotesize\ttfamily virtual Time\+Integrator\+::\texorpdfstring{$\sim$}{\string~}\+Time\+Integrator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classTimeIntegrator_af3fc978491f9cdbaae29be11a4eff1ee}\label{classTimeIntegrator_af3fc978491f9cdbaae29be11a4eff1ee} 
+\index{TimeIntegrator@{TimeIntegrator}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!TimeIntegrator@{TimeIntegrator}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily virtual std\+::string Time\+Integrator\+::get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Devuelve el nombre del integrador. 
+
+\begin{DoxyReturn}{Devuelve}
+Una cadena con el nombre de la clase. 
+\end{DoxyReturn}
+
+
+Implementado en \mbox{\hyperlink{classFDTDLeapfrogIntegrator_aa1ffd70b11c696473b03e65a1def2d96}{FDTDLeapfrog\+Integrator}}.
+
+\Hypertarget{classTimeIntegrator_a20df1b79d2b1f2789c8bf5db04c67ed1}\label{classTimeIntegrator_a20df1b79d2b1f2789c8bf5db04c67ed1} 
+\index{TimeIntegrator@{TimeIntegrator}!step@{step}}
+\index{step@{step}!TimeIntegrator@{TimeIntegrator}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily virtual void Time\+Integrator\+::step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Realiza un único paso de evolución temporal. 
+
+Este método debe ser implementado por cada estrategia de integración, actualizando los estados internos del campo espinorial según el esquema elegido. 
+
+Implementado en \mbox{\hyperlink{classFDTDLeapfrogIntegrator_a95056a345afb24061b8c304f9600c37f}{FDTDLeapfrog\+Integrator}}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+cpp\+\_\+src/\mbox{\hyperlink{TimeIntegrator_8h}{Time\+Integrator.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,143 @@
+\doxysection{Referencia de la clase dirac\+\_\+solver.\+core.\+Simulation\+Problem}
+\hypertarget{classdirac__solver_1_1core_1_1SimulationProblem}{}\label{classdirac__solver_1_1core_1_1SimulationProblem}\index{dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}}
+
+
+Contenedor de datos que agrupa todos los parámetros necesarios para una simulación del ecuación de \doxylink{namespaceDirac}{Dirac}.  
+
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_ac8baafe9803293f290a70be969e27bea}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_afe717ffca5a29eb61702c638d9064874}{grid}}, \mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a562e51788022c2b3b20fc098182bf040}{initial\+\_\+state}}, \mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a46284a16440e1d5431c8a9ce6be5dbf4}{potential}}, \mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a020e2c661f1e66b027a82a6eaa49ec1f}{boundary\+\_\+condition}}, \mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a9a6db345ab47e7b1a192e9eb649dc6f3}{time\+\_\+step}}, \mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a8a595e2391e5e389c9880b90e8426c8f}{total\+\_\+time}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_afe717ffca5a29eb61702c638d9064874}{grid}}
+\begin{DoxyCompactList}\small\item\em Malla espacial de la simulación. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a562e51788022c2b3b20fc098182bf040}{initial\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Estado inicial (paquete gaussiano u otro tipo de campo espinorial). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a46284a16440e1d5431c8a9ce6be5dbf4}{potential}}
+\begin{DoxyCompactList}\small\item\em Potencial escalar aplicado al campo de \doxylink{namespaceDirac}{Dirac}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a020e2c661f1e66b027a82a6eaa49ec1f}{boundary\+\_\+condition}}
+\begin{DoxyCompactList}\small\item\em Condición de borde usada en los límites espaciales. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a9a6db345ab47e7b1a192e9eb649dc6f3}{time\+\_\+step}}
+\begin{DoxyCompactList}\small\item\em Paso de tiempo utilizado en la integración temporal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem_a8a595e2391e5e389c9880b90e8426c8f}{total\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Tiempo total de evolución de la simulación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Contenedor de datos que agrupa todos los parámetros necesarios para una simulación del ecuación de \doxylink{namespaceDirac}{Dirac}. 
+
+\begin{DoxyVerb}Clase de datos para contener todos los parámetros para una simulación de Dirac.
+Este objeto es construido por el DiracProblemBuilder.
+\end{DoxyVerb}
+
+
+Esta clase no ejecuta la simulación directamente. Su propósito es almacenar de forma consistente todos los parámetros de entrada del problema\+: geometría, estado inicial, potencial, condiciones de borde y parámetros de tiempo.
+
+\begin{DoxyNote}{Nota}
+Este objeto es usualmente construido por Dirac\+Problem\+Builder. 
+\end{DoxyNote}
+
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classdirac__solver_1_1core_1_1SimulationProblem_ac8baafe9803293f290a70be969e27bea}\label{classdirac__solver_1_1core_1_1SimulationProblem_ac8baafe9803293f290a70be969e27bea} 
+\index{dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Simulation\+Problem.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{grid,  }\item[{}]{initial\+\_\+state,  }\item[{}]{potential,  }\item[{}]{boundary\+\_\+condition,  }\item[{}]{time\+\_\+step,  }\item[{}]{total\+\_\+time }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ grid,\ initial\_state,\ potential,\ boundary\_condition,\ time\_step,\ total\_time):}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ self.grid\ =\ grid}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ self.initial\_state\ =\ initial\_state}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ self.potential\ =\ potential}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ self.boundary\_condition\ =\ boundary\_condition}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ self.time\_step\ =\ time\_step}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ self.total\_time\ =\ total\_time}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{classdirac__solver_1_1core_1_1SimulationProblem_a020e2c661f1e66b027a82a6eaa49ec1f}\label{classdirac__solver_1_1core_1_1SimulationProblem_a020e2c661f1e66b027a82a6eaa49ec1f} 
+\index{dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}!boundary\_condition@{boundary\_condition}}
+\index{boundary\_condition@{boundary\_condition}!dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}}
+\doxysubsubsection{\texorpdfstring{boundary\_condition}{boundary\_condition}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Simulation\+Problem.\+boundary\+\_\+condition}
+
+
+
+Condición de borde usada en los límites espaciales. 
+
+\Hypertarget{classdirac__solver_1_1core_1_1SimulationProblem_afe717ffca5a29eb61702c638d9064874}\label{classdirac__solver_1_1core_1_1SimulationProblem_afe717ffca5a29eb61702c638d9064874} 
+\index{dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}!grid@{grid}}
+\index{grid@{grid}!dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}}
+\doxysubsubsection{\texorpdfstring{grid}{grid}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Simulation\+Problem.\+grid}
+
+
+
+Malla espacial de la simulación. 
+
+\Hypertarget{classdirac__solver_1_1core_1_1SimulationProblem_a562e51788022c2b3b20fc098182bf040}\label{classdirac__solver_1_1core_1_1SimulationProblem_a562e51788022c2b3b20fc098182bf040} 
+\index{dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}!initial\_state@{initial\_state}}
+\index{initial\_state@{initial\_state}!dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}}
+\doxysubsubsection{\texorpdfstring{initial\_state}{initial\_state}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Simulation\+Problem.\+initial\+\_\+state}
+
+
+
+Estado inicial (paquete gaussiano u otro tipo de campo espinorial). 
+
+\Hypertarget{classdirac__solver_1_1core_1_1SimulationProblem_a46284a16440e1d5431c8a9ce6be5dbf4}\label{classdirac__solver_1_1core_1_1SimulationProblem_a46284a16440e1d5431c8a9ce6be5dbf4} 
+\index{dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}!potential@{potential}}
+\index{potential@{potential}!dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}}
+\doxysubsubsection{\texorpdfstring{potential}{potential}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Simulation\+Problem.\+potential}
+
+
+
+Potencial escalar aplicado al campo de \doxylink{namespaceDirac}{Dirac}. 
+
+\Hypertarget{classdirac__solver_1_1core_1_1SimulationProblem_a9a6db345ab47e7b1a192e9eb649dc6f3}\label{classdirac__solver_1_1core_1_1SimulationProblem_a9a6db345ab47e7b1a192e9eb649dc6f3} 
+\index{dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}!time\_step@{time\_step}}
+\index{time\_step@{time\_step}!dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}}
+\doxysubsubsection{\texorpdfstring{time\_step}{time\_step}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Simulation\+Problem.\+time\+\_\+step}
+
+
+
+Paso de tiempo utilizado en la integración temporal. 
+
+\Hypertarget{classdirac__solver_1_1core_1_1SimulationProblem_a8a595e2391e5e389c9880b90e8426c8f}\label{classdirac__solver_1_1core_1_1SimulationProblem_a8a595e2391e5e389c9880b90e8426c8f} 
+\index{dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}!total\_time@{total\_time}}
+\index{total\_time@{total\_time}!dirac\_solver.core.SimulationProblem@{dirac\_solver.core.SimulationProblem}}
+\doxysubsubsection{\texorpdfstring{total\_time}{total\_time}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Simulation\+Problem.\+total\+\_\+time}
+
+
+
+Tiempo total de evolución de la simulación. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+dirac\+\_\+solver/\mbox{\hyperlink{core_8py}{core.\+py}}\end{DoxyCompactItemize}

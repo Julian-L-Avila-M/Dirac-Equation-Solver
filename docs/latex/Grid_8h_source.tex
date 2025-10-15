@@ -1,0 +1,78 @@
+\doxysection{Grid.\+h}
+\hypertarget{Grid_8h_source}{}\label{Grid_8h_source}\index{cpp\_src/Grid.h@{cpp\_src/Grid.h}}
+\mbox{\hyperlink{Grid_8h}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGrid}{Grid}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classGrid_a45d70daeb14aff2d4ca10e4df499d44b}{Grid}}(std::vector<size\_t>\ shape,\ std::vector<double>\ spacing)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ :\ shape\_(shape),\ spacing\_(spacing),\ dim\_(shape.size())\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shape.size()\ !=\ spacing.size())\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Shape\ y\ spacing\ deben\ tener\ el\ mismo\ número\ de\ dimensiones."{}});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dim\_\ <\ 1\ ||\ dim\_\ >\ 3)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}La\ malla\ debe\ ser\ 1D,\ 2D\ o\ 3D."{}});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calcula\ el\ origen\ para\ que\ coincida\ con\ la\ implementación\ de\ Python\ (malla\ centrada)}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ origin\_.resize(dim\_);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ dim\_;\ ++i)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ origin\_[i]\ =\ -\/0.5\ *\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(shape\_[i]\ -\/\ 1))\ *\ spacing\_[i];}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Getters\ para\ las\ propiedades\ de\ la\ malla}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classGrid_a30ec32dfa617d5b9fbbaf67fb795225b}{get\_dim}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ dim\_;\ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<size\_t>\&\ \mbox{\hyperlink{classGrid_afd7d29568dca689034ee353694485d9d}{get\_shape}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ shape\_;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<double>\&\ \mbox{\hyperlink{classGrid_a80bf6a8440ec7ac995651b6d0728c190}{get\_spacing}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ spacing\_;\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\_total\_points}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ total\ =\ 1;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ n\ :\ shape\_)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ total\ *=\ n;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ total;}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classGrid_a348e56b0d5dabd0de0cd6e611804c7af}{get\_coords}}(\textcolor{keywordtype}{size\_t}\ index)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ \mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\_total\_points}}())\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}El\ índice\ de\ la\ malla\ está\ fuera\ de\ rango."{}});}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ std::vector<double>\ coords(dim\_);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ temp\_index\ =\ index;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dim\_\ ==\ 1)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ coords[0]\ =\ origin\_[0]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(index)\ *\ spacing\_[0];}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dim\_\ ==\ 2)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nx\ =\ shape\_[0];}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\ =\ temp\_index\ \%\ nx;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\ =\ temp\_index\ /\ nx;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ coords[0]\ =\ origin\_[0]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(ix)\ *\ spacing\_[0];}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ coords[1]\ =\ origin\_[1]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(iy)\ *\ spacing\_[1];}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dim\_\ ==\ 3)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nx\ =\ shape\_[0];}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ny\ =\ shape\_[1];}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\ =\ temp\_index\ \%\ nx;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\ =\ (temp\_index\ /\ nx)\ \%\ ny;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iz\ =\ temp\_index\ /\ (nx\ *\ ny);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ coords[0]\ =\ origin\_[0]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(ix)\ *\ spacing\_[0];}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ coords[1]\ =\ origin\_[1]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(iy)\ *\ spacing\_[1];}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ coords[2]\ =\ origin\_[2]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(iz)\ *\ spacing\_[2];}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ coords;}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00090\ \ \ \ \ std::vector<size\_t>\ shape\_;\ \ \textcolor{comment}{//\ Número\ de\ puntos\ en\ cada\ dimensión}}
+\DoxyCodeLine{00091\ \ \ \ \ std::vector<double>\ spacing\_;\textcolor{comment}{//\ Espaciado\ de\ celda\ en\ cada\ dimensión}}
+\DoxyCodeLine{00092\ \ \ \ \ std::vector<double>\ origin\_;\ \textcolor{comment}{//\ La\ coordenada\ mínima\ en\ cada\ dimensión}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ dim\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Número\ de\ dimensiones}}
+\DoxyCodeLine{00094\ \};}
+
+\end{DoxyCode}

@@ -1,47 +1,68 @@
-## @package dirac_solver
-#  Librería para simulación de la ecuación de Dirac en unidades naturales.
-#
-#  Contiene definiciones de constantes físicas, matrices de Pauli y clases
-#  principales para construir mallas, estados iniciales y ejecutar simulaciones.
-#
-#  @author Sebastian
-#  @date 2025-09-11
+"""
+dirac_solver
+============
+
+Librería para la simulación de la ecuación de Dirac en unidades naturales.
+
+Contiene definiciones de constantes físicas, matrices de Pauli y clases
+principales para construir mallas, estados iniciales y ejecutar simulaciones.
+
+Autor: Sebastian  
+Fecha: 2025-09-11
+"""
 
 import numpy as np
 
-## Constante de Planck reducida (ħ) en unidades naturales
-hbar = 1.0
+# ---------------------------------------------------------------------------
+# Constantes físicas en unidades naturales
+# ---------------------------------------------------------------------------
 
-## Velocidad de la luz (c) en unidades naturales
-c = 1.0
+#: Constante de Planck reducida (ħ) en unidades naturales.
+hbar: float = 1.0
 
-## Masa del electrón en unidades naturales
-electron_mass = 1.0
+#: Velocidad de la luz (c) en unidades naturales.
+c: float = 1.0
 
-## Carga del electrón en unidades naturales
-electron_charge = 1.0
+#: Masa del electrón en unidades naturales.
+electron_mass: float = 1.0
 
-## Matriz de Pauli sigma_x
+#: Carga del electrón en unidades naturales.
+electron_charge: float = 1.0
+
+
+# ---------------------------------------------------------------------------
+# Matrices de Pauli
+# ---------------------------------------------------------------------------
+
+#: Matriz de Pauli σ₁ (sigma_x)
 sigma_1 = np.array([[0, 1],
                     [1, 0]], dtype=np.complex128)
 
-## Matriz de Pauli sigma_y
+#: Matriz de Pauli σ₂ (sigma_y)
 sigma_2 = np.array([[0, -1j],
                     [1j, 0]], dtype=np.complex128)
 
-## Matriz de Pauli sigma_z
+#: Matriz de Pauli σ₃ (sigma_z)
 sigma_3 = np.array([[1, 0],
                     [0, -1]], dtype=np.complex128)
 
-# Importar clases principales del paquete
+
+# ---------------------------------------------------------------------------
+# Importaciones principales del paquete
+# ---------------------------------------------------------------------------
+
 from .geometry import Grid
 from .initial_state import ConstantSpinor, GaussianPacket
 from .core import DiracSolver, DiracProblemBuilder, SimulationProblem
 
-## Lista de símbolos exportados al usar: from dirac_solver import *
+
+# ---------------------------------------------------------------------------
+# Símbolos exportados
+# ---------------------------------------------------------------------------
+
 __all__ = [
     "hbar", "c", "electron_mass", "electron_charge",
     "sigma_1", "sigma_2", "sigma_3",
-    "Grid", "ConstantSpinor", "GaussianPacket", "DiracSolver",
-    "DiracProblemBuilder", "SimulationProblem"
+    "Grid", "ConstantSpinor", "GaussianPacket",
+    "DiracSolver", "DiracProblemBuilder", "SimulationProblem"
 ]

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['evaluate_0',['evaluate',['../classdirac__solver_1_1initial__state_1_1GaussianPacket.html#a316c915e47f47aaeb218a90915ab8499',1,'dirac_solver::initial_state::GaussianPacket']]]
+  ['dv_0',['dv',['../classdirac__solver_1_1geometry_1_1Grid.html#aa826a5837f24f73bb7ab5675cfdf34da',1,'dirac_solver::geometry::Grid']]]
 ];

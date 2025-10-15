@@ -1,47 +1,211 @@
 \doxysection{Referencia de la clase dirac\+\_\+solver.\+core.\+Dirac\+Solver}
 \hypertarget{classdirac__solver_1_1core_1_1DiracSolver}{}\label{classdirac__solver_1_1core_1_1DiracSolver}\index{dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}}
+
+
+Clase principal que orquesta la ejecución numérica del problema de \doxylink{namespaceDirac}{Dirac}.  
+
+
 \doxysubsubsection*{Métodos públicos}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classdirac__solver_1_1core_1_1DiracSolver_aa4976d44dae9a3a70398357c8df6eed5}{\+\_\+\+\_\+initial\+\_\+\+\_\+}} (self)
-\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1DiracSolver_a80624fb2cd6584b5c38297d309090ca1}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem}{Simulation\+Problem}} \mbox{\hyperlink{classdirac__solver_1_1core_1_1DiracSolver_af240a269184ddc9bd163e575066add96}{problem}})
+\begin{DoxyCompactList}\small\item\em Constructor del solver. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classdirac__solver_1_1core_1_1DiracSolver_a816654842bd68ea6886751b6affcc432}{run\+\_\+simulation}} (self)
-\item 
+\begin{DoxyCompactList}\small\item\em Ejecuta la simulación completa de tiempo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1DiracSolver_a6a1039d0134ac13ba222472a67db0b14}{get\+\_\+psi}} (self)
+\begin{DoxyCompactList}\small\item\em Obtiene el estado actual del campo espinorial. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classdirac__solver_1_1core_1_1DiracSolver_a2229ba14dd2f6ea676473439298afec6}{plot\+\_\+probability\+\_\+density}} (self)
+\begin{DoxyCompactList}\small\item\em Calcula y grafica la densidad de probabilidad asociada al campo espinorial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1DiracSolver_af240a269184ddc9bd163e575066add96}{problem}}
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1core_1_1DiracSolver_aa9cedd48767038ef89b08b70879868af}{integrator}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Descripción detallada}
-\begin{DoxyVerb}this is the principal class
-\end{DoxyVerb}
- 
+Clase principal que orquesta la ejecución numérica del problema de \doxylink{namespaceDirac}{Dirac}. 
+
+Este solver inicializa la función de onda, comunica los datos al backend C++, ejecuta el bucle de integración temporal (FDTD) y proporciona utilidades para análisis y visualización del resultado. 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classdirac__solver_1_1core_1_1DiracSolver_a80624fb2cd6584b5c38297d309090ca1}\label{classdirac__solver_1_1core_1_1DiracSolver_a80624fb2cd6584b5c38297d309090ca1} 
+\index{dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Dirac\+Solver.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{\mbox{\hyperlink{classdirac__solver_1_1core_1_1SimulationProblem}{Simulation\+Problem}}}]{problem }\end{DoxyParamCaption})}
+
+
+
+Constructor del solver. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em problem} & Instancia de Simulation\+Problem previamente configurada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Internamente inicializa el integrador C++ (\doxylink{classFDTDLeapfrogIntegrator}{FDTDLeapfrog\+Integrator}). 
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ problem:\ SimulationProblem):}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ self.problem\ =\ problem}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Evaluar\ estado\ inicial\ sobre\ la\ malla}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ psi\_0\ =\ problem.initial\_state.evaluate\_on\_grid(problem.grid)}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Crear\ grid\ compatible\ con\ el\ backend\ C++}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ cpp\_grid\ =\ \_core.Grid(problem.grid.shape,\ problem.grid.spacing)}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Inicializar\ el\ integrador\ Leapfrog\ de\ C++}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ self.integrator\ =\ \_core.FDTDLeapfrogIntegrator(}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ psi\_0,}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ cpp\_grid,}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ problem.potential,}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ problem.boundary\_condition,}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ problem.time\_step,}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ electron\_mass}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}DiracSolver\ inicializado\ con\ el\ motor\ C++\ '\{self.integrator.get\_name()\}'."{}})}
+\DoxyCodeLine{00169\ }
+
+\end{DoxyCode}
+
 
 \doxysubsection{Documentación de funciones miembro}
-\Hypertarget{classdirac__solver_1_1core_1_1DiracSolver_aa4976d44dae9a3a70398357c8df6eed5}\label{classdirac__solver_1_1core_1_1DiracSolver_aa4976d44dae9a3a70398357c8df6eed5} 
-\index{dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}!\_\_initial\_\_@{\_\_initial\_\_}}
-\index{\_\_initial\_\_@{\_\_initial\_\_}!dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}}
-\doxysubsubsection{\texorpdfstring{\_\_initial\_\_()}{\_\_initial\_\_()}}
-{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Dirac\+Solver.\+\_\+\+\_\+initial\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+\Hypertarget{classdirac__solver_1_1core_1_1DiracSolver_a6a1039d0134ac13ba222472a67db0b14}\label{classdirac__solver_1_1core_1_1DiracSolver_a6a1039d0134ac13ba222472a67db0b14} 
+\index{dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}!get\_psi@{get\_psi}}
+\index{get\_psi@{get\_psi}!dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}}
+\doxysubsubsection{\texorpdfstring{get\_psi()}{get\_psi()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Dirac\+Solver.\+get\+\_\+psi (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}make the system (initial state + other parameters + geometry)
-\end{DoxyVerb}
- \Hypertarget{classdirac__solver_1_1core_1_1DiracSolver_a2229ba14dd2f6ea676473439298afec6}\label{classdirac__solver_1_1core_1_1DiracSolver_a2229ba14dd2f6ea676473439298afec6} 
+
+
+Obtiene el estado actual del campo espinorial. 
+
+\begin{DoxyReturn}{Devuelve}
+np.\+ndarray con la función de onda actual (espinor completo). 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keyword}{def\ }get\_psi(self):}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.integrator.get\_psi()}
+\DoxyCodeLine{00186\ }
+
+\end{DoxyCode}
+\Hypertarget{classdirac__solver_1_1core_1_1DiracSolver_a2229ba14dd2f6ea676473439298afec6}\label{classdirac__solver_1_1core_1_1DiracSolver_a2229ba14dd2f6ea676473439298afec6} 
 \index{dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}!plot\_probability\_density@{plot\_probability\_density}}
 \index{plot\_probability\_density@{plot\_probability\_density}!dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}}
 \doxysubsubsection{\texorpdfstring{plot\_probability\_density()}{plot\_probability\_density()}}
 {\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Dirac\+Solver.\+plot\+\_\+probability\+\_\+density (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}here calculate and plot probability density. also is posible only calculate and save
-\end{DoxyVerb}
- \Hypertarget{classdirac__solver_1_1core_1_1DiracSolver_a816654842bd68ea6886751b6affcc432}\label{classdirac__solver_1_1core_1_1DiracSolver_a816654842bd68ea6886751b6affcc432} 
+
+
+Calcula y grafica la densidad de probabilidad asociada al campo espinorial. 
+
+La representación visual depende de la dimensionalidad de la malla\+:
+\begin{DoxyItemize}
+\item 1D\+: gráfico lineal
+\item 2D\+: mapa de calor
+\item 3D\+: nube de puntos coloreada
+\end{DoxyItemize}
+
+\begin{DoxyWarning}{Atención}
+Puede consumir mucha memoria para mallas 3D grandes. 
+\end{DoxyWarning}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keyword}{def\ }plot\_probability\_density(self):}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Graficando\ densidad\ de\ probabilidad..."{}})}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ psi\ =\ self.get\_psi()}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ rho\ =\ np.sum(psi.conj()\ *\ psi,\ axis=1).real}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ grid\ =\ self.problem.grid}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ dim\ =\ grid.dim}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ dim\ ==\ 1:}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ x\_coords\ =\ grid.coords[:,\ 0]}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ plt.figure(figsize=(10,\ 6))}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ plt.plot(x\_coords,\ rho)}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ plt.xlabel(\textcolor{stringliteral}{"{}Posición\ (z)"{}})}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ plt.ylabel(\textcolor{stringliteral}{"{}Densidad\ de\ Probabilidad"{}})}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ plt.title(\textcolor{stringliteral}{"{}Densidad\ de\ Probabilidad\ del\ Campo\ Espinorial"{}})}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ plt.grid(\textcolor{keyword}{True})}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ plt.show()}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ dim\ ==\ 2:}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ shape\ =\ grid.shape}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ rho\_grid\ =\ rho.reshape(shape)}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ plt.figure(figsize=(10,\ 8))}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ plt.imshow(rho\_grid.T,\ origin=\textcolor{stringliteral}{'lower'},\ aspect=\textcolor{stringliteral}{'auto'},}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ extent=[grid.origin[0],\ grid.origin[0]\ +\ (shape[0]\ -\/\ 1)\ *\ grid.spacing[0],}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grid.origin[1],\ grid.origin[1]\ +\ (shape[1]\ -\/\ 1)\ *\ grid.spacing[1]])}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ plt.colorbar(label=\textcolor{stringliteral}{"{}Densidad\ de\ Probabilidad"{}})}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ plt.xlabel(\textcolor{stringliteral}{"{}Posición\ (x)"{}})}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ plt.ylabel(\textcolor{stringliteral}{"{}Posición\ (y)"{}})}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ plt.title(\textcolor{stringliteral}{"{}Densidad\ de\ Probabilidad\ 2D"{}})}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ plt.show()}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ dim\ ==\ 3:}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ fig\ =\ plt.figure(figsize=(10,\ 8))}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ ax\ =\ fig.add\_subplot(111,\ projection=\textcolor{stringliteral}{'3d'})}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ coords\ =\ grid.coords}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ coords[:,\ 0]}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ coords[:,\ 1]}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ coords[:,\ 2]}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ p\ =\ ax.scatter(x,\ y,\ z,\ c=rho,\ cmap=\textcolor{stringliteral}{'viridis'})}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ fig.colorbar(p,\ label=\textcolor{stringliteral}{"{}Densidad\ de\ Probabilidad"{}})}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ ax.set\_xlabel(\textcolor{stringliteral}{"{}Posición\ (x)"{}})}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ ax.set\_ylabel(\textcolor{stringliteral}{"{}Posición\ (y)"{}})}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ ax.set\_zlabel(\textcolor{stringliteral}{"{}Posición\ (z)"{}})}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ plt.title(\textcolor{stringliteral}{"{}Densidad\ de\ Probabilidad\ 3D"{}})}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ plt.show()}
+
+\end{DoxyCode}
+\Hypertarget{classdirac__solver_1_1core_1_1DiracSolver_a816654842bd68ea6886751b6affcc432}\label{classdirac__solver_1_1core_1_1DiracSolver_a816654842bd68ea6886751b6affcc432} 
 \index{dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}!run\_simulation@{run\_simulation}}
 \index{run\_simulation@{run\_simulation}!dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}}
 \doxysubsubsection{\texorpdfstring{run\_simulation()}{run\_simulation()}}
 {\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Dirac\+Solver.\+run\+\_\+simulation (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}here the numerical method is implemented
-\end{DoxyVerb}
- 
+
+
+Ejecuta la simulación completa de tiempo. 
+
+Llama iterativamente al método {\ttfamily step()} del integrador C++. \begin{DoxyNote}{Nota}
+Imprime información de progreso cada 10 pasos. 
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{def\ }run\_simulation(self):}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ num\_steps\ =\ int(self.problem.total\_time\ /\ self.problem.time\_step)}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Ejecutando\ simulación\ por\ \{num\_steps\}\ pasos..."{}})}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(num\_steps):}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ self.integrator.step()}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ +\ 1)\ \%\ 10\ ==\ 0:}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\ \ Paso\ \{i+1\}/\{num\_steps\}\ completado."{}})}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Simulación\ finalizada."{}})}
+\DoxyCodeLine{00181\ }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{classdirac__solver_1_1core_1_1DiracSolver_aa9cedd48767038ef89b08b70879868af}\label{classdirac__solver_1_1core_1_1DiracSolver_aa9cedd48767038ef89b08b70879868af} 
+\index{dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}!integrator@{integrator}}
+\index{integrator@{integrator}!dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}}
+\doxysubsubsection{\texorpdfstring{integrator}{integrator}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Dirac\+Solver.\+integrator}
+
+\Hypertarget{classdirac__solver_1_1core_1_1DiracSolver_af240a269184ddc9bd163e575066add96}\label{classdirac__solver_1_1core_1_1DiracSolver_af240a269184ddc9bd163e575066add96} 
+\index{dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}!problem@{problem}}
+\index{problem@{problem}!dirac\_solver.core.DiracSolver@{dirac\_solver.core.DiracSolver}}
+\doxysubsubsection{\texorpdfstring{problem}{problem}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+core.\+Dirac\+Solver.\+problem}
+
+
 
 La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
 \item 

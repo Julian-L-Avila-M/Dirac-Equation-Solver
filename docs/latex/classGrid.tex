@@ -1,0 +1,183 @@
+\doxysection{Referencia de la clase Grid}
+\hypertarget{classGrid}{}\label{classGrid}\index{Grid@{Grid}}
+
+
+Representa una malla espacial (1D, 2D o 3D) para la simulación.  
+
+
+
+
+{\ttfamily \#include $<$Grid.\+h$>$}
+
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGrid_a45d70daeb14aff2d4ca10e4df499d44b}{Grid}} (std\+::vector$<$ size\+\_\+t $>$ shape, std\+::vector$<$ double $>$ spacing)
+\begin{DoxyCompactList}\small\item\em Construye un objeto \doxylink{classGrid}{Grid}. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classGrid_a30ec32dfa617d5b9fbbaf67fb795225b}{get\+\_\+dim}} () const
+\item 
+const std\+::vector$<$ size\+\_\+t $>$ \& \mbox{\hyperlink{classGrid_afd7d29568dca689034ee353694485d9d}{get\+\_\+shape}} () const
+\item 
+const std\+::vector$<$ double $>$ \& \mbox{\hyperlink{classGrid_a80bf6a8440ec7ac995651b6d0728c190}{get\+\_\+spacing}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\+\_\+total\+\_\+points}} () const
+\begin{DoxyCompactList}\small\item\em Calcula el número total de puntos en la malla. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classGrid_a348e56b0d5dabd0de0cd6e611804c7af}{get\+\_\+coords}} (size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em Obtiene las coordenadas espaciales para un índice de malla plano dado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Representa una malla espacial (1D, 2D o 3D) para la simulación. 
+
+Esta clase almacena los parámetros de la malla de simulación, como sus dimensiones, número de puntos y espaciado de celda. Es la contraparte en C++ de la clase \doxylink{classGrid}{Grid} de Python. 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classGrid_a45d70daeb14aff2d4ca10e4df499d44b}\label{classGrid_a45d70daeb14aff2d4ca10e4df499d44b} 
+\index{Grid@{Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{Grid()}{Grid()}}
+{\footnotesize\ttfamily Grid\+::\+Grid (\begin{DoxyParamCaption}\item[{std\+::vector$<$ size\+\_\+t $>$}]{shape,  }\item[{std\+::vector$<$ double $>$}]{spacing }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construye un objeto \doxylink{classGrid}{Grid}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em shape} & Un vector que contiene el número de puntos en cada dimensión (por ejemplo, \{nx, ny\}). \\
+\hline
+{\em spacing} & Un vector que contiene el espaciado de celda en cada dimensión (por ejemplo, \{dx, dy\}). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ :\ shape\_(shape),\ spacing\_(spacing),\ dim\_(shape.size())\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shape.size()\ !=\ spacing.size())\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Shape\ y\ spacing\ deben\ tener\ el\ mismo\ número\ de\ dimensiones."{}});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dim\_\ <\ 1\ ||\ dim\_\ >\ 3)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}La\ malla\ debe\ ser\ 1D,\ 2D\ o\ 3D."{}});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calcula\ el\ origen\ para\ que\ coincida\ con\ la\ implementación\ de\ Python\ (malla\ centrada)}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ origin\_.resize(dim\_);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ dim\_;\ ++i)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ origin\_[i]\ =\ -\/0.5\ *\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(shape\_[i]\ -\/\ 1))\ *\ spacing\_[i];}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classGrid_a348e56b0d5dabd0de0cd6e611804c7af}\label{classGrid_a348e56b0d5dabd0de0cd6e611804c7af} 
+\index{Grid@{Grid}!get\_coords@{get\_coords}}
+\index{get\_coords@{get\_coords}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{get\_coords()}{get\_coords()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Grid\+::get\+\_\+coords (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene las coordenadas espaciales para un índice de malla plano dado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em index} & El índice plano del punto de la malla. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Un vector de dobles que representa las coordenadas (por ejemplo, \{x, y, z\}). 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ \mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\_total\_points}}())\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}El\ índice\ de\ la\ malla\ está\ fuera\ de\ rango."{}});}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ std::vector<double>\ coords(dim\_);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ temp\_index\ =\ index;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dim\_\ ==\ 1)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ coords[0]\ =\ origin\_[0]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(index)\ *\ spacing\_[0];}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dim\_\ ==\ 2)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nx\ =\ shape\_[0];}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\ =\ temp\_index\ \%\ nx;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\ =\ temp\_index\ /\ nx;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ coords[0]\ =\ origin\_[0]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(ix)\ *\ spacing\_[0];}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ coords[1]\ =\ origin\_[1]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(iy)\ *\ spacing\_[1];}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dim\_\ ==\ 3)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nx\ =\ shape\_[0];}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ny\ =\ shape\_[1];}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\ =\ temp\_index\ \%\ nx;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\ =\ (temp\_index\ /\ nx)\ \%\ ny;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iz\ =\ temp\_index\ /\ (nx\ *\ ny);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ coords[0]\ =\ origin\_[0]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(ix)\ *\ spacing\_[0];}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ coords[1]\ =\ origin\_[1]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(iy)\ *\ spacing\_[1];}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ coords[2]\ =\ origin\_[2]\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(iz)\ *\ spacing\_[2];}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ coords;}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classGrid_a30ec32dfa617d5b9fbbaf67fb795225b}\label{classGrid_a30ec32dfa617d5b9fbbaf67fb795225b} 
+\index{Grid@{Grid}!get\_dim@{get\_dim}}
+\index{get\_dim@{get\_dim}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{get\_dim()}{get\_dim()}}
+{\footnotesize\ttfamily size\+\_\+t Grid\+::get\+\_\+dim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \{\ \textcolor{keywordflow}{return}\ dim\_;\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classGrid_afd7d29568dca689034ee353694485d9d}\label{classGrid_afd7d29568dca689034ee353694485d9d} 
+\index{Grid@{Grid}!get\_shape@{get\_shape}}
+\index{get\_shape@{get\_shape}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{get\_shape()}{get\_shape()}}
+{\footnotesize\ttfamily const std\+::vector$<$ size\+\_\+t $>$ \& Grid\+::get\+\_\+shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \{\ \textcolor{keywordflow}{return}\ shape\_;\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classGrid_a80bf6a8440ec7ac995651b6d0728c190}\label{classGrid_a80bf6a8440ec7ac995651b6d0728c190} 
+\index{Grid@{Grid}!get\_spacing@{get\_spacing}}
+\index{get\_spacing@{get\_spacing}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{get\_spacing()}{get\_spacing()}}
+{\footnotesize\ttfamily const std\+::vector$<$ double $>$ \& Grid\+::get\+\_\+spacing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \{\ \textcolor{keywordflow}{return}\ spacing\_;\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}\label{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e} 
+\index{Grid@{Grid}!get\_total\_points@{get\_total\_points}}
+\index{get\_total\_points@{get\_total\_points}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{get\_total\_points()}{get\_total\_points()}}
+{\footnotesize\ttfamily size\+\_\+t Grid\+::get\+\_\+total\+\_\+points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calcula el número total de puntos en la malla. 
+
+\begin{DoxyReturn}{Devuelve}
+El producto del número de puntos en cada dimensión. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ total\ =\ 1;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ n\ :\ shape\_)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ total\ *=\ n;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ total;}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+cpp\+\_\+src/\mbox{\hyperlink{Grid_8h}{Grid.\+h}}\end{DoxyCompactItemize}

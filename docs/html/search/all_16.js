@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['optional_20strong_0',['&lt;strong&gt;D Advanced Performance Requirements (Optional)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md42',1,'']]],
-  ['origin_1',['origin',['../classdirac__solver_1_1geometry_1_1Grid.html#ae2d9d72099d3ad8e55a9ef44cd2b084c',1,'dirac_solver::geometry::Grid']]],
-  ['outputs_20and_20analysis_20what_20the_20system_20em_20must_20produce_20em_20strong_2',['&lt;strong&gt;C. Outputs and Analysis (What the System &lt;em&gt;Must Produce&lt;/em&gt;)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md41',1,'']]]
+  ['núcleo_20numérico_0',['1. &lt;tt&gt;solvers/&lt;/tt&gt; – Núcleo numérico',['../md_planning_2structure.html#autotoc_md101',1,'']]],
+  ['non_20functional_20requirements_20how_20em_20well_20em_20the_20system_20performs_20strong_1',['&lt;strong&gt;3. Non-Functional Requirements (How &lt;em&gt;Well&lt;/em&gt; the System Performs)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md77',1,'']]],
+  ['nuevas_20constantes_20globales_20definidas_20en_20tt_20_5f_5finit_5f_5f_20py_20tt_2',['2. Nuevas constantes globales definidas en &lt;tt&gt;__init__.py&lt;/tt&gt;',['../md_planning_2Actualizaci_xC3_xB3n__constants.html#autotoc_md9',1,'']]],
+  ['numérico_3',['1. &lt;tt&gt;solvers/&lt;/tt&gt; – Núcleo numérico',['../md_planning_2structure.html#autotoc_md101',1,'']]],
+  ['numérico_20de_20la_20ecuación_20de_20dirac_4',['Dirac-Solver: Solucionador numérico de la Ecuación de Dirac.',['../index.html',1,'']]]
 ];

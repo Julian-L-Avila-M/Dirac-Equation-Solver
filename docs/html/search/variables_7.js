@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['mass_0',['mass',['../classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#afea6f6b8d96a576ae18c262d24a67c52',1,'dirac_solver::initial_state::ConstantSpinor']]],
-  ['momentum_1',['momentum',['../classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#af9f772e2fdabea91470f556e3152cc87',1,'dirac_solver::initial_state::ConstantSpinor']]]
+  ['hbar_0',['hbar',['../classdirac__solver_1_1geometry_1_1Grid.html#ab9fb0b0b65ed952f527dffbd4f412d54',1,'dirac_solver.geometry.Grid.hbar'],['../namespacedirac__solver.html#aec7f9182aa7f7cdef50e2767cf38844c',1,'dirac_solver.hbar']]]
 ];

@@ -9,9 +9,20 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -20,6 +31,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="LOGO.png"/></td>
   <td id="projectalign">
    <div id="projectname">dirac_solver<span id="projectnumber">&#160;0.0.1</span>
    </div>
@@ -47,6 +59,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classdirac__solver_1_1core_1_1DiracSolver.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,39 +97,111 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacedirac__solver.html">dirac_solver</a></li><li class="navelem"><a class="el" href="namespacedirac__solver_1_1core.html">core</a></li><li class="navelem"><a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html">DiracSolver</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Métodos públicos</a> &#124;
+<a href="#pub-attribs">Atributos públicos</a> &#124;
 <a href="classdirac__solver_1_1core_1_1DiracSolver-members.html">Lista de todos los miembros</a>  </div>
   <div class="headertitle"><div class="title">Referencia de la clase dirac_solver.core.DiracSolver</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Clase principal que orquesta la ejecución numérica del problema de <a class="el" href="namespaceDirac.html">Dirac</a>.  
+ <a href="classdirac__solver_1_1core_1_1DiracSolver.html#details">Más...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
-<tr class="memitem:aa4976d44dae9a3a70398357c8df6eed5" id="r_aa4976d44dae9a3a70398357c8df6eed5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#aa4976d44dae9a3a70398357c8df6eed5">__initial__</a> (self)</td></tr>
-<tr class="separator:aa4976d44dae9a3a70398357c8df6eed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80624fb2cd6584b5c38297d309090ca1" id="r_a80624fb2cd6584b5c38297d309090ca1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#a80624fb2cd6584b5c38297d309090ca1">__init__</a> (self, <a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html">SimulationProblem</a> <a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#af240a269184ddc9bd163e575066add96">problem</a>)</td></tr>
+<tr class="memdesc:a80624fb2cd6584b5c38297d309090ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor del solver.  <br /></td></tr>
+<tr class="separator:a80624fb2cd6584b5c38297d309090ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a816654842bd68ea6886751b6affcc432" id="r_a816654842bd68ea6886751b6affcc432"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#a816654842bd68ea6886751b6affcc432">run_simulation</a> (self)</td></tr>
+<tr class="memdesc:a816654842bd68ea6886751b6affcc432"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ejecuta la simulación completa de tiempo.  <br /></td></tr>
 <tr class="separator:a816654842bd68ea6886751b6affcc432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a1039d0134ac13ba222472a67db0b14" id="r_a6a1039d0134ac13ba222472a67db0b14"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#a6a1039d0134ac13ba222472a67db0b14">get_psi</a> (self)</td></tr>
+<tr class="memdesc:a6a1039d0134ac13ba222472a67db0b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el estado actual del campo espinorial.  <br /></td></tr>
+<tr class="separator:a6a1039d0134ac13ba222472a67db0b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2229ba14dd2f6ea676473439298afec6" id="r_a2229ba14dd2f6ea676473439298afec6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#a2229ba14dd2f6ea676473439298afec6">plot_probability_density</a> (self)</td></tr>
+<tr class="memdesc:a2229ba14dd2f6ea676473439298afec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula y grafica la densidad de probabilidad asociada al campo espinorial.  <br /></td></tr>
 <tr class="separator:a2229ba14dd2f6ea676473439298afec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atributos públicos</h2></td></tr>
+<tr class="memitem:af240a269184ddc9bd163e575066add96" id="r_af240a269184ddc9bd163e575066add96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#af240a269184ddc9bd163e575066add96">problem</a></td></tr>
+<tr class="separator:af240a269184ddc9bd163e575066add96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9cedd48767038ef89b08b70879868af" id="r_aa9cedd48767038ef89b08b70879868af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#aa9cedd48767038ef89b08b70879868af">integrator</a></td></tr>
+<tr class="separator:aa9cedd48767038ef89b08b70879868af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock"><pre class="fragment">this is the principal class
-</pre> </div><h2 class="groupheader">Documentación de funciones miembro</h2>
-<a id="aa4976d44dae9a3a70398357c8df6eed5" name="aa4976d44dae9a3a70398357c8df6eed5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4976d44dae9a3a70398357c8df6eed5">&#9670;&#160;</a></span>__initial__()</h2>
+<div class="textblock"><p>Clase principal que orquesta la ejecución numérica del problema de <a class="el" href="namespaceDirac.html">Dirac</a>. </p>
+<p>Este solver inicializa la función de onda, comunica los datos al backend C++, ejecuta el bucle de integración temporal (FDTD) y proporciona utilidades para análisis y visualización del resultado. </p>
+</div><h2 class="groupheader">Documentación de constructores y destructores</h2>
+<a id="a80624fb2cd6584b5c38297d309090ca1" name="a80624fb2cd6584b5c38297d309090ca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80624fb2cd6584b5c38297d309090ca1">&#9670;&#160;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">dirac_solver.core.DiracSolver.__initial__ </td>
+          <td class="memname">dirac_solver.core.DiracSolver.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html">SimulationProblem</a>&#160;</td>
+          <td class="paramname"><em>problem</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor del solver. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">problem</td><td>Instancia de SimulationProblem previamente configurada. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Nota</dt><dd>Internamente inicializa el integrador C++ (<a class="el" href="classFDTDLeapfrogIntegrator.html" title="Implementación concreta de TimeIntegrator mediante el esquema FDTD de salto de rana (Leapfrog).">FDTDLeapfrogIntegrator</a>). </dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">  149</span>    <span class="keyword">def </span>__init__(self, problem: SimulationProblem):</div>
+<div class="line"><span class="lineno">  150</span>        self.problem = problem</div>
+<div class="line"><span class="lineno">  151</span> </div>
+<div class="line"><span class="lineno">  152</span>        <span class="comment"># Evaluar estado inicial sobre la malla</span></div>
+<div class="line"><span class="lineno">  153</span>        psi_0 = problem.initial_state.evaluate_on_grid(problem.grid)</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>        <span class="comment"># Crear grid compatible con el backend C++</span></div>
+<div class="line"><span class="lineno">  156</span>        cpp_grid = _core.Grid(problem.grid.shape, problem.grid.spacing)</div>
+<div class="line"><span class="lineno">  157</span> </div>
+<div class="line"><span class="lineno">  158</span>        <span class="comment"># Inicializar el integrador Leapfrog de C++</span></div>
+<div class="line"><span class="lineno">  159</span>        self.integrator = _core.FDTDLeapfrogIntegrator(</div>
+<div class="line"><span class="lineno">  160</span>            psi_0,</div>
+<div class="line"><span class="lineno">  161</span>            cpp_grid,</div>
+<div class="line"><span class="lineno">  162</span>            problem.potential,</div>
+<div class="line"><span class="lineno">  163</span>            problem.boundary_condition,</div>
+<div class="line"><span class="lineno">  164</span>            problem.time_step,</div>
+<div class="line"><span class="lineno">  165</span>            electron_mass</div>
+<div class="line"><span class="lineno">  166</span>        )</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>        print(f<span class="stringliteral">&quot;DiracSolver inicializado con el motor C++ &#39;{self.integrator.get_name()}&#39;.&quot;</span>)</div>
+<div class="line"><span class="lineno">  169</span> </div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones miembro</h2>
+<a id="a6a1039d0134ac13ba222472a67db0b14" name="a6a1039d0134ac13ba222472a67db0b14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a1039d0134ac13ba222472a67db0b14">&#9670;&#160;</a></span>get_psi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.core.DiracSolver.get_psi </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -108,8 +209,13 @@ Métodos públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">make the system (initial state + other parameters + geometry)
-</pre> 
+
+<p>Obtiene el estado actual del campo espinorial. </p>
+<dl class="section return"><dt>Devuelve</dt><dd>np.ndarray con la función de onda actual (espinor completo). </dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">  184</span>    <span class="keyword">def </span>get_psi(self):</div>
+<div class="line"><span class="lineno">  185</span>        <span class="keywordflow">return</span> self.integrator.get_psi()</div>
+<div class="line"><span class="lineno">  186</span> </div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a2229ba14dd2f6ea676473439298afec6" name="a2229ba14dd2f6ea676473439298afec6"></a>
@@ -127,8 +233,58 @@ Métodos públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">here calculate and plot probability density. also is posible only calculate and save
-</pre> 
+
+<p>Calcula y grafica la densidad de probabilidad asociada al campo espinorial. </p>
+<p>La representación visual depende de la dimensionalidad de la malla:</p><ul>
+<li>1D: gráfico lineal</li>
+<li>2D: mapa de calor</li>
+<li>3D: nube de puntos coloreada</li>
+</ul>
+<dl class="section warning"><dt>Atención</dt><dd>Puede consumir mucha memoria para mallas 3D grandes. </dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">  195</span>    <span class="keyword">def </span>plot_probability_density(self):</div>
+<div class="line"><span class="lineno">  196</span>        print(<span class="stringliteral">&quot;Graficando densidad de probabilidad...&quot;</span>)</div>
+<div class="line"><span class="lineno">  197</span>        psi = self.get_psi()</div>
+<div class="line"><span class="lineno">  198</span>        rho = np.sum(psi.conj() * psi, axis=1).real</div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>        grid = self.problem.grid</div>
+<div class="line"><span class="lineno">  201</span>        dim = grid.dim</div>
+<div class="line"><span class="lineno">  202</span> </div>
+<div class="line"><span class="lineno">  203</span>        <span class="keywordflow">if</span> dim == 1:</div>
+<div class="line"><span class="lineno">  204</span>            x_coords = grid.coords[:, 0]</div>
+<div class="line"><span class="lineno">  205</span>            plt.figure(figsize=(10, 6))</div>
+<div class="line"><span class="lineno">  206</span>            plt.plot(x_coords, rho)</div>
+<div class="line"><span class="lineno">  207</span>            plt.xlabel(<span class="stringliteral">&quot;Posición (z)&quot;</span>)</div>
+<div class="line"><span class="lineno">  208</span>            plt.ylabel(<span class="stringliteral">&quot;Densidad de Probabilidad&quot;</span>)</div>
+<div class="line"><span class="lineno">  209</span>            plt.title(<span class="stringliteral">&quot;Densidad de Probabilidad del Campo Espinorial&quot;</span>)</div>
+<div class="line"><span class="lineno">  210</span>            plt.grid(<span class="keyword">True</span>)</div>
+<div class="line"><span class="lineno">  211</span>            plt.show()</div>
+<div class="line"><span class="lineno">  212</span>        <span class="keywordflow">elif</span> dim == 2:</div>
+<div class="line"><span class="lineno">  213</span>            shape = grid.shape</div>
+<div class="line"><span class="lineno">  214</span>            rho_grid = rho.reshape(shape)</div>
+<div class="line"><span class="lineno">  215</span>            plt.figure(figsize=(10, 8))</div>
+<div class="line"><span class="lineno">  216</span>            plt.imshow(rho_grid.T, origin=<span class="stringliteral">&#39;lower&#39;</span>, aspect=<span class="stringliteral">&#39;auto&#39;</span>,</div>
+<div class="line"><span class="lineno">  217</span>                       extent=[grid.origin[0], grid.origin[0] + (shape[0] - 1) * grid.spacing[0],</div>
+<div class="line"><span class="lineno">  218</span>                               grid.origin[1], grid.origin[1] + (shape[1] - 1) * grid.spacing[1]])</div>
+<div class="line"><span class="lineno">  219</span>            plt.colorbar(label=<span class="stringliteral">&quot;Densidad de Probabilidad&quot;</span>)</div>
+<div class="line"><span class="lineno">  220</span>            plt.xlabel(<span class="stringliteral">&quot;Posición (x)&quot;</span>)</div>
+<div class="line"><span class="lineno">  221</span>            plt.ylabel(<span class="stringliteral">&quot;Posición (y)&quot;</span>)</div>
+<div class="line"><span class="lineno">  222</span>            plt.title(<span class="stringliteral">&quot;Densidad de Probabilidad 2D&quot;</span>)</div>
+<div class="line"><span class="lineno">  223</span>            plt.show()</div>
+<div class="line"><span class="lineno">  224</span>        <span class="keywordflow">elif</span> dim == 3:</div>
+<div class="line"><span class="lineno">  225</span>            fig = plt.figure(figsize=(10, 8))</div>
+<div class="line"><span class="lineno">  226</span>            ax = fig.add_subplot(111, projection=<span class="stringliteral">&#39;3d&#39;</span>)</div>
+<div class="line"><span class="lineno">  227</span>            coords = grid.coords</div>
+<div class="line"><span class="lineno">  228</span>            x = coords[:, 0]</div>
+<div class="line"><span class="lineno">  229</span>            y = coords[:, 1]</div>
+<div class="line"><span class="lineno">  230</span>            z = coords[:, 2]</div>
+<div class="line"><span class="lineno">  231</span>            p = ax.scatter(x, y, z, c=rho, cmap=<span class="stringliteral">&#39;viridis&#39;</span>)</div>
+<div class="line"><span class="lineno">  232</span>            fig.colorbar(p, label=<span class="stringliteral">&quot;Densidad de Probabilidad&quot;</span>)</div>
+<div class="line"><span class="lineno">  233</span>            ax.set_xlabel(<span class="stringliteral">&quot;Posición (x)&quot;</span>)</div>
+<div class="line"><span class="lineno">  234</span>            ax.set_ylabel(<span class="stringliteral">&quot;Posición (y)&quot;</span>)</div>
+<div class="line"><span class="lineno">  235</span>            ax.set_zlabel(<span class="stringliteral">&quot;Posición (z)&quot;</span>)</div>
+<div class="line"><span class="lineno">  236</span>            plt.title(<span class="stringliteral">&quot;Densidad de Probabilidad 3D&quot;</span>)</div>
+<div class="line"><span class="lineno">  237</span>            plt.show()</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a816654842bd68ea6886751b6affcc432" name="a816654842bd68ea6886751b6affcc432"></a>
@@ -146,17 +302,61 @@ Métodos públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">here the numerical method is implemented
-</pre> 
+
+<p>Ejecuta la simulación completa de tiempo. </p>
+<p>Llama iterativamente al método <code>step()</code> del integrador C++. </p><dl class="section note"><dt>Nota</dt><dd>Imprime información de progreso cada 10 pasos. </dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">  173</span>    <span class="keyword">def </span>run_simulation(self):</div>
+<div class="line"><span class="lineno">  174</span>        num_steps = int(self.problem.total_time / self.problem.time_step)</div>
+<div class="line"><span class="lineno">  175</span>        print(f<span class="stringliteral">&quot;Ejecutando simulación por {num_steps} pasos...&quot;</span>)</div>
+<div class="line"><span class="lineno">  176</span>        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(num_steps):</div>
+<div class="line"><span class="lineno">  177</span>            self.integrator.step()</div>
+<div class="line"><span class="lineno">  178</span>            <span class="keywordflow">if</span> (i + 1) % 10 == 0:</div>
+<div class="line"><span class="lineno">  179</span>                print(f<span class="stringliteral">&quot;  Paso {i+1}/{num_steps} completado.&quot;</span>)</div>
+<div class="line"><span class="lineno">  180</span>        print(<span class="stringliteral">&quot;Simulación finalizada.&quot;</span>)</div>
+<div class="line"><span class="lineno">  181</span> </div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentación de datos miembro</h2>
+<a id="aa9cedd48767038ef89b08b70879868af" name="aa9cedd48767038ef89b08b70879868af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9cedd48767038ef89b08b70879868af">&#9670;&#160;</a></span>integrator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.core.DiracSolver.integrator</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af240a269184ddc9bd163e575066add96" name="af240a269184ddc9bd163e575066add96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af240a269184ddc9bd163e575066add96">&#9670;&#160;</a></span>problem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.core.DiracSolver.problem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
 <li>dirac_solver/<a class="el" href="core_8py.html">core.py</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacedirac__solver.html">dirac_solver</a></li><li class="navelem"><a class="el" href="namespacedirac__solver_1_1core.html">core</a></li><li class="navelem"><a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html">DiracSolver</a></li>
+    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

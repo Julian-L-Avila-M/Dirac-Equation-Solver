@@ -9,9 +9,20 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -20,6 +31,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="LOGO.png"/></td>
   <td id="projectalign">
    <div id="projectname">dirac_solver<span id="projectnumber">&#160;0.0.1</span>
    </div>
@@ -48,6 +60,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('functions_vars.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -70,33 +98,93 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Lista de todas las variables con enlaces a las clases a las que pertenecen:</div><ul>
-<li>_instance&#160;:&#160;<a class="el" href="classdirac__solver_1_1constants_1_1Constants.html#a058edacbe6b8ee3dfaba7d9747a10832">dirac_solver.constants.Constants</a></li>
-<li>_SYSTEMS&#160;:&#160;<a class="el" href="classdirac__solver_1_1constants_1_1Constants.html#a19254bc46094a260634f6f8879db2dd4">dirac_solver.constants.Constants</a></li>
+<div class="textblock">Lista de todas las variables con enlaces a las clases a las que pertenecen:</div>
+
+<h3><a id="index__5F" name="index__5F"></a>- _ -</h3><ul>
+<li>_boundary_condition&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a14f8fa66399d6c29713037617412c467">dirac_solver.core.DiracProblemBuilder</a></li>
+<li>_grid&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1DiracProblemBuilder.html#aac5685bea11df09fa2ae4607c20f82c4">dirac_solver.core.DiracProblemBuilder</a></li>
+<li>_initial_state&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a1ac35f0fb5f8d9ada42718b30881fdeb">dirac_solver.core.DiracProblemBuilder</a></li>
+<li>_potential&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1DiracProblemBuilder.html#acc66de3ed3b146b1c07392f75031b0d1">dirac_solver.core.DiracProblemBuilder</a></li>
+<li>_time_step&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1DiracProblemBuilder.html#ad263191289dfe7df827a15ed9adf1262">dirac_solver.core.DiracProblemBuilder</a></li>
+<li>_total_time&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a35adf0addf83b46addddb30a66f95377">dirac_solver.core.DiracProblemBuilder</a></li>
+</ul>
+
+
+<h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
+<li>boundary_condition&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html#a020e2c661f1e66b027a82a6eaa49ec1f">dirac_solver.core.SimulationProblem</a></li>
+</ul>
+
+
+<h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>c&#160;:&#160;<a class="el" href="classdirac__solver_1_1geometry_1_1Grid.html#a919586f9f41ea5813a9131c14cf6b5c2">dirac_solver.geometry.Grid</a></li>
 <li>center&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1GaussianPacket.html#ae36d8454d1d7eb945f3dce9ecdb7c27d">dirac_solver.initial_state.GaussianPacket</a></li>
 <li>chi_down&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#a4d919bb7e016fd77749325a2ffbfee74">dirac_solver.initial_state.ConstantSpinor</a></li>
 <li>chi_up&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#ad11e1a35c7ee5f39ed6c0828a647a150">dirac_solver.initial_state.ConstantSpinor</a></li>
+<li>components&#160;:&#160;<a class="el" href="structDirac_1_1Spinor.html#a074c81a0dab0e6f6bc3085a7a444aa13">Dirac::Spinor</a></li>
 <li>constant_spinor&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#a95ce910e9a3885b79edd52286d55a7e2">dirac_solver.initial_state.ConstantSpinor</a>, <a class="el" href="classdirac__solver_1_1initial__state_1_1GaussianPacket.html#ac282f0b279720ddfa326dfde9c697fe6">dirac_solver.initial_state.GaussianPacket</a></li>
-<li>constants&#160;:&#160;<a class="el" href="classdirac__solver_1_1constants_1_1Constants.html#acbe01d8358dbf8680d3a0272c9bbf50f">dirac_solver.constants.Constants</a></li>
 <li>coords&#160;:&#160;<a class="el" href="classdirac__solver_1_1geometry_1_1Grid.html#a212fb2b076f994bfb667c9464471c455">dirac_solver.geometry.Grid</a></li>
+</ul>
+
+
+<h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
 <li>dim&#160;:&#160;<a class="el" href="classdirac__solver_1_1geometry_1_1Grid.html#a015c3ec7ba74fddfa326bde8a1b27cb6">dirac_solver.geometry.Grid</a></li>
+</ul>
+
+
+<h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
+<li>grid&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html#afe717ffca5a29eb61702c638d9064874">dirac_solver.core.SimulationProblem</a></li>
+</ul>
+
+
+<h3><a id="index_h" name="index_h"></a>- h -</h3><ul>
 <li>hbar&#160;:&#160;<a class="el" href="classdirac__solver_1_1geometry_1_1Grid.html#ab9fb0b0b65ed952f527dffbd4f412d54">dirac_solver.geometry.Grid</a></li>
+</ul>
+
+
+<h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
+<li>initial_state&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html#a562e51788022c2b3b20fc098182bf040">dirac_solver.core.SimulationProblem</a></li>
+<li>integrator&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#aa9cedd48767038ef89b08b70879868af">dirac_solver.core.DiracSolver</a></li>
+</ul>
+
+
+<h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>mass&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#afea6f6b8d96a576ae18c262d24a67c52">dirac_solver.initial_state.ConstantSpinor</a></li>
 <li>momentum&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#af9f772e2fdabea91470f556e3152cc87">dirac_solver.initial_state.ConstantSpinor</a></li>
+</ul>
+
+
+<h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
 <li>origin&#160;:&#160;<a class="el" href="classdirac__solver_1_1geometry_1_1Grid.html#ae2d9d72099d3ad8e55a9ef44cd2b084c">dirac_solver.geometry.Grid</a></li>
+</ul>
+
+
+<h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>pauli_spinor&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#ab1336ddbd7b42dd830a21b66d156bc57">dirac_solver.initial_state.ConstantSpinor</a></li>
+<li>potential&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html#a46284a16440e1d5431c8a9ce6be5dbf4">dirac_solver.core.SimulationProblem</a></li>
+<li>problem&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1DiracSolver.html#af240a269184ddc9bd163e575066add96">dirac_solver.core.DiracSolver</a></li>
+</ul>
+
+
+<h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
 <li>shape&#160;:&#160;<a class="el" href="classdirac__solver_1_1geometry_1_1Grid.html#a94af32dc44402ceb96b78d9794dc7e09">dirac_solver.geometry.Grid</a></li>
 <li>spacing&#160;:&#160;<a class="el" href="classdirac__solver_1_1geometry_1_1Grid.html#a46c2ebdf65d16fb361a69c2d41d2ddc8">dirac_solver.geometry.Grid</a></li>
 <li>spatial_width&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1GaussianPacket.html#a562d854fc1b27c34e2cec3a0fc874378">dirac_solver.initial_state.GaussianPacket</a></li>
 <li>spin_polarization&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#a904f2fd20c73181f5538e8a25faf9526">dirac_solver.initial_state.ConstantSpinor</a></li>
 <li>spin_superposition&#160;:&#160;<a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#a2a18553a338a8a5ecaa6faf5a53cb7e9">dirac_solver.initial_state.ConstantSpinor</a></li>
-<li>system&#160;:&#160;<a class="el" href="classdirac__solver_1_1constants_1_1Constants.html#a4aeb1b1dbabb86566821d7bd2108ed68">dirac_solver.constants.Constants</a></li>
+</ul>
+
+
+<h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
+<li>time_step&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html#a9a6db345ab47e7b1a192e9eb649dc6f3">dirac_solver.core.SimulationProblem</a></li>
+<li>total_time&#160;:&#160;<a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html#a8a595e2391e5e389c9880b90e8426c8f">dirac_solver.core.SimulationProblem</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

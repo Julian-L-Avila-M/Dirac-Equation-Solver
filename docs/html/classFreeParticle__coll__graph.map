@@ -1,0 +1,5 @@
+<map id="FreeParticle" name="FreeParticle">
+<area shape="rect" id="Node000001" title="Implementación concreta del potencial para una partícula libre." alt="" coords="5,79,104,104"/>
+<area shape="rect" id="Node000002" href="$classPotential.html" title="Clase base abstracta para todos los potenciales escalares (patrón Template)." alt="" coords="15,5,95,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,44,57,79,52,79,52,44"/>
+</map>

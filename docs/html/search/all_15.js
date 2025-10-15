@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['núcleo_20numérico_0',['1. &lt;tt&gt;solvers/&lt;/tt&gt; – Núcleo numérico',['../md_planning_2structure.html#autotoc_md68',1,'']]],
-  ['non_20functional_20requirements_20how_20em_20well_20em_20the_20system_20performs_20strong_1',['&lt;strong&gt;3. Non-Functional Requirements (How &lt;em&gt;Well&lt;/em&gt; the System Performs)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md44',1,'']]],
-  ['nuevas_20constantes_20globales_20definidas_20en_20tt_20_5f_5finit_5f_5f_20py_20tt_2',['2. Nuevas constantes globales definidas en &lt;tt&gt;__init__.py&lt;/tt&gt;',['../md_planning_2Actualizaci_xC3_xB3n__constants.html#autotoc_md5',1,'']]],
-  ['numérico_3',['1. &lt;tt&gt;solvers/&lt;/tt&gt; – Núcleo numérico',['../md_planning_2structure.html#autotoc_md68',1,'']]],
-  ['numérico_20de_20la_20ecuación_20de_20dirac_4',['Dirac-Solver: Solucionador numérico de la Ecuación de Dirac.',['../md_README.html',1,'']]]
+  ['management_20requirements_20strong_0',['&lt;strong&gt;5. Project Management Requirements&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md81',1,'']]],
+  ['mass_1',['mass',['../classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#afea6f6b8d96a576ae18c262d24a67c52',1,'dirac_solver::initial_state::ConstantSpinor']]],
+  ['matrix4x4_2',['Matrix4x4',['../namespaceDirac.html#ae378be0c40e8c48158600e967e840cd2',1,'Dirac']]],
+  ['method_3',['method',['../md_planning_2ulm-diagrams.html#autotoc_md119',1,'3. Patrones Template y Factory Method'],['../md_planning_2design-pattern.html#autotoc_md34',1,'3. Template + Factory Method']]],
+  ['method_20extensibilidad_20de_20componentes_20físicos_4',['4. Patrones Template y Factory Method - Extensibilidad de Componentes Físicos',['../md_planning_2design-pattern.html#autotoc_md20',1,'']]],
+  ['momentum_5',['momentum',['../classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#af9f772e2fdabea91470f556e3152cc87',1,'dirac_solver::initial_state::ConstantSpinor']]],
+  ['monitoreo_6',['5. Patrón Observer - Visualización y Monitoreo',['../md_planning_2design-pattern.html#autotoc_md22',1,'']]],
+  ['multiply_7',['multiply',['../namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed',1,'Dirac']]],
+  ['must_20do_20em_20strong_8',['&lt;strong&gt;2. Functional Requirements (What the System &lt;em&gt;Must Do&lt;/em&gt;)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md71',1,'']]],
+  ['must_20produce_20em_20strong_9',['&lt;strong&gt;C. Outputs and Analysis (What the System &lt;em&gt;Must Produce&lt;/em&gt;)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md74',1,'']]]
 ];

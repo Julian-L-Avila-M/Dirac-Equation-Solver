@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init_5fpath_0',['init_path',['../namespacecheck__package.html#a18dda5a223e9db5b33e157bdc7466e03',1,'check_package']]]
+  ['grid_0',['grid',['../classdirac__solver_1_1core_1_1SimulationProblem.html#afe717ffca5a29eb61702c638d9064874',1,'dirac_solver::core::SimulationProblem']]]
 ];

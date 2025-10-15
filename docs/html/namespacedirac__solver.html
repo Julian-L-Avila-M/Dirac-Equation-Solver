@@ -9,9 +9,20 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -20,6 +31,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="LOGO.png"/></td>
   <td id="projectalign">
    <div id="projectname">dirac_solver<span id="projectnumber">&#160;0.0.1</span>
    </div>
@@ -47,6 +59,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('namespacedirac__solver.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +97,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Espacios de nombres</a> &#124;
@@ -76,14 +104,9 @@ $(function() {
   <div class="headertitle"><div class="title">Referencia del espacio de nombres dirac_solver</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Librería para simulación de la ecuación de Dirac en unidades naturales.  
-<a href="namespacedirac__solver.html#details">Más...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Espacios de nombres</h2></td></tr>
-<tr class="memitem:namespacedirac__solver_1_1constants" id="r_namespacedirac__solver_1_1constants"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver_1_1constants.html">constants</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacedirac__solver_1_1core" id="r_namespacedirac__solver_1_1core"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver_1_1core.html">core</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacedirac__solver_1_1geometry" id="r_namespacedirac__solver_1_1geometry"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver_1_1geometry.html">geometry</a></td></tr>
@@ -94,33 +117,32 @@ Espacios de nombres</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aec7f9182aa7f7cdef50e2767cf38844c" id="r_aec7f9182aa7f7cdef50e2767cf38844c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver.html#aec7f9182aa7f7cdef50e2767cf38844c">hbar</a> = 1.0</td></tr>
-<tr class="memdesc:aec7f9182aa7f7cdef50e2767cf38844c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constante de Planck reducida (ħ) en unidades naturales.  <br /></td></tr>
 <tr class="separator:aec7f9182aa7f7cdef50e2767cf38844c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6543948bdeb73327541ce3f497072df1" id="r_a6543948bdeb73327541ce3f497072df1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver.html#a6543948bdeb73327541ce3f497072df1">c</a> = 1.0</td></tr>
-<tr class="memdesc:a6543948bdeb73327541ce3f497072df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Velocidad de la luz (c) en unidades naturales.  <br /></td></tr>
 <tr class="separator:a6543948bdeb73327541ce3f497072df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fc036514e9aab2bd0b18502aafc5e13" id="r_a9fc036514e9aab2bd0b18502aafc5e13"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver.html#a9fc036514e9aab2bd0b18502aafc5e13">electron_mass</a> = 1.0</td></tr>
-<tr class="memdesc:a9fc036514e9aab2bd0b18502aafc5e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Masa del electrón en unidades naturales.  <br /></td></tr>
 <tr class="separator:a9fc036514e9aab2bd0b18502aafc5e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af21fee2285001ff10259c82283a4fbc3" id="r_af21fee2285001ff10259c82283a4fbc3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver.html#af21fee2285001ff10259c82283a4fbc3">electron_charge</a> = 1.0</td></tr>
-<tr class="memdesc:af21fee2285001ff10259c82283a4fbc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga del electrón en unidades naturales.  <br /></td></tr>
 <tr class="separator:af21fee2285001ff10259c82283a4fbc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6ffb8e7a81fdaca9979afccf7d37184" id="r_aa6ffb8e7a81fdaca9979afccf7d37184"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver.html#aa6ffb8e7a81fdaca9979afccf7d37184">sigma_1</a></td></tr>
-<tr class="memdesc:aa6ffb8e7a81fdaca9979afccf7d37184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matriz de Pauli sigma_x.  <br /></td></tr>
 <tr class="separator:aa6ffb8e7a81fdaca9979afccf7d37184"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae06d5eb2c28471b9c12e96768a56c5c8" id="r_ae06d5eb2c28471b9c12e96768a56c5c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver.html#ae06d5eb2c28471b9c12e96768a56c5c8">sigma_2</a></td></tr>
-<tr class="memdesc:ae06d5eb2c28471b9c12e96768a56c5c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matriz de Pauli sigma_y.  <br /></td></tr>
 <tr class="separator:ae06d5eb2c28471b9c12e96768a56c5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeae0ae336869f4c9206baf1f11203c63" id="r_aeae0ae336869f4c9206baf1f11203c63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedirac__solver.html#aeae0ae336869f4c9206baf1f11203c63">sigma_3</a></td></tr>
-<tr class="memdesc:aeae0ae336869f4c9206baf1f11203c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matriz de Pauli sigma_z.  <br /></td></tr>
 <tr class="separator:aeae0ae336869f4c9206baf1f11203c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Librería para simulación de la ecuación de Dirac en unidades naturales. </p>
-<p>Contiene definiciones de constantes físicas, matrices de Pauli y clases principales para construir mallas, estados iniciales y ejecutar simulaciones.</p>
-<dl class="section author"><dt>Autor</dt><dd>Sebastian </dd></dl>
-<dl class="section date"><dt>Fecha</dt><dd>2025-09-11 </dd></dl>
-</div><h2 class="groupheader">Documentación de variables</h2>
+<div class="textblock"><pre class="fragment">dirac_solver
+============
+
+Librería para la simulación de la ecuación de Dirac en unidades naturales.
+
+Contiene definiciones de constantes físicas, matrices de Pauli y clases
+principales para construir mallas, estados iniciales y ejecutar simulaciones.
+
+Autor: Sebastian  
+Fecha: 2025-09-11
+</pre> </div><h2 class="groupheader">Documentación de variables</h2>
 <a id="a6543948bdeb73327541ce3f497072df1" name="a6543948bdeb73327541ce3f497072df1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6543948bdeb73327541ce3f497072df1">&#9670;&#160;</a></span>c</h2>
 
@@ -132,8 +154,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Velocidad de la luz (c) en unidades naturales. </p>
 
 </div>
 </div>
@@ -149,8 +169,6 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Carga del electrón en unidades naturales. </p>
-
 </div>
 </div>
 <a id="a9fc036514e9aab2bd0b18502aafc5e13" name="a9fc036514e9aab2bd0b18502aafc5e13"></a>
@@ -165,8 +183,6 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Masa del electrón en unidades naturales. </p>
-
 </div>
 </div>
 <a id="aec7f9182aa7f7cdef50e2767cf38844c" name="aec7f9182aa7f7cdef50e2767cf38844c"></a>
@@ -180,8 +196,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Constante de Planck reducida (ħ) en unidades naturales. </p>
 
 </div>
 </div>
@@ -199,8 +213,6 @@ Variables</h2></td></tr>
 <b>Valor inicial:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  np.array([[0, 1],</div>
 <div class="line"><span class="lineno">    2</span>                    [1, 0]], dtype=np.complex128)</div>
 </div><!-- fragment -->
-<p>Matriz de Pauli sigma_x. </p>
-
 </div>
 </div>
 <a id="ae06d5eb2c28471b9c12e96768a56c5c8" name="ae06d5eb2c28471b9c12e96768a56c5c8"></a>
@@ -217,8 +229,6 @@ Variables</h2></td></tr>
 <b>Valor inicial:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  np.array([[0, -1j],</div>
 <div class="line"><span class="lineno">    2</span>                    [1j, 0]], dtype=np.complex128)</div>
 </div><!-- fragment -->
-<p>Matriz de Pauli sigma_y. </p>
-
 </div>
 </div>
 <a id="aeae0ae336869f4c9206baf1f11203c63" name="aeae0ae336869f4c9206baf1f11203c63"></a>
@@ -235,14 +245,16 @@ Variables</h2></td></tr>
 <b>Valor inicial:</b><div class="fragment"><div class="line"><span class="lineno">    1</span>=  np.array([[1, 0],</div>
 <div class="line"><span class="lineno">    2</span>                    [0, -1]], dtype=np.complex128)</div>
 </div><!-- fragment -->
-<p>Matriz de Pauli sigma_z. </p>
-
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacedirac__solver.html">dirac_solver</a></li>
+    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

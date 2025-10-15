@@ -1,0 +1,53 @@
+\doxysection{Referencia del espacio de nombres test\+\_\+integration}
+\hypertarget{namespacetest__integration}{}\label{namespacetest__integration}\index{test\_integration@{test\_integration}}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacetest__integration_afd7f36b5b2f7ad67040a6b21c1eee2d1}{test\+\_\+1d\+\_\+simulation}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{namespacetest__integration_afd7f36b5b2f7ad67040a6b21c1eee2d1}\label{namespacetest__integration_afd7f36b5b2f7ad67040a6b21c1eee2d1} 
+\index{test\_integration@{test\_integration}!test\_1d\_simulation@{test\_1d\_simulation}}
+\index{test\_1d\_simulation@{test\_1d\_simulation}!test\_integration@{test\_integration}}
+\doxysubsubsection{\texorpdfstring{test\_1d\_simulation()}{test\_1d\_simulation()}}
+{\footnotesize\ttfamily test\+\_\+integration.\+test\+\_\+1d\+\_\+simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Tests a simple 1D simulation of a free particle with periodic boundaries.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \textcolor{keyword}{def\ }test\_1d\_simulation():}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00015\ \textcolor{stringliteral}{\ \ \ \ Tests\ a\ simple\ 1D\ simulation\ of\ a\ free\ particle\ with\ periodic\ boundaries.}}
+\DoxyCodeLine{00016\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00017\ \ \ \ \ py\_grid\ =\ \mbox{\hyperlink{classGrid}{Grid}}(shape=(100,),\ spacing=(0.1,))}
+\DoxyCodeLine{00018\ \ \ \ \ constant\_spinor\ =\ ConstantSpinor(momentum=[5.0,\ 0,\ 0])}
+\DoxyCodeLine{00019\ \ \ \ \ initial\_state\ =\ GaussianPacket(constant\_spinor,\ center=[0.0,\ 0,\ 0])}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ potential\ =\ \_core.FreeParticle()}
+\DoxyCodeLine{00022\ \ \ \ \ boundary\_condition\ =\ \_core.PeriodicBoundary()}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ problem\ =\ (}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ DiracProblemBuilder()}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ .set\_grid(py\_grid)}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ .set\_initial\_state(initial\_state)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ .set\_potential(potential)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ .set\_boundary\_condition(boundary\_condition)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ .set\_time\_parameters(time\_step=0.001,\ total\_time=0.1)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ .build()}
+\DoxyCodeLine{00032\ \ \ \ \ )}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ solver\ =\ DiracSolver(problem)}
+\DoxyCodeLine{00035\ \ \ \ \ solver.run\_simulation()}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ psi\_final\ =\ solver.get\_psi()}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ expected\_shape\ =\ (py\_grid.shape[0],\ 4)}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{assert}\ psi\_final.shape\ ==\ expected\_shape,\ f\textcolor{stringliteral}{"{}Final\ psi\ has\ incorrect\ shape:\ \{psi\_final.shape\},\ expected\ \{expected\_shape\}"{}}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ norm\ =\ np.linalg.norm(psi\_final)}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{assert}\ norm\ >\ 1e-\/9,\ f\textcolor{stringliteral}{"{}Final\ wave\ function\ appears\ to\ be\ zero\ (norm\ =\ \{norm:.4f\})."{}}}
+
+\end{DoxyCode}

@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['5_20potencial_20de_20yukawa_0',['5. Potencial de Yukawa',['../md_planning_2problems-to-solve.html#autotoc_md30',1,'']]],
-  ['5_20project_20management_20requirements_20strong_1',['&lt;strong&gt;5. Project Management Requirements&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md48',1,'']]],
-  ['5_20tt_20conditions_20tt_20–_20condiciones_2',['5. &lt;tt&gt;conditions/&lt;/tt&gt; – Condiciones',['../md_planning_2structure.html#autotoc_md72',1,'']]]
+  ['5_20facade_0',['5. Facade',['../md_planning_2design-pattern.html#autotoc_md36',1,'']]],
+  ['5_20patrón_20facade_1',['5. Patrón Facade',['../md_planning_2ulm-diagrams.html#autotoc_md121',1,'']]],
+  ['5_20patrón_20observer_20visualización_20y_20monitoreo_2',['5. Patrón Observer - Visualización y Monitoreo',['../md_planning_2design-pattern.html#autotoc_md22',1,'']]],
+  ['5_20potencial_20de_20yukawa_3',['5. Potencial de Yukawa',['../md_planning_2problems-to-solve.html#autotoc_md63',1,'']]],
+  ['5_20project_20management_20requirements_20strong_4',['&lt;strong&gt;5. Project Management Requirements&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md81',1,'']]],
+  ['5_20tt_20conditions_20tt_20–_20condiciones_5',['5. &lt;tt&gt;conditions/&lt;/tt&gt; – Condiciones',['../md_planning_2structure.html#autotoc_md105',1,'']]]
 ];

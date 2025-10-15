@@ -1,0 +1,156 @@
+\doxysection{Referencia de la clase Absorbing\+Boundary}
+\hypertarget{classAbsorbingBoundary}{}\label{classAbsorbingBoundary}\index{AbsorbingBoundary@{AbsorbingBoundary}}
+
+
+Implementación de una condición de frontera absorbente (ABC) para simulaciones 1D.  
+
+
+
+
+{\ttfamily \#include $<$Absorbing\+Boundary.\+h$>$}
+
+
+
+Diagrama de herencia de Absorbing\+Boundary\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classAbsorbingBoundary__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagrama de colaboración de Absorbing\+Boundary\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classAbsorbingBoundary__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAbsorbingBoundary_afa1eb9ef1855a32e0e9ab87e5082346e}{Absorbing\+Boundary}} (double strength)
+\begin{DoxyCompactList}\small\item\em Constructor de la condición de frontera absorbente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAbsorbingBoundary_a5338d859c3ed9140e3b202156f645726}{apply}} (std\+::vector$<$ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac\+::\+Spinor}} $>$ \&psi, const \mbox{\hyperlink{classGrid}{Grid}} \&grid) const override
+\begin{DoxyCompactList}\small\item\em Aplica la condición de frontera absorbente a la función de onda. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classAbsorbingBoundary_a76be1c6c7684f0b677fb61b7a33a35f4}{get\+\_\+name}} () const override
+\begin{DoxyCompactList}\small\item\em Devuelve el nombre de la condición de frontera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Implementación de una condición de frontera absorbente (ABC) para simulaciones 1D. 
+
+Esta clase aplica un amortiguamiento en los extremos del dominio espacial para minimizar reflexiones artificiales en la frontera. Se utiliza típicamente en simulaciones de la ecuación de \doxylink{namespaceDirac}{Dirac} o de Schrödinger cuando se desea emular un dominio abierto.
+
+Actualmente, la clase sólo soporta dominios unidimensionales (1D).\hypertarget{classAbsorbingBoundary_autotoc_md0}{}\doxysubsubsubsection{\texorpdfstring{Ejemplo de uso}{Ejemplo de uso}}\label{classAbsorbingBoundary_autotoc_md0}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classAbsorbingBoundary}{AbsorbingBoundary}}\ abc(0.05);\ \ \textcolor{comment}{//\ Condición\ de\ frontera\ con\ fuerza\ 0.05}}
+\DoxyCodeLine{abc.apply(psi,\ grid);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Aplica\ el\ amortiguamiento\ a\ los\ extremos}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classAbsorbingBoundary_afa1eb9ef1855a32e0e9ab87e5082346e}\label{classAbsorbingBoundary_afa1eb9ef1855a32e0e9ab87e5082346e} 
+\index{AbsorbingBoundary@{AbsorbingBoundary}!AbsorbingBoundary@{AbsorbingBoundary}}
+\index{AbsorbingBoundary@{AbsorbingBoundary}!AbsorbingBoundary@{AbsorbingBoundary}}
+\doxysubsubsection{\texorpdfstring{AbsorbingBoundary()}{AbsorbingBoundary()}}
+{\footnotesize\ttfamily Absorbing\+Boundary\+::\+Absorbing\+Boundary (\begin{DoxyParamCaption}\item[{double}]{strength }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor de la condición de frontera absorbente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em strength} & Factor de absorción (0 \texorpdfstring{$<$}{<} strength \texorpdfstring{$<$}{<} 1). Valores mayores implican una absorción más fuerte en los extremos. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ :\ strength\_(strength)\ \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classAbsorbingBoundary_a5338d859c3ed9140e3b202156f645726}\label{classAbsorbingBoundary_a5338d859c3ed9140e3b202156f645726} 
+\index{AbsorbingBoundary@{AbsorbingBoundary}!apply@{apply}}
+\index{apply@{apply}!AbsorbingBoundary@{AbsorbingBoundary}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily void Absorbing\+Boundary\+::apply (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac\+::\+Spinor}} $>$ \&}]{psi,  }\item[{const \mbox{\hyperlink{classGrid}{Grid}} \&}]{grid }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Aplica la condición de frontera absorbente a la función de onda. 
+
+Multiplica los valores del spinor en los extremos de la malla por un factor complejo reductor de magnitud {\ttfamily (1 -\/ strength)}, lo que atenúa progresivamente la amplitud del campo.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em psi} & Vector de spinors de \doxylink{namespaceDirac}{Dirac} que representan el campo en la malla. \\
+\hline
+{\em grid} & Objeto que define la malla espacial asociada a la simulación. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Excepciones}
+{\em std\+::runtime\+\_\+error} & Si la malla no es unidimensional (dim ≠ 1). \\
+\hline
+\end{DoxyExceptions}
+
+
+Implementa \mbox{\hyperlink{classBoundaryCondition_a89c213d7d45fd7fdaed4021a030ea998}{Boundary\+Condition}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (grid.\mbox{\hyperlink{classGrid_a30ec32dfa617d5b9fbbaf67fb795225b}{get\_dim}}()\ !=\ 1)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}AbsorbingBoundary\ solo\ está\ implementado\ para\ mallas\ 1D\ por\ el\ momento."{}});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\_points\ =\ grid.\mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\_total\_points}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\_points\ <\ 2)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Aplicar\ amortiguamiento\ a\ los\ puntos\ primero\ y\ último}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ psi[0]\ =\ \mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}(1.0\ -\/\ strength\_,\ 0.0)\ *\ psi[0];}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ psi[n\_points\ -\/\ 1]\ =\ \mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}(1.0\ -\/\ strength\_,\ 0.0)\ *\ psi[n\_points\ -\/\ 1];}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classAbsorbingBoundary_a76be1c6c7684f0b677fb61b7a33a35f4}\label{classAbsorbingBoundary_a76be1c6c7684f0b677fb61b7a33a35f4} 
+\index{AbsorbingBoundary@{AbsorbingBoundary}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!AbsorbingBoundary@{AbsorbingBoundary}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily std\+::string Absorbing\+Boundary\+::get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Devuelve el nombre de la condición de frontera. 
+
+\begin{DoxyReturn}{Devuelve}
+La cadena {\ttfamily "{}\+Absorbing\+Boundary"{}}. 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{classBoundaryCondition_a45ca828c4cc6c90627bdd0810552a034}{Boundary\+Condition}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}AbsorbingBoundary"{}};}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+cpp\+\_\+src/boundaries/\mbox{\hyperlink{AbsorbingBoundary_8h}{Absorbing\+Boundary.\+h}}\end{DoxyCompactItemize}

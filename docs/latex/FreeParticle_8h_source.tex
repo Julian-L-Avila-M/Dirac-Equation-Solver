@@ -1,0 +1,21 @@
+\doxysection{Free\+Particle.\+h}
+\hypertarget{FreeParticle_8h_source}{}\label{FreeParticle_8h_source}\index{cpp\_src/potentials/FreeParticle.h@{cpp\_src/potentials/FreeParticle.h}}
+\mbox{\hyperlink{FreeParticle_8h}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Potential_8h}{Potential.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFreeParticle}{FreeParticle}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classPotential}{Potential}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classFreeParticle_a19b24bf80dcc7268816c455674c0c9c4}{evaluate}}(\textcolor{keyword}{const}\ std::vector<double>\&\ r)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ (void)r;\ \textcolor{comment}{//\ Evitar\ advertencias\ por\ parámetro\ no\ utilizado.}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0;}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00044\ \ \ \ \ std::string\ \mbox{\hyperlink{classFreeParticle_a96b5646b901138f1e30147bca288e145}{get\_name}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}FreeParticle"{}};}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \};}
+
+\end{DoxyCode}
