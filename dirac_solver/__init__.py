@@ -36,11 +36,12 @@ sigma_3 = np.array([[1, 0],
 # Importar clases principales del paquete
 from .geometry import Grid
 from .initial_state import ConstantSpinor, GaussianPacket
-from .core import DiracSolver
+from .core import DiracSolver, DiracProblemBuilder, SimulationProblem
 
 ## Lista de símbolos exportados al usar: from dirac_solver import *
 __all__ = [
     "hbar", "c", "electron_mass", "electron_charge",
     "sigma_1", "sigma_2", "sigma_3",
-    "Grid", "ConstantSpinor", "GaussianPacket", "DiracSolver"
+    "Grid", "ConstantSpinor", "GaussianPacket", "DiracSolver",
+    "DiracProblemBuilder", "SimulationProblem"
 ]
