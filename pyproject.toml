@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["scikit-build-core", "pybind11"]
+build-backend = "scikit_build_core.build"
 
 [project]
 name = "dirac-solver"
@@ -20,9 +20,8 @@ dependencies = [
 	"numpy"
 ]
 
-[tool.setuptools.packages.find]
-where = ["."]
-exclude = ["docs","examples","planning"]
+[tool.scikit-build]
+cmake.source-dir = "cpp_src"
 
 [project.urls]
 Homepage = "https://github.com/Julian-L-Avila-M/Dirac-Equation-Solver/tree/main"

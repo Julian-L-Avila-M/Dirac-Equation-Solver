@@ -110,6 +110,13 @@ class GaussianPacket:
         x = np.array(grid_position)
         p0 = self.constant_spinor.momentum
         x0 = self.center
+
+        # Pad the position vector 'x' to match the dimension of momentum and center vectors
+        if len(x) < len(p0):
+            padded_x = np.zeros(len(p0), dtype=float)
+            padded_x[:len(x)] = x.flatten()
+            x = padded_x
+
         sigma0 = self.spatial_width
         u_p0 = self.constant_spinor.constant_spinor
 
@@ -124,6 +131,22 @@ class GaussianPacket:
         @brief Devuelve el spinor calculado en el punto
         """
         return dirac_spinor
+
+    def evaluate_on_grid(self, grid):
+        """
+        @brief Calcula el estado inicial en toda la malla.
+        @param grid: Objeto Grid sobre el que se evaluará el paquete.
+        @return: Un array de NumPy con la forma (n_points, 4)
+        """
+        n_points = grid.shape[0] # Assuming 1D for now
+        psi_0 = np.zeros((n_points, 4), dtype=np.complex128)
+
+        for i in range(n_points):
+            position = grid.coords[i]
+            spinor_at_point = self.evaluate(position)
+            psi_0[i, :] = spinor_at_point.flatten()
+
+        return psi_0
 
 # """
 # @class GaussianWavePacket
