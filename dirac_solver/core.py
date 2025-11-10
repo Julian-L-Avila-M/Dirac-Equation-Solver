@@ -1,4 +1,5 @@
 import numpy as np
+import time
 from .geometry import Grid
 from .initial_state import GaussianPacket
 
@@ -33,7 +34,7 @@ class DiracProblemBuilder:
         self._grid = grid
         return self
 
-    def set_initial_state(self, initial_state: GaussianPacket):
+    def set_initial_state(self, initial_state: object):
         """Establece la configuración inicial del campo espinorial."""
         self._initial_state = initial_state
         return self
@@ -73,13 +74,13 @@ class DiracProblemBuilder:
             print("Advertencia: Potencial no establecido. Usando partícula libre (V=0) por defecto.")
 
         return SimulationProblem(
-            grid=self._grid,
-            initial_state=self._initial_state,
-            potential=self._potential,
-            boundary_condition=self._boundary_condition,
-            time_step=self._time_step,
-            total_time=self._total_time,
-        )
+                grid=self._grid,
+                initial_state=self._initial_state,
+                potential=self._potential,
+                boundary_condition=self._boundary_condition,
+                time_step=self._time_step,
+                total_time=self._total_time,
+                )
 
 import matplotlib.pyplot as plt
 from . import _core, electron_mass
@@ -95,32 +96,78 @@ class DiracSolver:
         # Generar la función de onda inicial en la malla
         psi_0 = problem.initial_state.evaluate_on_grid(problem.grid)
 
+        # Se guarda una cipia de psi_0 para guardarla
+        # en run_simulation storage_handler con snapshot t=0
+
+        self._initial_psi_for_storage = psi_0
+
         # Crear objeto Grid de C++
         cpp_grid = _core.Grid(problem.grid.shape, problem.grid.spacing)
 
         # Instanciar el integrador FDTD de C++
         self.integrator = _core.FDTDLeapfrogIntegrator(
-            psi_0,
-            cpp_grid,
-            problem.potential,
-            problem.boundary_condition,
-            problem.time_step,
-            electron_mass # Usando la constante global
-        )
+                psi_0,
+                cpp_grid,
+                problem.potential,
+                problem.boundary_condition,
+                problem.time_step,
+                electron_mass # Usando la constante global
+                )
         print(f"DiracSolver inicializado con el motor C++ '{self.integrator.get_name()}'.")
 
-
-    def run_simulation(self):
+    def run_simulation(self, storage_handler=None, save_every_n_steps: int = 100):
         """
         Ejecuta el bucle de evolución temporal llamando a la función de paso de C++.
+
+        Parámetros:
+        - storage_handler (objeto, opcional): 
+            Un objeto "guardador" (como HDF5Storage) que tenga 
+            los métodos .write_snapshot(psi, time) y .close().
+            Si es None, la simulación se ejecuta sin guardar.
+        - save_every_n_steps (int): 
+            Frecuencia de guardado (en pasos).
         """
         num_steps = int(self.problem.total_time / self.problem.time_step)
+        dt = self.problem.time_step
         print(f"Ejecutando simulación por {num_steps} pasos...")
+
+        # --- Lógica de almacenamiento DELEGADA ---
+        if storage_handler:
+            try:
+                # Guardar estado inicial (t=0)
+                storage_handler.write_snapshot(self._initial_psi_for_storage, 0.0)
+                print(f"Guardando snapshot inicial (t=0.0).")
+            except Exception as e:
+                print(f"Error al guardar estado inicial: {e}")
+                storage_handler = None # Desactivar si falla
+
+        start_time = time.time() # Medir tiempo
+
+        # --- Bucle de simulación ---
         for i in range(num_steps):
+
+            # 1. Avanzar la simulación C++
             self.integrator.step()
-            if (i + 1) % 10 == 0:
-                print(f"  Paso {i+1}/{num_steps} completado.")
-        print("Simulación finalizada.")
+
+            current_step = i + 1
+            current_time = current_step * dt
+
+            # 2. Lógica de guardado DELEGADA
+            # Se guarda si es el paso N o si es el último paso
+            if storage_handler and (current_step % save_every_n_steps == 0 or current_step == num_steps):
+                storage_handler.write_snapshot(self.get_psi(), current_time)
+
+            # 3. Imprimir progreso
+            if current_step % 10 == 0:
+                print(f"  Paso {current_step}/{num_steps} completado.") 
+
+        end_time = time.time()
+        print(f"Simulación finalizada en {end_time - start_time:.2f} segundos.")
+
+        # --- Cerrar el manejador de almacenamiento ---
+        if storage_handler:
+            storage_handler.close()
+
 
     def get_psi(self):
         """Devuelve el campo espinorial actual desde el backend de C++."""

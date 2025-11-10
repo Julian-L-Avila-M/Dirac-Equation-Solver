@@ -4,7 +4,7 @@
 #  Contiene definiciones de constantes físicas, matrices de Pauli y clases
 #  principales para construir mallas, estados iniciales y ejecutar simulaciones.
 #
-#  @author Sebastian
+#  @author Sebastian Rodriguez, Camilo Huertas, Julian Avila
 #  @date 2025-09-11
 
 import numpy as np
@@ -37,11 +37,13 @@ sigma_3 = np.array([[1, 0],
 from .geometry import Grid
 from .initial_state import ConstantSpinor, GaussianPacket
 from .core import DiracSolver, DiracProblemBuilder, SimulationProblem
+from .storage import HDF5Storage
 
-## Lista de símbolos exportados al usar: from dirac_solver import *
+# Lista de símbolos exportados al usar: from dirac_solver import *
 __all__ = [
     "hbar", "c", "electron_mass", "electron_charge",
     "sigma_1", "sigma_2", "sigma_3",
     "Grid", "ConstantSpinor", "GaussianPacket", "DiracSolver",
-    "DiracProblemBuilder", "SimulationProblem"
+    "DiracProblemBuilder", "SimulationProblem",
+    "HDF5Storage"
 ]
