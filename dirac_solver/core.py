@@ -1,9 +1,10 @@
 import numpy as np
+import time
 from .geometry import Grid
-from .initial_state import GaussianPacket
+
+from .initial_state import InitialState
 import matplotlib.pyplot as plt
 from . import _core, electron_mass
-
 
 ###############################################################
 ## @class SimulationProblem
@@ -80,7 +81,8 @@ class DiracProblemBuilder:
     ## @brief Define el estado inicial del campo espinorial.
     ## @param initial_state Instancia de @ref GaussianPacket u otro estado inicial compatible.
     ## @return Referencia al propio builder.
-    def set_initial_state(self, initial_state: GaussianPacket):
+    def set_initial_state(self, initial_state: InitialState):
+        """Establece la configuración inicial del campo espinorial."""
         self._initial_state = initial_state
         return self
 
@@ -125,13 +127,13 @@ class DiracProblemBuilder:
             print("Advertencia: Potencial no establecido. Usando partícula libre (V=0) por defecto.")
 
         return SimulationProblem(
-            grid=self._grid,
-            initial_state=self._initial_state,
-            potential=self._potential,
-            boundary_condition=self._boundary_condition,
-            time_step=self._time_step,
-            total_time=self._total_time,
-        )
+                grid=self._grid,
+                initial_state=self._initial_state,
+                potential=self._potential,
+                boundary_condition=self._boundary_condition,
+                time_step=self._time_step,
+                total_time=self._total_time,
+                )
 
 
 ###############################################################
@@ -152,7 +154,7 @@ class DiracSolver:
         # Evaluar estado inicial sobre la malla
         psi_0 = problem.initial_state.evaluate_on_grid(problem.grid)
 
-        # Crear grid compatible con el backend C++
+        self._initial_psi_for_storage = psi_0
         cpp_grid = _core.Grid(problem.grid.shape, problem.grid.spacing)
 
         # Inicializar el integrador Leapfrog de C++
@@ -172,12 +174,46 @@ class DiracSolver:
     ## @note Imprime información de progreso cada 10 pasos.
     def run_simulation(self):
         num_steps = int(self.problem.total_time / self.problem.time_step)
+        dt = self.problem.time_step
         print(f"Ejecutando simulación por {num_steps} pasos...")
+
+        # --- Lógica de almacenamiento DELEGADA ---
+        if storage_handler:
+            try:
+                # Guardar estado inicial (t=0)
+                storage_handler.write_snapshot(self._initial_psi_for_storage, 0.0)
+                print(f"Guardando snapshot inicial (t=0.0).")
+            except Exception as e:
+                print(f"Error al guardar estado inicial: {e}")
+                storage_handler = None # Desactivar si falla
+
+        start_time = time.time() # Medir tiempo
+
+        # --- Bucle de simulación ---
         for i in range(num_steps):
+
+            # 1. Avanzar la simulación C++
             self.integrator.step()
-            if (i + 1) % 10 == 0:
-                print(f"  Paso {i+1}/{num_steps} completado.")
-        print("Simulación finalizada.")
+
+            current_step = i + 1
+            current_time = current_step * dt
+
+            # 2. Lógica de guardado DELEGADA
+            # Se guarda si es el paso N o si es el último paso
+            if storage_handler and (current_step % save_every_n_steps == 0 or current_step == num_steps):
+                storage_handler.write_snapshot(self.get_psi(), current_time)
+
+            # 3. Imprimir progreso
+            if current_step % 10 == 0:
+                print(f"  Paso {current_step}/{num_steps} completado.") 
+
+        end_time = time.time()
+        print(f"Simulación finalizada en {end_time - start_time:.2f} segundos.")
+
+        # --- Cerrar el manejador de almacenamiento ---
+        if storage_handler:
+            storage_handler.close()
+
 
     ## @brief Obtiene el estado actual del campo espinorial.
     ## @return np.ndarray con la función de onda actual (espinor completo).

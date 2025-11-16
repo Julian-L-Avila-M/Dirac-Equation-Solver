@@ -1,15 +1,11 @@
-"""
-dirac_solver
-============
-
-Librería para la simulación de la ecuación de Dirac en unidades naturales.
-
-Contiene definiciones de constantes físicas, matrices de Pauli y clases
-principales para construir mallas, estados iniciales y ejecutar simulaciones.
-
-Autor: Sebastian  
-Fecha: 2025-09-11
-"""
+## @package dirac_solver
+#  Librería para simulación de la ecuación de Dirac en unidades naturales.
+#
+#  Contiene definiciones de constantes físicas, matrices de Pauli y clases
+#  principales para construir mallas, estados iniciales y ejecutar simulaciones.
+#
+#  @author Sebastian Rodriguez, Camilo Huertas, Julian Avila
+#  @date 2025-09-11
 
 import numpy as np
 
@@ -52,17 +48,18 @@ sigma_3 = np.array([[1, 0],
 # ---------------------------------------------------------------------------
 
 from .geometry import Grid
-from .initial_state import ConstantSpinor, GaussianPacket
+from .initial_state import InitialState, ConstantSpinor, GaussianPacket, PlaneWave
 from .core import DiracSolver, DiracProblemBuilder, SimulationProblem
-
+from .storage import HDF5Storage
 
 # ---------------------------------------------------------------------------
 # Símbolos exportados
 # ---------------------------------------------------------------------------
-
+# Lista de símbolos exportados al usar: from dirac_solver import *
 __all__ = [
     "hbar", "c", "electron_mass", "electron_charge",
     "sigma_1", "sigma_2", "sigma_3",
-    "Grid", "ConstantSpinor", "GaussianPacket",
-    "DiracSolver", "DiracProblemBuilder", "SimulationProblem"
+    "Grid", "ConstantSpinor", "GaussianPacket", "DiracSolver",
+    "DiracProblemBuilder", "SimulationProblem",
+    "HDF5Storage"
 ]
