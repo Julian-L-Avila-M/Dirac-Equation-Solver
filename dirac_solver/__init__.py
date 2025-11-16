@@ -35,7 +35,7 @@ sigma_3 = np.array([[1, 0],
 
 # Importar clases principales del paquete
 from .geometry import Grid
-from .initial_state import ConstantSpinor, GaussianPacket
+from .initial_state import InitialState, ConstantSpinor, GaussianPacket, PlaneWave
 from .core import DiracSolver, DiracProblemBuilder, SimulationProblem
 
 ## Lista de símbolos exportados al usar: from dirac_solver import *
