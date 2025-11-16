@@ -1,0 +1,90 @@
+\doxysection{Referencia de la clase Potential}
+\hypertarget{classPotential}{}\label{classPotential}\index{Potential@{Potential}}
+
+
+Clase base abstracta para todos los potenciales escalares (patrón Template).  
+
+
+
+
+{\ttfamily \#include $<$Potential.\+h$>$}
+
+
+
+Diagrama de herencia de Potential\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPotential__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classPotential_ab19408f59ef425ec21e3bf588ed5aa21}{\texorpdfstring{$\sim$}{\string~}\+Potential}} ()=default
+\item 
+virtual double \mbox{\hyperlink{classPotential_a32efd5ee677886223026061411b65538}{evaluate}} (const std\+::vector$<$ double $>$ \&r) const =0
+\begin{DoxyCompactList}\small\item\em Evalúa el potencial en una coordenada espacial dada. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classPotential_a9cb219081d0eb506fb42e9802bc503cd}{get\+\_\+name}} () const =0
+\begin{DoxyCompactList}\small\item\em Devuelve el nombre del potencial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase base abstracta para todos los potenciales escalares (patrón Template). 
+
+Esta clase define la interfaz para cualquier potencial V(r) que se utilizará en la ecuación de \doxylink{namespaceDirac}{Dirac}. Permite que diferentes funciones de potencial sean implementadas y utilizadas indistintamente por el solver. 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classPotential_ab19408f59ef425ec21e3bf588ed5aa21}\label{classPotential_ab19408f59ef425ec21e3bf588ed5aa21} 
+\index{Potential@{Potential}!````~Potential@{\texorpdfstring{$\sim$}{\string~}Potential}}
+\index{````~Potential@{\texorpdfstring{$\sim$}{\string~}Potential}!Potential@{Potential}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Potential()}{\string~Potential()}}
+{\footnotesize\ttfamily virtual Potential\+::\texorpdfstring{$\sim$}{\string~}\+Potential (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classPotential_a32efd5ee677886223026061411b65538}\label{classPotential_a32efd5ee677886223026061411b65538} 
+\index{Potential@{Potential}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!Potential@{Potential}}
+\doxysubsubsection{\texorpdfstring{evaluate()}{evaluate()}}
+{\footnotesize\ttfamily virtual double Potential\+::evaluate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{r }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Evalúa el potencial en una coordenada espacial dada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em r} & Un vector que representa la coordenada espacial (por ejemplo, \mbox{[}x, y, z\mbox{]}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+El valor escalar del potencial en ese punto. 
+\end{DoxyReturn}
+
+
+Implementado en \mbox{\hyperlink{classCoulombPotential_ae407d6cb33e69a230367685e05c09aaf}{Coulomb\+Potential}}, \mbox{\hyperlink{classFreeParticle_a19b24bf80dcc7268816c455674c0c9c4}{Free\+Particle}} y \mbox{\hyperlink{classScalarPotential_a973bf456bbbcd628816de50515d330fe}{Scalar\+Potential}}.
+
+\Hypertarget{classPotential_a9cb219081d0eb506fb42e9802bc503cd}\label{classPotential_a9cb219081d0eb506fb42e9802bc503cd} 
+\index{Potential@{Potential}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!Potential@{Potential}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily virtual std\+::string Potential\+::get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Devuelve el nombre del potencial. 
+
+\begin{DoxyReturn}{Devuelve}
+Una cadena que contiene el nombre de la clase. 
+\end{DoxyReturn}
+
+
+Implementado en \mbox{\hyperlink{classCoulombPotential_a26e2248e6200de30e9ad4dbddd3c1d12}{Coulomb\+Potential}}, \mbox{\hyperlink{classFreeParticle_a96b5646b901138f1e30147bca288e145}{Free\+Particle}} y \mbox{\hyperlink{classScalarPotential_a31fbfd078a451d8e5825a67ad0882f35}{Scalar\+Potential}}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+cpp\+\_\+src/potentials/\mbox{\hyperlink{Potential_8h}{Potential.\+h}}\end{DoxyCompactItemize}

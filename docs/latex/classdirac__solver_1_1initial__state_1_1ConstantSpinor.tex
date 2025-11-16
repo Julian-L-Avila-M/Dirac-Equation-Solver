@@ -45,6 +45,33 @@
 \begin{DoxyVerb}@brief se normaliza el vector (al necesitarse un vector unitario)
 \end{DoxyVerb}
  
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ spin\_polarization=[0,0,1],\ spin\_superposition=[1\ +\ 0j,\ 0\ +\ 0j],\ momentum=[1,0,0],\ mass=electron\_mass):}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ se\ normaliza\ el\ vector\ (al\ necesitarse\ un\ vector\ unitario)}}
+\DoxyCodeLine{00023\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ norm\_n\ =\ np.linalg.norm(spin\_polarization)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ self.spin\_polarization\ =\ np.array(spin\_polarization)\ /\ norm\_n\ \textcolor{keywordflow}{if}\ norm\_n\ >\ 0\ \textcolor{keywordflow}{else}\ np.array([0,0,1])}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ se\ comprueba\ que\ la\ suma\ del\ modulo\ al\ cuadrado\ sea\ 1}}
+\DoxyCodeLine{00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ norm\_s\ =\ np.linalg.norm(spin\_superposition)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ self.spin\_superposition\ =\ np.array(spin\_superposition,\ dtype=np.complex128)\ /\ norm\_s\ \textcolor{keywordflow}{if}\ norm\_s\ >\ 0\ \textcolor{keywordflow}{else}\ np.array([1,0])}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ self.momentum\ =\ np.array(momentum)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ self.mass\ =\ mass}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ self.\_base()}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ self.\_pauli\_spinor()}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ self.\_constant\_spinor()}
+\DoxyCodeLine{00041\ }
+
+\end{DoxyCode}
+
 
 \doxysubsection{Documentación de funciones miembro}
 \Hypertarget{classdirac__solver_1_1initial__state_1_1ConstantSpinor_aca76beb61a79968db4b847311a330d89}\label{classdirac__solver_1_1initial__state_1_1ConstantSpinor_aca76beb61a79968db4b847311a330d89} 
@@ -53,12 +80,67 @@
 \doxysubsubsection{\texorpdfstring{\_base()}{\_base()}}
 {\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Constant\+Spinor.\+\_\+base (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{def\ }\_base(self):}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ theta\ =\ np.arccos(self.spin\_polarization[2])}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ phi\ =\ np.arctan2(self.spin\_polarization[1],self.spin\_polarization[0])}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Construcción\ base\ (vector\ columna\ 2x1)\ del\ spinor\ de\ Pauli}}
+\DoxyCodeLine{00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ self.chi\_up\ =\ np.array([}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ [np.cos(theta\ /2)],}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ [np.exp(1j\ *\ phi)\ *\ np.sin(theta\ /\ 2)]}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ ],\ dtype=np.complex128)}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ self.chi\_down\ =\ np.array([}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ [np.sin(theta\ /2)],}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ [-\/np.exp(1j\ *\ phi)\ *\ np.cos(theta\ /\ 2)]}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ ],\ dtype=np.complex128)}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ }
+
+\end{DoxyCode}
 \Hypertarget{classdirac__solver_1_1initial__state_1_1ConstantSpinor_af7eef6291b686a15e6c194c825fa5667}\label{classdirac__solver_1_1initial__state_1_1ConstantSpinor_af7eef6291b686a15e6c194c825fa5667} 
 \index{dirac\_solver.initial\_state.ConstantSpinor@{dirac\_solver.initial\_state.ConstantSpinor}!\_constant\_spinor@{\_constant\_spinor}}
 \index{\_constant\_spinor@{\_constant\_spinor}!dirac\_solver.initial\_state.ConstantSpinor@{dirac\_solver.initial\_state.ConstantSpinor}}
 \doxysubsubsection{\texorpdfstring{\_constant\_spinor()}{\_constant\_spinor()}}
 {\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Constant\+Spinor.\+\_\+constant\+\_\+spinor (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{def\ }\_constant\_spinor(self):}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#proyeccion\ del\ spin\ en\ la\ direccion\ del\ momentum\ }}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ norm\_momentum\ =\ np.linalg.norm(self.momentum)}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ norm\_momentum\ ==\ 0:}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ proyection\_spin\ =\ np.zeros((2,2),\ dtype=np.complex128)}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ proyection\_spin\ =\ ((self.momentum[0]\ *\ sigma\_1\ +}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.momentum[1]\ *\ sigma\_2\ +}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.momentum[2]\ *\ sigma\_3)\ /\ norm\_momentum)}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Energía\ relativista}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ energy\ =\ np.sqrt((norm\_momentum)**2\ +\ (self.mass)**2)}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Partes\ superior\ e\ inferior\ del\ spinor}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ upper\_part\ =\ np.sqrt(energy\ +\ self.mass)\ *\ self.pauli\_spinor}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ lower\_part\ =\ np.sqrt(energy\ -\/\ self.mass)\ *\ (proyection\_spin\ @\ self.pauli\_spinor)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00089\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Construcción\ del\ spinor\ constante\ (por\ partes)}}
+\DoxyCodeLine{00090\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ self.constant\_spinor\ =\ np.vstack((upper\_part,\ lower\_part))}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00095\ \textcolor{stringliteral}{@brief\ Clase\ que\ construye\ el\ estado\ inicial\ como\ un\ paquete\ de\ ondas\ gausianas}}
+\DoxyCodeLine{00096\ \textcolor{stringliteral}{"{}"{}"{}}}
+
+\end{DoxyCode}
 \Hypertarget{classdirac__solver_1_1initial__state_1_1ConstantSpinor_a3949f56f62d88a318cc8cf79420bd025}\label{classdirac__solver_1_1initial__state_1_1ConstantSpinor_a3949f56f62d88a318cc8cf79420bd025} 
 \index{dirac\_solver.initial\_state.ConstantSpinor@{dirac\_solver.initial\_state.ConstantSpinor}!\_pauli\_spinor@{\_pauli\_spinor}}
 \index{\_pauli\_spinor@{\_pauli\_spinor}!dirac\_solver.initial\_state.ConstantSpinor@{dirac\_solver.initial\_state.ConstantSpinor}}
@@ -68,6 +150,18 @@
 \begin{DoxyVerb}@brief Construcción del spinor de pauli
 \end{DoxyVerb}
  
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{def\ }\_pauli\_spinor(self):}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Construcción\ del\ spinor\ de\ pauli}}
+\DoxyCodeLine{00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ alpha\ =\ self.spin\_superposition[0]}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ beta\ =\ self.spin\_superposition[1]}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ self.pauli\_spinor\ =\ (alpha\ *\ self.chi\_up)\ +\ (beta\ *\ self.chi\_down)}
+\DoxyCodeLine{00068\ }
+
+\end{DoxyCode}
+
 
 \doxysubsection{Documentación de datos miembro}
 \Hypertarget{classdirac__solver_1_1initial__state_1_1ConstantSpinor_a4d919bb7e016fd77749325a2ffbfee74}\label{classdirac__solver_1_1initial__state_1_1ConstantSpinor_a4d919bb7e016fd77749325a2ffbfee74} 

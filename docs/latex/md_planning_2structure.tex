@@ -1,11 +1,11 @@
 \chapter{Estructura del Proyecto dirac\+\_\+solver}
 \hypertarget{md_planning_2structure}{}\label{md_planning_2structure}\index{Estructura del Proyecto dirac\_solver@{Estructura del Proyecto dirac\_solver}}
-\label{md_planning_2structure_autotoc_md62}%
-\Hypertarget{md_planning_2structure_autotoc_md62}%
- Este documento describe la estructura modular del proyecto {\ttfamily \doxylink{namespacedirac__solver}{dirac\+\_\+solver}}, inspirada en el diseño de librerías como {\bfseries{Deep\+XDE}}. La idea es mantener una organización clara, extensible y reutilizable para resolver la ecuación de Dirac en diferentes escenarios físicos.
+\label{md_planning_2structure_autotoc_md95}%
+\Hypertarget{md_planning_2structure_autotoc_md95}%
+ Este documento describe la estructura modular del proyecto {\ttfamily \doxylink{namespacedirac__solver}{dirac\+\_\+solver}}, inspirada en el diseño de librerías como {\bfseries{Deep\+XDE}}. La idea es mantener una organización clara, extensible y reutilizable para resolver la ecuación de \doxylink{namespaceDirac}{Dirac} en diferentes escenarios físicos.
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2structure_autotoc_md64}{}\doxysection{\texorpdfstring{📂 Esquema Visual}{📂 Esquema Visual}}\label{md_planning_2structure_autotoc_md64}
+\hypertarget{md_planning_2structure_autotoc_md97}{}\doxysection{\texorpdfstring{📂 Esquema Visual}{📂 Esquema Visual}}\label{md_planning_2structure_autotoc_md97}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{dirac\_solver/}
@@ -89,7 +89,7 @@
 \DoxyCodeLine{\ \ \ \ └──\ theory\_background.md}
 
 \end{DoxyCode}
-\hypertarget{md_planning_2structure_autotoc_md65}{}\doxysection{\texorpdfstring{Raíz del Proyecto}{Raíz del Proyecto}}\label{md_planning_2structure_autotoc_md65}
+\hypertarget{md_planning_2structure_autotoc_md98}{}\doxysection{\texorpdfstring{Raíz del Proyecto}{Raíz del Proyecto}}\label{md_planning_2structure_autotoc_md98}
 
 \begin{DoxyItemize}
 \item {\bfseries{pyproject.\+toml}} ~\newline
@@ -101,8 +101,8 @@
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2structure_autotoc_md67}{}\doxysection{\texorpdfstring{$<$tt$>$src/dirac\+\_\+solver/$<$/tt$>$}{<tt>src/dirac\_solver/</tt>}}\label{md_planning_2structure_autotoc_md67}
-Contiene el {\bfseries{código fuente principal}} de la librería.\hypertarget{md_planning_2structure_autotoc_md68}{}\doxysubsection{\texorpdfstring{1. $<$tt$>$solvers/$<$/tt$>$ – Núcleo numérico}{1. <tt>solvers/</tt> – Núcleo numérico}}\label{md_planning_2structure_autotoc_md68}
+\hypertarget{md_planning_2structure_autotoc_md100}{}\doxysection{\texorpdfstring{$<$tt$>$src/dirac\+\_\+solver/$<$/tt$>$}{<tt>src/dirac\_solver/</tt>}}\label{md_planning_2structure_autotoc_md100}
+Contiene el {\bfseries{código fuente principal}} de la librería.\hypertarget{md_planning_2structure_autotoc_md101}{}\doxysubsection{\texorpdfstring{1. $<$tt$>$solvers/$<$/tt$>$ – Núcleo numérico}{1. <tt>solvers/</tt> – Núcleo numérico}}\label{md_planning_2structure_autotoc_md101}
 
 \begin{DoxyItemize}
 \item {\bfseries{time\+\_\+integrator.\+py}}\+: Métodos de evolución temporal (Crank–\+Nicolson, Split-\/\+Operator, Runge–\+Kutta). ~\newline
@@ -110,18 +110,18 @@ Contiene el {\bfseries{código fuente principal}} de la librería.\hypertarget{m
 \item {\bfseries{eigensolver.\+py}}\+: Resolución de problemas estacionarios (autovalores/autofunciones, bound states). ~\newline
 
 \item {\bfseries{observables.\+py}}\+: Cálculo de valores esperados\+: energía, posición, momento, corrientes.
-\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md69}{}\doxysubsection{\texorpdfstring{2. $<$tt$>$physics/$<$/tt$>$ – Definiciones físicas}{2. <tt>physics/</tt> – Definiciones físicas}}\label{md_planning_2structure_autotoc_md69}
+\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md102}{}\doxysubsection{\texorpdfstring{2. $<$tt$>$physics/$<$/tt$>$ – Definiciones físicas}{2. <tt>physics/</tt> – Definiciones físicas}}\label{md_planning_2structure_autotoc_md102}
 
 \begin{DoxyItemize}
-\item {\bfseries{gamma\+\_\+matrices.\+py}}\+: Representaciones de matrices de Dirac en distintas dimensiones. ~\newline
+\item {\bfseries{gamma\+\_\+matrices.\+py}}\+: Representaciones de matrices de \doxylink{namespaceDirac}{Dirac} en distintas dimensiones. ~\newline
 
 \item {\bfseries{spinors.\+py}}\+: Construcción de espinores iniciales (partícula libre, polarización de espín). ~\newline
 
 \item {\bfseries{relativistic\+\_\+identities.\+py}}\+: Utilidades analíticas (Zitterbewegung, relaciones de conmutación).
-\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md70}{}\doxysubsection{\texorpdfstring{3. $<$tt$>$potentials/$<$/tt$>$ – Potenciales}{3. <tt>potentials/</tt> – Potenciales}}\label{md_planning_2structure_autotoc_md70}
+\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md103}{}\doxysubsection{\texorpdfstring{3. $<$tt$>$potentials/$<$/tt$>$ – Potenciales}{3. <tt>potentials/</tt> – Potenciales}}\label{md_planning_2structure_autotoc_md103}
 
 \begin{DoxyItemize}
-\item {\bfseries{base.\+py}}\+: Clase abstracta {\ttfamily Potential} para herencia. ~\newline
+\item {\bfseries{base.\+py}}\+: Clase abstracta {\ttfamily \doxylink{classPotential}{Potential}} para herencia. ~\newline
 
 \item {\bfseries{coulomb.\+py}}\+: Potencial de Coulomb (átomo de hidrógeno). ~\newline
 
@@ -132,7 +132,7 @@ Contiene el {\bfseries{código fuente principal}} de la librería.\hypertarget{m
 \item {\bfseries{infinite\+\_\+well.\+py}}\+: Pozo de potencial infinito. ~\newline
 
 \item {\bfseries{custom.\+py}}\+: Permite definir potenciales personalizados por el usuario.
-\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md71}{}\doxysubsection{\texorpdfstring{4. $<$tt$>$geometry/$<$/tt$>$ – Geometrías y dominios}{4. <tt>geometry/</tt> – Geometrías y dominios}}\label{md_planning_2structure_autotoc_md71}
+\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md104}{}\doxysubsection{\texorpdfstring{4. $<$tt$>$geometry/$<$/tt$>$ – Geometrías y dominios}{4. <tt>geometry/</tt> – Geometrías y dominios}}\label{md_planning_2structure_autotoc_md104}
 
 \begin{DoxyItemize}
 \item {\bfseries{interval.\+py}}\+: Intervalo unidimensional con discretización uniforme. ~\newline
@@ -140,13 +140,13 @@ Contiene el {\bfseries{código fuente principal}} de la librería.\hypertarget{m
 \item {\bfseries{radial.\+py}}\+: Coordenada radial (casos centrales como Coulomb/\+Yukawa). ~\newline
 
 \item {\bfseries{grid.\+py}}\+: Utilidades para crear mallas, espaciamientos y operadores de diferencias finitas.
-\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md72}{}\doxysubsection{\texorpdfstring{5. $<$tt$>$conditions/$<$/tt$>$ – Condiciones}{5. <tt>conditions/</tt> – Condiciones}}\label{md_planning_2structure_autotoc_md72}
+\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md105}{}\doxysubsection{\texorpdfstring{5. $<$tt$>$conditions/$<$/tt$>$ – Condiciones}{5. <tt>conditions/</tt> – Condiciones}}\label{md_planning_2structure_autotoc_md105}
 
 \begin{DoxyItemize}
 \item {\bfseries{initial.\+py}}\+: Estados iniciales (onda plana, paquete gaussiano, superposición). ~\newline
 
 \item {\bfseries{boundary.\+py}}\+: Condiciones de frontera (Dirichlet, Neumann, absorbentes).
-\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md73}{}\doxysubsection{\texorpdfstring{6. $<$tt$>$io/$<$/tt$>$ – Entrada/\+Salida}{6. <tt>io/</tt> – Entrada/Salida}}\label{md_planning_2structure_autotoc_md73}
+\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md106}{}\doxysubsection{\texorpdfstring{6. $<$tt$>$io/$<$/tt$>$ – Entrada/\+Salida}{6. <tt>io/</tt> – Entrada/Salida}}\label{md_planning_2structure_autotoc_md106}
 
 \begin{DoxyItemize}
 \item {\bfseries{saver.\+py}}\+: Guardar snapshots de la evolución temporal. ~\newline
@@ -154,7 +154,7 @@ Contiene el {\bfseries{código fuente principal}} de la librería.\hypertarget{m
 \item {\bfseries{loader.\+py}}\+: Cargar simulaciones previas. ~\newline
 
 \item {\bfseries{config.\+py}}\+: Configuración desde archivos YAML/\+JSON (ejecución reproducible).
-\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md74}{}\doxysubsection{\texorpdfstring{7. $<$tt$>$visualization/$<$/tt$>$ – Gráficos y análisis}{7. <tt>visualization/</tt> – Gráficos y análisis}}\label{md_planning_2structure_autotoc_md74}
+\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md107}{}\doxysubsection{\texorpdfstring{7. $<$tt$>$visualization/$<$/tt$>$ – Gráficos y análisis}{7. <tt>visualization/</tt> – Gráficos y análisis}}\label{md_planning_2structure_autotoc_md107}
 
 \begin{DoxyItemize}
 \item {\bfseries{plot\+\_\+wavefunction.\+py}}\+: Visualización de las componentes del bispinor. ~\newline
@@ -162,19 +162,19 @@ Contiene el {\bfseries{código fuente principal}} de la librería.\hypertarget{m
 \item {\bfseries{plot\+\_\+density.\+py}}\+: Densidades de probabilidad y corrientes. ~\newline
 
 \item {\bfseries{animations.\+py}}\+: Animaciones temporales (propagación, confinamiento).
-\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md75}{}\doxysubsection{\texorpdfstring{8. $<$tt$>$utils/$<$/tt$>$ – Utilidades generales}{8. <tt>utils/</tt> – Utilidades generales}}\label{md_planning_2structure_autotoc_md75}
+\end{DoxyItemize}\hypertarget{md_planning_2structure_autotoc_md108}{}\doxysubsection{\texorpdfstring{8. $<$tt$>$utils/$<$/tt$>$ – Utilidades generales}{8. <tt>utils/</tt> – Utilidades generales}}\label{md_planning_2structure_autotoc_md108}
 
 \begin{DoxyItemize}
 \item {\bfseries{math\+\_\+ops.\+py}}\+: Operaciones auxiliares numéricas y algebraicas. ~\newline
 
 \item {\bfseries{validators.\+py}}\+: Validación de entradas y parámetros físicos. ~\newline
 
-\item {\bfseries{\doxylink{constants_8py}{constants.\+py}}}\+: Constantes físicas (ħ, c, α, etc.).
+\item {\bfseries{constants.\+py}}\+: Constantes físicas (ħ, c, α, etc.).
 \item {\bfseries{coolsftuf.\+py}}\+: Comentarios chistosos.
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2structure_autotoc_md77}{}\doxysection{\texorpdfstring{$<$tt$>$tests/$<$/tt$>$}{<tt>tests/</tt>}}\label{md_planning_2structure_autotoc_md77}
+\hypertarget{md_planning_2structure_autotoc_md110}{}\doxysection{\texorpdfstring{$<$tt$>$tests/$<$/tt$>$}{<tt>tests/</tt>}}\label{md_planning_2structure_autotoc_md110}
 Tests unitarios organizados por módulos. Verifican consistencia, conservación de probabilidad y reproducción de fenómenos físicos.
 
 
@@ -197,7 +197,7 @@ Tests unitarios organizados por módulos. Verifican consistencia, conservación 
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2structure_autotoc_md79}{}\doxysection{\texorpdfstring{$<$tt$>$examples/$<$/tt$>$}{<tt>examples/</tt>}}\label{md_planning_2structure_autotoc_md79}
+\hypertarget{md_planning_2structure_autotoc_md112}{}\doxysection{\texorpdfstring{$<$tt$>$examples/$<$/tt$>$}{<tt>examples/</tt>}}\label{md_planning_2structure_autotoc_md112}
 Ejemplos reproducibles de uso del solver en diferentes escenarios.
 
 
@@ -214,7 +214,7 @@ Ejemplos reproducibles de uso del solver en diferentes escenarios.
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2structure_autotoc_md81}{}\doxysection{\texorpdfstring{$<$tt$>$docs/$<$/tt$>$}{<tt>docs/</tt>}}\label{md_planning_2structure_autotoc_md81}
+\hypertarget{md_planning_2structure_autotoc_md114}{}\doxysection{\texorpdfstring{$<$tt$>$docs/$<$/tt$>$}{<tt>docs/</tt>}}\label{md_planning_2structure_autotoc_md114}
 Documentación del proyecto.
 
 
@@ -223,7 +223,7 @@ Documentación del proyecto.
 
 \item {\bfseries{api\+\_\+reference.\+md}}\+: Referencia de clases, funciones y módulos. ~\newline
 
-\item {\bfseries{theory\+\_\+background.\+md}}\+: Fundamentos teóricos de la ecuación de Dirac y fenómenos relativistas.
+\item {\bfseries{theory\+\_\+background.\+md}}\+: Fundamentos teóricos de la ecuación de \doxylink{namespaceDirac}{Dirac} y fenómenos relativistas.
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}

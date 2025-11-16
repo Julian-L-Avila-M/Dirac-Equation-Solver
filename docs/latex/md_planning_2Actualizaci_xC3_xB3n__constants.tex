@@ -1,26 +1,26 @@
 \chapter{Actualización de la librería Dirac Solver}
 \hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants}{}\label{md_planning_2Actualizaci_xC3_xB3n__constants}\index{Actualización de la librería Dirac Solver@{Actualización de la librería Dirac Solver}}
-\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md0}%
-\Hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md0}%
- \hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md1}{}\doxysection{\texorpdfstring{Resumen}{Resumen}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md1}
-Se realizaron modificaciones en la librería {\bfseries{Dirac Solver}} para simplificar el manejo de constantes y matrices de Pauli, eliminando la dependencia de la clase {\ttfamily Constants()}. La librería ahora\+:
+\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md4}%
+\Hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md4}%
+ \hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md5}{}\doxysection{\texorpdfstring{Resumen}{Resumen}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md5}
+Se realizaron modificaciones en la librería {\bfseries{\doxylink{namespaceDirac}{Dirac} Solver}} para simplificar el manejo de constantes y matrices de Pauli, eliminando la dependencia de la clase {\ttfamily Constants()}. La librería ahora\+:
 
 
 \begin{DoxyItemize}
 \item Funciona únicamente en {\bfseries{unidades naturales}}.
 \item Permite acceder a constantes globales directamente desde el paquete.
-\item Mantiene compatibilidad con las clases {\ttfamily Grid}, {\ttfamily Constant\+Spinor} y {\ttfamily Gaussian\+Packet}.
+\item Mantiene compatibilidad con las clases {\ttfamily \doxylink{classGrid}{Grid}}, {\ttfamily Constant\+Spinor} y {\ttfamily Gaussian\+Packet}.
 \item Incluye documentación Doxygen en {\ttfamily \doxylink{____init_____8py}{\+\_\+\+\_\+init\+\_\+\+\_\+.\+py}} y {\ttfamily \doxylink{initial__state_8py}{initial\+\_\+state.\+py}}.
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md3}{}\doxysection{\texorpdfstring{Cambios realizados}{Cambios realizados}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md3}
-\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md4}{}\doxysubsection{\texorpdfstring{1. Eliminación de $<$tt$>$constants.\+py$<$/tt$>$}{1. Eliminación de <tt>constants.py</tt>}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md4}
+\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md7}{}\doxysection{\texorpdfstring{Cambios realizados}{Cambios realizados}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md7}
+\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md8}{}\doxysubsection{\texorpdfstring{1. Eliminación de $<$tt$>$constants.\+py$<$/tt$>$}{1. Eliminación de <tt>constants.py</tt>}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md8}
 
 \begin{DoxyItemize}
 \item Se removió la clase {\ttfamily Constants()}.
 \item Todas las referencias a {\ttfamily Constants().get("{}c"{})}, {\ttfamily Constants().get("{}\+HBAR"{})}, etc., fueron reemplazadas por {\bfseries{constantes globales}}.
-\end{DoxyItemize}\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md5}{}\doxysubsection{\texorpdfstring{2. Nuevas constantes globales definidas en $<$tt$>$\+\_\+\+\_\+init\+\_\+\+\_\+.\+py$<$/tt$>$}{2. Nuevas constantes globales definidas en <tt>\_\_init\_\_.py</tt>}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md5}
+\end{DoxyItemize}\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md9}{}\doxysubsection{\texorpdfstring{2. Nuevas constantes globales definidas en $<$tt$>$\+\_\+\+\_\+init\+\_\+\+\_\+.\+py$<$/tt$>$}{2. Nuevas constantes globales definidas en <tt>\_\_init\_\_.py</tt>}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md9}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{c\ =\ 1.0}
@@ -98,7 +98,7 @@ print(ds.\+c) print(ds.\+hbar) print(ds.\+electron\+\_\+mass)
 
 
 \begin{DoxyEnumerate}
-\item {\bfseries{Pruebas de Grid en 1D, 2D y 3D}}
+\item {\bfseries{Pruebas de \doxylink{classGrid}{Grid} en 1D, 2D y 3D}}
 \begin{DoxyItemize}
 \item Validación de {\ttfamily coords} y {\ttfamily courant\+\_\+limit()}.
 \item Confirmación de dimensiones correctas de la malla.
@@ -115,7 +115,7 @@ print(ds.\+c) print(ds.\+hbar) print(ds.\+electron\+\_\+mass)
 \end{DoxyItemize}
 \item {\bfseries{Prueba de Dirac\+Solver (básica)}}
 \begin{DoxyItemize}
-\item Inicialización del solver con {\ttfamily Grid} y {\ttfamily Gaussian\+Packet}.
+\item Inicialización del solver con {\ttfamily \doxylink{classGrid}{Grid}} y {\ttfamily Gaussian\+Packet}.
 \item Ejecución de {\ttfamily run\+\_\+simulation} (placeholder) y graficación de densidad de probabilidad.
 \end{DoxyItemize}
 \item {\bfseries{Validación de consistencia de constantes}}
@@ -129,10 +129,10 @@ print(ds.\+c) print(ds.\+hbar) print(ds.\+electron\+\_\+mass)
 El notebook sirve como {\bfseries{prueba integral}} de la actualización de la librería enfocada en las constantes globales.
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md7}{}\doxysection{\texorpdfstring{Conclusión}{Conclusión}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md7}
+\hypertarget{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md11}{}\doxysection{\texorpdfstring{Conclusión}{Conclusión}}\label{md_planning_2Actualizaci_xC3_xB3n__constants_autotoc_md11}
 
 \begin{DoxyItemize}
 \item La librería {\bfseries{ya no depende de sistemas de unidades ni de {\ttfamily Constants()}}}.
-\item Todas las funciones de {\ttfamily Grid}, {\ttfamily Constant\+Spinor} y {\ttfamily Gaussian\+Packet} funcionan correctamente con las {\bfseries{constantes globales en unidades naturales}}.
+\item Todas las funciones de {\ttfamily \doxylink{classGrid}{Grid}}, {\ttfamily Constant\+Spinor} y {\ttfamily Gaussian\+Packet} funcionan correctamente con las {\bfseries{constantes globales en unidades naturales}}.
 \item Se creó un {\bfseries{notebook de prueba definitiva}} que permite validar rápidamente la correcta propagación de las constantes y el comportamiento esperado de los objetos de la librería. 
 \end{DoxyItemize}

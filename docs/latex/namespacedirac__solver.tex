@@ -1,14 +1,7 @@
 \doxysection{Referencia del espacio de nombres dirac\+\_\+solver}
 \hypertarget{namespacedirac__solver}{}\label{namespacedirac__solver}\index{dirac\_solver@{dirac\_solver}}
-
-
-Librería para simulación de la ecuación de Dirac en unidades naturales.  
-
-
 \doxysubsubsection*{Espacios de nombres}
 \begin{DoxyCompactItemize}
-\item 
-namespace \mbox{\hyperlink{namespacedirac__solver_1_1constants}{constants}}
 \item 
 namespace \mbox{\hyperlink{namespacedirac__solver_1_1core}{core}}
 \item 
@@ -20,33 +13,34 @@ namespace \mbox{\hyperlink{namespacedirac__solver_1_1initial__state}{initial\+\_
 \begin{DoxyCompactItemize}
 \item 
 float \mbox{\hyperlink{namespacedirac__solver_aec7f9182aa7f7cdef50e2767cf38844c}{hbar}} = 1.\+0
-\begin{DoxyCompactList}\small\item\em Constante de Planck reducida (ħ) en unidades naturales. \end{DoxyCompactList}\item 
+\item 
 float \mbox{\hyperlink{namespacedirac__solver_a6543948bdeb73327541ce3f497072df1}{c}} = 1.\+0
-\begin{DoxyCompactList}\small\item\em Velocidad de la luz (c) en unidades naturales. \end{DoxyCompactList}\item 
+\item 
 float \mbox{\hyperlink{namespacedirac__solver_a9fc036514e9aab2bd0b18502aafc5e13}{electron\+\_\+mass}} = 1.\+0
-\begin{DoxyCompactList}\small\item\em Masa del electrón en unidades naturales. \end{DoxyCompactList}\item 
+\item 
 float \mbox{\hyperlink{namespacedirac__solver_af21fee2285001ff10259c82283a4fbc3}{electron\+\_\+charge}} = 1.\+0
-\begin{DoxyCompactList}\small\item\em Carga del electrón en unidades naturales. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{namespacedirac__solver_aa6ffb8e7a81fdaca9979afccf7d37184}{sigma\+\_\+1}}
-\begin{DoxyCompactList}\small\item\em Matriz de Pauli sigma\+\_\+x. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{namespacedirac__solver_ae06d5eb2c28471b9c12e96768a56c5c8}{sigma\+\_\+2}}
-\begin{DoxyCompactList}\small\item\em Matriz de Pauli sigma\+\_\+y. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{namespacedirac__solver_aeae0ae336869f4c9206baf1f11203c63}{sigma\+\_\+3}}
-\begin{DoxyCompactList}\small\item\em Matriz de Pauli sigma\+\_\+z. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descripción detallada}
-Librería para simulación de la ecuación de Dirac en unidades naturales. 
+\begin{DoxyVerb}dirac_solver
+============
 
-Contiene definiciones de constantes físicas, matrices de Pauli y clases principales para construir mallas, estados iniciales y ejecutar simulaciones.
+Librería para la simulación de la ecuación de Dirac en unidades naturales.
 
-\begin{DoxyAuthor}{Autor}
-Sebastian 
-\end{DoxyAuthor}
-\begin{DoxyDate}{Fecha}
-2025-\/09-\/11 
-\end{DoxyDate}
+Contiene definiciones de constantes físicas, matrices de Pauli y clases
+principales para construir mallas, estados iniciales y ejecutar simulaciones.
 
+Autor: Sebastian  
+Fecha: 2025-09-11
+\end{DoxyVerb}
+ 
 
 \doxysubsection{Documentación de variables}
 \Hypertarget{namespacedirac__solver_a6543948bdeb73327541ce3f497072df1}\label{namespacedirac__solver_a6543948bdeb73327541ce3f497072df1} 
@@ -55,19 +49,11 @@ Sebastian
 \doxysubsubsection{\texorpdfstring{c}{c}}
 {\footnotesize\ttfamily float dirac\+\_\+solver.\+c = 1.\+0}
 
-
-
-Velocidad de la luz (c) en unidades naturales. 
-
 \Hypertarget{namespacedirac__solver_af21fee2285001ff10259c82283a4fbc3}\label{namespacedirac__solver_af21fee2285001ff10259c82283a4fbc3} 
 \index{dirac\_solver@{dirac\_solver}!electron\_charge@{electron\_charge}}
 \index{electron\_charge@{electron\_charge}!dirac\_solver@{dirac\_solver}}
 \doxysubsubsection{\texorpdfstring{electron\_charge}{electron\_charge}}
 {\footnotesize\ttfamily float dirac\+\_\+solver.\+electron\+\_\+charge = 1.\+0}
-
-
-
-Carga del electrón en unidades naturales. 
 
 \Hypertarget{namespacedirac__solver_a9fc036514e9aab2bd0b18502aafc5e13}\label{namespacedirac__solver_a9fc036514e9aab2bd0b18502aafc5e13} 
 \index{dirac\_solver@{dirac\_solver}!electron\_mass@{electron\_mass}}
@@ -75,19 +61,11 @@ Carga del electrón en unidades naturales.
 \doxysubsubsection{\texorpdfstring{electron\_mass}{electron\_mass}}
 {\footnotesize\ttfamily float dirac\+\_\+solver.\+electron\+\_\+mass = 1.\+0}
 
-
-
-Masa del electrón en unidades naturales. 
-
 \Hypertarget{namespacedirac__solver_aec7f9182aa7f7cdef50e2767cf38844c}\label{namespacedirac__solver_aec7f9182aa7f7cdef50e2767cf38844c} 
 \index{dirac\_solver@{dirac\_solver}!hbar@{hbar}}
 \index{hbar@{hbar}!dirac\_solver@{dirac\_solver}}
 \doxysubsubsection{\texorpdfstring{hbar}{hbar}}
 {\footnotesize\ttfamily float dirac\+\_\+solver.\+hbar = 1.\+0}
-
-
-
-Constante de Planck reducida (ħ) en unidades naturales. 
 
 \Hypertarget{namespacedirac__solver_aa6ffb8e7a81fdaca9979afccf7d37184}\label{namespacedirac__solver_aa6ffb8e7a81fdaca9979afccf7d37184} 
 \index{dirac\_solver@{dirac\_solver}!sigma\_1@{sigma\_1}}
@@ -101,10 +79,6 @@ Constante de Planck reducida (ħ) en unidades naturales.
 \DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [1,\ 0]],\ dtype=np.complex128)}
 
 \end{DoxyCode}
-
-
-Matriz de Pauli sigma\+\_\+x. 
-
 \Hypertarget{namespacedirac__solver_ae06d5eb2c28471b9c12e96768a56c5c8}\label{namespacedirac__solver_ae06d5eb2c28471b9c12e96768a56c5c8} 
 \index{dirac\_solver@{dirac\_solver}!sigma\_2@{sigma\_2}}
 \index{sigma\_2@{sigma\_2}!dirac\_solver@{dirac\_solver}}
@@ -117,10 +91,6 @@ Matriz de Pauli sigma\+\_\+x.
 \DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [1j,\ 0]],\ dtype=np.complex128)}
 
 \end{DoxyCode}
-
-
-Matriz de Pauli sigma\+\_\+y. 
-
 \Hypertarget{namespacedirac__solver_aeae0ae336869f4c9206baf1f11203c63}\label{namespacedirac__solver_aeae0ae336869f4c9206baf1f11203c63} 
 \index{dirac\_solver@{dirac\_solver}!sigma\_3@{sigma\_3}}
 \index{sigma\_3@{sigma\_3}!dirac\_solver@{dirac\_solver}}
@@ -133,7 +103,3 @@ Matriz de Pauli sigma\+\_\+y.
 \DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [0,\ -\/1]],\ dtype=np.complex128)}
 
 \end{DoxyCode}
-
-
-Matriz de Pauli sigma\+\_\+z. 
-

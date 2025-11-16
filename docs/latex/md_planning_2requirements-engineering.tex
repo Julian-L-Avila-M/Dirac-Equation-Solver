@@ -1,40 +1,40 @@
 \chapter{Presentation Structure\+: Requirements Engineering for a Dirac Equation Solver}
 \hypertarget{md_planning_2requirements-engineering}{}\label{md_planning_2requirements-engineering}\index{Presentation Structure: Requirements Engineering for a Dirac Equation Solver@{Presentation Structure: Requirements Engineering for a Dirac Equation Solver}}
-\label{md_planning_2requirements-engineering_autotoc_md34}%
-\Hypertarget{md_planning_2requirements-engineering_autotoc_md34}%
+\label{md_planning_2requirements-engineering_autotoc_md67}%
+\Hypertarget{md_planning_2requirements-engineering_autotoc_md67}%
  The core idea is to present the project not just as a piece of code, but as a solution to a well-\/defined problem. Categorising the requirements into three main areas\+: {\bfseries{Functional}}, {\bfseries{Non-\/\+Functional}}, and {\bfseries{System/\+Architectural}}.
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2requirements-engineering_autotoc_md36}{}\doxysubsection{\texorpdfstring{$<$strong$>$1. Introduction\+: Problem Statement \& Scope$<$/strong$>$}{<strong>1. Introduction: Problem Statement \& Scope</strong>}}\label{md_planning_2requirements-engineering_autotoc_md36}
+\hypertarget{md_planning_2requirements-engineering_autotoc_md69}{}\doxysubsection{\texorpdfstring{$<$strong$>$1. Introduction\+: Problem Statement \& Scope$<$/strong$>$}{<strong>1. Introduction: Problem Statement \& Scope</strong>}}\label{md_planning_2requirements-engineering_autotoc_md69}
 
 \begin{DoxyItemize}
-\item {\bfseries{Goal\+:}} To develop a medium-\/high-\/performance, user-\/friendly Python library, {\ttfamily Dirac-\/\+Solver} , for simulating the time evolution of a single-\/particle spinor field \$\textbackslash{}psi(t, \textbackslash{}vec\{r\})\$ governed by the (3+1)D Dirac equation.
+\item {\bfseries{Goal\+:}} To develop a medium-\/high-\/performance, user-\/friendly Python library, {\ttfamily Dirac-\/\+Solver} , for simulating the time evolution of a single-\/particle spinor field \$\textbackslash{}psi(t, \textbackslash{}vec\{r\})\$ governed by the (3+1)D \doxylink{namespaceDirac}{Dirac} equation.
 \item {\bfseries{Motivation\+:}} Address the need for an accessible tool for studying relativistic quantum phenomena in contexts like graphene, topological insulators, or for purely pedagogical purposes. The combination of a high-\/level Python API with a low-\/level C++ core aims to provide both ease of use and computational efficiency.
-\item {\bfseries{Core Equation\+:}} The solver will find numerical solutions to the time-\/dependent Dirac equation\+: \$\$i\textbackslash{}hbar \textbackslash{}frac\{\textbackslash{}partial \textbackslash{}psi(\textbackslash{}vec\{r\}, t)\}\{\textbackslash{}partial t\} = \textbackslash{}hat\{H\} \textbackslash{}psi(\textbackslash{}vec\{r\}, t)\$\$ where the Dirac Hamiltonian \$\textbackslash{}hat\{H\}\$ is\+: \$\$\textbackslash{}hat\{H\} = c\textbackslash{}vec\{\textbackslash{}alpha\} \textbackslash{}cdot \textbackslash{}hat\{\textbackslash{}vec\{p\}\} + \textbackslash{}beta m\+\_\+0 c\texorpdfstring{$^\wedge$}{\string^}2 + V(\textbackslash{}vec\{r\})I\+\_\+4\$\$ Here, \$\textbackslash{}vec\{\textbackslash{}alpha\}\$ and \$\textbackslash{}beta\$ are the standard \$4 \textbackslash{}times 4\$ Dirac matrices, \$\textbackslash{}hat\{\textbackslash{}vec\{p\}\} = -\/i\textbackslash{}hbar\textbackslash{}nabla\$ is the momentum operator, and \$V(\textbackslash{}vec\{r\})\$ is a scalar potential.
+\item {\bfseries{Core Equation\+:}} The solver will find numerical solutions to the time-\/dependent \doxylink{namespaceDirac}{Dirac} equation\+: \$\$i\textbackslash{}hbar \textbackslash{}frac\{\textbackslash{}partial \textbackslash{}psi(\textbackslash{}vec\{r\}, t)\}\{\textbackslash{}partial t\} = \textbackslash{}hat\{H\} \textbackslash{}psi(\textbackslash{}vec\{r\}, t)\$\$ where the \doxylink{namespaceDirac}{Dirac} Hamiltonian \$\textbackslash{}hat\{H\}\$ is\+: \$\$\textbackslash{}hat\{H\} = c\textbackslash{}vec\{\textbackslash{}alpha\} \textbackslash{}cdot \textbackslash{}hat\{\textbackslash{}vec\{p\}\} + \textbackslash{}beta m\+\_\+0 c\texorpdfstring{$^\wedge$}{\string^}2 + V(\textbackslash{}vec\{r\})I\+\_\+4\$\$ Here, \$\textbackslash{}vec\{\textbackslash{}alpha\}\$ and \$\textbackslash{}beta\$ are the standard \$4 \textbackslash{}times 4\$ \doxylink{namespaceDirac}{Dirac} matrices, \$\textbackslash{}hat\{\textbackslash{}vec\{p\}\} = -\/i\textbackslash{}hbar\textbackslash{}nabla\$ is the momentum operator, and \$V(\textbackslash{}vec\{r\})\$ is a scalar potential.
 \item {\bfseries{Scope\+:}} The initial release will focus on 1D and 2D systems for a single, non-\/interacting particle. The scope explicitly excludes many-\/body effects and field quantization (QED effects).
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2requirements-engineering_autotoc_md38}{}\doxysubsection{\texorpdfstring{$<$strong$>$2. Functional Requirements (\+What the System $<$em$>$\+Must Do$<$/em$>$)$<$/strong$>$}{<strong>2. Functional Requirements (What the System <em>Must Do</em>)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md38}
-\hypertarget{md_planning_2requirements-engineering_autotoc_md39}{}\doxysubsubsection{\texorpdfstring{$<$strong$>$\+A. Physics Engine Core (\+The C++ Backend)$<$/strong$>$}{<strong>A. Physics Engine Core (The C++ Backend)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md39}
+\hypertarget{md_planning_2requirements-engineering_autotoc_md71}{}\doxysubsection{\texorpdfstring{$<$strong$>$2. Functional Requirements (\+What the System $<$em$>$\+Must Do$<$/em$>$)$<$/strong$>$}{<strong>2. Functional Requirements (What the System <em>Must Do</em>)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md71}
+\hypertarget{md_planning_2requirements-engineering_autotoc_md72}{}\doxysubsubsection{\texorpdfstring{$<$strong$>$\+A. Physics Engine Core (\+The C++ Backend)$<$/strong$>$}{<strong>A. Physics Engine Core (The C++ Backend)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md72}
 
 \begin{DoxyItemize}
-\item {\bfseries{FR-\/1\+: Discretization Scheme\+:}} Implement a Finite-\/\+Difference Time-\/\+Domain (FDTD) scheme to solve the Dirac equation. A staggered-\/leapfrog algorithm for the spatial and temporal derivatives is required to ensure numerical stability and second-\/order accuracy.
+\item {\bfseries{FR-\/1\+: Discretization Scheme\+:}} Implement a Finite-\/\+Difference Time-\/\+Domain (FDTD) scheme to solve the \doxylink{namespaceDirac}{Dirac} equation. A staggered-\/leapfrog algorithm for the spatial and temporal derivatives is required to ensure numerical stability and second-\/order accuracy.
 \item {\bfseries{FR-\/2\+: Boundary Conditions\+:}} The user must be able to specify boundary conditions. At a minimum, {\bfseries{Perfectly Matched Layers (PML)}} or {\bfseries{Absorbing Boundary Conditions (ABC)}} must be implemented to prevent spurious reflections from the grid edges. Simple periodic boundary conditions should also be an option.
 \item {\bfseries{FR-\/3\+: Supported Potentials\+:}} The solver must correctly model the following potential types\+:
 \begin{DoxyItemize}
 \item {\bfseries{Free Particle\+:}} \$V(\textbackslash{}vec\{r\}) = 0\$.
 \item {\bfseries{Scalar Potentials\+:}} User-\/definable functions \$V(\textbackslash{}vec\{r\})\$ representing barriers, steps, and quantum wells.
-\item {\bfseries{Coulomb Potential\+:}} \$\+V(r) = -\/\textbackslash{}frac\{Z e\texorpdfstring{$^\wedge$}{\string^}2\}\{4\textbackslash{}pi\textbackslash{}epsilon\+\_\+0 r\}\$, with appropriate handling of the singularity at \$r=0\$ through regularization or a specialized grid.
+\item {\bfseries{Coulomb \doxylink{classPotential}{Potential}\+:}} \$\+V(r) = -\/\textbackslash{}frac\{Z e\texorpdfstring{$^\wedge$}{\string^}2\}\{4\textbackslash{}pi\textbackslash{}epsilon\+\_\+0 r\}\$, with appropriate handling of the singularity at \$r=0\$ through regularization or a specialized grid.
 \end{DoxyItemize}
 \item {\bfseries{FR-\/4\+: Initial State\+:}} The library must provide helper functions to initialize the spinor field \$\textbackslash{}psi(\textbackslash{}vec\{r\}, t=0)\$ as a Gaussian wavepacket with user-\/specified momentum, position, and spin polarization.
-\end{DoxyItemize}\hypertarget{md_planning_2requirements-engineering_autotoc_md40}{}\doxysubsubsection{\texorpdfstring{$<$strong$>$\+B. Python API (\+The User Interface)$<$/strong$>$}{<strong>B. Python API (The User Interface)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md40}
+\end{DoxyItemize}\hypertarget{md_planning_2requirements-engineering_autotoc_md73}{}\doxysubsubsection{\texorpdfstring{$<$strong$>$\+B. Python API (\+The User Interface)$<$/strong$>$}{<strong>B. Python API (The User Interface)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md73}
 
 \begin{DoxyItemize}
 \item {\bfseries{FR-\/5\+: Simulation Setup\+:}} Users must be able to define, configure, and run a simulation through a "{}\+Pythonic"{} API. This includes setting grid parameters (dimensions, spacing \$dx, dy, dz\$), time step \$dt\$, total simulation time, choice of potential, and initial conditions.
 \item {\bfseries{FR-\/6\+: Solver Execution\+:}} A clear and simple method, e.\+g., {\ttfamily solver.\+run()}, to execute the time-\/evolution loop. The method should provide progress feedback for long simulations.
 \item {\bfseries{FR-\/7\+: Data Retrieval\+:}} Post-\/simulation, the user must be able to access the full 4-\/component complex spinor field \$\textbackslash{}psi(\textbackslash{}vec\{r\}, t)\$ at specified time intervals.
-\end{DoxyItemize}\hypertarget{md_planning_2requirements-engineering_autotoc_md41}{}\doxysubsubsection{\texorpdfstring{$<$strong$>$\+C. Outputs and Analysis (\+What the System $<$em$>$\+Must Produce$<$/em$>$)$<$/strong$>$}{<strong>C. Outputs and Analysis (What the System <em>Must Produce</em>)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md41}
+\end{DoxyItemize}\hypertarget{md_planning_2requirements-engineering_autotoc_md74}{}\doxysubsubsection{\texorpdfstring{$<$strong$>$\+C. Outputs and Analysis (\+What the System $<$em$>$\+Must Produce$<$/em$>$)$<$/strong$>$}{<strong>C. Outputs and Analysis (What the System <em>Must Produce</em>)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md74}
 
 \begin{DoxyItemize}
 \item {\bfseries{FR-\/8\+: Observable Calculations\+:}} The library must compute and provide access to key physical observables derived from \$\textbackslash{}psi\$\+:
@@ -50,7 +50,7 @@
 \item Animations of the time evolution of \$\textbackslash{}rho(x,y,t)\$.
 \item Vector field plots for the probability current density \$\textbackslash{}vec\{j\}\$.
 \end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{md_planning_2requirements-engineering_autotoc_md42}{}\doxysubsubsection{\texorpdfstring{$<$strong$>$\+D Advanced Performance Requirements (\+Optional)$<$/strong$>$}{<strong>D Advanced Performance Requirements (Optional)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md42}
+\end{DoxyItemize}\hypertarget{md_planning_2requirements-engineering_autotoc_md75}{}\doxysubsubsection{\texorpdfstring{$<$strong$>$\+D Advanced Performance Requirements (\+Optional)$<$/strong$>$}{<strong>D Advanced Performance Requirements (Optional)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md75}
 
 \begin{DoxyItemize}
 \item {\bfseries{FR-\/11\+:}} Parallelization with {\bfseries{Open\+MP}} in C++ to accelerate simulations.
@@ -59,7 +59,7 @@
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2requirements-engineering_autotoc_md44}{}\doxysubsection{\texorpdfstring{$<$strong$>$3. Non-\/\+Functional Requirements (\+How $<$em$>$\+Well$<$/em$>$ the System Performs)$<$/strong$>$}{<strong>3. Non-Functional Requirements (How <em>Well</em> the System Performs)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md44}
+\hypertarget{md_planning_2requirements-engineering_autotoc_md77}{}\doxysubsection{\texorpdfstring{$<$strong$>$3. Non-\/\+Functional Requirements (\+How $<$em$>$\+Well$<$/em$>$ the System Performs)$<$/strong$>$}{<strong>3. Non-Functional Requirements (How <em>Well</em> the System Performs)</strong>}}\label{md_planning_2requirements-engineering_autotoc_md77}
 
 \begin{DoxyItemize}
 \item {\bfseries{NFR-\/1\+: Performance\+:}} For a benchmark 2D problem (e.\+g., a \$512 \textbackslash{}times 512\$ grid), the C++ core must achieve a target number of timesteps per second on standard consumer hardware. This defines the "{}medium-\/high-\/performance"{} goal.
@@ -80,7 +80,7 @@
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2requirements-engineering_autotoc_md46}{}\doxysubsection{\texorpdfstring{$<$strong$>$4. System \& Architectural Requirements$<$/strong$>$}{<strong>4. System \& Architectural Requirements</strong>}}\label{md_planning_2requirements-engineering_autotoc_md46}
+\hypertarget{md_planning_2requirements-engineering_autotoc_md79}{}\doxysubsection{\texorpdfstring{$<$strong$>$4. System \& Architectural Requirements$<$/strong$>$}{<strong>4. System \& Architectural Requirements</strong>}}\label{md_planning_2requirements-engineering_autotoc_md79}
 
 \begin{DoxyItemize}
 \item {\bfseries{SR-\/1\+: Hybrid Architecture\+:}} A two-\/layer architecture is required\+:
@@ -95,7 +95,7 @@
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{md_planning_2requirements-engineering_autotoc_md48}{}\doxysubsection{\texorpdfstring{$<$strong$>$5. Project Management Requirements$<$/strong$>$}{<strong>5. Project Management Requirements</strong>}}\label{md_planning_2requirements-engineering_autotoc_md48}
+\hypertarget{md_planning_2requirements-engineering_autotoc_md81}{}\doxysubsection{\texorpdfstring{$<$strong$>$5. Project Management Requirements$<$/strong$>$}{<strong>5. Project Management Requirements</strong>}}\label{md_planning_2requirements-engineering_autotoc_md81}
 
 \begin{DoxyItemize}
 \item {\bfseries{PM-\/1\+:}} Initial timeline\+:

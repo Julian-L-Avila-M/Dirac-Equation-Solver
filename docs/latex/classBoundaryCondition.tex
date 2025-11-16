@@ -1,0 +1,89 @@
+\doxysection{Referencia de la clase Boundary\+Condition}
+\hypertarget{classBoundaryCondition}{}\label{classBoundaryCondition}\index{BoundaryCondition@{BoundaryCondition}}
+
+
+Clase base abstracta para condiciones de borde (patrón Strategy).  
+
+
+
+
+{\ttfamily \#include $<$Boundary\+Condition.\+h$>$}
+
+
+
+Diagrama de herencia de Boundary\+Condition\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classBoundaryCondition__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classBoundaryCondition_a89c213d7d45fd7fdaed4021a030ea998}{apply}} (std\+::vector$<$ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac\+::\+Spinor}} $>$ \&psi, const \mbox{\hyperlink{classGrid}{Grid}} \&grid) const =0
+\begin{DoxyCompactList}\small\item\em Aplica la condición de borde a un campo espinorial dado. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classBoundaryCondition_a45ca828c4cc6c90627bdd0810552a034}{get\+\_\+name}} () const =0
+\begin{DoxyCompactList}\small\item\em Devuelve el nombre de la estrategia de condición de borde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase base abstracta para condiciones de borde (patrón Strategy). 
+
+Esta clase define la interfaz para todas las estrategias de condiciones de borde. Permite que el solver principal se desacople del método específico utilizado para manejar los bordes de la malla de simulación. 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}\label{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c} 
+\index{BoundaryCondition@{BoundaryCondition}!````~BoundaryCondition@{\texorpdfstring{$\sim$}{\string~}BoundaryCondition}}
+\index{````~BoundaryCondition@{\texorpdfstring{$\sim$}{\string~}BoundaryCondition}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}BoundaryCondition()}{\string~BoundaryCondition()}}
+{\footnotesize\ttfamily virtual Boundary\+Condition\+::\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classBoundaryCondition_a89c213d7d45fd7fdaed4021a030ea998}\label{classBoundaryCondition_a89c213d7d45fd7fdaed4021a030ea998} 
+\index{BoundaryCondition@{BoundaryCondition}!apply@{apply}}
+\index{apply@{apply}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily virtual void Boundary\+Condition\+::apply (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac\+::\+Spinor}} $>$ \&}]{psi,  }\item[{const \mbox{\hyperlink{classGrid}{Grid}} \&}]{grid }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Aplica la condición de borde a un campo espinorial dado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em psi} & Una referencia al vector de espinores que representa el campo. \\
+\hline
+{\em grid} & La malla de simulación. \\
+\hline
+\end{DoxyParams}
+
+
+Implementado en \mbox{\hyperlink{classAbsorbingBoundary_a5338d859c3ed9140e3b202156f645726}{Absorbing\+Boundary}} y \mbox{\hyperlink{classPeriodicBoundary_ad1ac4291a92b159e061fc99e7777d34b}{Periodic\+Boundary}}.
+
+\Hypertarget{classBoundaryCondition_a45ca828c4cc6c90627bdd0810552a034}\label{classBoundaryCondition_a45ca828c4cc6c90627bdd0810552a034} 
+\index{BoundaryCondition@{BoundaryCondition}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily virtual std\+::string Boundary\+Condition\+::get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Devuelve el nombre de la estrategia de condición de borde. 
+
+\begin{DoxyReturn}{Devuelve}
+Una cadena que contiene el nombre de la clase. 
+\end{DoxyReturn}
+
+
+Implementado en \mbox{\hyperlink{classAbsorbingBoundary_a76be1c6c7684f0b677fb61b7a33a35f4}{Absorbing\+Boundary}} y \mbox{\hyperlink{classPeriodicBoundary_a6f3e62bf02b9773bac870714586b7599}{Periodic\+Boundary}}.
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+cpp\+\_\+src/boundaries/\mbox{\hyperlink{BoundaryCondition_8h}{Boundary\+Condition.\+h}}\end{DoxyCompactItemize}

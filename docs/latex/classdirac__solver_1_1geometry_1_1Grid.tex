@@ -50,6 +50,54 @@
 @param origin: punto de inicio de la malla (default: centrado en 0)
 \end{DoxyVerb}
  
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ shape,spacing,\ origin=None):}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00021\ \textcolor{stringliteral}{\ \ \ \ @param\ shape:\ tupla\ con\ el\ numero\ de\ puntos\ en\ cada\ direccion\ (nx\ ,\ [ny],[nz]\ ).}}
+\DoxyCodeLine{00022\ \textcolor{stringliteral}{\ \ \ \ @param\ \ spacing:\ tupla\ con\ el\ tamaño\ de\ la\ celda\ (dx,\ [dy],\ [dz]).}}
+\DoxyCodeLine{00023\ \textcolor{stringliteral}{\ \ \ \ @param\ origin:\ punto\ de\ inicio\ de\ la\ malla\ (default:\ centrado\ en\ 0)}}
+\DoxyCodeLine{00024\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{\#\ self.shape\ guarda\ el\ numero\ de\ puntos\ en\ cada\ direccion\ del\ espacio}}
+\DoxyCodeLine{00027\ \ \ \ \ self.shape\ =\ shape}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{\#\ self.dim\ almacena\ cuantas\ dimensiones\ tiene\ la\ malla\ (1,\ 2\ o\ 3),\ en\ este\ caso\ la\ cantidad\ de\ entradas\ de\ shape.}}
+\DoxyCodeLine{00030\ \ \ \ \ self.dim\ =\ len(shape)}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{\#\ self.spacing,\ guarda\ el\ tamaño\ de\ la\ celda\ en\ cada\ dirección,\ en\ funcion\ de\ la\ dimension\ definida.}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(spacing,\ (float,\ int)):}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00035\ \textcolor{stringliteral}{\ \ \ \ \ \ @brief\ Se\ genera\ un\ espaciado\ igual\ en\ todas\ las\ direcciones}}
+\DoxyCodeLine{00036\ \textcolor{stringliteral}{\ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ self.spacing\ =\ (spacing,)*self.dim}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00040\ \textcolor{stringliteral}{\ \ \ \ \ \ @brief\ Se\ genera\ un\ espaciado\ diferente\ en\ cada\ direccion\ de\ la\ fomra\ \ "{}En\ 3D\ (self.dim=3):\ (spacing,)\ *\ 3\ →\ (0.1,\ 0.1,\ 0.1)"{}}}
+\DoxyCodeLine{00041\ \textcolor{stringliteral}{\ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ self.spacing\ =\ tuple(spacing)}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{\#\ self.origin\ guarda\ el\ punto\ inicial\ desde\ el\ cual\ se\ construye\ la\ malla.\ (coordenada\ minima\ en\ cada\ eje).}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ origin\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00047\ \textcolor{stringliteral}{\ \ \ \ \ \ @brief\ Por\ defecto\ se\ define\ el\ limite\ negativo\ en\ cada\ eje,\ dejando\ el\ centrop\ de\ la\ malla\ en\ O.}}
+\DoxyCodeLine{00048\ \textcolor{stringliteral}{\ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ self.origin\ =\ tuple(-\/0.5\ *\ (n-\/1)\ *\ dx\ \textcolor{keywordflow}{for}\ n,\ dx\ \textcolor{keywordflow}{in}\ zip(shape,\ self.spacing)\ )}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00052\ \textcolor{stringliteral}{\ \ \ \ \ \ @brief\ se\ toman\ llos\ valores\ de\ la\ tupla\ (x,y,z)}}
+\DoxyCodeLine{00053\ \textcolor{stringliteral}{\ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ self.origin\ =\ tuple(origin)}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{\#\ Constantes\ físicas\ en\ unidades\ naturales}}
+\DoxyCodeLine{00057\ \ \ \ \ self.c\ =\ c}
+\DoxyCodeLine{00058\ \ \ \ \ self.hbar\ =\ hbar}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{\#\ self.coods\ guarda\ toda\ la\ información\ de\ las\ coordenadas\ de\ la\ malla\ en\ un\ arreglo\ Numpy\ con\ la\ fomra\ (nx,\ [ny],\ [nz],\ dim)}}
+\DoxyCodeLine{00061\ \ \ \ \ self.coords\ =\ self.\_generate\_coords()}
+\DoxyCodeLine{00062\ }
+
+\end{DoxyCode}
+
 
 \doxysubsection{Documentación de funciones miembro}
 \Hypertarget{classdirac__solver_1_1geometry_1_1Grid_a90b4cd92aa9faaf717d93c45a32b5ef3}\label{classdirac__solver_1_1geometry_1_1Grid_a90b4cd92aa9faaf717d93c45a32b5ef3} 
@@ -60,7 +108,22 @@
 
 \begin{DoxyVerb}@brief construye las coordenadas de la malla en funcíon de la dimensiión.
 \end{DoxyVerb}
- \Hypertarget{classdirac__solver_1_1geometry_1_1Grid_ac810fb5567ca3cf14c648daf85a7436a}\label{classdirac__solver_1_1geometry_1_1Grid_ac810fb5567ca3cf14c648daf85a7436a} 
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{def\ }\_generate\_coords(self):}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00065\ \textcolor{stringliteral}{\ \ \ \ @brief\ construye\ las\ coordenadas\ de\ la\ malla\ en\ funcíon\ de\ la\ dimensiión.}}
+\DoxyCodeLine{00066\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00067\ \ \ \ \ axes\ =\ [self.origin[i]\ +\ np.arange(self.shape[i])\ *\ self.spacing[i]\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(self.dim)]}
+\DoxyCodeLine{00068\ \ \ \ \ grids\ =\ np.meshgrid(*axes,\ indexing=\textcolor{stringliteral}{"{}ij"{}})}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{\#\ self.coords\ se\ construyó\ en\ \_\_init\_\_\ llamando\ a\ esta\ función.}}
+\DoxyCodeLine{00071\ \ \ \ \ coords\ =\ np.stack(grids,\ axis=-\/1)\ \ \textcolor{comment}{\#\ shape:\ (nx,\ [ny],\ [nz],\ dim)}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{return}\ coords}
+\DoxyCodeLine{00073\ }
+
+\end{DoxyCode}
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_ac810fb5567ca3cf14c648daf85a7436a}\label{classdirac__solver_1_1geometry_1_1Grid_ac810fb5567ca3cf14c648daf85a7436a} 
 \index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!courant\_limit@{courant\_limit}}
 \index{courant\_limit@{courant\_limit}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
 \doxysubsubsection{\texorpdfstring{courant\_limit()}{courant\_limit()}}
@@ -68,7 +131,19 @@
 
 \begin{DoxyVerb}@brief Calcula el paso de tiempo máximo por condición de estabilidad de Courant.
 \end{DoxyVerb}
- \Hypertarget{classdirac__solver_1_1geometry_1_1Grid_aa826a5837f24f73bb7ab5675cfdf34da}\label{classdirac__solver_1_1geometry_1_1Grid_aa826a5837f24f73bb7ab5675cfdf34da} 
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00086\ \ \ \textcolor{keyword}{def\ }courant\_limit(self):}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00088\ \textcolor{stringliteral}{\ \ \ \ \ \ @brief\ Calcula\ el\ paso\ de\ tiempo\ máximo\ por\ condición\ de\ estabilidad\ de\ Courant.}}
+\DoxyCodeLine{00089\ \textcolor{stringliteral}{\ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \textcolor{comment}{\#\ self.spacing\ guarda\ (dx,dy,dz)\ →\ usamos\ cada\ valor\ para\ la\ fórmula}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \textcolor{comment}{\#\ self.c\ es\ la\ velocidad\ de\ la\ luz\ en\ las\ unidades\ seleccionadas}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ inv\_sq\ =\ sum((1.0/dx)**2\ \textcolor{keywordflow}{for}\ dx\ \textcolor{keywordflow}{in}\ self.spacing)}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1.0\ /\ (self.c\ *\ np.sqrt(inv\_sq))}
+
+\end{DoxyCode}
+\Hypertarget{classdirac__solver_1_1geometry_1_1Grid_aa826a5837f24f73bb7ab5675cfdf34da}\label{classdirac__solver_1_1geometry_1_1Grid_aa826a5837f24f73bb7ab5675cfdf34da} 
 \index{dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}!dv@{dv}}
 \index{dv@{dv}!dirac\_solver.geometry.Grid@{dirac\_solver.geometry.Grid}}
 \doxysubsubsection{\texorpdfstring{dv()}{dv()}}
@@ -77,6 +152,21 @@
 \begin{DoxyVerb}@brief Elemento de volumen (dx * dy * dz).
 \end{DoxyVerb}
  
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{def\ }dv(self):}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00077\ \textcolor{stringliteral}{\ \ \ \ \ \ @brief\ Elemento\ de\ volumen\ (dx\ *\ dy\ *\ dz).}}
+\DoxyCodeLine{00078\ \textcolor{stringliteral}{\ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \textcolor{comment}{\#\ self.spacing\ contiene\ los\ espaciamientos\ en\ cada\ dirección}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \textcolor{comment}{\#\ se\ multiplican\ para\ obtener\ el\ volumen\ elemental\ ΔV.}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ dv\ =\ 1.0}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ dx\ \textcolor{keywordflow}{in}\ self.spacing:}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ dv\ *=\ dx}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dv}
+\DoxyCodeLine{00085\ }
+
+\end{DoxyCode}
+
 
 \doxysubsection{Documentación de datos miembro}
 \Hypertarget{classdirac__solver_1_1geometry_1_1Grid_a919586f9f41ea5813a9131c14cf6b5c2}\label{classdirac__solver_1_1geometry_1_1Grid_a919586f9f41ea5813a9131c14cf6b5c2} 

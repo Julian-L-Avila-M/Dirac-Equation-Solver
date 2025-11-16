@@ -1,8 +1,14 @@
 var searchData=
 [
-  ['management_20requirements_20strong_0',['&lt;strong&gt;5. Project Management Requirements&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md48',1,'']]],
-  ['mass_1',['mass',['../classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#afea6f6b8d96a576ae18c262d24a67c52',1,'dirac_solver::initial_state::ConstantSpinor']]],
-  ['momentum_2',['momentum',['../classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#af9f772e2fdabea91470f556e3152cc87',1,'dirac_solver::initial_state::ConstantSpinor']]],
-  ['must_20do_20em_20strong_3',['&lt;strong&gt;2. Functional Requirements (What the System &lt;em&gt;Must Do&lt;/em&gt;)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md38',1,'']]],
-  ['must_20produce_20em_20strong_4',['&lt;strong&gt;C. Outputs and Analysis (What the System &lt;em&gt;Must Produce&lt;/em&gt;)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md41',1,'']]]
+  ['la_20arquitectura_20de_20dirac_5fsolver_0',['Diagramas UML para la Arquitectura de dirac_solver',['../md_planning_2ulm-diagrams.html',1,'']]],
+  ['la_20base_1',['Espinores de la Base',['../md_planning_2spinor-definition.html#autotoc_md85',1,'']]],
+  ['la_20ecuación_20de_20dirac_2',['la ecuación de dirac',['../index.html',1,'Dirac-Solver: Solucionador numérico de la Ecuación de Dirac.'],['../md_planning_2problems-to-solve.html',1,'Plan del Proyecto para un Solucionador de la Ecuación de Dirac']]],
+  ['la_20librería_20dirac_20solver_3',['Actualización de la librería Dirac Solver',['../md_planning_2Actualizaci_xC3_xB3n__constants.html',1,'']]],
+  ['la_20simulación_4',['2. Patrón Builder - Configuración de la Simulación',['../md_planning_2design-pattern.html#autotoc_md15',1,'']]],
+  ['libre_5',['1. Partícula Libre',['../md_planning_2problems-to-solve.html#autotoc_md43',1,'']]],
+  ['librería_20dirac_20solver_6',['Actualización de la librería Dirac Solver',['../md_planning_2Actualizaci_xC3_xB3n__constants.html',1,'']]],
+  ['librerías_20externas_7',['8. Patrón Adapter – Interoperabilidad con Librerías Externas',['../md_planning_2design-pattern.html#autotoc_md27',1,'']]],
+  ['los_20ángulos_8',['Definiciones de los Ángulos',['../md_planning_2spinor-definition.html#autotoc_md86',1,'']]],
+  ['los_20algoritmos_9',['3. Patrón Strategy - Flexibilidad en los Algoritmos',['../md_planning_2design-pattern.html#autotoc_md18',1,'']]],
+  ['los_20patrones_10',['9. Relaciones entre los Patrones',['../md_planning_2design-pattern.html#autotoc_md29',1,'']]]
 ];

@@ -6,6 +6,8 @@
 \mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianPacket_a4e1dd64f320e1b7da7cfae27d28c860a}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianPacket_ac282f0b279720ddfa326dfde9c697fe6}{constant\+\_\+spinor}}, \mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianPacket_ae36d8454d1d7eb945f3dce9ecdb7c27d}{center}}=\mbox{[}0, 0, 0\mbox{]}, \mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianPacket_a562d854fc1b27c34e2cec3a0fc874378}{spatial\+\_\+width}}=1)
 \item 
 \mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianPacket_a316c915e47f47aaeb218a90915ab8499}{evaluate}} (self, grid\+\_\+position)
+\item 
+\mbox{\hyperlink{classdirac__solver_1_1initial__state_1_1GaussianPacket_a8cfb6b87a64c877fad6f430d9c169a1a}{evaluate\+\_\+on\+\_\+grid}} (self, grid)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Atributos públicos}
 \begin{DoxyCompactItemize}
@@ -28,6 +30,18 @@
 \begin{DoxyVerb}@brief el spinor constante entra como parametro
 \end{DoxyVerb}
  
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ constant\_spinor,\ center\ =\ [0,0,0],\ spatial\_width\ =\ 1):}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00100\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ el\ spinor\ constante\ entra\ como\ parametro}}
+\DoxyCodeLine{00101\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ self.constant\_spinor\ =\ constant\_spinor}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ self.center\ =\ np.array(center)}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ self.spatial\_width\ =\ spatial\_width}
+\DoxyCodeLine{00105\ }
+
+\end{DoxyCode}
+
 
 \doxysubsection{Documentación de funciones miembro}
 \Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianPacket_a316c915e47f47aaeb218a90915ab8499}\label{classdirac__solver_1_1initial__state_1_1GaussianPacket_a316c915e47f47aaeb218a90915ab8499} 
@@ -39,6 +53,157 @@
 \begin{DoxyVerb}@brief calcula el estado base en un punto exacto
 \end{DoxyVerb}
  
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{def\ }evaluate(self,\ grid\_position):}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00108\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ calcula\ el\ estado\ base\ en\ un\ punto\ exacto}}
+\DoxyCodeLine{00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ x\ =\ np.array(grid\_position)}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ p0\ =\ self.constant\_spinor.momentum}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ x0\ =\ self.center}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Pad\ the\ position\ vector\ 'x'\ to\ match\ the\ dimension\ of\ momentum\ and\ center\ vectors}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(x)\ <\ len(p0):}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ padded\_x\ =\ np.zeros(len(p0),\ dtype=float)}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ padded\_x[:len(x)]\ =\ x.flatten()}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ padded\_x}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ sigma0\ =\ self.spatial\_width}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ u\_p0\ =\ self.constant\_spinor.constant\_spinor}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ p0\_dot\_x\ =\ np.dot(p0,\ x)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ exponent\_norm\ =\ np.linalg.norm(x\ -\/\ x0)**2}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ spatial\_part\ =\ np.exp(1j\ *\ p0\_dot\_x)\ *\ np.exp(-\/exponent\_norm\ /\ (4\ +\ sigma0**2))}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ dirac\_spinor\ =\ u\_p0\ *\ spatial\_part}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00131\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Devuelve\ el\ spinor\ calculado\ en\ el\ punto}}
+\DoxyCodeLine{00132\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dirac\_spinor}
+\DoxyCodeLine{00134\ }
+
+\end{DoxyCode}
+\Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianPacket_a8cfb6b87a64c877fad6f430d9c169a1a}\label{classdirac__solver_1_1initial__state_1_1GaussianPacket_a8cfb6b87a64c877fad6f430d9c169a1a} 
+\index{dirac\_solver.initial\_state.GaussianPacket@{dirac\_solver.initial\_state.GaussianPacket}!evaluate\_on\_grid@{evaluate\_on\_grid}}
+\index{evaluate\_on\_grid@{evaluate\_on\_grid}!dirac\_solver.initial\_state.GaussianPacket@{dirac\_solver.initial\_state.GaussianPacket}}
+\doxysubsubsection{\texorpdfstring{evaluate\_on\_grid()}{evaluate\_on\_grid()}}
+{\footnotesize\ttfamily dirac\+\_\+solver.\+initial\+\_\+state.\+Gaussian\+Packet.\+evaluate\+\_\+on\+\_\+grid (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{grid }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Calcula el estado inicial en toda la malla.
+@param grid: Objeto Grid sobre el que se evaluará el paquete.
+@return: Un array de NumPy con la forma (n_points, 4)
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{def\ }evaluate\_on\_grid(self,\ grid):}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00137\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Calcula\ el\ estado\ inicial\ en\ toda\ la\ malla.}}
+\DoxyCodeLine{00138\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ grid:\ Objeto\ Grid\ sobre\ el\ que\ se\ evaluará\ el\ paquete.}}
+\DoxyCodeLine{00139\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @return:\ Un\ array\ de\ NumPy\ con\ la\ forma\ (n\_points,\ 4)}}
+\DoxyCodeLine{00140\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ n\_points\ =\ grid.shape[0]\ \textcolor{comment}{\#\ Assuming\ 1D\ for\ now}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ psi\_0\ =\ np.zeros((n\_points,\ 4),\ dtype=np.complex128)}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(n\_points):}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ position\ =\ grid.coords[i]}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ spinor\_at\_point\ =\ self.evaluate(position)}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ psi\_0[i,\ :]\ =\ spinor\_at\_point.flatten()}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ psi\_0}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{comment}{\#\ "{}"{}"{}}}
+\DoxyCodeLine{00152\ \textcolor{comment}{\#\ @class\ GaussianWavePacket}}
+\DoxyCodeLine{00153\ \textcolor{comment}{\#\ @brief\ Clase\ para\ inicializar\ el\ paquete\ de\ ondas\ gaussiano.}}
+\DoxyCodeLine{00154\ \textcolor{comment}{\#\ "{}"{}"{}}}
+\DoxyCodeLine{00155\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00156\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00157\ \textcolor{comment}{\#\ class\ GaussianWavePacket:}}
+\DoxyCodeLine{00158\ \textcolor{comment}{\#\ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\#\ \ \ \ \ @brief\ En\ esta\ clase\ se\ construye\ un\ paquete\ de\ ondas\ gaussiano.}}
+\DoxyCodeLine{00160\ \textcolor{comment}{\#\ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00161\ \textcolor{comment}{\#\ \ \ \ \ def\ \_\_init\_\_(self,\ momentum=[0,0,0],\ mass=1.0,\ packet\_width=1.0,\ spin\_orientation='up\_z'):}}
+\DoxyCodeLine{00162\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00163\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @brief\ Inicializa\ los\ parametros\ fisicos\ del\ paquete\ de\ ondas}}
+\DoxyCodeLine{00164\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @param\ momemtum:\ \ Momentum\ del\ paquete\ de\ ondas\ (array),\ por\ defecto:\ [0,0,0]}}
+\DoxyCodeLine{00165\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @param\ mass:\ Masa\ en\ reposo\ de\ la\ particula\ (float),\ por\ defecto:\ 1.0}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @param\ packet\_width:\ Ancho\ inicial\ del\ paquete\ (float),\ por\ defecto:\ 1.0}}
+\DoxyCodeLine{00167\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @param\ spin\_orientation:\ Orientación\ del\ spin.\ (char),\ por\ defecto:\ 'up\_z'}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00169\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00170\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.p\_vec\ =\ np.array(momentum)}}
+\DoxyCodeLine{00171\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.mass\ =\ mass}}
+\DoxyCodeLine{00172\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.x0\ =\ packet\_width\ }}
+\DoxyCodeLine{00173\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.spin\ =\ spin\_orientation}}
+\DoxyCodeLine{00174\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00175\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ consts\ =\ Constants()}}
+\DoxyCodeLine{00176\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.c\ =\ consts.get("{}c"{})}}
+\DoxyCodeLine{00177\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.HBAR\ =\ consts.get("{}HBAR"{})}}
+\DoxyCodeLine{00178\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00179\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00180\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00181\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00182\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.\_precompute\_spinor()}}
+\DoxyCodeLine{00183\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00184\ \textcolor{comment}{\#\ \ \ \ \ def\ \_precompute\_spinor(self):}}
+\DoxyCodeLine{00185\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00186\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @brief\ En\ este\ metodo\ se\ calcula\ la\ parte\ espinorial\ constante\ del\ paquete\ de\ ondas}}
+\DoxyCodeLine{00187\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @note\ Se\ ejecuta\ al\ crearse\ el\ objeto,\ es\ de\ uso\ interno.}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00189\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00190\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @brief\ Aqui\ calculamos\ la\ energia\ relativista\ del\ paquete\ de\ ondas:}}
+\DoxyCodeLine{00191\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00192\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00193\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ p\_mag\ =\ np.linalg.norm(self.p\_vec)}}
+\DoxyCodeLine{00194\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00195\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ if\ p\_mag\ ==\ 0:}}
+\DoxyCodeLine{00196\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00197\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ @todo\ Este\ condicional\ se\ podria\ eliminar\ si\ el\ sqrt\ eliminara\ la\ potencia\ cuadrada\ al\ ser\ p\_mag\ =\ 0}}
+\DoxyCodeLine{00198\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00199\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ self.energy\ =\ self.mass\ *\ (self.c**2)}}
+\DoxyCodeLine{00200\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ else:}}
+\DoxyCodeLine{00201\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ self.energy\ =\ np.sqrt((p\_mag\ *\ self.c)**2\ +\ (self.mass\ *\ self.c**2)**2)}}
+\DoxyCodeLine{00202\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00203\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00204\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @brief\ Se\ calcula\ la\ constante\ de\ normalización\ N:}}
+\DoxyCodeLine{00205\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00206\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ N\ =\ (\ (2\ *\ np.pi\ )**(3/2)\ *\ (self.x0)**3\ )**(-\/1/2)}}
+\DoxyCodeLine{00207\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00208\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00209\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @brief\ Se\ calcula\ el\ factor\ de\ normalización:}}
+\DoxyCodeLine{00210\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00211\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ norm\_factor\ =\ np.sqrt((self.energy\ +\ self.mass*(self.c**2))\ /\ (2\ *\ self.energy))}}
+\DoxyCodeLine{00212\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00213\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00214\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @brief\ Se\ construye\ el\ spinor\ base:}}
+\DoxyCodeLine{00215\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00216\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00217\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ px,\ py,\ pz\ =\ self.p\_vec}}
+\DoxyCodeLine{00218\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ spinor\ =\ np.zeros(4,\ dtype=np.complex128)}}
+\DoxyCodeLine{00219\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00220\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ if\ self.spin\ ==\ 'up\_z':}}
+\DoxyCodeLine{00221\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ spinor[0]\ =\ 1.0\ }}
+\DoxyCodeLine{00222\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ spinor[1]\ =\ 0.0}}
+\DoxyCodeLine{00223\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ spinor[2]\ =\ ((pz\ *\ self.c)/(self.energy\ +\ (self.mass\ *\ (self.c**2))))\ }}
+\DoxyCodeLine{00224\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ spinor[3]\ =\ (\ ((px\ -\/\ (1j\ *\ py))*self.c\ )\ /\ (self.energy\ +\ (self.mass*(self.c**2)))\ )}}
+\DoxyCodeLine{00225\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ else:}}
+\DoxyCodeLine{00226\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ raise\ NotImplementedError(f"{}Spin\ orientation\ '\{self.spin\}'\ is\ not\ supported."{})}}
+\DoxyCodeLine{00227\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00228\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ @warning\ Es\ necesario\ implementar\ las\ otras\ componentes}}
+\DoxyCodeLine{00229\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00230\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00231\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00232\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @brief\ Se\ aplica\ la\ normalizacion\ a\ nuestro\ vertor\ 4x1}}
+\DoxyCodeLine{00233\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ @note\ Es\ necesario\ construir\ el\ termino\ faltante\ con\ al\ geometria.}}
+\DoxyCodeLine{00234\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00235\ \textcolor{comment}{\#\ }}
+\DoxyCodeLine{00236\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ self.spinor\_vector\ =\ N\ *\ norm\_factor\ *\ spinor}}
+\DoxyCodeLine{00237\ \textcolor{comment}{\#\ \ \ \ \ \ \ \ \ print("{}Objeto\ creado\ (falta\ aplicarle\ la\ geometria)"{})}}
+\DoxyCodeLine{00238\ }
+
+\end{DoxyCode}
+
 
 \doxysubsection{Documentación de datos miembro}
 \Hypertarget{classdirac__solver_1_1initial__state_1_1GaussianPacket_ae36d8454d1d7eb945f3dce9ecdb7c27d}\label{classdirac__solver_1_1initial__state_1_1GaussianPacket_ae36d8454d1d7eb945f3dce9ecdb7c27d} 

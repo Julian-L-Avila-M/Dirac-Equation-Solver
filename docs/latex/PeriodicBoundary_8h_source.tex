@@ -1,0 +1,26 @@
+\doxysection{Periodic\+Boundary.\+h}
+\hypertarget{PeriodicBoundary_8h_source}{}\label{PeriodicBoundary_8h_source}\index{cpp\_src/boundaries/PeriodicBoundary.h@{cpp\_src/boundaries/PeriodicBoundary.h}}
+\mbox{\hyperlink{PeriodicBoundary_8h}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryCondition_8h}{BoundaryCondition.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPeriodicBoundary}{PeriodicBoundary}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classBoundaryCondition}{BoundaryCondition}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPeriodicBoundary_ad1ac4291a92b159e061fc99e7777d34b}{apply}}(std::vector<Dirac::Spinor>\&\ psi,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGrid}{Grid}}\&\ grid)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (psi.size()\ <\ 2)\ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ No\ aplicable\ para\ mallas\ con\ menos\ de\ 2\ puntos.}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ En\ un\ caso\ simple,\ copiaríamos\ los\ valores,\ por\ ejemplo:}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ psi.front()\ =\ psi.back();}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pero\ para\ una\ malla\ escalonada,\ esta\ lógica\ es\ más\ compleja\ y\ se\ maneja\ mejor}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dentro\ del\ bucle\ numérico.\ Esta\ función\ sirve\ como\ un\ marcador\ de\ posición}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ y\ confirmación\ de\ la\ implementación\ del\ patrón\ de\ estrategia.}}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \ \ \ \ std::string\ \mbox{\hyperlink{classPeriodicBoundary_a6f3e62bf02b9773bac870714586b7599}{get\_name}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PeriodicBoundary"{}};}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \};}
+
+\end{DoxyCode}

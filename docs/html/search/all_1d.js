@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['well_20em_20the_20system_20performs_20strong_0',['&lt;strong&gt;3. Non-Functional Requirements (How &lt;em&gt;Well&lt;/em&gt; the System Performs)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md44',1,'']]],
-  ['what_20the_20system_20em_20must_20do_20em_20strong_1',['&lt;strong&gt;2. Functional Requirements (What the System &lt;em&gt;Must Do&lt;/em&gt;)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md38',1,'']]],
-  ['what_20the_20system_20em_20must_20produce_20em_20strong_2',['&lt;strong&gt;C. Outputs and Analysis (What the System &lt;em&gt;Must Produce&lt;/em&gt;)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md41',1,'']]]
+  ['ulm_2ddiagrams_2emd_0',['ulm-diagrams.md',['../ulm-diagrams_8md.html',1,'']]],
+  ['uml_20para_20la_20arquitectura_20de_20dirac_5fsolver_1',['Diagramas UML para la Arquitectura de dirac_solver',['../md_planning_2ulm-diagrams.html',1,'']]],
+  ['un_20solucionador_20de_20la_20ecuación_20de_20dirac_2',['Plan del Proyecto para un Solucionador de la Ecuación de Dirac',['../md_planning_2problems-to-solve.html',1,'']]],
+  ['user_20interface_20strong_3',['&lt;strong&gt;B. Python API (The User Interface)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md73',1,'']]],
+  ['uso_4',['Ejemplo de uso',['../classAbsorbingBoundary.html#autotoc_md0',1,'']]],
+  ['utilidades_20generales_5',['8. &lt;tt&gt;utils/&lt;/tt&gt; – Utilidades generales',['../md_planning_2structure.html#autotoc_md108',1,'']]],
+  ['utils_20tt_20–_20utilidades_20generales_6',['8. &lt;tt&gt;utils/&lt;/tt&gt; – Utilidades generales',['../md_planning_2structure.html#autotoc_md108',1,'']]]
 ];

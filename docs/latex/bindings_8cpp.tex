@@ -1,0 +1,49 @@
+\doxysection{Referencia del archivo cpp\+\_\+src/bindings.cpp}
+\hypertarget{bindings_8cpp}{}\label{bindings_8cpp}\index{cpp\_src/bindings.cpp@{cpp\_src/bindings.cpp}}
+
+
+Enlaces de C++ a Python usando Pybind11 para el núcleo de simulación \doxylink{namespaceDirac}{Dirac}.  
+
+
+{\ttfamily \#include $<$pybind11/pybind11.\+h$>$}\newline
+{\ttfamily \#include $<$pybind11/stl.\+h$>$}\newline
+{\ttfamily \#include $<$pybind11/functional.\+h$>$}\newline
+{\ttfamily \#include "{}Grid.\+h"{}}\newline
+{\ttfamily \#include "{}Time\+Integrator.\+h"{}}\newline
+{\ttfamily \#include "{}potentials/\+Potential.\+h"{}}\newline
+{\ttfamily \#include "{}potentials/\+Free\+Particle.\+h"{}}\newline
+{\ttfamily \#include "{}potentials/\+Scalar\+Potential.\+h"{}}\newline
+{\ttfamily \#include "{}potentials/\+Coulomb\+Potential.\+h"{}}\newline
+{\ttfamily \#include "{}boundaries/\+Boundary\+Condition.\+h"{}}\newline
+{\ttfamily \#include "{}boundaries/\+Periodic\+Boundary.\+h"{}}\newline
+{\ttfamily \#include "{}boundaries/\+Absorbing\+Boundary.\+h"{}}\newline
+Gráfico de dependencias incluidas en bindings.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bindings_8cpp__incl}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Descripción detallada}
+Enlaces de C++ a Python usando Pybind11 para el núcleo de simulación \doxylink{namespaceDirac}{Dirac}. 
+
+Este archivo define el módulo {\ttfamily \+\_\+core}, que expone las clases de C++ (potenciales, condiciones de borde, mallas y métodos de integración temporal) al entorno Python.
+
+Las clases aquí expuestas se emplean desde Python para construir, configurar y ejecutar simulaciones de la ecuación de \doxylink{namespaceDirac}{Dirac} mediante un motor numérico en C++.
+
+Estructura general del módulo\+:
+\begin{DoxyItemize}
+\item {\bfseries{\doxylink{classGrid}{Grid}\+:}} Representa la malla espacial discreta.
+\item {\bfseries{\doxylink{classPotential}{Potential}\+:}} Jerarquía de potenciales físicos (Free, Scalar, Coulomb).
+\item {\bfseries{\doxylink{classBoundaryCondition}{Boundary\+Condition}\+:}} Estrategias de frontera (Periódica, Absorbente).
+\item {\bfseries{\doxylink{classTimeIntegrator}{Time\+Integrator}\+:}} Métodos de evolución temporal (FDTDLeapfrog).
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Nota}
+Este archivo debe compilarse como extensión dinámica (shared library) a través de CMake y Pybind11. 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{Ver también}
+\href{https://pybind11.readthedocs.io/}{\texttt{ https\+://pybind11.\+readthedocs.\+io/}} 
+\end{DoxySeeAlso}

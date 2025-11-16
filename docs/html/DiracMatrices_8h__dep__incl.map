@@ -1,0 +1,18 @@
+<map id="cpp_src/DiracMatrices.h" name="cpp_src/DiracMatrices.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="145,5,323,31"/>
+<area shape="rect" id="Node000002" href="$TimeIntegrator_8h.html" title=" " alt="" coords="5,174,188,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,43,108,176,104,172,214,39"/>
+<area shape="rect" id="Node000004" href="$AbsorbingBoundary_8h.html" title=" " alt="" coords="213,167,375,207"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,44,262,118,285,165,280,168,257,120,236,46"/>
+<area shape="rect" id="Node000005" href="$BoundaryCondition_8h.html" title=" " alt="" coords="271,79,434,119"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="264,36,326,76,323,81,261,41"/>
+<area shape="rect" id="Node000003" href="$bindings_8cpp.html" title="Enlaces de C++ a Python usando Pybind11 para el núcleo de simulación Dirac." alt="" coords="274,255,431,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="148,201,316,252,315,257,146,206"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="318,216,346,253,342,256,314,219"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="284,126,132,177,130,171,283,120"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="375,129,390,166,393,187,390,207,378,234,364,256,360,253,374,232,385,206,388,187,385,167,370,131"/>
+<area shape="poly" id="edge8_Node000005_Node000004" title=" " alt="" coords="334,131,309,168,305,165,330,128"/>
+<area shape="rect" id="Node000006" href="$PeriodicBoundary_8h.html" title=" " alt="" coords="451,167,601,207"/>
+<area shape="poly" id="edge9_Node000005_Node000006" title=" " alt="" coords="404,122,489,164,487,169,402,127"/>
+<area shape="poly" id="edge10_Node000006_Node000003" title=" " alt="" coords="473,215,379,257,377,252,471,210"/>
+</map>

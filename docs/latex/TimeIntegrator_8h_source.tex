@@ -1,0 +1,166 @@
+\doxysection{Time\+Integrator.\+h}
+\hypertarget{TimeIntegrator_8h_source}{}\label{TimeIntegrator_8h_source}\index{cpp\_src/TimeIntegrator.h@{cpp\_src/TimeIntegrator.h}}
+\mbox{\hyperlink{TimeIntegrator_8h}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <pybind11/pybind11.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <pybind11/numpy.h>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Grid_8h}{Grid.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Potential_8h}{potentials/Potential.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BoundaryCondition_8h}{boundaries/BoundaryCondition.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{DiracMatrices_8h}{DiracMatrices.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }py\ =\ pybind11;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTimeIntegrator}{TimeIntegrator}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classTimeIntegrator_a5aa91f429adebc6c8bdb73eb77583bad}{\string~TimeIntegrator}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTimeIntegrator_a20df1b79d2b1f2789c8bf5db04c67ed1}{step}}()\ =\ 0;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classTimeIntegrator_af3fc978491f9cdbaae29be11a4eff1ee}{get\_name}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFDTDLeapfrogIntegrator}{FDTDLeapfrogIntegrator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTimeIntegrator}{TimeIntegrator}}\ \{}
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{classFDTDLeapfrogIntegrator_ab422e8df351fbc5118d140b5c580c988}{FDTDLeapfrogIntegrator}}(}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ py::array\_t<std::complex<double>,\ py::array::c\_style\ |\ py::array::forcecast>\ initial\_psi,}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGrid}{Grid}}\&\ grid,}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ std::shared\_ptr<Potential>\ potential,}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ std::shared\_ptr<BoundaryCondition>\ boundary\_condition,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dt,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mass)}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ :\ grid\_(grid),\ potential\_(potential),\ boundary\_condition\_(boundary\_condition),\ dt\_(dt),\ mass\_(mass)}
+\DoxyCodeLine{00095\ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Validación\ de\ dimensiones\ de\ entrada}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ py::buffer\_info\ psi\_info\ =\ initial\_psi.request();}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (psi\_info.ndim\ !=\ 2\ ||\ psi\_info.shape[1]\ !=\ 4)\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}El\ psi\ inicial\ debe\ ser\ un\ array\ de\ NumPy\ de\ forma\ (N,\ 4)"{}});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(psi\_info.shape[0])\ !=\ grid\_.\mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\_total\_points}}())\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}El\ número\ de\ puntos\ en\ psi\ debe\ coincidir\ con\ el\ total\ de\ puntos\ de\ la\ malla."{}});}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Asignación\ de\ memoria}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\_points\ =\ grid\_.\mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\_total\_points}}();}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ psi\_curr\_.resize(n\_points);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ psi\_prev\_.resize(n\_points);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ psi\_next\_.resize(n\_points);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copiar\ datos\ desde\ el\ array\ de\ NumPy\ a\ psi\_curr\_}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ ptr\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}*\textcolor{keyword}{>}(psi\_info.ptr);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n\_points;\ ++i)}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ 4;\ ++j)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ psi\_curr\_[i].components[j]\ =\ ptr[i\ *\ 4\ +\ j];}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Inicialización\ básica\ del\ buffer\ previo}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ psi\_prev\_\ =\ psi\_curr\_;}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classFDTDLeapfrogIntegrator_a95056a345afb24061b8c304f9600c37f}{step}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\_points\ =\ grid\_.\mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\_total\_points}}();}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ shape\ =\ grid\_.\mbox{\hyperlink{classGrid_afd7d29568dca689034ee353694485d9d}{get\_shape}}();}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ spacing\ =\ grid\_.\mbox{\hyperlink{classGrid_a80bf6a8440ec7ac995651b6d0728c190}{get\_spacing}}();}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_periodic\ =\ (boundary\_condition\_-\/>get\_name()\ ==\ \textcolor{stringliteral}{"{}PeriodicBoundary"{}});}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n\_points;\ ++i)\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac::Spinor}}\ h\_spatial\_psi;}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Operador\ diferencial\ espacial\ según\ la\ dimensionalidad\ -\/-\/-\/}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (grid\_.\mbox{\hyperlink{classGrid_a30ec32dfa617d5b9fbbaf67fb795225b}{get\_dim}}()\ ==\ 1)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\_prev\ =\ (is\_periodic\ \&\&\ i\ ==\ 0)\ ?\ n\_points\ -\/\ 1\ :\ i\ -\/\ 1;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\_next\ =\ (is\_periodic\ \&\&\ i\ ==\ n\_points\ -\/\ 1)\ ?\ 0\ :\ i\ +\ 1;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h\_spatial\_psi\ =\ \mbox{\hyperlink{namespaceDirac_a014ad33afd9f382c542eed9f434453ed}{Dirac::multiply}}(\mbox{\hyperlink{namespaceDirac_a21dac9d07b94f2221878134ce3951549}{Dirac::alpha\_z}},\ psi\_curr\_[i\_next]\ -\/\ psi\_curr\_[i\_prev]);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h\_spatial\_psi\ =\ (\mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}(0,\ -\/1.0)\ /\ (2.0\ *\ spacing[0]))\ *\ h\_spatial\_psi;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (grid\_.\mbox{\hyperlink{classGrid_a30ec32dfa617d5b9fbbaf67fb795225b}{get\_dim}}()\ ==\ 2)\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nx\ =\ shape[0];}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ny\ =\ shape[1];}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\ =\ i\ \%\ nx;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\ =\ i\ /\ nx;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\_prev\ =\ (is\_periodic\ \&\&\ ix\ ==\ 0)\ ?\ nx\ -\/\ 1\ :\ ix\ -\/\ 1;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\_next\ =\ (is\_periodic\ \&\&\ ix\ ==\ nx\ -\/\ 1)\ ?\ 0\ :\ ix\ +\ 1;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\_prev\ =\ (is\_periodic\ \&\&\ iy\ ==\ 0)\ ?\ ny\ -\/\ 1\ :\ iy\ -\/\ 1;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\_next\ =\ (is\_periodic\ \&\&\ iy\ ==\ ny\ -\/\ 1)\ ?\ 0\ :\ iy\ +\ 1;}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac::Spinor}}\ dx\_psi\ =\ \mbox{\hyperlink{namespaceDirac_a014ad33afd9f382c542eed9f434453ed}{Dirac::multiply}}(\mbox{\hyperlink{namespaceDirac_a220c778fcf6de926d905379ca36d7b81}{Dirac::alpha\_x}},\ psi\_curr\_[iy\ *\ nx\ +\ ix\_next]\ -\/\ psi\_curr\_[iy\ *\ nx\ +\ ix\_prev]);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac::Spinor}}\ dy\_psi\ =\ \mbox{\hyperlink{namespaceDirac_a014ad33afd9f382c542eed9f434453ed}{Dirac::multiply}}(\mbox{\hyperlink{namespaceDirac_a1ee219a1bed9ad5012b3ef6ba2f5e381}{Dirac::alpha\_y}},\ psi\_curr\_[iy\_next\ *\ nx\ +\ ix]\ -\/\ psi\_curr\_[iy\_prev\ *\ nx\ +\ ix]);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h\_spatial\_psi\ =\ (\mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}(0,\ -\/1.0)\ /\ (2.0\ *\ spacing[0]))\ *\ dx\_psi\ +}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}(0,\ -\/1.0)\ /\ (2.0\ *\ spacing[1]))\ *\ dy\_psi;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (grid\_.\mbox{\hyperlink{classGrid_a30ec32dfa617d5b9fbbaf67fb795225b}{get\_dim}}()\ ==\ 3)\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nx\ =\ shape[0];}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ny\ =\ shape[1];}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nz\ =\ shape[2];}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\ =\ i\ \%\ nx;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\ =\ (i\ /\ nx)\ \%\ ny;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iz\ =\ i\ /\ (nx\ *\ ny);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\_prev\ =\ (is\_periodic\ \&\&\ ix\ ==\ 0)\ ?\ nx\ -\/\ 1\ :\ ix\ -\/\ 1;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\_next\ =\ (is\_periodic\ \&\&\ ix\ ==\ nx\ -\/\ 1)\ ?\ 0\ :\ ix\ +\ 1;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\_prev\ =\ (is\_periodic\ \&\&\ iy\ ==\ 0)\ ?\ ny\ -\/\ 1\ :\ iy\ -\/\ 1;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\_next\ =\ (is\_periodic\ \&\&\ iy\ ==\ ny\ -\/\ 1)\ ?\ 0\ :\ iy\ +\ 1;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iz\_prev\ =\ (is\_periodic\ \&\&\ iz\ ==\ 0)\ ?\ nz\ -\/\ 1\ :\ iz\ -\/\ 1;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iz\_next\ =\ (is\_periodic\ \&\&\ iz\ ==\ nz\ -\/\ 1)\ ?\ 0\ :\ iz\ +\ 1;}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac::Spinor}}\ dx\_psi\ =\ \mbox{\hyperlink{namespaceDirac_a014ad33afd9f382c542eed9f434453ed}{Dirac::multiply}}(\mbox{\hyperlink{namespaceDirac_a220c778fcf6de926d905379ca36d7b81}{Dirac::alpha\_x}},\ psi\_curr\_[iz\ *\ nx\ *\ ny\ +\ iy\ *\ nx\ +\ ix\_next]\ -\/\ psi\_curr\_[iz\ *\ nx\ *\ ny\ +\ iy\ *\ nx\ +\ ix\_prev]);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac::Spinor}}\ dy\_psi\ =\ \mbox{\hyperlink{namespaceDirac_a014ad33afd9f382c542eed9f434453ed}{Dirac::multiply}}(\mbox{\hyperlink{namespaceDirac_a1ee219a1bed9ad5012b3ef6ba2f5e381}{Dirac::alpha\_y}},\ psi\_curr\_[iz\ *\ nx\ *\ ny\ +\ iy\_next\ *\ nx\ +\ ix]\ -\/\ psi\_curr\_[iz\ *\ nx\ *\ ny\ +\ iy\_prev\ *\ nx\ +\ ix]);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac::Spinor}}\ dz\_psi\ =\ \mbox{\hyperlink{namespaceDirac_a014ad33afd9f382c542eed9f434453ed}{Dirac::multiply}}(\mbox{\hyperlink{namespaceDirac_a21dac9d07b94f2221878134ce3951549}{Dirac::alpha\_z}},\ psi\_curr\_[(iz\_next\ *\ nx\ *\ ny)\ +\ iy\ *\ nx\ +\ ix]\ -\/\ psi\_curr\_[(iz\_prev\ *\ nx\ *\ ny)\ +\ iy\ *\ nx\ +\ ix]);}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ h\_spatial\_psi\ =\ (\mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}(0,\ -\/1.0)\ /\ (2.0\ *\ spacing[0]))\ *\ dx\_psi\ +}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}(0,\ -\/1.0)\ /\ (2.0\ *\ spacing[1]))\ *\ dy\_psi\ +}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}(0,\ -\/1.0)\ /\ (2.0\ *\ spacing[2]))\ *\ dz\_psi;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Término\ local\ del\ Hamiltoniano\ -\/-\/-\/}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<double>\ coords\ =\ grid\_.\mbox{\hyperlink{classGrid_a348e56b0d5dabd0de0cd6e611804c7af}{get\_coords}}(i);}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ v\_at\_i\ =\ potential\_-\/>evaluate(coords);}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac::Spinor}}\ h\_local\_psi\ =\ mass\_\ *\ \mbox{\hyperlink{namespaceDirac_a014ad33afd9f382c542eed9f434453ed}{Dirac::multiply}}(\mbox{\hyperlink{namespaceDirac_a37ac9610e8318abeed90f787c61954f9}{Dirac::beta}},\ psi\_curr\_[i])\ +\ v\_at\_i\ *\ psi\_curr\_[i];}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Actualización\ temporal\ -\/-\/-\/}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac::Spinor}}\ h\_psi\ =\ h\_spatial\_psi\ +\ h\_local\_psi;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ psi\_next\_[i]\ =\ psi\_prev\_[i]\ -\/\ (\mbox{\hyperlink{namespaceDirac_a2e719c31ef0cb57b9d03fd37c0100e8f}{Dirac::complex}}(0,\ 2.0)\ *\ dt\_)\ *\ h\_psi;}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Aplicar\ condición\ de\ frontera}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ boundary\_condition\_-\/>apply(psi\_next\_,\ grid\_);}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rotar\ buffers\ de\ tiempo}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ psi\_prev\_\ =\ psi\_curr\_;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ psi\_curr\_\ =\ psi\_next\_;}
+\DoxyCodeLine{00203\ \ \ \ \ \}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00209\ \ \ \ \ std::string\ \mbox{\hyperlink{classFDTDLeapfrogIntegrator_aa1ffd70b11c696473b03e65a1def2d96}{get\_name}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}FDTDLeapfrogIntegrator"{}};}
+\DoxyCodeLine{00211\ \ \ \ \ \}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00221\ \ \ \ \ py::array\_t<std::complex<double>>\ \mbox{\hyperlink{classFDTDLeapfrogIntegrator_aba0465352546a0aa1dc7e2836600a114}{get\_psi}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ py::array\_t<std::complex<double>>\ result(\{grid\_.\mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\_total\_points}}(),\ 4ul\});}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ buf\ =\ result.request();}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}*\ ptr\ =\ \textcolor{keyword}{static\_cast<}std::complex<double>*\textcolor{keyword}{>}(buf.ptr);}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ grid\_.\mbox{\hyperlink{classGrid_a3522b15328f8d4e6088c03c8e14a1c2e}{get\_total\_points}}();\ ++i)}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ 4;\ ++j)}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ptr[i\ *\ 4\ +\ j]\ =\ psi\_curr\_[i].components[j];}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{classGrid}{Grid}}\ grid\_;\ \ }
+\DoxyCodeLine{00235\ \ \ \ \ std::shared\_ptr<Potential>\ potential\_;\ }
+\DoxyCodeLine{00236\ \ \ \ \ std::shared\_ptr<BoundaryCondition>\ boundary\_condition\_;\ }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{double}\ dt\_;\ \ \ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordtype}{double}\ mass\_;\ }
+\DoxyCodeLine{00240\ \ \ \ \ std::vector<Dirac::Spinor>\ psi\_prev\_;\ }
+\DoxyCodeLine{00241\ \ \ \ \ std::vector<Dirac::Spinor>\ psi\_curr\_;\ }
+\DoxyCodeLine{00242\ \ \ \ \ std::vector<Dirac::Spinor>\ psi\_next\_;\ }
+\DoxyCodeLine{00243\ \};}
+
+\end{DoxyCode}

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['interval1d_0',['Interval1D',['../classdirac__solver_1_1geometry_1_1Interval1D.html',1,'dirac_solver::geometry']]]
+  ['diracproblembuilder_0',['DiracProblemBuilder',['../classdirac__solver_1_1core_1_1DiracProblemBuilder.html',1,'dirac_solver::core']]],
+  ['diracsolver_1',['DiracSolver',['../classdirac__solver_1_1core_1_1DiracSolver.html',1,'dirac_solver::core']]]
 ];

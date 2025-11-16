@@ -1,0 +1,112 @@
+\doxysection{Referencia de la clase Periodic\+Boundary}
+\hypertarget{classPeriodicBoundary}{}\label{classPeriodicBoundary}\index{PeriodicBoundary@{PeriodicBoundary}}
+
+
+Implementa condiciones de borde periódicas.  
+
+
+
+
+{\ttfamily \#include $<$Periodic\+Boundary.\+h$>$}
+
+
+
+Diagrama de herencia de Periodic\+Boundary\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classPeriodicBoundary__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagrama de colaboración de Periodic\+Boundary\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classPeriodicBoundary__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPeriodicBoundary_ad1ac4291a92b159e061fc99e7777d34b}{apply}} (std\+::vector$<$ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac\+::\+Spinor}} $>$ \&psi, const \mbox{\hyperlink{classGrid}{Grid}} \&grid) const override
+\begin{DoxyCompactList}\small\item\em Aplica condiciones de borde periódicas al campo. En el esquema FDTD, esto generalmente se maneja en el propio bucle de actualización, donde el vecino del punto 0 es N-\/1, y el vecino de N-\/1 es 0. Esta función de aplicación explícita se puede usar si el bucle principal no lo maneja, por ejemplo, para forzar la condición en los puntos de borde después de un paso. Para nuestra implementación FDTD actual, la lógica se integrará directamente en la función {\ttfamily step} por eficiencia. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classPeriodicBoundary_a6f3e62bf02b9773bac870714586b7599}{get\+\_\+name}} () const override
+\begin{DoxyCompactList}\small\item\em Devuelve el nombre de la estrategia de condición de borde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Métodos públicos heredados de \mbox{\hyperlink{classBoundaryCondition}{Boundary\+Condition}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classBoundaryCondition_a37e12e3e5c1b2a3c1da82d54c690f12c}{\texorpdfstring{$\sim$}{\string~}\+Boundary\+Condition}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Implementa condiciones de borde periódicas. 
+
+Esta estrategia trata la malla como un toro, donde el valor al inicio de un eje está vinculado al valor al final. Para una malla 1D, esto significa que psi\mbox{[}0\mbox{]} está vinculado a psi\mbox{[}N-\/1\mbox{]}. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{classPeriodicBoundary_ad1ac4291a92b159e061fc99e7777d34b}\label{classPeriodicBoundary_ad1ac4291a92b159e061fc99e7777d34b} 
+\index{PeriodicBoundary@{PeriodicBoundary}!apply@{apply}}
+\index{apply@{apply}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily void Periodic\+Boundary\+::apply (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structDirac_1_1Spinor}{Dirac\+::\+Spinor}} $>$ \&}]{psi,  }\item[{const \mbox{\hyperlink{classGrid}{Grid}} \&}]{grid }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Aplica condiciones de borde periódicas al campo. En el esquema FDTD, esto generalmente se maneja en el propio bucle de actualización, donde el vecino del punto 0 es N-\/1, y el vecino de N-\/1 es 0. Esta función de aplicación explícita se puede usar si el bucle principal no lo maneja, por ejemplo, para forzar la condición en los puntos de borde después de un paso. Para nuestra implementación FDTD actual, la lógica se integrará directamente en la función {\ttfamily step} por eficiencia. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em psi} & Una referencia al vector de espinores (el campo). \\
+\hline
+{\em grid} & La malla de simulación. \\
+\hline
+\end{DoxyParams}
+
+
+Implementa \mbox{\hyperlink{classBoundaryCondition_a89c213d7d45fd7fdaed4021a030ea998}{Boundary\+Condition}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (psi.size()\ <\ 2)\ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ No\ aplicable\ para\ mallas\ con\ menos\ de\ 2\ puntos.}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ En\ un\ caso\ simple,\ copiaríamos\ los\ valores,\ por\ ejemplo:}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ psi.front()\ =\ psi.back();}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pero\ para\ una\ malla\ escalonada,\ esta\ lógica\ es\ más\ compleja\ y\ se\ maneja\ mejor}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dentro\ del\ bucle\ numérico.\ Esta\ función\ sirve\ como\ un\ marcador\ de\ posición}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ y\ confirmación\ de\ la\ implementación\ del\ patrón\ de\ estrategia.}}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{classPeriodicBoundary_a6f3e62bf02b9773bac870714586b7599}\label{classPeriodicBoundary_a6f3e62bf02b9773bac870714586b7599} 
+\index{PeriodicBoundary@{PeriodicBoundary}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!PeriodicBoundary@{PeriodicBoundary}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily std\+::string Periodic\+Boundary\+::get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Devuelve el nombre de la estrategia de condición de borde. 
+
+\begin{DoxyReturn}{Devuelve}
+La cadena "{}\+Periodic\+Boundary"{}. 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{classBoundaryCondition_a45ca828c4cc6c90627bdd0810552a034}{Boundary\+Condition}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}PeriodicBoundary"{}};}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+cpp\+\_\+src/boundaries/\mbox{\hyperlink{PeriodicBoundary_8h}{Periodic\+Boundary.\+h}}\end{DoxyCompactItemize}
