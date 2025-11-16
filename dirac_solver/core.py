@@ -1,6 +1,6 @@
 import numpy as np
 from .geometry import Grid
-from .initial_state import GaussianPacket
+from .initial_state import InitialState
 
 class SimulationProblem:
     """
@@ -33,7 +33,7 @@ class DiracProblemBuilder:
         self._grid = grid
         return self
 
-    def set_initial_state(self, initial_state: GaussianPacket):
+    def set_initial_state(self, initial_state: InitialState):
         """Establece la configuración inicial del campo espinorial."""
         self._initial_state = initial_state
         return self
