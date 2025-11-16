@@ -95,4 +95,12 @@ inline Spinor operator*(const complex& c, const Spinor& s) {
     return result;
 }
 
+inline Spinor operator/(const Spinor& s, const double& d) {
+    Spinor result;
+    for (int i = 0; i < 4; ++i) {
+        result.components[i] = s.components[i] / d;
+    }
+    return result;
+}
+
 } // namespace Dirac

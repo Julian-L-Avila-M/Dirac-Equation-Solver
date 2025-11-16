@@ -172,7 +172,7 @@ class DiracSolver:
     ## @brief Ejecuta la simulación completa de tiempo.
     ## @details Llama iterativamente al método `step()` del integrador C++.
     ## @note Imprime información de progreso cada 10 pasos.
-    def run_simulation(self):
+    def run_simulation(self, storage_handler=None, save_every_n_steps=1):
         num_steps = int(self.problem.total_time / self.problem.time_step)
         dt = self.problem.time_step
         print(f"Ejecutando simulación por {num_steps} pasos...")
@@ -260,12 +260,21 @@ class DiracSolver:
         elif dim == 3:
             fig = plt.figure(figsize=(10, 8))
             ax = fig.add_subplot(111, projection='3d')
-            coords = grid.coords
-            x = coords[:, 0]
-            y = coords[:, 1]
-            z = coords[:, 2]
-            p = ax.scatter(x, y, z, c=rho, cmap='viridis')
-            fig.colorbar(p, label="Densidad de Probabilidad")
+            coords = grid.coords.reshape(*grid.shape, grid.dim)
+            x = coords[..., 0]
+            y = coords[..., 1]
+            z = coords[..., 2]
+
+            rho_grid = rho.reshape(grid.shape)
+
+            # Submuestreo para mejorar el rendimiento
+            skip = 2
+            ax.scatter(x[::skip, ::skip, ::skip].ravel(),
+                       y[::skip, ::skip, ::skip].ravel(),
+                       z[::skip, ::skip, ::skip].ravel(),
+                       c=rho_grid[::skip, ::skip, ::skip].ravel(),
+                       cmap='viridis', alpha=0.6)
+
             ax.set_xlabel("Posición (x)")
             ax.set_ylabel("Posición (y)")
             ax.set_zlabel("Posición (z)")

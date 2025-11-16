@@ -98,3 +98,48 @@ class HDF5Storage:
     def __exit__(self, exc_type, exc_val, exc_tb):
         # Esto asegura que .close() se llame automáticamente al salir del 'with'
         self.close()
+
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+def create_animation(storage_path: str, output_path: str, interval=50):
+    """
+    Crea una animación (GIF o MP4) a partir de un archivo HDF5 de almacenamiento.
+    """
+    with h5py.File(storage_path, 'r') as f:
+        psi_dset = f['psi']
+        time_dset = f['time']
+
+        grid_shape = f.attrs['grid_shape']
+        grid_dim = f.attrs['grid_dim']
+
+        fig, ax = plt.subplots(figsize=(8, 6))
+
+        def update(frame):
+            ax.clear()
+            psi = psi_dset[frame]
+            rho = np.sum(np.conj(psi) * psi, axis=1).real
+            rho_grid = rho.reshape(grid_shape)
+
+            if grid_dim == 1:
+                ax.plot(rho_grid)
+                ax.set_title(f"Time: {time_dset[frame]:.2f}")
+                ax.set_xlabel("Position (x)")
+                ax.set_ylabel("Probability Density")
+            elif grid_dim == 2:
+                im = ax.imshow(rho_grid.T, origin='lower', cmap='viridis')
+                ax.set_title(f"Time: {time_dset[frame]:.2f}")
+                ax.set_xlabel("Position (x)")
+                ax.set_ylabel("Position (y)")
+
+        anim = FuncAnimation(fig, update, frames=len(time_dset), interval=interval)
+
+        if output_path.endswith('.gif'):
+            anim.save(output_path, writer='imagemagick')
+        elif output_path.endswith('.mp4'):
+            anim.save(output_path, writer='ffmpeg')
+        else:
+            raise ValueError("Unsupported output format. Use .gif or .mp4")
+
+        plt.close(fig)
+        print(f"Animation saved to {output_path}")
