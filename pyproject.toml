@@ -17,7 +17,8 @@ requires-python = ">=3.8"
 
 dependencies = [
 	"matplotlib",
-	"numpy"
+	"numpy",
+	"h5py"
 ]
 
 [tool.scikit-build]
