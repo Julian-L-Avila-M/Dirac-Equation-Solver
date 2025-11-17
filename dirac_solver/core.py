@@ -259,7 +259,15 @@ class DiracSolver:
             plt.show()
         elif dim == 3:
             fig = plt.figure(figsize=(10, 8))
+
+            # Fondo negro de toda la figura
+            fig.patch.set_facecolor('black')
+
             ax = fig.add_subplot(111, projection='3d')
+
+            # Fondo negro del eje 3D
+            ax.set_facecolor('black')
+
             coords = grid.coords.reshape(*grid.shape, grid.dim)
             x = coords[..., 0]
             y = coords[..., 1]
@@ -269,14 +277,22 @@ class DiracSolver:
 
             # Submuestreo para mejorar el rendimiento
             skip = 2
-            ax.scatter(x[::skip, ::skip, ::skip].ravel(),
-                       y[::skip, ::skip, ::skip].ravel(),
-                       z[::skip, ::skip, ::skip].ravel(),
-                       c=rho_grid[::skip, ::skip, ::skip].ravel(),
-                       cmap='viridis', alpha=0.6)
+            ax.scatter(
+                x[::skip, ::skip, ::skip].ravel(),
+                y[::skip, ::skip, ::skip].ravel(),
+                z[::skip, ::skip, ::skip].ravel(),
+                c=rho_grid[::skip, ::skip, ::skip].ravel(),
+                cmap='viridis',
+                alpha=0.3   # Más transparente
+            )
 
-            ax.set_xlabel("Posición (x)")
-            ax.set_ylabel("Posición (y)")
-            ax.set_zlabel("Posición (z)")
-            plt.title("Densidad de Probabilidad 3D")
+            ax.set_xlabel("Posición (x)", color="white")
+            ax.set_ylabel("Posición (y)", color="white")
+            ax.set_zlabel("Posición (z)", color="white")
+
+            # Color blanco en ticks y labels
+            ax.tick_params(colors='white')
+
+            plt.title("Densidad de Probabilidad 3D", color="white")
             plt.show()
+

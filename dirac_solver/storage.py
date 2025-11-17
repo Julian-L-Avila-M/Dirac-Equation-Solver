@@ -99,6 +99,8 @@ class HDF5Storage:
         # Esto asegura que .close() se llame automáticamente al salir del 'with'
         self.close()
 
+
+
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
@@ -113,7 +115,8 @@ def create_animation(storage_path: str, output_path: str, interval=50):
         grid_shape = f.attrs['grid_shape']
         grid_dim = f.attrs['grid_dim']
 
-        fig, ax = plt.subplots(figsize=(8, 6))
+        fig = plt.figure(figsize=(10, 6))
+        ax = fig.add_subplot(1, 1, 1)
 
         def update(frame):
             ax.clear()
@@ -121,16 +124,55 @@ def create_animation(storage_path: str, output_path: str, interval=50):
             rho = np.sum(np.conj(psi) * psi, axis=1).real
             rho_grid = rho.reshape(grid_shape)
 
+            # ------------------------
+            #   Dimensión 1D
+            # ------------------------
             if grid_dim == 1:
                 ax.plot(rho_grid)
                 ax.set_title(f"Time: {time_dset[frame]:.2f}")
                 ax.set_xlabel("Position (x)")
                 ax.set_ylabel("Probability Density")
+
+            # ------------------------
+            #   Dimensión 2D
+            # ------------------------
             elif grid_dim == 2:
-                im = ax.imshow(rho_grid.T, origin='lower', cmap='viridis')
+                ax.imshow(rho_grid.T, origin='lower', cmap='viridis')
                 ax.set_title(f"Time: {time_dset[frame]:.2f}")
                 ax.set_xlabel("Position (x)")
                 ax.set_ylabel("Position (y)")
+
+            # ------------------------
+            #   Dimensión 3D
+            # ------------------------
+            elif grid_dim == 3:
+                Nx, Ny, Nz = grid_shape
+
+                # Cortes centrales
+                slice_x = rho_grid[Nx // 2, :, :]
+                slice_y = rho_grid[:, Ny // 2, :]
+                slice_z = rho_grid[:, :, Nz // 2]
+
+                fig.clear()
+
+                ax1 = fig.add_subplot(1, 3, 1)
+                ax2 = fig.add_subplot(1, 3, 2)
+                ax3 = fig.add_subplot(1, 3, 3)
+
+                im1 = ax1.imshow(slice_x.T, origin='lower', cmap='viridis')
+                ax1.set_title(f"X-mid\n t={time_dset[frame]:.2f}")
+                ax1.set_xlabel("y")
+                ax1.set_ylabel("z")
+
+                im2 = ax2.imshow(slice_y.T, origin='lower', cmap='viridis')
+                ax2.set_title("Y-mid")
+                ax2.set_xlabel("x")
+                ax2.set_ylabel("z")
+
+                im3 = ax3.imshow(slice_z.T, origin='lower', cmap='viridis')
+                ax3.set_title("Z-mid")
+                ax3.set_xlabel("x")
+                ax3.set_ylabel("y")
 
         anim = FuncAnimation(fig, update, frames=len(time_dset), interval=interval)
 
