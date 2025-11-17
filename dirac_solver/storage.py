@@ -103,6 +103,7 @@ class HDF5Storage:
 
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from mpl_toolkits.mplot3d import Axes3D
 
 def create_animation(storage_path: str, output_path: str, interval=50):
     """
@@ -114,9 +115,11 @@ def create_animation(storage_path: str, output_path: str, interval=50):
 
         grid_shape = f.attrs['grid_shape']
         grid_dim = f.attrs['grid_dim']
+        grid_spacing = f.attrs['grid_spacing']
+        grid_origin = f.attrs['grid_origin']
 
-        fig = plt.figure(figsize=(10, 6))
-        ax = fig.add_subplot(1, 1, 1)
+        fig = plt.figure(figsize=(10, 8))
+        ax = fig.add_subplot(111, projection='3d' if grid_dim == 3 else None)
 
         def update(frame):
             ax.clear()
@@ -124,55 +127,41 @@ def create_animation(storage_path: str, output_path: str, interval=50):
             rho = np.sum(np.conj(psi) * psi, axis=1).real
             rho_grid = rho.reshape(grid_shape)
 
-            # ------------------------
-            #   Dimensión 1D
-            # ------------------------
             if grid_dim == 1:
                 ax.plot(rho_grid)
                 ax.set_title(f"Time: {time_dset[frame]:.2f}")
                 ax.set_xlabel("Position (x)")
                 ax.set_ylabel("Probability Density")
 
-            # ------------------------
-            #   Dimensión 2D
-            # ------------------------
             elif grid_dim == 2:
-                ax.imshow(rho_grid.T, origin='lower', cmap='viridis')
+                ax.imshow(rho_grid.T, origin='lower', cmap='viridis',
+                          extent=[grid_origin[0], grid_origin[0] + (grid_shape[0] - 1) * grid_spacing[0],
+                                  grid_origin[1], grid_origin[1] + (grid_shape[1] - 1) * grid_spacing[1]])
                 ax.set_title(f"Time: {time_dset[frame]:.2f}")
                 ax.set_xlabel("Position (x)")
                 ax.set_ylabel("Position (y)")
 
-            # ------------------------
-            #   Dimensión 3D
-            # ------------------------
             elif grid_dim == 3:
-                Nx, Ny, Nz = grid_shape
+                ax.set_facecolor('black')
+                coords = np.mgrid[grid_origin[0]:grid_origin[0] + grid_shape[0] * grid_spacing[0]:grid_spacing[0],
+                                  grid_origin[1]:grid_origin[1] + grid_shape[1] * grid_spacing[1]:grid_spacing[1],
+                                  grid_origin[2]:grid_origin[2] + grid_shape[2] * grid_spacing[2]:grid_spacing[2]]
 
-                # Cortes centrales
-                slice_x = rho_grid[Nx // 2, :, :]
-                slice_y = rho_grid[:, Ny // 2, :]
-                slice_z = rho_grid[:, :, Nz // 2]
+                skip = 2
+                x = coords[0, ::skip, ::skip, ::skip].ravel()
+                y = coords[1, ::skip, ::skip, ::skip].ravel()
+                z = coords[2, ::skip, ::skip, ::skip].ravel()
 
-                fig.clear()
+                rho_flat = rho_grid[::skip, ::skip, ::skip].ravel()
 
-                ax1 = fig.add_subplot(1, 3, 1)
-                ax2 = fig.add_subplot(1, 3, 2)
-                ax3 = fig.add_subplot(1, 3, 3)
+                sc = ax.scatter(x, y, z, c=rho_flat, cmap='viridis', alpha=0.3)
 
-                im1 = ax1.imshow(slice_x.T, origin='lower', cmap='viridis')
-                ax1.set_title(f"X-mid\n t={time_dset[frame]:.2f}")
-                ax1.set_xlabel("y")
-                ax1.set_ylabel("z")
+                ax.set_xlabel("Position (x)", color="white")
+                ax.set_ylabel("Position (y)", color="white")
+                ax.set_zlabel("Position (z)", color="white")
+                ax.tick_params(colors='white')
+                ax.set_title(f"Time: {time_dset[frame]:.2f}", color="white")
 
-                im2 = ax2.imshow(slice_y.T, origin='lower', cmap='viridis')
-                ax2.set_title("Y-mid")
-                ax2.set_xlabel("x")
-                ax2.set_ylabel("z")
-
-                im3 = ax3.imshow(slice_z.T, origin='lower', cmap='viridis')
-                ax3.set_title("Z-mid")
-                ax3.set_xlabel("x")
-                ax3.set_ylabel("y")
 
         anim = FuncAnimation(fig, update, frames=len(time_dset), interval=interval)
 
