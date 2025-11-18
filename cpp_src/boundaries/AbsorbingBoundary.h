@@ -6,14 +6,12 @@
 
 /**
  * @class AbsorbingBoundary
- * @brief Implementación de una condición de frontera absorbente (ABC) para simulaciones 1D.
+ * @brief Implementación de una condición de frontera absorbente (ABC) para simulaciones 1D, 2D y 3D.
  *
  * Esta clase aplica un amortiguamiento en los extremos del dominio espacial
  * para minimizar reflexiones artificiales en la frontera. Se utiliza típicamente
  * en simulaciones de la ecuación de Dirac o de Schrödinger cuando se desea
  * emular un dominio abierto.
- *
- * Actualmente, la clase sólo soporta dominios unidimensionales (1D).
  *
  * ### Ejemplo de uso
  * @code
@@ -39,19 +37,56 @@ public:
      *
      * @param psi Vector de spinors de Dirac que representan el campo en la malla.
      * @param grid Objeto que define la malla espacial asociada a la simulación.
-     * @throws std::runtime_error Si la malla no es unidimensional (dim ≠ 1).
      */
     void apply(std::vector<Dirac::Spinor>& psi, const Grid& grid) const override {
-        if (grid.get_dim() != 1) {
-            throw std::runtime_error("AbsorbingBoundary solo está implementado para mallas 1D por el momento.");
+        const auto& shape = grid.get_shape();
+        const Dirac::complex absorption_factor = Dirac::complex(1.0 - strength_, 0.0);
+
+        if (grid.get_dim() == 1) {
+            size_t nx = shape[0];
+            if (nx < 2) return;
+            psi[0] = absorption_factor * psi[0];
+            psi[nx - 1] = absorption_factor * psi[nx - 1];
+        } else if (grid.get_dim() == 2) {
+            size_t nx = shape[0];
+            size_t ny = shape[1];
+            if (nx < 2 || ny < 2) return;
+
+            for (size_t i = 0; i < nx; ++i) {
+                psi[i * ny] = absorption_factor * psi[i * ny]; // j = 0
+                psi[i * ny + ny - 1] = absorption_factor * psi[i * ny + ny - 1]; // j = ny-1
+            }
+            for (size_t j = 1; j < ny - 1; ++j) {
+                psi[j] = absorption_factor * psi[j]; // i = 0
+                psi[(nx - 1) * ny + j] = absorption_factor * psi[(nx - 1) * ny + j]; // i = nx-1
+            }
+        } else if (grid.get_dim() == 3) {
+            size_t nx = shape[0];
+            size_t ny = shape[1];
+            size_t nz = shape[2];
+            if (nx < 2 || ny < 2 || nz < 2) return;
+
+            for (size_t i = 0; i < nx; ++i) {
+                for (size_t j = 0; j < ny; ++j) {
+                    psi[(i * ny + j) * nz] = absorption_factor * psi[(i * ny + j) * nz]; // k=0
+                    psi[(i * ny + j) * nz + nz - 1] = absorption_factor * psi[(i * ny + j) * nz + nz - 1]; // k=nz-1
+                }
+            }
+
+            for (size_t i = 0; i < nx; ++i) {
+                for (size_t k = 1; k < nz - 1; ++k) {
+                    psi[(i * ny) * nz + k] = absorption_factor * psi[(i * ny) * nz + k]; // j=0
+                    psi[(i * ny + ny - 1) * nz + k] = absorption_factor * psi[(i * ny + ny - 1) * nz + k]; // j=ny-1
+                }
+            }
+
+            for (size_t j = 1; j < ny - 1; ++j) {
+                for (size_t k = 1; k < nz - 1; ++k) {
+                    psi[j * nz + k] = absorption_factor * psi[j * nz + k]; // i=0
+                    psi[((nx - 1) * ny + j) * nz + k] = absorption_factor * psi[((nx - 1) * ny + j) * nz + k]; // i=nx-1
+                }
+            }
         }
-
-        size_t n_points = grid.get_total_points();
-        if (n_points < 2) return;
-
-        // Aplicar amortiguamiento a los puntos primero y último
-        psi[0] = Dirac::complex(1.0 - strength_, 0.0) * psi[0];
-        psi[n_points - 1] = Dirac::complex(1.0 - strength_, 0.0) * psi[n_points - 1];
     }
 
     /**

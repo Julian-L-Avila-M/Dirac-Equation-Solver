@@ -43,6 +43,10 @@
 # Construction and Distribution
 *.egg-info/
 *.egg
+__pycache__/
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
+
+# Temporary files
+*.hdf5

@@ -135,10 +135,15 @@ class GaussianPacket(InitialState):
         x0 = self.center
 
         # Pad the position vector 'x' to match the dimension of momentum and center vectors
-        if len(x) < len(p0):
-            padded_x = np.zeros(len(p0), dtype=float)
-            padded_x[:len(x)] = x.flatten()
+        if x.shape[0] < p0.shape[0]:
+            padded_x = np.zeros(p0.shape[0], dtype=float)
+            padded_x[:x.shape[0]] = x
             x = padded_x
+
+        if x0.shape[0] < p0.shape[0]:
+            padded_x0 = np.zeros(p0.shape[0], dtype=float)
+            padded_x0[:x0.shape[0]] = x0
+            x0 = padded_x0
 
         sigma0 = self.spatial_width
         u_p0 = self.constant_spinor.constant_spinor
@@ -146,7 +151,7 @@ class GaussianPacket(InitialState):
         p0_dot_x = np.dot(p0, x)
         exponent_norm = np.linalg.norm(x - x0)**2
 
-        spatial_part = np.exp(1j * p0_dot_x) * np.exp(-exponent_norm / (4 + sigma0**2))
+        spatial_part = np.exp(1j * p0_dot_x) * np.exp(-exponent_norm / (4 * sigma0**2))
 
         dirac_spinor = u_p0 * spatial_part
 
@@ -161,11 +166,13 @@ class GaussianPacket(InitialState):
         @param grid: Objeto Grid sobre el que se evaluará el paquete.
         @return: Un array de NumPy con la forma (n_points, 4)
         """
-        n_points = grid.coords.shape[0]
+        n_points = np.prod(grid.shape)
         psi_0 = np.zeros((n_points, 4), dtype=np.complex128)
 
+        coords_flat = grid.coords.reshape(n_points, grid.dim)
+
         for i in range(n_points):
-            position = grid.coords[i]
+            position = coords_flat[i]
             spinor_at_point = self.evaluate(position)
             psi_0[i, :] = spinor_at_point.flatten()
 
@@ -217,15 +224,14 @@ class PlaneWave(InitialState):
         @return: Un array de NumPy con la forma (n_points, 4)
         """
 
-        n_points = grid.coords.shape[0]
+        n_points = np.prod(grid.shape)
         psi_0 = np.zeros((n_points, 4), dtype = np.complex128)
 
+        coords_flat = grid.coords.reshape(n_points, grid.dim)
+
         for i in range(n_points):
-            position = grid.coords[i]
+            position = coords_flat[i]
             spinor_at_point = self.evaluate(position)
             psi_0[i, :] = spinor_at_point.flatten()
 
         return psi_0
-
-
-
