@@ -51,6 +51,7 @@ from .geometry import Grid
 from .initial_state import InitialState, ConstantSpinor, GaussianPacket, PlaneWave
 from .core import DiracSolver, DiracProblemBuilder, SimulationProblem
 from .storage import HDF5Storage
+from .potentials import FreeParticle, ScalarPotential, CoulombPotential, YukawaPotential, InfiniteWellPotential
 
 # ---------------------------------------------------------------------------
 # Símbolos exportados
@@ -61,5 +62,5 @@ __all__ = [
     "sigma_1", "sigma_2", "sigma_3",
     "Grid", "ConstantSpinor", "GaussianPacket", "DiracSolver",
     "DiracProblemBuilder", "SimulationProblem",
-    "HDF5Storage"
+    "HDF5Storage", "FreeParticle", "ScalarPotential", "CoulombPotential", "YukawaPotential", "InfiniteWellPotential"
 ]

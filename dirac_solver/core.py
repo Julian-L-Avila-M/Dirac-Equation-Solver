@@ -172,10 +172,13 @@ class DiracSolver:
     ## @brief Ejecuta la simulación completa de tiempo.
     ## @details Llama iterativamente al método `step()` del integrador C++.
     ## @note Imprime información de progreso cada 10 pasos.
-    def run_simulation(self, storage_handler=None, save_every_n_steps=1):
+    def run_simulation(self, storage_handler=None, save_every_n_steps=1, observables_handler=None):
         num_steps = int(self.problem.total_time / self.problem.time_step)
         dt = self.problem.time_step
         print(f"Ejecutando simulación por {num_steps} pasos...")
+
+        if observables_handler:
+            observables_handler.compute_all(0.0)
 
         # --- Lógica de almacenamiento DELEGADA ---
         if storage_handler:
@@ -198,6 +201,9 @@ class DiracSolver:
             current_step = i + 1
             current_time = current_step * dt
 
+            if observables_handler:
+                observables_handler.compute_all(current_time)
+
             # 2. Lógica de guardado DELEGADA
             # Se guarda si es el paso N o si es el último paso
             if storage_handler and (current_step % save_every_n_steps == 0 or current_step == num_steps):
@@ -210,8 +216,9 @@ class DiracSolver:
         end_time = time.time()
         print(f"Simulación finalizada en {end_time - start_time:.2f} segundos.")
 
-        # --- Cerrar el manejador de almacenamiento ---
         if storage_handler:
+            if observables_handler:
+                storage_handler.write_observables(observables_handler)
             storage_handler.close()
 
 

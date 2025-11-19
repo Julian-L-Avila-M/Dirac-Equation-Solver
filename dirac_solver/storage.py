@@ -99,6 +99,30 @@ class HDF5Storage:
         # Esto asegura que .close() se llame automáticamente al salir del 'with'
         self.close()
 
+    def write_observables(self, observables_handler):
+        """
+        Escribe el historial de todos los observables calculados a datasets.
+        """
+        if not self.file:
+            print("Error: El archivo HDF5 está cerrado. No se pueden escribir observables.")
+            return
+
+        print("Guardando historial de observables en HDF5...")
+        try:
+            # Crear un grupo para los observables para mantener el orden
+            obs_group = self.file.create_group("observables")
+
+            for key, history in observables_handler.history.items():
+                # Convertir la lista de historial a un array de NumPy
+                data = np.array(history)
+                # Crear un dataset para cada observable
+                obs_group.create_dataset(key, data=data)
+
+            print("Historial de observables guardado correctamente.")
+
+        except Exception as e:
+            print(f"Error al guardar los observables en HDF5: {e}")
+
 
 
 import matplotlib.pyplot as plt
@@ -174,3 +198,92 @@ def create_animation(storage_path: str, output_path: str, interval=50):
 
         plt.close(fig)
         print(f"Animation saved to {output_path}")
+
+def create_animation_1d(storage_path: str, output_path: str, interval=50):
+    """
+    Crea una animación para una simulación 1D, mostrando la densidad de probabilidad
+    y la posición esperada a lo largo del tiempo.
+    """
+    with h5py.File(storage_path, 'r') as f:
+        # --- Cargar datos de la simulación ---
+        psi_dset = f['psi']
+        time_dset = f['time']
+
+        # --- Cargar datos de observables ---
+        expected_pos_dset = f['observables/expected_position']
+
+        # --- Cargar metadatos de la malla ---
+        grid_shape = f.attrs['grid_shape']
+        grid_spacing = f.attrs['grid_spacing']
+        grid_origin = f.attrs['grid_origin']
+
+        # Crear coordenadas espaciales para el eje x
+        x_coords = np.linspace(grid_origin[0],
+                               grid_origin[0] + (grid_shape[0] - 1) * grid_spacing[0],
+                               grid_shape[0])
+
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), gridspec_kw={'height_ratios': [3, 1]})
+        fig.suptitle("Simulación 1D de la Ecuación de Dirac")
+
+        # --- Gráfico 1: Densidad de Probabilidad ---
+        ax1.set_xlabel("Posición (x)")
+        ax1.set_ylabel("Densidad de Probabilidad (ρ)")
+        ax1.grid(True)
+        line, = ax1.plot([], [], lw=2)
+        # Línea vertical para la posición esperada
+        pos_marker, = ax1.plot([], [], 'r--', lw=2, label="Posición Esperada <x>")
+        time_text = ax1.text(0.05, 0.9, '', transform=ax1.transAxes)
+
+        # --- Gráfico 2: Evolución de la Posición Esperada ---
+        ax2.set_xlabel("Tiempo")
+        ax2.set_ylabel("Posición Esperada <x>")
+        ax2.grid(True)
+        # Línea que muestra la historia de la posición esperada
+        expected_pos_line, = ax2.plot([], [], 'r-', lw=2)
+
+        def init():
+            # Establecer límites de los ejes
+            rho_max = np.max(np.sum(np.abs(psi_dset[0])**2, axis=1))
+            ax1.set_xlim(x_coords[0], x_coords[-1])
+            ax1.set_ylim(0, rho_max * 1.1)
+
+            ax2.set_xlim(0, time_dset[-1])
+            min_pos, max_pos = np.min(expected_pos_dset), np.max(expected_pos_dset)
+            ax2.set_ylim(min_pos - 0.1, max_pos + 0.1)
+
+            line.set_data([], [])
+            pos_marker.set_data([], [])
+            expected_pos_line.set_data([], [])
+            time_text.set_text('')
+            ax1.legend()
+            return line, pos_marker, time_text, expected_pos_line
+
+        def update(frame):
+            # Actualizar densidad de probabilidad
+            psi = psi_dset[frame]
+            rho = np.sum(np.abs(psi)**2, axis=1)
+            line.set_data(x_coords, rho)
+
+            # Actualizar marcador de posición esperada
+            current_expected_pos = expected_pos_dset[frame][0]
+            pos_marker.set_data([current_expected_pos, current_expected_pos], ax1.get_ylim())
+
+            # Actualizar historial de posición esperada
+            expected_pos_line.set_data(time_dset[:frame+1], expected_pos_dset[:frame+1, 0])
+
+            time_text.set_text(f'Tiempo: {time_dset[frame]:.2f}')
+            return line, pos_marker, time_text, expected_pos_line
+
+        anim = FuncAnimation(fig, update, frames=len(time_dset),
+                               init_func=init, blit=True, interval=interval)
+
+        # Guardar animación
+        if output_path.endswith('.gif'):
+            anim.save(output_path, writer='imagemagick')
+        elif output_path.endswith('.mp4'):
+            anim.save(output_path, writer='ffmpeg')
+        else:
+            raise ValueError("Formato de salida no soportado. Use .gif o .mp4")
+
+        plt.close(fig)
+        print(f"Animación guardada en {output_path}")

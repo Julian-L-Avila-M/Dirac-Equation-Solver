@@ -71,8 +71,7 @@ class Grid:
     coords = np.stack(grids, axis=-1)  # shape: (nx, [ny], [nz], dim)
     return coords
 
-  @property
-  def dv(self):
+  def get_cell_volume(self):
       """
       @brief Elemento de volumen (dx * dy * dz).
       """
@@ -82,6 +81,27 @@ class Grid:
       for dx in self.spacing:
           dv *= dx
       return dv
+
+  def gradient(self, psi):
+      """
+      Calcula el gradiente de un campo espinorial psi sobre la malla.
+      """
+      grad = np.zeros((self.get_total_points(), self.dim, 4), dtype=np.complex128)
+      psi_grid = psi.reshape(*self.shape, 4)
+
+      for i in range(4): # Para cada componente del espinor
+          # np.gradient devuelve una lista de arrays, uno por cada dimensión
+          comp_grad = np.gradient(psi_grid[..., i], *self.spacing, edge_order=2)
+          for k in range(self.dim):
+              grad[:, k, i] = comp_grad[k].ravel()
+
+      return grad
+
+  def get_total_points(self):
+      """
+      Devuelve el número total de puntos en la malla.
+      """
+      return int(np.prod(self.shape))
 
   def courant_limit(self):
       """
