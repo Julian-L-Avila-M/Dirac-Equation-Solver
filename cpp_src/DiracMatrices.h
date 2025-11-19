@@ -1,106 +1,95 @@
-#pragma once
+#ifndef DIRAC_MATRICES_H
+#define DIRAC_MATRICES_H
 
 #include <complex>
-#include <array>
 #include <vector>
+#include <array>
+#include <numeric>
 
 namespace Dirac {
 
-using complex = std::complex<double>;
+    using complex = std::complex<double>;
+    using Matrix4x4 = std::array<std::array<complex, 4>, 4>;
 
-// Una estructura envolvente para el espinor para asegurar que ADL funcione para sobrecargas de operadores.
-struct Spinor {
-    std::array<complex, 4> components;
+    // Definición de un espinor de 4 componentes como una estructura
+    struct Spinor {
+        std::array<complex, 4> components;
 
-    Spinor() : components({complex(0,0), complex(0,0), complex(0,0), complex(0,0)}) {}
-    Spinor(const std::array<complex, 4>& comps) : components(comps) {}
+        Spinor() : components{} {} // Correct zero-initialization
+        Spinor(const std::array<complex, 4>& comps) : components(comps) {}
 
-    complex& operator[](size_t i) { return components[i]; }
-    const complex& operator[](size_t i) const { return components[i]; }
-};
+        complex& operator[](size_t i) { return components[i]; }
+        const complex& operator[](size_t i) const { return components[i]; }
+    };
 
-using Matrix4x4 = std::array<std::array<complex, 4>, 4>;
+    // Sobrecarga de operadores para el álgebra de espinores
+    inline Spinor operator+(const Spinor& a, const Spinor& b) {
+        return Spinor({a[0] + b[0], a[1] + b[1], a[2] + b[2], a[3] + b[3]});
+    }
 
-// Matriz identidad
-const Matrix4x4 I4 = {{
-    {{{1, 0}, {0, 0}, {0, 0}, {0, 0}}},
-    {{{0, 0}, {1, 0}, {0, 0}, {0, 0}}},
-    {{{0, 0}, {0, 0}, {1, 0}, {0, 0}}},
-    {{{0, 0}, {0, 0}, {0, 0}, {1, 0}}},
-}};
+    inline Spinor operator-(const Spinor& a, const Spinor& b) {
+        return Spinor({a[0] - b[0], a[1] - b[1], a[2] - b[2], a[3] - b[3]});
+    }
 
-// Matriz beta
-const Matrix4x4 beta = {{
-    {{{1, 0}, {0, 0}, {0, 0}, {0, 0}}},
-    {{{0, 0}, {1, 0}, {0, 0}, {0, 0}}},
-    {{{0, 0}, {0, 0}, {-1, 0}, {0, 0}}},
-    {{{0, 0}, {0, 0}, {0, 0}, {-1, 0}}},
-}};
+    inline Spinor operator*(const complex& c, const Spinor& s) {
+        return Spinor({c * s[0], c * s[1], c * s[2], c * s[3]});
+    }
 
-// Matrices alfa (representación estándar)
-const Matrix4x4 alpha_x = {{
-    {{{0,0}, {0,0}, {0,0}, {1,0}}},
-    {{{0,0}, {0,0}, {1,0}, {0,0}}},
-    {{{0,0}, {1,0}, {0,0}, {0,0}}},
-    {{{1,0}, {0,0}, {0,0}, {0,0}}},
-}};
+    inline Spinor operator*(const Spinor& s, const complex& c) {
+        return c * s;
+    }
 
-const Matrix4x4 alpha_y = {{
-    {{{0,0}, {0,0}, {0,0}, {0,-1}}},
-    {{{0,0}, {0,0}, {0,1}, {0,0}}},
-    {{{0,0}, {0,-1}, {0,0}, {0,0}}},
-    {{{0,1}, {0,0}, {0,0}, {0,0}}},
-}};
+    inline Spinor operator/(const Spinor& s, double d) {
+        return Spinor({s[0] / d, s[1] / d, s[2] / d, s[3] / d});
+    }
 
-const Matrix4x4 alpha_z = {{
-    {{{0,0}, {0,0}, {1,0}, {0,0}}},
-    {{{0,0}, {0,0}, {0,0}, {-1,0}}},
-    {{{1,0}, {0,0}, {0,0}, {0,0}}},
-    {{{0,0}, {-1,0}, {0,0}, {0,0}}},
-}};
-
-// Función auxiliar para la multiplicación matriz-espinor
-inline Spinor multiply(const Matrix4x4& M, const Spinor& s) {
-    Spinor result;
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            result.components[i] += M[i][j] * s.components[j];
+    inline Spinor multiply(const Matrix4x4& M, const Spinor& s) {
+        std::array<complex, 4> result_comps;
+        for (int i = 0; i < 4; ++i) {
+            result_comps[i] = 0;
+            for (int j = 0; j < 4; ++j) {
+                result_comps[i] += M[i][j] * s[j];
+            }
         }
+        return Spinor(result_comps);
     }
-    return result;
-}
 
-// Sobrecargas de operadores para la aritmética de espinores
-inline Spinor operator+(const Spinor& a, const Spinor& b) {
-    Spinor result;
-    for (int i = 0; i < 4; ++i) {
-        result.components[i] = a.components[i] + b.components[i];
-    }
-    return result;
-}
+    // Matriz identidad 4x4
+    const Matrix4x4 I4 = {{
+        {complex(1,0), complex(0,0), complex(0,0), complex(0,0)},
+        {complex(0,0), complex(1,0), complex(0,0), complex(0,0)},
+        {complex(0,0), complex(0,0), complex(1,0), complex(0,0)},
+        {complex(0,0), complex(0,0), complex(0,0), complex(1,0)}
+    }};
 
-inline Spinor operator-(const Spinor& a, const Spinor& b) {
-    Spinor result;
-    for (int i = 0; i < 4; ++i) {
-        result.components[i] = a.components[i] - b.components[i];
-    }
-    return result;
-}
+    // Matriz beta (gamma^0)
+    const Matrix4x4 beta = {{
+        {complex(1,0), complex(0,0), complex(0,0), complex(0,0)},
+        {complex(0,0), complex(1,0), complex(0,0), complex(0,0)},
+        {complex(0,0), complex(0,0), complex(-1,0), complex(0,0)},
+        {complex(0,0), complex(0,0), complex(0,0), complex(-1,0)}
+    }};
 
-inline Spinor operator*(const complex& c, const Spinor& s) {
-    Spinor result;
-    for (int i = 0; i < 4; ++i) {
-        result.components[i] = c * s.components[i];
-    }
-    return result;
-}
-
-inline Spinor operator/(const Spinor& s, const double& d) {
-    Spinor result;
-    for (int i = 0; i < 4; ++i) {
-        result.components[i] = s.components[i] / d;
-    }
-    return result;
-}
+    // Matrices alpha
+    const Matrix4x4 alpha_x = {{
+        {complex(0,0), complex(0,0), complex(0,0), complex(1,0)},
+        {complex(0,0), complex(0,0), complex(1,0), complex(0,0)},
+        {complex(0,0), complex(1,0), complex(0,0), complex(0,0)},
+        {complex(1,0), complex(0,0), complex(0,0), complex(0,0)}
+    }};
+    const Matrix4x4 alpha_y = {{
+        {complex(0,0), complex(0,0), complex(0,0), complex(0,-1)},
+        {complex(0,0), complex(0,0), complex(0,1), complex(0,0)},
+        {complex(0,0), complex(0,-1), complex(0,0), complex(0,0)},
+        {complex(0,1), complex(0,0), complex(0,0), complex(0,0)}
+    }};
+    const Matrix4x4 alpha_z = {{
+        {complex(0,0), complex(0,0), complex(1,0), complex(0,0)},
+        {complex(0,0), complex(0,0), complex(0,0), complex(-1,0)},
+        {complex(1,0), complex(0,0), complex(0,0), complex(0,0)},
+        {complex(0,-1), complex(0,0), complex(0,0), complex(0,0)}
+    }};
 
 } // namespace Dirac
+
+#endif // DIRAC_MATRICES_H
