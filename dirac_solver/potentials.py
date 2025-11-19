@@ -1,6 +1,4 @@
 from . import _core
-<<<<<<< HEAD
-=======
 from typing import Callable
 
 class FreeParticle:
@@ -49,7 +47,6 @@ class CoulombPotential:
     @property
     def core_potential(self):
         return self._potential
->>>>>>> feature-add-yukawa-infinite-well-potentials
 
 class YukawaPotential:
     """
