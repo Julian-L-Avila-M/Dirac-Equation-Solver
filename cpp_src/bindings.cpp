@@ -214,6 +214,8 @@ PYBIND11_MODULE(_core, m) {
      * @param strength Parámetro de intensidad de absorción.
      */
     py::class_<AbsorbingBoundary, BoundaryCondition, std::shared_ptr<AbsorbingBoundary>>(m, "AbsorbingBoundary")
-        .def(py::init<double>(), py::arg("strength"))
+        .def(py::init<double, int>(),
+		py::arg("strength"),
+		py::arg("width") = 20)
         .def("get_name", &AbsorbingBoundary::get_name);
 }

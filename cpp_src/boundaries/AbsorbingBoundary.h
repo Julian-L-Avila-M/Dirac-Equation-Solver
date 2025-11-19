@@ -2,104 +2,139 @@
 
 #include "BoundaryCondition.h"
 #include <vector>
+#include <cmath>
+#include <algorithm>
+#include <string>
 #include "../DiracMatrices.h"
+#include "../Grid.h"
 
 /**
  * @class AbsorbingBoundary
- * @brief Implementación de una condición de frontera absorbente (ABC) para simulaciones 1D, 2D y 3D.
+ * @brief Implementación de fronteras absorbentes mediante Potencial Complejo Absorbente (CAP/PML simplificado).
  *
- * Esta clase aplica un amortiguamiento en los extremos del dominio espacial
- * para minimizar reflexiones artificiales en la frontera. Se utiliza típicamente
- * en simulaciones de la ecuación de Dirac o de Schrödinger cuando se desea
- * emular un dominio abierto.
+ * En lugar de una "pared dura" que multiplica por un factor constante, esta clase aplica 
+ * un perfil de absorción cuadrático que aumenta gradualmente desde el interior hacia el borde.
+ * Esto emula una Capa Perfectamente Adaptada (PML) en el régimen de baja energía,
+ * minimizando las reflexiones numéricas artificiales.
  *
- * ### Ejemplo de uso
- * @code
- * AbsorbingBoundary abc(0.05);  // Condición de frontera con fuerza 0.05
- * abc.apply(psi, grid);         // Aplica el amortiguamiento a los extremos
- * @endcode
+ * El factor de amortiguamiento sigue la forma:
+ * \f$ \Gamma(d) = 1 - \sigma_{max} \left( \frac{W - d}{W} \right)^2 \f$
+ * donde $d$ es la distancia al borde y $W$ es el ancho de la capa.
  */
 class AbsorbingBoundary : public BoundaryCondition {
 public:
     /**
-     * @brief Constructor de la condición de frontera absorbente.
-     * @param strength Factor de absorción (0 < strength < 1). 
-     * Valores mayores implican una absorción más fuerte en los extremos.
+     * @brief Constructor.
+     * @param strength Coeficiente máximo de absorción en el borde exacto (0 < strength < 1).
+     * Un valor típico es 0.3 - 0.5 para evitar inestabilidades numéricas.
+     * @param width Ancho de la capa absorbente en número de puntos de malla (default: 20).
      */
-    AbsorbingBoundary(double strength) : strength_(strength) {}
+    AbsorbingBoundary(double strength, int width = 20) 
+        : strength_(strength), width_(width) {}
 
     /**
-     * @brief Aplica la condición de frontera absorbente a la función de onda.
-     *
-     * Multiplica los valores del spinor en los extremos de la malla por un
-     * factor complejo reductor de magnitud `(1 - strength)`, lo que atenúa
-     * progresivamente la amplitud del campo.
-     *
-     * @param psi Vector de spinors de Dirac que representan el campo en la malla.
-     * @param grid Objeto que define la malla espacial asociada a la simulación.
+     * @brief Aplica el perfil de absorción espacialmente dependiente.
      */
     void apply(std::vector<Dirac::Spinor>& psi, const Grid& grid) const override {
         const auto& shape = grid.get_shape();
-        const Dirac::complex absorption_factor = Dirac::complex(1.0 - strength_, 0.0);
+        size_t dim = grid.get_dim();
+        size_t total_points = grid.get_total_points();
 
-        if (grid.get_dim() == 1) {
+        // ------------------------------------------------------------
+        // CASO 1D
+        // ------------------------------------------------------------
+        if (dim == 1) {
             size_t nx = shape[0];
-            if (nx < 2) return;
-            psi[0] = absorption_factor * psi[0];
-            psi[nx - 1] = absorption_factor * psi[nx - 1];
-        } else if (grid.get_dim() == 2) {
+            // Optimización: Solo iterar sobre las capas, no todo el centro
+            // Sin embargo, iterar todo es más seguro para evitar errores de índice y 
+            // el costo en 1D es despreciable.
+            for (size_t i = 0; i < nx; ++i) {
+                int dist = get_min_distance_1d(i, nx);
+                if (dist < width_) {
+                    apply_damping(psi, i, dist);
+                }
+            }
+        }
+        // ------------------------------------------------------------
+        // CASO 2D
+        // ------------------------------------------------------------
+        else if (dim == 2) {
             size_t nx = shape[0];
             size_t ny = shape[1];
-            if (nx < 2 || ny < 2) return;
-
+            
+            // Barrido completo (simple y seguro). 
+            // Para mallas muy grandes (>1024^2), se podría optimizar iterando solo los bordes.
             for (size_t i = 0; i < nx; ++i) {
-                psi[i * ny] = absorption_factor * psi[i * ny]; // j = 0
-                psi[i * ny + ny - 1] = absorption_factor * psi[i * ny + ny - 1]; // j = ny-1
+                for (size_t j = 0; j < ny; ++j) {
+                    int dist_x = get_min_distance_1d(i, nx);
+                    int dist_y = get_min_distance_1d(j, ny);
+                    int min_dist = std::min(dist_x, dist_y);
+                    
+                    if (min_dist < width_) {
+                        size_t idx = i * ny + j;
+                        apply_damping(psi, idx, min_dist);
+                    }
+                }
             }
-            for (size_t j = 1; j < ny - 1; ++j) {
-                psi[j] = absorption_factor * psi[j]; // i = 0
-                psi[(nx - 1) * ny + j] = absorption_factor * psi[(nx - 1) * ny + j]; // i = nx-1
-            }
-        } else if (grid.get_dim() == 3) {
+        }
+        // ------------------------------------------------------------
+        // CASO 3D
+        // ------------------------------------------------------------
+        else if (dim == 3) {
             size_t nx = shape[0];
             size_t ny = shape[1];
             size_t nz = shape[2];
-            if (nx < 2 || ny < 2 || nz < 2) return;
 
             for (size_t i = 0; i < nx; ++i) {
                 for (size_t j = 0; j < ny; ++j) {
-                    psi[(i * ny + j) * nz] = absorption_factor * psi[(i * ny + j) * nz]; // k=0
-                    psi[(i * ny + j) * nz + nz - 1] = absorption_factor * psi[(i * ny + j) * nz + nz - 1]; // k=nz-1
-                }
-            }
+                    for (size_t k = 0; k < nz; ++k) {
+                        int dist_x = get_min_distance_1d(i, nx);
+                        int dist_y = get_min_distance_1d(j, ny);
+                        int dist_z = get_min_distance_1d(k, nz);
+                        
+                        // La distancia al borde más cercano determina la absorción
+                        int min_dist = std::min({dist_x, dist_y, dist_z});
 
-            for (size_t i = 0; i < nx; ++i) {
-                for (size_t k = 1; k < nz - 1; ++k) {
-                    psi[(i * ny) * nz + k] = absorption_factor * psi[(i * ny) * nz + k]; // j=0
-                    psi[(i * ny + ny - 1) * nz + k] = absorption_factor * psi[(i * ny + ny - 1) * nz + k]; // j=ny-1
-                }
-            }
-
-            for (size_t j = 1; j < ny - 1; ++j) {
-                for (size_t k = 1; k < nz - 1; ++k) {
-                    psi[j * nz + k] = absorption_factor * psi[j * nz + k]; // i=0
-                    psi[((nx - 1) * ny + j) * nz + k] = absorption_factor * psi[((nx - 1) * ny + j) * nz + k]; // i=nx-1
+                        if (min_dist < width_) {
+                            size_t idx = (i * ny + j) * nz + k;
+                            apply_damping(psi, idx, min_dist);
+                        }
+                    }
                 }
             }
         }
     }
 
-    /**
-     * @brief Devuelve el nombre de la condición de frontera.
-     * @return La cadena `"AbsorbingBoundary"`.
-     */
     std::string get_name() const override {
         return "AbsorbingBoundary";
     }
 
 private:
+    double strength_; ///< Fuerza máxima de absorción (sigma max).
+    int width_;       ///< Ancho de la capa en celdas.
+
     /**
-     * @brief Coeficiente de absorción que determina la intensidad del amortiguamiento.
+     * @brief Calcula la distancia mínima a los extremos 0 o N-1 en una dimensión.
      */
-    double strength_;
+    inline int get_min_distance_1d(size_t index, size_t size) const {
+        // Distancia al inicio: index
+        // Distancia al final: size - 1 - index
+        return static_cast<int>(std::min(index, size - 1 - index));
+    }
+
+    /**
+     * @brief Aplica el factor de amortiguamiento a un espinor específico.
+     * * Usa un perfil cuadrático: (1 - damping)
+     * damping = strength * ((width - dist) / width)^2
+     */
+    inline void apply_damping(std::vector<Dirac::Spinor>& psi, size_t idx, int dist) const {
+        double normalized_pos = static_cast<double>(width_ - dist) / static_cast<double>(width_);
+        // Perfil cuadrático para suavizar la transición
+        double damping = strength_ * (normalized_pos * normalized_pos);
+        
+        // Factor multiplicativo final (ej. 0.99...)
+        Dirac::complex factor(1.0 - damping, 0.0);
+        
+        psi[idx] = factor * psi[idx];
+    }
 };
