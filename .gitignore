@@ -47,7 +47,10 @@ __pycache__/
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
+*.nbconvert.ipynb
 
 # Temporary files
 *.hdf5
 build/
+__pycache__/
+*.pyc
