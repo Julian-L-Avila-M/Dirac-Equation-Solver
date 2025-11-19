@@ -50,3 +50,4 @@ __pycache__/
 
 # Temporary files
 *.hdf5
+build/

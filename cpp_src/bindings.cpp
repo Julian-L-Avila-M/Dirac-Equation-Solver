@@ -30,6 +30,8 @@
 #include "potentials/FreeParticle.h"
 #include "potentials/ScalarPotential.h"
 #include "potentials/CoulombPotential.h"
+#include "potentials/YukawaPotential.h"
+#include "potentials/InfiniteWellPotential.h"
 #include "boundaries/BoundaryCondition.h"
 #include "boundaries/PeriodicBoundary.h"
 #include "boundaries/AbsorbingBoundary.h"
@@ -203,6 +205,24 @@ PYBIND11_MODULE(_core, m) {
         .def(py::init<double, double>(),
              py::arg("Z"), py::arg("epsilon") = 1e-6)
         .def("get_name", &CoulombPotential::get_name);
+
+    /**
+     * @class YukawaPotential
+     * @brief Potencial de Yukawa para interacciones de corto alcance.
+     */
+    py::class_<YukawaPotential, Potential, std::shared_ptr<YukawaPotential>>(m, "YukawaPotential")
+        .def(py::init<double, double>(),
+             py::arg("strength"), py::arg("range"))
+        .def("get_name", &YukawaPotential::get_name);
+
+    /**
+     * @class InfiniteWellPotential
+     * @brief Potencial de pozo infinito.
+     */
+    py::class_<InfiniteWellPotential, Potential, std::shared_ptr<InfiniteWellPotential>>(m, "InfiniteWellPotential")
+        .def(py::init<const std::vector<double>&>(),
+             py::arg("widths"))
+        .def("get_name", &InfiniteWellPotential::get_name);
 
     // -------------------------------------------------------------------------
     // Condición de borde absorbente
