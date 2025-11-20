@@ -74,7 +74,6 @@ class InfiniteWellPotential:
     Potencial de pozo infinito, que confina una partícula a una región del espacio.
 
     El potencial es cero dentro de una caja e infinito fuera de ella.
-
     Parámetros
     ----------
     widths : list of float
