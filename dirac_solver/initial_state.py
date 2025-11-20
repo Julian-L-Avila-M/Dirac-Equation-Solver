@@ -20,6 +20,8 @@ Define el "contrato" que todos los estados iniciales deben cumplir.
 """
 
 class InitialState(ABC):
+    def __init__(self, mass=electron_mass):
+        self.mass = mass
 
     @abstractmethod
     def evaluate(self, grid_position):
@@ -40,7 +42,6 @@ class InitialState(ABC):
 """
 class ConstantSpinor:
     def __init__(self, spin_polarization=[0,0,1], spin_superposition=[1 + 0j, 0 + 0j], momentum=[1,0,0], mass=electron_mass):
-
         """
         @brief se normaliza el vector (al necesitarse un vector unitario)
         """
@@ -122,6 +123,7 @@ class GaussianPacket(InitialState):
         """
         @brief el spinor constante entra como parametro
         """
+        super().__init__(constant_spinor.mass)
         self.constant_spinor = constant_spinor
         self.center = np.array(center)
         self.spatial_width = spatial_width
@@ -188,6 +190,7 @@ class PlaneWave(InitialState):
         """
         @brief el spinor constante entra como parametro
         """
+        super().__init__(constant_spinor.mass)
         self.constant_spinor = constant_spinor
 
     def evaluate(self, grid_position):
