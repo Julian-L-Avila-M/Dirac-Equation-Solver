@@ -44,6 +44,7 @@
 *.egg-info/
 *.egg
 __pycache__/
+dirac_solver/__pycache__/
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
