@@ -1,7 +1,7 @@
 """
 @file storage.py
 @brief Módulo para manejar la entrada/salida (E/S) de datos de simulación.
-@details Contiene clases para guardar los resultados de la simulación,
+@details Contiene clases para guardar los resultados de la simulación.
 """
 
 import h5py
@@ -154,16 +154,16 @@ def create_animation(storage_path: str, output_path: str, interval=50):
             if grid_dim == 1:
                 ax.plot(rho_grid)
                 ax.set_title(f"Time: {time_dset[frame]:.2f}")
-                ax.set_xlabel("Position (x)")
-                ax.set_ylabel("Probability Density")
+                ax.set_xlabel("Posición (x)")
+                ax.set_ylabel("Densidad de Probabilidad")
 
             elif grid_dim == 2:
                 ax.imshow(rho_grid.T, origin='lower', cmap='viridis',
                           extent=[grid_origin[0], grid_origin[0] + (grid_shape[0] - 1) * grid_spacing[0],
                                   grid_origin[1], grid_origin[1] + (grid_shape[1] - 1) * grid_spacing[1]])
                 ax.set_title(f"Time: {time_dset[frame]:.2f}")
-                ax.set_xlabel("Position (x)")
-                ax.set_ylabel("Position (y)")
+                ax.set_xlabel("Posición (x)")
+                ax.set_ylabel("Posición (y)")
 
             elif grid_dim == 3:
                 ax.set_facecolor('black')
@@ -180,9 +180,9 @@ def create_animation(storage_path: str, output_path: str, interval=50):
 
                 sc = ax.scatter(x, y, z, c=rho_flat, cmap='viridis', alpha=0.3)
 
-                ax.set_xlabel("Position (x)", color="white")
-                ax.set_ylabel("Position (y)", color="white")
-                ax.set_zlabel("Position (z)", color="white")
+                ax.set_xlabel("Posición (x)", color="white")
+                ax.set_ylabel("Posición (y)", color="white")
+                ax.set_zlabel("Posición (z)", color="white")
                 ax.tick_params(colors='white')
                 ax.set_title(f"Time: {time_dset[frame]:.2f}", color="white")
 
@@ -194,7 +194,7 @@ def create_animation(storage_path: str, output_path: str, interval=50):
         elif output_path.endswith('.mp4'):
             anim.save(output_path, writer='ffmpeg')
         else:
-            raise ValueError("Unsupported output format. Use .gif or .mp4")
+            raise ValueError("Formato de salida no soportado. Use .gif o .mp4")
 
         plt.close(fig)
         print(f"Animation saved to {output_path}")
