@@ -267,14 +267,13 @@ class DiracSolver:
         elif dim == 3:
             fig = plt.figure(figsize=(10, 8))
 
-            # Fondo negro de toda la figura
+            # Fondo negro de la figura
             fig.patch.set_facecolor('black')
 
             ax = fig.add_subplot(111, projection='3d')
-
-            # Fondo negro del eje 3D
             ax.set_facecolor('black')
 
+            # Extraer coordenadas
             coords = grid.coords.reshape(*grid.shape, grid.dim)
             x = coords[..., 0]
             y = coords[..., 1]
@@ -282,22 +281,39 @@ class DiracSolver:
 
             rho_grid = rho.reshape(grid.shape)
 
-            # Submuestreo para mejorar el rendimiento
-            skip = 2
+            # --- SUBMUESTREO (evita paredes de puntos) ---
+            skip = 3   # prueba 3, 4 o 5 para distintos efectos
+
+            xs = x[::skip, ::skip, ::skip].ravel()
+            ys = y[::skip, ::skip, ::skip].ravel()
+            zs = z[::skip, ::skip, ::skip].ravel()
+            rho_flat = rho_grid[::skip, ::skip, ::skip].ravel()
+
+            rho_safe = rho_flat + 1e-12
+            sizes = 5 + 60 * np.log10(1 + 10 * rho_safe / rho_safe.max())
+
+
+            # --- Transparencia dependiente de densidad ---
+            alphas = 0.1 + 0.85 * (rho_flat / rho_flat.max())**0.6
+
+
+            # --- Crear colores con alpha ---
+            cmap = plt.cm.plasma
+            colors = cmap(rho_safe)
+            colors[:, 3] = alphas  # reemplazar alpha
+
+            # --- Scatter final ---
             ax.scatter(
-                x[::skip, ::skip, ::skip].ravel(),
-                y[::skip, ::skip, ::skip].ravel(),
-                z[::skip, ::skip, ::skip].ravel(),
-                c=rho_grid[::skip, ::skip, ::skip].ravel(),
-                cmap='viridis',
-                alpha=0.3   # Más transparente
+                xs, ys, zs,
+                s=sizes,
+                facecolors=colors,
+                edgecolors='none'
             )
 
             ax.set_xlabel("Posición (x)", color="white")
             ax.set_ylabel("Posición (y)", color="white")
             ax.set_zlabel("Posición (z)", color="white")
 
-            # Color blanco en ticks y labels
             ax.tick_params(colors='white')
 
             plt.title("Densidad de Probabilidad 3D", color="white")
