@@ -116,13 +116,17 @@ $(document).ready(function(){initNavTree('classPotential.html',''); initResizabl
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classPotential__inherit__graph.png" border="0" usemap="#aPotential_inherit__map" alt="Inheritance graph"/></div>
 <map name="aPotential_inherit__map" id="aPotential_inherit__map">
-<area shape="rect" title="Clase base abstracta para todos los potenciales escalares (patrón Template)." alt="" coords="177,5,257,31"/>
+<area shape="rect" title="Clase base abstracta para todos los potenciales escalares (patrón Template)." alt="" coords="328,5,408,31"/>
 <area shape="rect" href="classCoulombPotential.html" title="Implementación concreta de un potencial de Coulomb regularizado." alt="" coords="5,79,144,104"/>
-<area shape="poly" title=" " alt="" coords="184,39,99,81,97,76,181,34"/>
+<area shape="poly" title=" " alt="" coords="315,35,123,81,121,76,314,30"/>
 <area shape="rect" href="classFreeParticle.html" title="Implementación concreta del potencial para una partícula libre." alt="" coords="168,79,267,104"/>
-<area shape="poly" title=" " alt="" coords="220,44,220,79,215,79,215,44"/>
-<area shape="rect" href="classScalarPotential.html" title="Implementación flexible de un potencial escalar definido por el usuario." alt="" coords="291,79,411,104"/>
-<area shape="poly" title=" " alt="" coords="252,35,330,76,328,81,249,39"/>
+<area shape="poly" title=" " alt="" coords="333,39,243,81,241,76,330,34"/>
+<area shape="rect" href="classInfiniteWellPotential.html" title="Implementación de un potencial de pozo infinito." alt="" coords="291,79,445,104"/>
+<area shape="poly" title=" " alt="" coords="371,44,371,79,365,79,365,44"/>
+<area shape="rect" href="classScalarPotential.html" title="Implementación flexible de un potencial escalar definido por el usuario." alt="" coords="469,79,589,104"/>
+<area shape="poly" title=" " alt="" coords="407,34,504,76,502,81,405,39"/>
+<area shape="rect" href="classYukawaPotential.html" title="Implementación de un potencial de Yukawa." alt="" coords="614,79,743,104"/>
+<area shape="poly" title=" " alt="" coords="423,29,629,76,628,81,421,34"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">leyenda</a>]</span></center></div>
 <table class="memberdecls">
@@ -139,7 +143,7 @@ Métodos públicos</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Clase base abstracta para todos los potenciales escalares (patrón Template). </p>
-<p>Esta clase define la interfaz para cualquier potencial V(r) que se utilizará en la ecuación de <a class="el" href="namespaceDirac.html">Dirac</a>. Permite que diferentes funciones de potencial sean implementadas y utilizadas indistintamente por el solver. </p>
+<p>Esta clase define la interfaz para cualquier potencial V(r) que se utilizará en la ecuación de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a>. Permite que diferentes funciones de potencial sean implementadas y utilizadas indistintamente por el solver. </p>
 </div><h2 class="groupheader">Documentación de constructores y destructores</h2>
 <a id="ab19408f59ef425ec21e3bf588ed5aa21" name="ab19408f59ef425ec21e3bf588ed5aa21"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab19408f59ef425ec21e3bf588ed5aa21">&#9670;&#160;</a></span>~Potential()</h2>
@@ -200,7 +204,7 @@ Métodos públicos</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>El valor escalar del potencial en ese punto. </dd></dl>
 
-<p>Implementado en <a class="el" href="classCoulombPotential.html#ae407d6cb33e69a230367685e05c09aaf">CoulombPotential</a>, <a class="el" href="classFreeParticle.html#a19b24bf80dcc7268816c455674c0c9c4">FreeParticle</a> y <a class="el" href="classScalarPotential.html#a973bf456bbbcd628816de50515d330fe">ScalarPotential</a>.</p>
+<p>Implementado en <a class="el" href="classCoulombPotential.html#ae407d6cb33e69a230367685e05c09aaf">CoulombPotential</a>, <a class="el" href="classFreeParticle.html#a19b24bf80dcc7268816c455674c0c9c4">FreeParticle</a>, <a class="el" href="classInfiniteWellPotential.html#ad1924b35ab5862696257dda1a2669c6e">InfiniteWellPotential</a>, <a class="el" href="classScalarPotential.html#a973bf456bbbcd628816de50515d330fe">ScalarPotential</a> y <a class="el" href="classYukawaPotential.html#a0c3d693ed2370c69b2fca9560bed84dd">YukawaPotential</a>.</p>
 
 </div>
 </div>
@@ -230,7 +234,7 @@ Métodos públicos</h2></td></tr>
 <p>Devuelve el nombre del potencial. </p>
 <dl class="section return"><dt>Devuelve</dt><dd>Una cadena que contiene el nombre de la clase. </dd></dl>
 
-<p>Implementado en <a class="el" href="classCoulombPotential.html#a26e2248e6200de30e9ad4dbddd3c1d12">CoulombPotential</a>, <a class="el" href="classFreeParticle.html#a96b5646b901138f1e30147bca288e145">FreeParticle</a> y <a class="el" href="classScalarPotential.html#a31fbfd078a451d8e5825a67ad0882f35">ScalarPotential</a>.</p>
+<p>Implementado en <a class="el" href="classCoulombPotential.html#a26e2248e6200de30e9ad4dbddd3c1d12">CoulombPotential</a>, <a class="el" href="classFreeParticle.html#a96b5646b901138f1e30147bca288e145">FreeParticle</a>, <a class="el" href="classInfiniteWellPotential.html#a5bec4896255fdcdd51b8a8bbea81fa76">InfiniteWellPotential</a>, <a class="el" href="classScalarPotential.html#a31fbfd078a451d8e5825a67ad0882f35">ScalarPotential</a> y <a class="el" href="classYukawaPotential.html#a56b17b8207562e4924de8deaa8b57e49">YukawaPotential</a>.</p>
 
 </div>
 </div>
@@ -243,7 +247,7 @@ Métodos públicos</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPotential.html">Potential</a></li>
-    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 09:37:59 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

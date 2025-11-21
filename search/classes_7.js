@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['scalarpotential_0',['ScalarPotential',['../classScalarPotential.html',1,'']]],
-  ['simulationproblem_1',['SimulationProblem',['../classdirac__solver_1_1core_1_1SimulationProblem.html',1,'dirac_solver::core']]],
-  ['spinor_2',['Spinor',['../structDirac_1_1Spinor.html',1,'Dirac']]]
+  ['infinitewellpotential_0',['infinitewellpotential',['../classdirac__solver_1_1potentials_1_1InfiniteWellPotential.html',1,'dirac_solver.potentials.InfiniteWellPotential'],['../classInfiniteWellPotential.html',1,'InfiniteWellPotential']]],
+  ['initialstate_1',['InitialState',['../classdirac__solver_1_1initial__state_1_1InitialState.html',1,'dirac_solver::initial_state']]]
 ];

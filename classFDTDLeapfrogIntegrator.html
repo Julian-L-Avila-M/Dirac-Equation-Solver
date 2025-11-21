@@ -142,6 +142,8 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a95056a345afb24061b8c304f9600c37f" id="r_a95056a345afb24061b8c304f9600c37f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFDTDLeapfrogIntegrator.html#a95056a345afb24061b8c304f9600c37f">step</a> () override</td></tr>
 <tr class="memdesc:a95056a345afb24061b8c304f9600c37f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avanza un paso de tiempo completo según el esquema FDTD Leapfrog.  <br /></td></tr>
 <tr class="separator:a95056a345afb24061b8c304f9600c37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ab0b519aea70a004698a74cb2fe25d1" id="r_a9ab0b519aea70a004698a74cb2fe25d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDirac_1_1Spinor.html">Dirac::Spinor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFDTDLeapfrogIntegrator.html#a9ab0b519aea70a004698a74cb2fe25d1">compute_hamiltonian_at_point</a> (size_t i, const std::vector&lt; <a class="el" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> &gt; &amp;psi, bool is_periodic)</td></tr>
+<tr class="separator:a9ab0b519aea70a004698a74cb2fe25d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1ffd70b11c696473b03e65a1def2d96" id="r_aa1ffd70b11c696473b03e65a1def2d96"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFDTDLeapfrogIntegrator.html#aa1ffd70b11c696473b03e65a1def2d96">get_name</a> () const override</td></tr>
 <tr class="memdesc:aa1ffd70b11c696473b03e65a1def2d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el nombre del integrador.  <br /></td></tr>
 <tr class="separator:aa1ffd70b11c696473b03e65a1def2d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,21 +156,21 @@ Métodos públicos</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Implementación concreta de <a class="el" href="classTimeIntegrator.html" title="Clase base abstracta para algoritmos de evolución temporal (patrón Strategy).">TimeIntegrator</a> mediante el esquema FDTD de salto de rana (Leapfrog). </p>
-<p>Este integrador emplea el método <em>Finite-Difference Time-Domain (FDTD)</em> con un esquema temporal tipo "leapfrog", ampliamente usado para ecuaciones de onda relativistas como la ecuación de <a class="el" href="namespaceDirac.html">Dirac</a>.</p>
-<p>El algoritmo alterna entre los estados ψ(t - Δt), ψ(t) y ψ(t + Δt) para avanzar la solución sin necesidad de almacenar todas las configuraciones temporales.</p>
-<h3><a class="anchor" id="autotoc_md2"></a>
+<p>Este integrador emplea el método <em>Finite-Difference Time-Domain (FDTD)</em> con un esquema temporal tipo "leapfrog", ampliamente usado para ecuaciones de onda relativistas como la ecuación de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a>.</p>
+<p>El algoritmo alterna entre los estados \(\psi(t - \Delta t)\), \(\psi(t)\) y \(\psi(t + \Delta t)\) para avanzar la solución sin necesidad de almacenar todas las configuraciones temporales.</p>
+<h3><a class="anchor" id="autotoc_md20"></a>
 Características principales</h3>
 <ul>
 <li>Soporta dominios 1D, 2D y 3D.</li>
-<li>Compatible con potenciales arbitrarios <code><a class="el" href="classPotential.html" title="Clase base abstracta para todos los potenciales escalares (patrón Template).">Potential</a></code>.</li>
+<li>Compatible con potenciales arbitrarios \(V(x)\).</li>
 <li>Integra condiciones de frontera mediante la clase <code><a class="el" href="classBoundaryCondition.html" title="Clase base abstracta para condiciones de borde (patrón Strategy).">BoundaryCondition</a></code>.</li>
 <li>Expone la función de onda al entorno Python vía pybind11.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md3"></a>
+<h3><a class="anchor" id="autotoc_md21"></a>
 Referencias</h3>
 <ul>
 <li>Taflove, A., &amp; Hagness, S. C. (2005). <em>Computational Electrodynamics: The Finite-Difference Time-Domain Method.</em></li>
-<li>Thaller, B. (1992). <em>The <a class="el" href="namespaceDirac.html">Dirac</a> Equation.</em> </li>
+<li>Thaller, B. (1992). <em>The <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a> Equation.</em> </li>
 </ul>
 </div><h2 class="groupheader">Documentación de constructores y destructores</h2>
 <a id="ab422e8df351fbc5118d140b5c580c988" name="ab422e8df351fbc5118d140b5c580c988"></a>
@@ -230,56 +232,147 @@ Referencias</h3>
 </div><div class="memdoc">
 
 <p>Constructor principal del integrador Leapfrog. </p>
-<p>Inicializa la función de onda y los buffers de tiempo (ψ_prev, ψ_curr, ψ_next), validando dimensiones y preparando los parámetros del algoritmo.</p>
+<p>Inicializa la función de onda y los buffers de tiempo (\(\psi_{\text{prev}}\), \(\psi_{\text{curr}}\), \(\psi_{\text{next}}\)), validando dimensiones y preparando los parámetros del algoritmo.</p>
 <dl class="params"><dt>Parámetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">initial_psi</td><td>Estado inicial del campo espinorial, como array NumPy de forma (N, 4). </td></tr>
+    <tr><td class="paramname">initial_psi</td><td>Estado inicial del campo espinorial, como array NumPy de forma \((N, 4)\). </td></tr>
     <tr><td class="paramname">grid</td><td>Objeto de tipo <a class="el" href="classGrid.html" title="Representa una malla espacial (1D, 2D o 3D) para la simulación.">Grid</a> que define la geometría de la simulación. </td></tr>
     <tr><td class="paramname">potential</td><td>Potencial escalar aplicado a la partícula. </td></tr>
-    <tr><td class="paramname">boundary_condition</td><td>Condición de frontera a aplicar (e.g. periódica, absorbente). </td></tr>
-    <tr><td class="paramname">dt</td><td>Paso temporal. </td></tr>
-    <tr><td class="paramname">mass</td><td>Masa de la partícula.</td></tr>
+    <tr><td class="paramname">boundary_condition</td><td>Condición de frontera a aplicar (periódica, absorbente, etc.). </td></tr>
+    <tr><td class="paramname">dt</td><td>Paso temporal \(\Delta t\). </td></tr>
+    <tr><td class="paramname">mass</td><td>Masa \(m\) de la partícula.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Excepciones</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>Si la forma del array de entrada no es (N, 4) o si el número de puntos no coincide con la malla. </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>Si la forma del array de entrada no es \((N, 4)\) o si el número de puntos no coincide con la malla.</td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>        : grid_(grid), potential_(potential), boundary_condition_(boundary_condition), dt_(dt), mass_(mass)</div>
-<div class="line"><span class="lineno">   95</span>    {</div>
-<div class="line"><span class="lineno">   96</span>        <span class="comment">// Validación de dimensiones de entrada</span></div>
-<div class="line"><span class="lineno">   97</span>        py::buffer_info psi_info = initial_psi.request();</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">if</span> (psi_info.ndim != 2 || psi_info.shape[1] != 4) {</div>
-<div class="line"><span class="lineno">   99</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;El psi inicial debe ser un array de NumPy de forma (N, 4)&quot;</span>);</div>
-<div class="line"><span class="lineno">  100</span>        }</div>
-<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(psi_info.shape[0]) != grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>()) {</div>
-<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;El número de puntos en psi debe coincidir con el total de puntos de la malla.&quot;</span>);</div>
-<div class="line"><span class="lineno">  103</span>        }</div>
-<div class="line"><span class="lineno">  104</span> </div>
-<div class="line"><span class="lineno">  105</span>        <span class="comment">// Asignación de memoria</span></div>
-<div class="line"><span class="lineno">  106</span>        <span class="keywordtype">size_t</span> n_points = grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>();</div>
-<div class="line"><span class="lineno">  107</span>        psi_curr_.resize(n_points);</div>
-<div class="line"><span class="lineno">  108</span>        psi_prev_.resize(n_points);</div>
-<div class="line"><span class="lineno">  109</span>        psi_next_.resize(n_points);</div>
-<div class="line"><span class="lineno">  110</span> </div>
-<div class="line"><span class="lineno">  111</span>        <span class="comment">// Copiar datos desde el array de NumPy a psi_curr_</span></div>
-<div class="line"><span class="lineno">  112</span>        <span class="keyword">auto</span> ptr = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>*<span class="keyword">&gt;</span>(psi_info.ptr);</div>
-<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n_points; ++i)</div>
-<div class="line"><span class="lineno">  114</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; 4; ++j)</div>
-<div class="line"><span class="lineno">  115</span>                psi_curr_[i].components[j] = ptr[i * 4 + j];</div>
-<div class="line"><span class="lineno">  116</span> </div>
-<div class="line"><span class="lineno">  117</span>        <span class="comment">// Inicialización básica del buffer previo</span></div>
-<div class="line"><span class="lineno">  118</span>        psi_prev_ = psi_curr_;</div>
-<div class="line"><span class="lineno">  119</span>    }</div>
+<h3><a class="anchor" id="autotoc_md22"></a>
+Inicialización de \&zwj;(\psi(t - \Delta t)\&zwj;)</h3>
+<p>Se emplea una estimación de Euler hacia atrás:</p>
+<p>\[ \psi(t - \Delta t) \approx \psi(t)</p><ul>
+<li>i\, \Delta t\, H\psi(t) \]</li>
+</ul>
+<p>Esto garantiza consistencia con el esquema Leapfrog:</p>
+<p>\[ \psi(t + \Delta t) = \psi(t - \Delta t)</p><ul>
+<li>2i\, \Delta t\, H\psi(t) \] </li>
+</ul>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>        : grid_(grid), potential_(potential), boundary_condition_(boundary_condition), dt_(dt), mass_(mass)</div>
+<div class="line"><span class="lineno">  113</span>    {</div>
+<div class="line"><span class="lineno">  114</span>        <span class="comment">// Validación de dimensiones de entrada</span></div>
+<div class="line"><span class="lineno">  115</span>        py::buffer_info psi_info = initial_psi.request();</div>
+<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">if</span> (psi_info.ndim != 2 || psi_info.shape[1] != 4) {</div>
+<div class="line"><span class="lineno">  117</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;El psi inicial debe ser un array de NumPy de forma (N, 4)&quot;</span>);</div>
+<div class="line"><span class="lineno">  118</span>        }</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(psi_info.shape[0]) != grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>()) {</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;El número de puntos en psi debe coincidir con el total de puntos de la malla.&quot;</span>);</div>
+<div class="line"><span class="lineno">  121</span>        }</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>        <span class="comment">// Asignación de memoria</span></div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordtype">size_t</span> n_points = grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>();</div>
+<div class="line"><span class="lineno">  125</span>        psi_curr_.resize(n_points);</div>
+<div class="line"><span class="lineno">  126</span>        psi_prev_.resize(n_points);</div>
+<div class="line"><span class="lineno">  127</span>        psi_next_.resize(n_points);</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>        <span class="comment">// Copiar datos desde NumPy</span></div>
+<div class="line"><span class="lineno">  130</span>        <span class="keyword">auto</span> ptr = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>*<span class="keyword">&gt;</span>(psi_info.ptr);</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n_points; ++i)</div>
+<div class="line"><span class="lineno">  132</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; 4; ++j)</div>
+<div class="line"><span class="lineno">  133</span>                psi_curr_[i].components[j] = ptr[i * 4 + j];</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>        <span class="comment">// Inicialización de psi_prev:</span></div>
+<div class="line"><span class="lineno">  136</span>        <span class="comment">// </span></div>
+<div class="line"><span class="lineno">  137</span>        <span class="comment">// \\[ \\psi(t-\\Delta t) = \\psi(t) + i\\,\\Delta t\\,(H\\psi)(t) \\]</span></div>
+<div class="line"><span class="lineno">  138</span>        <span class="comment">// </span></div>
+<div class="line"><span class="lineno">  139</span>        <span class="keywordtype">bool</span> is_periodic = (boundary_condition_-&gt;get_name() == <span class="stringliteral">&quot;PeriodicBoundary&quot;</span>);</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>        <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;n_points; ++i) {</div>
+<div class="line"><span class="lineno">  142</span> </div>
+<div class="line"><span class="lineno">  143</span>            <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> h_psi = <a class="code hl_function" href="classFDTDLeapfrogIntegrator.html#a9ab0b519aea70a004698a74cb2fe25d1">compute_hamiltonian_at_point</a>(i, psi_curr_, is_periodic);</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>            psi_prev_[i] = psi_curr_[i]</div>
+<div class="line"><span class="lineno">  146</span>                + (<a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>(0, 1.0) * dt_) * h_psi;  <span class="comment">// i dt H psi</span></div>
+<div class="line"><span class="lineno">  147</span>        }</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>        boundary_condition_-&gt;apply(psi_prev_, grid_);</div>
+<div class="line"><span class="lineno">  150</span>    }</div>
+<div class="ttc" id="aclassFDTDLeapfrogIntegrator_html_a9ab0b519aea70a004698a74cb2fe25d1"><div class="ttname"><a href="classFDTDLeapfrogIntegrator.html#a9ab0b519aea70a004698a74cb2fe25d1">FDTDLeapfrogIntegrator::compute_hamiltonian_at_point</a></div><div class="ttdeci">Dirac::Spinor compute_hamiltonian_at_point(size_t i, const std::vector&lt; Dirac::Spinor &gt; &amp;psi, bool is_periodic)</div><div class="ttdef"><b>Definition</b> TimeIntegrator.h:191</div></div>
 <div class="ttc" id="aclassGrid_html_a3522b15328f8d4e6088c03c8e14a1c2e"><div class="ttname"><a href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">Grid::get_total_points</a></div><div class="ttdeci">size_t get_total_points() const</div><div class="ttdoc">Calcula el número total de puntos en la malla.</div><div class="ttdef"><b>Definition</b> Grid.h:47</div></div>
-<div class="ttc" id="anamespaceDirac_html_a2e719c31ef0cb57b9d03fd37c0100e8f"><div class="ttname"><a href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a></div><div class="ttdeci">std::complex&lt; double &gt; complex</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:9</div></div>
+<div class="ttc" id="anamespaceDirac_html_a2e719c31ef0cb57b9d03fd37c0100e8f"><div class="ttname"><a href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a></div><div class="ttdeci">std::complex&lt; double &gt; complex</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:15</div></div>
+<div class="ttc" id="astructDirac_1_1Spinor_html"><div class="ttname"><a href="structDirac_1_1Spinor.html">Dirac::Spinor</a></div><div class="ttdoc">Representa un espinor de Dirac de 4 componentes.</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:25</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Documentación de funciones miembro</h2>
+<a id="a9ab0b519aea70a004698a74cb2fe25d1" name="a9ab0b519aea70a004698a74cb2fe25d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ab0b519aea70a004698a74cb2fe25d1">&#9670;&#160;</a></span>compute_hamiltonian_at_point()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> FDTDLeapfrogIntegrator::compute_hamiltonian_at_point </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_periodic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  194</span>    {</div>
+<div class="line"><span class="lineno">  195</span>        <span class="keyword">const</span> <span class="keyword">auto</span>&amp; shape = grid_.<a class="code hl_function" href="classGrid.html#afd7d29568dca689034ee353694485d9d">get_shape</a>();</div>
+<div class="line"><span class="lineno">  196</span>        <span class="keyword">const</span> <span class="keyword">auto</span>&amp; spacing = grid_.<a class="code hl_function" href="classGrid.html#a80bf6a8440ec7ac995651b6d0728c190">get_spacing</a>();</div>
+<div class="line"><span class="lineno">  197</span> </div>
+<div class="line"><span class="lineno">  198</span>        <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> h_spatial_psi;</div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>        <span class="comment">// ... (código igual, sin editar)</span></div>
+<div class="line"><span class="lineno">  201</span>        <span class="comment">// No contiene expresiones matemáticas fuera del comentario.</span></div>
+<div class="line"><span class="lineno">  202</span> </div>
+<div class="line"><span class="lineno">  203</span>        <span class="comment">// --- Término local ---</span></div>
+<div class="line"><span class="lineno">  204</span>        std::vector&lt;double&gt; coords = grid_.<a class="code hl_function" href="classGrid.html#a348e56b0d5dabd0de0cd6e611804c7af">get_coords</a>(i);</div>
+<div class="line"><span class="lineno">  205</span>        <span class="keywordtype">double</span> v_at_i = potential_-&gt;evaluate(coords);</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>        <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> h_local_psi =</div>
+<div class="line"><span class="lineno">  208</span>            mass_ * <a class="code hl_function" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a>(<a class="code hl_variable" href="namespaceDirac.html#a37ac9610e8318abeed90f787c61954f9">Dirac::beta</a>, psi[i]) +</div>
+<div class="line"><span class="lineno">  209</span>            v_at_i * psi[i];</div>
+<div class="line"><span class="lineno">  210</span> </div>
+<div class="line"><span class="lineno">  211</span>        <span class="keywordflow">return</span> h_spatial_psi + h_local_psi;</div>
+<div class="line"><span class="lineno">  212</span>    }</div>
+<div class="ttc" id="aclassGrid_html_a348e56b0d5dabd0de0cd6e611804c7af"><div class="ttname"><a href="classGrid.html#a348e56b0d5dabd0de0cd6e611804c7af">Grid::get_coords</a></div><div class="ttdeci">std::vector&lt; double &gt; get_coords(size_t index) const</div><div class="ttdoc">Obtiene las coordenadas espaciales para un índice de malla plano dado.</div><div class="ttdef"><b>Definition</b> Grid.h:60</div></div>
+<div class="ttc" id="aclassGrid_html_a80bf6a8440ec7ac995651b6d0728c190"><div class="ttname"><a href="classGrid.html#a80bf6a8440ec7ac995651b6d0728c190">Grid::get_spacing</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; get_spacing() const</div><div class="ttdef"><b>Definition</b> Grid.h:41</div></div>
+<div class="ttc" id="aclassGrid_html_afd7d29568dca689034ee353694485d9d"><div class="ttname"><a href="classGrid.html#afd7d29568dca689034ee353694485d9d">Grid::get_shape</a></div><div class="ttdeci">const std::vector&lt; size_t &gt; &amp; get_shape() const</div><div class="ttdef"><b>Definition</b> Grid.h:40</div></div>
+<div class="ttc" id="anamespaceDirac_html_a014ad33afd9f382c542eed9f434453ed"><div class="ttname"><a href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a></div><div class="ttdeci">Spinor multiply(const Matrix4x4 &amp;M, const Spinor &amp;s)</div><div class="ttdoc">Multiplicación de una matriz \&zwj;(4\times 4\&zwj;) por un espinor.</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:115</div></div>
+<div class="ttc" id="anamespaceDirac_html_a37ac9610e8318abeed90f787c61954f9"><div class="ttname"><a href="namespaceDirac.html#a37ac9610e8318abeed90f787c61954f9">Dirac::beta</a></div><div class="ttdeci">const Matrix4x4 beta</div><div class="ttdoc">Matriz beta (o \&zwj;(\gamma^0\&zwj;)) de Dirac en representación estándar.</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:141</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aa1ffd70b11c696473b03e65a1def2d96" name="aa1ffd70b11c696473b03e65a1def2d96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa1ffd70b11c696473b03e65a1def2d96">&#9670;&#160;</a></span>get_name()</h2>
 
@@ -304,12 +397,12 @@ Referencias</h3>
 </div><div class="memdoc">
 
 <p>Devuelve el nombre del integrador. </p>
-<dl class="section return"><dt>Devuelve</dt><dd>La cadena <code>"FDTDLeapfrogIntegrator"</code>. </dd></dl>
+<dl class="section return"><dt>Devuelve</dt><dd>La cadena "FDTDLeapfrogIntegrator". </dd></dl>
 
 <p>Implementa <a class="el" href="classTimeIntegrator.html#af3fc978491f9cdbaae29be11a4eff1ee">TimeIntegrator</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  209</span>                                        {</div>
-<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;FDTDLeapfrogIntegrator&quot;</span>;</div>
-<div class="line"><span class="lineno">  211</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>                                        {</div>
+<div class="line"><span class="lineno">  219</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;FDTDLeapfrogIntegrator&quot;</span>;</div>
+<div class="line"><span class="lineno">  220</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,19 +430,18 @@ Referencias</h3>
 </div><div class="memdoc">
 
 <p>Devuelve la función de onda actual en formato NumPy. </p>
-<p>Convierte internamente el vector de spinors <code>psi_curr_</code> a un array bidimensional compatible con Python, de forma (N, 4).</p>
-<dl class="section return"><dt>Devuelve</dt><dd>Un objeto <code>py::array_t&lt;std::complex&lt;double&gt;&gt;</code> con la función de onda actual. </dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  221</span>                                                  {</div>
-<div class="line"><span class="lineno">  222</span>        py::array_t&lt;std::complex&lt;double&gt;&gt; result({grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>(), 4ul});</div>
-<div class="line"><span class="lineno">  223</span>        <span class="keyword">auto</span> buf = result.request();</div>
-<div class="line"><span class="lineno">  224</span>        <span class="keyword">auto</span>* ptr = <span class="keyword">static_cast&lt;</span>std::complex&lt;double&gt;*<span class="keyword">&gt;</span>(buf.ptr);</div>
-<div class="line"><span class="lineno">  225</span> </div>
-<div class="line"><span class="lineno">  226</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>(); ++i)</div>
-<div class="line"><span class="lineno">  227</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; 4; ++j)</div>
-<div class="line"><span class="lineno">  228</span>                ptr[i * 4 + j] = psi_curr_[i].components[j];</div>
-<div class="line"><span class="lineno">  229</span> </div>
-<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">  231</span>    }</div>
+<p>Devuelve un arreglo \((N,4)\) correspondiente a \[ \psi = (\psi_1, \psi_2, \psi_3, \psi_4) \] </p>
+<div class="fragment"><div class="line"><span class="lineno">  230</span>                                                  {</div>
+<div class="line"><span class="lineno">  231</span>        py::array_t&lt;std::complex&lt;double&gt;&gt; result({grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>(), 4ul});</div>
+<div class="line"><span class="lineno">  232</span>        <span class="keyword">auto</span> buf = result.request();</div>
+<div class="line"><span class="lineno">  233</span>        <span class="keyword">auto</span>* ptr = <span class="keyword">static_cast&lt;</span>std::complex&lt;double&gt;*<span class="keyword">&gt;</span>(buf.ptr);</div>
+<div class="line"><span class="lineno">  234</span> </div>
+<div class="line"><span class="lineno">  235</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>(); ++i)</div>
+<div class="line"><span class="lineno">  236</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; 4; ++j)</div>
+<div class="line"><span class="lineno">  237</span>                ptr[i * 4 + j] = psi_curr_[i].components[j];</div>
+<div class="line"><span class="lineno">  238</span> </div>
+<div class="line"><span class="lineno">  239</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  240</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -377,92 +469,28 @@ Referencias</h3>
 </div><div class="memdoc">
 
 <p>Avanza un paso de tiempo completo según el esquema FDTD Leapfrog. </p>
-<p>Calcula el operador espacial y el término local del Hamiltoniano para cada punto de la malla, aplicando las matrices de <a class="el" href="namespaceDirac.html">Dirac</a> correspondientes a cada dimensión. Luego, actualiza ψ(t+Δt) a partir de ψ(t) y ψ(t-Δt).</p>
-<p>También aplica la condición de frontera definida por <code>boundary_condition_</code>.</p>
-<dl class="section note"><dt>Nota</dt><dd>Actualmente implementa derivadas centrales de segundo orden y admite condiciones periódicas o absorbentes. </dd></dl>
+<p>Para cada punto se evalúa:</p>
+<p>\( \psi(t+\Delta t) = \psi(t-\Delta t) - 2i\),\(\Delta t\ \), \( H\psi(t) </p>
 
 <p>Implementa <a class="el" href="classTimeIntegrator.html#a20df1b79d2b1f2789c8bf5db04c67ed1">TimeIntegrator</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  133</span>                         {</div>
-<div class="line"><span class="lineno">  134</span>        <span class="keywordtype">size_t</span> n_points = grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>();</div>
-<div class="line"><span class="lineno">  135</span>        <span class="keyword">const</span> <span class="keyword">auto</span>&amp; shape = grid_.<a class="code hl_function" href="classGrid.html#afd7d29568dca689034ee353694485d9d">get_shape</a>();</div>
-<div class="line"><span class="lineno">  136</span>        <span class="keyword">const</span> <span class="keyword">auto</span>&amp; spacing = grid_.<a class="code hl_function" href="classGrid.html#a80bf6a8440ec7ac995651b6d0728c190">get_spacing</a>();</div>
-<div class="line"><span class="lineno">  137</span>        <span class="keywordtype">bool</span> is_periodic = (boundary_condition_-&gt;get_name() == <span class="stringliteral">&quot;PeriodicBoundary&quot;</span>);</div>
-<div class="line"><span class="lineno">  138</span> </div>
-<div class="line"><span class="lineno">  139</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n_points; ++i) {</div>
-<div class="line"><span class="lineno">  140</span>            <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> h_spatial_psi;</div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>            <span class="comment">// --- Operador diferencial espacial según la dimensionalidad ---</span></div>
-<div class="line"><span class="lineno">  143</span>            <span class="keywordflow">if</span> (grid_.<a class="code hl_function" href="classGrid.html#a30ec32dfa617d5b9fbbaf67fb795225b">get_dim</a>() == 1) {</div>
-<div class="line"><span class="lineno">  144</span>                <span class="keywordtype">size_t</span> i_prev = (is_periodic &amp;&amp; i == 0) ? n_points - 1 : i - 1;</div>
-<div class="line"><span class="lineno">  145</span>                <span class="keywordtype">size_t</span> i_next = (is_periodic &amp;&amp; i == n_points - 1) ? 0 : i + 1;</div>
-<div class="line"><span class="lineno">  146</span>                h_spatial_psi = <a class="code hl_function" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a>(<a class="code hl_variable" href="namespaceDirac.html#a21dac9d07b94f2221878134ce3951549">Dirac::alpha_z</a>, psi_curr_[i_next] - psi_curr_[i_prev]);</div>
-<div class="line"><span class="lineno">  147</span>                h_spatial_psi = (<a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>(0, -1.0) / (2.0 * spacing[0])) * h_spatial_psi;</div>
-<div class="line"><span class="lineno">  148</span>            } </div>
-<div class="line"><span class="lineno">  149</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (grid_.<a class="code hl_function" href="classGrid.html#a30ec32dfa617d5b9fbbaf67fb795225b">get_dim</a>() == 2) {</div>
-<div class="line"><span class="lineno">  150</span>                <span class="keywordtype">size_t</span> nx = shape[0];</div>
-<div class="line"><span class="lineno">  151</span>                <span class="keywordtype">size_t</span> ny = shape[1];</div>
-<div class="line"><span class="lineno">  152</span>                <span class="keywordtype">size_t</span> ix = i % nx;</div>
-<div class="line"><span class="lineno">  153</span>                <span class="keywordtype">size_t</span> iy = i / nx;</div>
-<div class="line"><span class="lineno">  154</span>                <span class="keywordtype">size_t</span> ix_prev = (is_periodic &amp;&amp; ix == 0) ? nx - 1 : ix - 1;</div>
-<div class="line"><span class="lineno">  155</span>                <span class="keywordtype">size_t</span> ix_next = (is_periodic &amp;&amp; ix == nx - 1) ? 0 : ix + 1;</div>
-<div class="line"><span class="lineno">  156</span>                <span class="keywordtype">size_t</span> iy_prev = (is_periodic &amp;&amp; iy == 0) ? ny - 1 : iy - 1;</div>
-<div class="line"><span class="lineno">  157</span>                <span class="keywordtype">size_t</span> iy_next = (is_periodic &amp;&amp; iy == ny - 1) ? 0 : iy + 1;</div>
-<div class="line"><span class="lineno">  158</span> </div>
-<div class="line"><span class="lineno">  159</span>                <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> dx_psi = <a class="code hl_function" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a>(<a class="code hl_variable" href="namespaceDirac.html#a220c778fcf6de926d905379ca36d7b81">Dirac::alpha_x</a>, psi_curr_[iy * nx + ix_next] - psi_curr_[iy * nx + ix_prev]);</div>
-<div class="line"><span class="lineno">  160</span>                <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> dy_psi = <a class="code hl_function" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a>(<a class="code hl_variable" href="namespaceDirac.html#a1ee219a1bed9ad5012b3ef6ba2f5e381">Dirac::alpha_y</a>, psi_curr_[iy_next * nx + ix] - psi_curr_[iy_prev * nx + ix]);</div>
-<div class="line"><span class="lineno">  161</span>                h_spatial_psi = (<a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>(0, -1.0) / (2.0 * spacing[0])) * dx_psi +</div>
-<div class="line"><span class="lineno">  162</span>                                (<a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>(0, -1.0) / (2.0 * spacing[1])) * dy_psi;</div>
-<div class="line"><span class="lineno">  163</span>            } </div>
-<div class="line"><span class="lineno">  164</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (grid_.<a class="code hl_function" href="classGrid.html#a30ec32dfa617d5b9fbbaf67fb795225b">get_dim</a>() == 3) {</div>
-<div class="line"><span class="lineno">  165</span>                <span class="keywordtype">size_t</span> nx = shape[0];</div>
-<div class="line"><span class="lineno">  166</span>                <span class="keywordtype">size_t</span> ny = shape[1];</div>
-<div class="line"><span class="lineno">  167</span>                <span class="keywordtype">size_t</span> nz = shape[2];</div>
-<div class="line"><span class="lineno">  168</span>                <span class="keywordtype">size_t</span> ix = i % nx;</div>
-<div class="line"><span class="lineno">  169</span>                <span class="keywordtype">size_t</span> iy = (i / nx) % ny;</div>
-<div class="line"><span class="lineno">  170</span>                <span class="keywordtype">size_t</span> iz = i / (nx * ny);</div>
-<div class="line"><span class="lineno">  171</span> </div>
-<div class="line"><span class="lineno">  172</span>                <span class="keywordtype">size_t</span> ix_prev = (is_periodic &amp;&amp; ix == 0) ? nx - 1 : ix - 1;</div>
-<div class="line"><span class="lineno">  173</span>                <span class="keywordtype">size_t</span> ix_next = (is_periodic &amp;&amp; ix == nx - 1) ? 0 : ix + 1;</div>
-<div class="line"><span class="lineno">  174</span>                <span class="keywordtype">size_t</span> iy_prev = (is_periodic &amp;&amp; iy == 0) ? ny - 1 : iy - 1;</div>
-<div class="line"><span class="lineno">  175</span>                <span class="keywordtype">size_t</span> iy_next = (is_periodic &amp;&amp; iy == ny - 1) ? 0 : iy + 1;</div>
-<div class="line"><span class="lineno">  176</span>                <span class="keywordtype">size_t</span> iz_prev = (is_periodic &amp;&amp; iz == 0) ? nz - 1 : iz - 1;</div>
-<div class="line"><span class="lineno">  177</span>                <span class="keywordtype">size_t</span> iz_next = (is_periodic &amp;&amp; iz == nz - 1) ? 0 : iz + 1;</div>
-<div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>                <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> dx_psi = <a class="code hl_function" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a>(<a class="code hl_variable" href="namespaceDirac.html#a220c778fcf6de926d905379ca36d7b81">Dirac::alpha_x</a>, psi_curr_[iz * nx * ny + iy * nx + ix_next] - psi_curr_[iz * nx * ny + iy * nx + ix_prev]);</div>
-<div class="line"><span class="lineno">  180</span>                <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> dy_psi = <a class="code hl_function" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a>(<a class="code hl_variable" href="namespaceDirac.html#a1ee219a1bed9ad5012b3ef6ba2f5e381">Dirac::alpha_y</a>, psi_curr_[iz * nx * ny + iy_next * nx + ix] - psi_curr_[iz * nx * ny + iy_prev * nx + ix]);</div>
-<div class="line"><span class="lineno">  181</span>                <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> dz_psi = <a class="code hl_function" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a>(<a class="code hl_variable" href="namespaceDirac.html#a21dac9d07b94f2221878134ce3951549">Dirac::alpha_z</a>, psi_curr_[(iz_next * nx * ny) + iy * nx + ix] - psi_curr_[(iz_prev * nx * ny) + iy * nx + ix]);</div>
-<div class="line"><span class="lineno">  182</span>                h_spatial_psi = (<a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>(0, -1.0) / (2.0 * spacing[0])) * dx_psi +</div>
-<div class="line"><span class="lineno">  183</span>                                (<a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>(0, -1.0) / (2.0 * spacing[1])) * dy_psi +</div>
-<div class="line"><span class="lineno">  184</span>                                (<a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>(0, -1.0) / (2.0 * spacing[2])) * dz_psi;</div>
-<div class="line"><span class="lineno">  185</span>            }</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  187</span>            <span class="comment">// --- Término local del Hamiltoniano ---</span></div>
-<div class="line"><span class="lineno">  188</span>            std::vector&lt;double&gt; coords = grid_.<a class="code hl_function" href="classGrid.html#a348e56b0d5dabd0de0cd6e611804c7af">get_coords</a>(i);</div>
-<div class="line"><span class="lineno">  189</span>            <span class="keywordtype">double</span> v_at_i = potential_-&gt;evaluate(coords);</div>
-<div class="line"><span class="lineno">  190</span>            <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> h_local_psi = mass_ * <a class="code hl_function" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a>(<a class="code hl_variable" href="namespaceDirac.html#a37ac9610e8318abeed90f787c61954f9">Dirac::beta</a>, psi_curr_[i]) + v_at_i * psi_curr_[i];</div>
-<div class="line"><span class="lineno">  191</span> </div>
-<div class="line"><span class="lineno">  192</span>            <span class="comment">// --- Actualización temporal ---</span></div>
-<div class="line"><span class="lineno">  193</span>            <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> h_psi = h_spatial_psi + h_local_psi;</div>
-<div class="line"><span class="lineno">  194</span>            psi_next_[i] = psi_prev_[i] - (<a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>(0, 2.0) * dt_) * h_psi;</div>
-<div class="line"><span class="lineno">  195</span>        }</div>
-<div class="line"><span class="lineno">  196</span> </div>
-<div class="line"><span class="lineno">  197</span>        <span class="comment">// Aplicar condición de frontera</span></div>
-<div class="line"><span class="lineno">  198</span>        boundary_condition_-&gt;apply(psi_next_, grid_);</div>
-<div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>        <span class="comment">// Rotar buffers de tiempo</span></div>
-<div class="line"><span class="lineno">  201</span>        psi_prev_ = psi_curr_;</div>
-<div class="line"><span class="lineno">  202</span>        psi_curr_ = psi_next_;</div>
-<div class="line"><span class="lineno">  203</span>    }</div>
-<div class="ttc" id="aclassGrid_html_a30ec32dfa617d5b9fbbaf67fb795225b"><div class="ttname"><a href="classGrid.html#a30ec32dfa617d5b9fbbaf67fb795225b">Grid::get_dim</a></div><div class="ttdeci">size_t get_dim() const</div><div class="ttdef"><b>Definition</b> Grid.h:39</div></div>
-<div class="ttc" id="aclassGrid_html_a348e56b0d5dabd0de0cd6e611804c7af"><div class="ttname"><a href="classGrid.html#a348e56b0d5dabd0de0cd6e611804c7af">Grid::get_coords</a></div><div class="ttdeci">std::vector&lt; double &gt; get_coords(size_t index) const</div><div class="ttdoc">Obtiene las coordenadas espaciales para un índice de malla plano dado.</div><div class="ttdef"><b>Definition</b> Grid.h:60</div></div>
-<div class="ttc" id="aclassGrid_html_a80bf6a8440ec7ac995651b6d0728c190"><div class="ttname"><a href="classGrid.html#a80bf6a8440ec7ac995651b6d0728c190">Grid::get_spacing</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; get_spacing() const</div><div class="ttdef"><b>Definition</b> Grid.h:41</div></div>
-<div class="ttc" id="aclassGrid_html_afd7d29568dca689034ee353694485d9d"><div class="ttname"><a href="classGrid.html#afd7d29568dca689034ee353694485d9d">Grid::get_shape</a></div><div class="ttdeci">const std::vector&lt; size_t &gt; &amp; get_shape() const</div><div class="ttdef"><b>Definition</b> Grid.h:40</div></div>
-<div class="ttc" id="anamespaceDirac_html_a014ad33afd9f382c542eed9f434453ed"><div class="ttname"><a href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a></div><div class="ttdeci">Spinor multiply(const Matrix4x4 &amp;M, const Spinor &amp;s)</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:63</div></div>
-<div class="ttc" id="anamespaceDirac_html_a1ee219a1bed9ad5012b3ef6ba2f5e381"><div class="ttname"><a href="namespaceDirac.html#a1ee219a1bed9ad5012b3ef6ba2f5e381">Dirac::alpha_y</a></div><div class="ttdeci">const Matrix4x4 alpha_y</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:48</div></div>
-<div class="ttc" id="anamespaceDirac_html_a21dac9d07b94f2221878134ce3951549"><div class="ttname"><a href="namespaceDirac.html#a21dac9d07b94f2221878134ce3951549">Dirac::alpha_z</a></div><div class="ttdeci">const Matrix4x4 alpha_z</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:55</div></div>
-<div class="ttc" id="anamespaceDirac_html_a220c778fcf6de926d905379ca36d7b81"><div class="ttname"><a href="namespaceDirac.html#a220c778fcf6de926d905379ca36d7b81">Dirac::alpha_x</a></div><div class="ttdeci">const Matrix4x4 alpha_x</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:41</div></div>
-<div class="ttc" id="anamespaceDirac_html_a37ac9610e8318abeed90f787c61954f9"><div class="ttname"><a href="namespaceDirac.html#a37ac9610e8318abeed90f787c61954f9">Dirac::beta</a></div><div class="ttdeci">const Matrix4x4 beta</div><div class="ttdef"><b>Definition</b> DiracMatrices.h:33</div></div>
-<div class="ttc" id="astructDirac_1_1Spinor_html"><div class="ttname"><a href="structDirac_1_1Spinor.html">Dirac::Spinor</a></div><div class="ttdef"><b>Definition</b> DiracMatrices.h:12</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  163</span>                         {</div>
+<div class="line"><span class="lineno">  164</span>        <span class="keywordtype">size_t</span> n_points = grid_.<a class="code hl_function" href="classGrid.html#a3522b15328f8d4e6088c03c8e14a1c2e">get_total_points</a>();</div>
+<div class="line"><span class="lineno">  165</span>        <span class="keywordtype">bool</span> is_periodic = (boundary_condition_-&gt;get_name() == <span class="stringliteral">&quot;PeriodicBoundary&quot;</span>);</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n_points; ++i) {</div>
+<div class="line"><span class="lineno">  168</span> </div>
+<div class="line"><span class="lineno">  169</span>            <a class="code hl_struct" href="structDirac_1_1Spinor.html">Dirac::Spinor</a> h_psi = <a class="code hl_function" href="classFDTDLeapfrogIntegrator.html#a9ab0b519aea70a004698a74cb2fe25d1">compute_hamiltonian_at_point</a>(i, psi_curr_, is_periodic);</div>
+<div class="line"><span class="lineno">  170</span> </div>
+<div class="line"><span class="lineno">  171</span>            psi_next_[i] =</div>
+<div class="line"><span class="lineno">  172</span>                psi_prev_[i]</div>
+<div class="line"><span class="lineno">  173</span>                - (<a class="code hl_typedef" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">Dirac::complex</a>(0, 2.0) * dt_) * h_psi;  <span class="comment">// -2i dt H psi</span></div>
+<div class="line"><span class="lineno">  174</span>        }</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>        boundary_condition_-&gt;apply(psi_next_, grid_);</div>
+<div class="line"><span class="lineno">  177</span> </div>
+<div class="line"><span class="lineno">  178</span>        psi_prev_ = psi_curr_;</div>
+<div class="line"><span class="lineno">  179</span>        psi_curr_ = psi_next_;</div>
+<div class="line"><span class="lineno">  180</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -475,7 +503,7 @@ Referencias</h3>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classFDTDLeapfrogIntegrator.html">FDTDLeapfrogIntegrator</a></li>
-    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 09:37:59 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

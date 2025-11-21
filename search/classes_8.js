@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timeintegrator_0',['TimeIntegrator',['../classTimeIntegrator.html',1,'']]]
+  ['observables_0',['Observables',['../classdirac__solver_1_1observables_1_1Observables.html',1,'dirac_solver::observables']]]
 ];

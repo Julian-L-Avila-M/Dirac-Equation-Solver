@@ -14,7 +14,22 @@ var annotated_dup =
       ] ],
       [ "initial_state", "namespacedirac__solver_1_1initial__state.html", [
         [ "ConstantSpinor", "classdirac__solver_1_1initial__state_1_1ConstantSpinor.html", "classdirac__solver_1_1initial__state_1_1ConstantSpinor" ],
-        [ "GaussianPacket", "classdirac__solver_1_1initial__state_1_1GaussianPacket.html", "classdirac__solver_1_1initial__state_1_1GaussianPacket" ]
+        [ "GaussianPacket", "classdirac__solver_1_1initial__state_1_1GaussianPacket.html", "classdirac__solver_1_1initial__state_1_1GaussianPacket" ],
+        [ "InitialState", "classdirac__solver_1_1initial__state_1_1InitialState.html", "classdirac__solver_1_1initial__state_1_1InitialState" ],
+        [ "PlaneWave", "classdirac__solver_1_1initial__state_1_1PlaneWave.html", "classdirac__solver_1_1initial__state_1_1PlaneWave" ]
+      ] ],
+      [ "observables", "namespacedirac__solver_1_1observables.html", [
+        [ "Observables", "classdirac__solver_1_1observables_1_1Observables.html", "classdirac__solver_1_1observables_1_1Observables" ]
+      ] ],
+      [ "potentials", "namespacedirac__solver_1_1potentials.html", [
+        [ "CoulombPotential", "classdirac__solver_1_1potentials_1_1CoulombPotential.html", "classdirac__solver_1_1potentials_1_1CoulombPotential" ],
+        [ "FreeParticle", "classdirac__solver_1_1potentials_1_1FreeParticle.html", "classdirac__solver_1_1potentials_1_1FreeParticle" ],
+        [ "InfiniteWellPotential", "classdirac__solver_1_1potentials_1_1InfiniteWellPotential.html", "classdirac__solver_1_1potentials_1_1InfiniteWellPotential" ],
+        [ "ScalarPotential", "classdirac__solver_1_1potentials_1_1ScalarPotential.html", "classdirac__solver_1_1potentials_1_1ScalarPotential" ],
+        [ "YukawaPotential", "classdirac__solver_1_1potentials_1_1YukawaPotential.html", "classdirac__solver_1_1potentials_1_1YukawaPotential" ]
+      ] ],
+      [ "storage", "namespacedirac__solver_1_1storage.html", [
+        [ "HDF5Storage", "classdirac__solver_1_1storage_1_1HDF5Storage.html", "classdirac__solver_1_1storage_1_1HDF5Storage" ]
       ] ]
     ] ],
     [ "AbsorbingBoundary", "classAbsorbingBoundary.html", "classAbsorbingBoundary" ],
@@ -23,11 +38,13 @@ var annotated_dup =
     [ "FDTDLeapfrogIntegrator", "classFDTDLeapfrogIntegrator.html", "classFDTDLeapfrogIntegrator" ],
     [ "FreeParticle", "classFreeParticle.html", "classFreeParticle" ],
     [ "Grid", "classGrid.html", "classGrid" ],
+    [ "InfiniteWellPotential", "classInfiniteWellPotential.html", "classInfiniteWellPotential" ],
     [ "PeriodicBoundary", "classPeriodicBoundary.html", "classPeriodicBoundary" ],
     [ "Potential", "classPotential.html", "classPotential" ],
     [ "PyBoundaryCondition", "classPyBoundaryCondition.html", null ],
     [ "PyPotential", "classPyPotential.html", null ],
     [ "PyTimeIntegrator", "classPyTimeIntegrator.html", null ],
     [ "ScalarPotential", "classScalarPotential.html", "classScalarPotential" ],
-    [ "TimeIntegrator", "classTimeIntegrator.html", "classTimeIntegrator" ]
+    [ "TimeIntegrator", "classTimeIntegrator.html", "classTimeIntegrator" ],
+    [ "YukawaPotential", "classYukawaPotential.html", "classYukawaPotential" ]
 ];

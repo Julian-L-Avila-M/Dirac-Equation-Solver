@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['i4_0',['I4',['../namespaceDirac.html#aeedf4a19be20c97daf8724926fe94f58',1,'Dirac']]],
-  ['initial_5fstate_1',['initial_state',['../classdirac__solver_1_1core_1_1SimulationProblem.html#a562e51788022c2b3b20fc098182bf040',1,'dirac_solver::core::SimulationProblem']]],
-  ['integrator_2',['integrator',['../classdirac__solver_1_1core_1_1DiracSolver.html#aa9cedd48767038ef89b08b70879868af',1,'dirac_solver::core::DiracSolver']]]
+  ['hbar_0',['hbar',['../classdirac__solver_1_1geometry_1_1Grid.html#ab9fb0b0b65ed952f527dffbd4f412d54',1,'dirac_solver.geometry.Grid.hbar'],['../namespacedirac__solver.html#aec7f9182aa7f7cdef50e2767cf38844c',1,'dirac_solver.hbar']]],
+  ['history_1',['history',['../classdirac__solver_1_1observables_1_1Observables.html#ab31fdb53a61dbb8583ad5012c55a88cd',1,'dirac_solver::observables::Observables']]]
 ];

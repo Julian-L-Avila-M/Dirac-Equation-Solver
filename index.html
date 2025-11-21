@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>dirac_solver: Dirac-Solver: Solucionador numérico de la Ecuación de Dirac.</title>
+<title>dirac_solver: Dirac-Solver: Solucionador numérico de la Ecuación de Dirac</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,22 +98,88 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Dirac-Solver: Solucionador numérico de la Ecuación de <a class="el" href="namespaceDirac.html">Dirac</a>. </div></div>
+  <div class="headertitle"><div class="title">Dirac-Solver: Solucionador numérico de la Ecuación de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a> </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> Este documento describe el plan del proyecto para un solucionador de la ecuación de <a class="el" href="namespaceDirac.html">Dirac</a>. El solucionador manejará la ecuación \[ (i\gamma^\mu \partial_\mu - m)\psi = 0 \] en unidades naturales, donde el bispinor \( \psi \in \mathbb{C}^4 \) es un vector columna de valores complejos. Las siguientes secciones detallan los problemas a abordar, junto con sus respectivos requisitos computacionales.</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> Este proyecto implementa un solucionador numérico para la ecuación de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a> en 1D, 2D y 3D. El núcleo computacional está escrito en C++ y expuesto a Python mediante <code>pybind11</code>, permitiendo simulaciones eficientes junto con una interfaz simple y flexible.</p>
+<p>La ecuación resuelta es:</p>
+<p>\[ (i\gamma^\mu \partial_\mu - m)\psi = 0 \]</p>
+<p>en unidades naturales, donde el bispinor \(\psi \in \mathbb{C}^4\) es un vector columna complejo. El proyecto implementa métodos explícitos tipo FDTD (Leapfrog), potenciales personalizables, condiciones de frontera modulares y manejo de datos en HDF5.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md127"></a>
-Documentación</h1>
-<p>Para compilar la documentación, en el directorio principal ejecutar:</p>
-<p>```bash doxygen </p>
+<h1><a class="anchor" id="autotoc_md146"></a>
+Características principales</h1>
+<ul>
+<li>Implementación explícita del esquema <b>Leapfrog (FDTD)</b>.</li>
+<li>Mallas 1D/2D/3D mediante la clase <code><a class="el" href="classGrid.html" title="Representa una malla espacial (1D, 2D o 3D) para la simulación.">Grid</a></code>.</li>
+<li>Interfaz C++ ↔ Python mediante <b>pybind11</b>.</li>
+<li>Potenciales configurables: Coulomb, pozo, Yukawa, y potenciales definidos por el usuario.</li>
+<li>Condiciones de frontera intercambiables.</li>
+<li>Módulo Python para estados iniciales, observables, geometría y almacenamiento.</li>
+<li>Ejemplos en Jupyter listos para ejecutar.</li>
+<li>Documentación generada con <b>Doxygen</b>.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md148"></a>
+Estructura del proyecto</h1>
+<p>dirac_solver/ ├── cpp_src/ # Código fuente C++ (núcleo numérico) ├── dirac_solver/ # API Python ├── examples/ # Notebooks de ejemplos ├── docs/ # Documentación Doxygen (HTML y LaTeX) ├── tests/ # Pruebas unitarias ├── save_data/ # Resultados de simulaciones (HDF5) ├── planning/ # Diseño, requisitos, notas técnicas └── pyproject.toml # Configuración del paquete Python</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md150"></a>
+Instalación</h1>
+<h2><a class="anchor" id="autotoc_md151"></a>
+Instalación local editable</h2>
+<div class="fragment"><div class="line">pip install -e .</div>
+<div class="line">````</div>
+<div class="line"> </div>
+<div class="line">### Compilación del núcleo C++</div>
+</div><!-- fragment --><p> bash mkdir -p cpp_build cd cpp_build cmake ../cpp_src make -j </p><div class="fragment"><div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## Uso básico</div>
+<div class="line"> </div>
+<div class="line">Ejemplo mínimo en Python:</div>
+</div><!-- fragment --><p> python from <a class="el" href="namespacedirac__solver.html" title="Librería para simulación de la ecuación de Dirac en unidades naturales.">dirac_solver</a> import core, potentials, initial_state, observables</p>
+<p>grid = core.Grid(shape=(200,), spacing=0.05)</p>
+<p>V = potentials.Coulomb(Z=1)</p>
+<p>psi0 = initial_state.gaussian(grid)</p>
+<p>solver = core.TimeIntegrator(grid, V) psi_t = solver.evolve(psi0, dt=0.001, steps=1000)</p>
+<p>obs = observables.Observables(psi_t) density = obs.probability_density() </p><div class="fragment"><div class="line">---</div>
+<div class="line"> </div>
+<div class="line">## Documentación</div>
+<div class="line"> </div>
+<div class="line">Para compilar la documentación, en el directorio principal ejecutar:</div>
+</div><!-- fragment --><p> bash doxygen </p><div class="fragment"><div class="line">La salida se genera en:</div>
+</div><!-- fragment --><p> docs/html/index.html docs/latex/ ```</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md153"></a>
+Ejemplos</h1>
+<p>En el directorio <code>examples/</code> encontrarás notebooks que cubren:</p>
+<ul>
+<li>Partícula libre</li>
+<li>Pozo cuadrado</li>
+<li>Potencial Coulomb</li>
+<li>Potencial Yukawa</li>
+<li>Ondas gaussianas</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md155"></a>
+Contribuir</h1>
+<p>Las contribuciones son bienvenidas.</p>
+<ul>
+<li>Revisar <code><a class="el" href="CONTRIBUTING_8md.html">CONTRIBUTING.md</a></code></li>
+<li>Mantener consistencia en el estilo del código</li>
+<li>Agregar pruebas unitarias si se añaden características nuevas</li>
+<li>Actualizar la documentación cuando corresponda</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md157"></a>
+Licencia</h1>
+<p>Este proyecto se distribuye bajo la licencia <b>MIT</b>. Ver <code>LICENSE</code> para más detalles. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 09:37:59 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

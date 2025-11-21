@@ -4,7 +4,7 @@ var classdirac__solver_1_1core_1_1DiracProblemBuilder =
     [ "build", "classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a19a59f7177bd101ff6bb24dd8d39036e", null ],
     [ "set_boundary_condition", "classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a4b74c5e69d25354cb357383ede97b327", null ],
     [ "set_grid", "classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a7a6f6160b9917a736f34b4c88ee93b3d", null ],
-    [ "set_initial_state", "classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a4d0d278d8d27dfc2d3996a46a530a95e", null ],
+    [ "set_initial_state", "classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a7478901f6870705974a77f83fd3cb9c6", null ],
     [ "set_potential", "classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a6102edf64b9e6daf887b709c90c71ea6", null ],
     [ "set_time_parameters", "classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a657c439a8a9d28f72f5e022f50972b27", null ],
     [ "_boundary_condition", "classdirac__solver_1_1core_1_1DiracProblemBuilder.html#a14f8fa66399d6c29713037617412c467", null ],

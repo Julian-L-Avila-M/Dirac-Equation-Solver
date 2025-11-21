@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('md_planning_2design-pattern.html','');
   <div class="headertitle"><div class="title">Arquitectura y Patrones de Diseño de dirac_solver</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md12"></a> Este documento describe la arquitectura de software de la librería <a class="el" href="namespacedirac__solver.html">dirac_solver</a>. El diseño se basa en un conjunto de patrones de diseño canónicos para garantizar que el código sea modular, extensible, mantenible y fácil de usar. El objetivo principal es lograr una clara separación de conceptos (Separation of Concerns): la definición del problema físico se mantiene desacoplada de los algoritmos numéricos utilizados para resolverlo. Tabla de Contenidos</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md31"></a> Este documento describe la arquitectura de software de la librería <a class="el" href="namespacedirac__solver.html" title="Librería para simulación de la ecuación de Dirac en unidades naturales.">dirac_solver</a>. El diseño se basa en un conjunto de patrones de diseño canónicos para garantizar que el código sea modular, extensible, mantenible y fácil de usar. El objetivo principal es lograr una clara separación de conceptos (Separation of Concerns): la definición del problema físico se mantiene desacoplada de los algoritmos numéricos utilizados para resolverlo. Tabla de Contenidos</p>
 <ol type="1">
 <li>Resumen - Tabla Comparativa: Patrones y Problemas que Resuelven</li>
 <li>Patrón Builder - Configuración de la Simulación</li>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('md_planning_2design-pattern.html','');
 <li>Alternativas - Consideradas y Descartadas</li>
 <li>Conclusión</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md32"></a>
 1. Tabla Comparativa: Patrones y Problemas que Resuelven</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -136,12 +136,12 @@ $(document).ready(function(){initNavTree('md_planning_2design-pattern.html','');
 <td class="markdownTableBodyNone"><b>Adapter</b>   </td><td class="markdownTableBodyNone">Interoperar con librerías externas que tienen APIs diferentes.   </td></tr>
 </table>
 <hr  />
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md34"></a>
 2. Patrón Builder - Configuración de la Simulación</h1>
 <p>Propósito: Construir un objeto complejo (SimulationProblem) paso a paso, proporcionando una API fluida y legible que separa la construcción de la representación.</p>
 <p>Aplicación: El usuario final define un problema completo ensamblando sus partes constituyentes (geometría, potencial, condiciones, etc.) sin necesidad de un constructor con múltiples y confusos argumentos. Un DiracProblemBuilder es el punto de entrada principal para el usuario. Este objeto guía la creación de una simulación válida y cohesiva.</p>
 <p>Código de Ejemplo (examples/hydrogen_atom.py):</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md35"></a>
 API fluida gracias al Patrón Builder</h2>
 <div class="fragment"><div class="line">simulation = (DiracProblemBuilder()</div>
 <div class="line">              .set_geometry(Radial(r_max=100, N=1024))</div>
@@ -152,12 +152,12 @@ API fluida gracias al Patrón Builder</h2>
 <div class="line"> </div>
 <div class="line">results = simulation.run()</div>
 </div><!-- fragment --> <hr  />
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md37"></a>
 3. Patrón Strategy - Flexibilidad en los Algoritmos</h1>
 <p>Propósito: Definir una familia de algoritmos, encapsular cada uno y hacerlos intercambiables. Permite que el algoritmo varíe independientemente del cliente que lo utiliza.</p>
 <p>Aplicación: Este es el patrón más importante para el núcleo numérico en solvers/. Permite al usuario cambiar el método de integración temporal (ej. CrankNicolson vs. SplitOperator) o las condiciones de frontera (ej. Dirichlet vs. Absorbing) sin modificar el código del bucle de simulación principal.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 4. Patrones Template y Factory Method - Extensibilidad de Componentes Físicos</h1>
 <p>Propósito:</p>
 <ul>
@@ -170,16 +170,16 @@ API fluida gracias al Patrón Builder</h2>
 <li>Una función create_potential() (el Factory Method) centraliza la lógica de instanciación, permitiendo crear potenciales a partir de un string (ej. desde un archivo de configuración).</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md41"></a>
 5. Patrón Observer - Visualización y Monitoreo</h1>
 <p>Propósito: Definir una dependencia uno-a-muchos entre objetos, de modo que cuando un objeto (Subject) cambia de estado, todos sus dependientes (Observers) son notificados y actualizados automáticamente.</p>
 <p>Aplicación: Desacopla el motor de la simulación de los componentes de visualización y registro de datos. El objeto Simulation (Subject) no necesita saber nada sobre cómo se muestran los datos. Simplemente notifica a sus observadores (ej. WavefunctionPlotter, EnergyLogger) en cada paso de tiempo.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md43"></a>
 6. Patrón Facade - Interfaz Simplificada de I/O</h1>
 <p>Propósito: Proporcionar una interfaz unificada y simplificada a un conjunto de interfaces en un subsistema.</p>
 <p>Aplicación: El módulo io/ puede contener lógica compleja para guardar en diferentes formatos (HDF5, npz), cargar, y parsear archivos de configuración. El patrón Facade oculta esta complejidad detrás de una única clase IOManager con métodos sencillos como save(simulation, path) y load(path).</p>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<h1><a class="anchor" id="autotoc_md44"></a>
 7. Patrón Decorator – Extensión Dinámica de Funcionalidades</h1>
 <p><b>Propósito:</b> Añadir responsabilidades a un objeto de manera dinámica sin modificar su estructura.</p>
 <p><b>Aplicación:</b> Permite extender solvers o visualizadores sin cambiar su código base. Por ejemplo:</p>
@@ -195,11 +195,11 @@ API fluida gracias al Patrón Builder</h2>
 <div class="line">    <span class="comment"># método original decorado con medición de tiempo</span></div>
 <div class="line">    ...</div>
 </div><!-- fragment --><hr  />
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md46"></a>
 8. Patrón Adapter – Interoperabilidad con Librerías Externas</h1>
 <p><b>Propósito:</b> Convertir la interfaz de una clase existente en otra que el cliente espera, permitiendo la colaboración entre clases incompatibles.</p>
 <p><b>Aplicación:</b> El solver puede necesitar interoperar con <b>bibliotecas externas</b> (SciPy, PETSc, CuPy, PyTorch). Cada una tiene interfaces distintas para vectores, matrices y rutinas de eigenvalores.</p>
-<p>El Adapter proporciona una capa intermedia que traduce entre la API de <code><a class="el" href="namespacedirac__solver.html">dirac_solver</a></code> y la API de la librería de backend. Así, el código cliente no depende de la librería específica.</p>
+<p>El Adapter proporciona una capa intermedia que traduce entre la API de <code><a class="el" href="namespacedirac__solver.html" title="Librería para simulación de la ecuación de Dirac en unidades naturales.">dirac_solver</a></code> y la API de la librería de backend. Así, el código cliente no depende de la librería específica.</p>
 <p>Ejemplo hipotético:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>PETScAdapter(LinearSolver):</div>
 <div class="line">    <span class="keyword">def </span>__init__(self, petsc_solver):</div>
@@ -209,7 +209,7 @@ API fluida gracias al Patrón Builder</h2>
 <div class="line">        <span class="keywordflow">return</span> self._solver.solve(A.to_petsc(), b.to_petsc())</div>
 </div><!-- fragment --><p>Esto facilita ofrecer múltiples backends (NumPy, SciPy, GPU) sin que el usuario final deba cambiar su código.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md48"></a>
 9. Relaciones entre los Patrones</h1>
 <p>Los patrones no funcionan de forma aislada; se complementan para mantener la arquitectura coherente:</p>
 <ul>
@@ -220,54 +220,54 @@ API fluida gracias al Patrón Builder</h2>
 <li><b>Decorator ↔ Strategy</b>: Un <code>Solver</code> puede envolverse con decoradores para medir tiempos de ejecución de cada algoritmo concreto.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md31"></a>
+<h1><a class="anchor" id="autotoc_md50"></a>
 10. Alternativas Consideradas y Descartadas</h1>
-<h2><a class="anchor" id="autotoc_md32"></a>
+<h2><a class="anchor" id="autotoc_md51"></a>
 1. Builder</h2>
 <ul>
 <li><b>Alternativa:</b> Constructores telescópicos con muchos parámetros.</li>
 <li><b>Descartado porque:</b> Generan código ilegible, difícil de mantener y propenso a errores.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md33"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 2. Strategy</h2>
 <ul>
 <li><b>Alternativa:</b> Uso de <em>flags</em> o <code>if/else</code> en el bucle principal.</li>
 <li><b>Descartado porque:</b> Acopla la lógica de alto nivel con algoritmos específicos, reduce extensibilidad.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md34"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 3. Template + Factory Method</h2>
 <ul>
 <li><b>Alternativa:</b> Clases concretas instanciadas directamente por el cliente.</li>
 <li><b>Descartado porque:</b> Rompe la consistencia (el usuario tendría que conocer detalles internos para instanciar).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md54"></a>
 4. Observer</h2>
 <ul>
 <li><b>Alternativa:</b> Llamadas directas a funciones de visualización/logging dentro del bucle principal.</li>
 <li><b>Descartado porque:</b> Acopla la simulación con la visualización, volviendo el código rígido.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md55"></a>
 5. Facade</h2>
 <ul>
 <li><b>Alternativa:</b> Acceso directo a módulos <code>saver</code>, <code>loader</code>, <code>parser</code>.</li>
 <li><b>Descartado porque:</b> El usuario tendría que conocer la complejidad interna de I/O, aumentando la curva de aprendizaje.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 6. Decorator</h2>
 <ul>
 <li><b>Alternativa:</b> Herencia múltiple para añadir funcionalidades adicionales.</li>
 <li><b>Descartado porque:</b> La herencia rígida genera duplicación de código y combinaciones explosivas (ej. <code>LoggingSolverWithValidation</code>).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 7. Adapter</h2>
 <ul>
 <li><b>Alternativa:</b> Reescribir código para cada librería externa (SciPy, PETSc, CuPy).</li>
 <li><b>Descartado porque:</b> Rompe portabilidad, obliga a duplicar código cliente y reduce mantenibilidad.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md40"></a>
+<h1><a class="anchor" id="autotoc_md59"></a>
 11. Conclusión</h1>
-<p>El uso de patrones de diseño en <code><a class="el" href="namespacedirac__solver.html">dirac_solver</a></code> asegura:</p>
+<p>El uso de patrones de diseño en <code><a class="el" href="namespacedirac__solver.html" title="Librería para simulación de la ecuación de Dirac en unidades naturales.">dirac_solver</a></code> asegura:</p>
 <ul>
 <li><b>Modularidad:</b> cada componente cumple una responsabilidad clara.</li>
 <li><b>Extensibilidad:</b> fácil añadir nuevos algoritmos, potenciales o backends.</li>
@@ -281,7 +281,7 @@ API fluida gracias al Patrón Builder</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 09:37:59 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

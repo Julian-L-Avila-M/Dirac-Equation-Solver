@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]],
-  ['requirements_2dengineering_2emd_1',['requirements-engineering.md',['../requirements-engineering_8md.html',1,'']]],
-  ['requires_2etxt_2',['requires.txt',['../requires_8txt.html',1,'']]]
+  ['periodicboundary_2eh_0',['PeriodicBoundary.h',['../PeriodicBoundary_8h.html',1,'']]],
+  ['potential_2eh_1',['Potential.h',['../Potential_8h.html',1,'']]],
+  ['potentials_2epy_2',['potentials.py',['../potentials_8py.html',1,'']]],
+  ['problems_2dto_2dsolve_2emd_3',['problems-to-solve.md',['../problems-to-solve_8md.html',1,'']]]
 ];

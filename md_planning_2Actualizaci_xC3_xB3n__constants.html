@@ -101,10 +101,10 @@ $(document).ready(function(){initNavTree('md_planning_2Actualizaci_xC3_xB3n__con
   <div class="headertitle"><div class="title">Actualización de la librería Dirac Solver</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md4"></a> </p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md23"></a> </p>
+<h1><a class="anchor" id="autotoc_md24"></a>
 Resumen</h1>
-<p>Se realizaron modificaciones en la librería <b><a class="el" href="namespaceDirac.html">Dirac</a> Solver</b> para simplificar el manejo de constantes y matrices de Pauli, eliminando la dependencia de la clase <code>Constants()</code>. La librería ahora:</p>
+<p>Se realizaron modificaciones en la librería <b><a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a> Solver</b> para simplificar el manejo de constantes y matrices de Pauli, eliminando la dependencia de la clase <code>Constants()</code>. La librería ahora:</p>
 <ul>
 <li>Funciona únicamente en <b>unidades naturales</b>.</li>
 <li>Permite acceder a constantes globales directamente desde el paquete.</li>
@@ -112,15 +112,15 @@ Resumen</h1>
 <li>Incluye documentación Doxygen en <code><a class="el" href="____init_____8py.html">__init__.py</a></code> y <code><a class="el" href="initial__state_8py.html">initial_state.py</a></code>.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md26"></a>
 Cambios realizados</h1>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 1. Eliminación de &lt;tt&gt;constants.py&lt;/tt&gt;</h2>
 <ul>
 <li>Se removió la clase <code>Constants()</code>.</li>
 <li>Todas las referencias a <code>Constants().get("c")</code>, <code>Constants().get("HBAR")</code>, etc., fueron reemplazadas por <b>constantes globales</b>.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 2. Nuevas constantes globales definidas en &lt;tt&gt;__init__.py&lt;/tt&gt;</h2>
 <div class="fragment"><div class="line">c = 1.0</div>
 <div class="line">hbar = 1.0</div>
@@ -133,7 +133,7 @@ Cambios realizados</h1>
 <div class="line">````</div>
 <div class="line"> </div>
 <div class="line">- Todas las clases que necesiten estas constantes pueden importarlas directamente:</div>
-</div><!-- fragment --><p> python import <a class="el" href="namespacedirac__solver.html">dirac_solver</a> as ds</p>
+</div><!-- fragment --><p> python import <a class="el" href="namespacedirac__solver.html" title="Librería para simulación de la ecuación de Dirac en unidades naturales.">dirac_solver</a> as ds</p>
 <p>print(ds.c) print(ds.hbar) print(ds.electron_mass) </p><div class="fragment"><div class="line">---</div>
 <div class="line"> </div>
 <div class="line">### 3. Modificaciones en `initial_state.py`</div>
@@ -178,7 +178,7 @@ Cambios realizados</h1>
 <div class="line">#### Contenido del notebook:</div>
 <div class="line"> </div>
 <div class="line">1. **Importar librería y constantes globales**</div>
-</div><!-- fragment --><p> python import <a class="el" href="namespacedirac__solver.html">dirac_solver</a> as ds print(ds.c, ds.hbar, ds.electron_mass) ```</p>
+</div><!-- fragment --><p> python import <a class="el" href="namespacedirac__solver.html" title="Librería para simulación de la ecuación de Dirac en unidades naturales.">dirac_solver</a> as ds print(ds.c, ds.hbar, ds.electron_mass) ```</p>
 <ol type="1">
 <li><b>Pruebas de <a class="el" href="classGrid.html" title="Representa una malla espacial (1D, 2D o 3D) para la simulación.">Grid</a> en 1D, 2D y 3D</b><ul>
 <li>Validación de <code>coords</code> y <code>courant_limit()</code>.</li>
@@ -208,7 +208,7 @@ Cambios realizados</h1>
 </ol>
 <p>El notebook sirve como <b>prueba integral</b> de la actualización de la librería enfocada en las constantes globales.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md30"></a>
 Conclusión</h1>
 <ul>
 <li>La librería <b>ya no depende de sistemas de unidades ni de <code>Constants()</code></b>.</li>
@@ -221,7 +221,7 @@ Conclusión</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 09:37:59 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['_7eboundarycondition_0',['~BoundaryCondition',['../classBoundaryCondition.html#a37e12e3e5c1b2a3c1da82d54c690f12c',1,'BoundaryCondition']]],
-  ['_7epotential_1',['~Potential',['../classPotential.html#ab19408f59ef425ec21e3bf588ed5aa21',1,'Potential']]],
-  ['_7etimeintegrator_2',['~TimeIntegrator',['../classTimeIntegrator.html#a5aa91f429adebc6c8bdb73eb77583bad',1,'TimeIntegrator']]]
+  ['write_5fobservables_0',['write_observables',['../classdirac__solver_1_1storage_1_1HDF5Storage.html#a22c6e21e585bcaaa61164cf1e86d66b4',1,'dirac_solver::storage::HDF5Storage']]],
+  ['write_5fsnapshot_1',['write_snapshot',['../classdirac__solver_1_1storage_1_1HDF5Storage.html#a4fe3a9304aeb26ac673fd9fd0602c48e',1,'dirac_solver::storage::HDF5Storage']]]
 ];

@@ -108,8 +108,9 @@ $(document).ready(function(){initNavTree('DiracMatrices_8h.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;complex&gt;</code><br />
-<code>#include &lt;array&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
+<code>#include &lt;numeric&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Gráfico de dependencias incluidas en DiracMatrices.h:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -117,13 +118,15 @@ $(document).ready(function(){initNavTree('DiracMatrices_8h.html',''); initResiza
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="DiracMatrices_8h__incl.png" border="0" usemap="#acpp__src_2DiracMatrices_8h" alt=""/></div>
 <map name="acpp__src_2DiracMatrices_8h" id="acpp__src_2DiracMatrices_8h">
-<area shape="rect" title=" " alt="" coords="48,5,225,31"/>
+<area shape="rect" title=" " alt="" coords="92,5,269,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,84,104"/>
-<area shape="poly" title=" " alt="" coords="124,33,72,72,69,68,120,29"/>
-<area shape="rect" title=" " alt="" coords="109,79,165,104"/>
-<area shape="poly" title=" " alt="" coords="139,31,139,65,134,65,134,31"/>
-<area shape="rect" title=" " alt="" coords="189,79,252,104"/>
-<area shape="poly" title=" " alt="" coords="152,29,198,67,195,72,148,33"/>
+<area shape="poly" title=" " alt="" coords="160,33,80,75,78,70,158,28"/>
+<area shape="rect" title=" " alt="" coords="108,79,171,104"/>
+<area shape="poly" title=" " alt="" coords="176,32,155,68,151,65,172,30"/>
+<area shape="rect" title=" " alt="" coords="195,79,251,104"/>
+<area shape="poly" title=" " alt="" coords="190,30,212,66,207,68,185,32"/>
+<area shape="rect" title=" " alt="" coords="275,79,350,104"/>
+<area shape="poly" title=" " alt="" coords="203,28,280,70,278,74,201,33"/>
 </map>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -157,11 +160,13 @@ $(document).ready(function(){initNavTree('DiracMatrices_8h.html',''); initResiza
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Clases</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDirac_1_1Spinor.html">Dirac::Spinor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representa un espinor de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a> de 4 componentes.  <a href="structDirac_1_1Spinor.html#details">Más...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Espacios de nombres</h2></td></tr>
 <tr class="memitem:namespaceDirac" id="r_namespaceDirac"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html">Dirac</a></td></tr>
+<tr class="memdesc:namespaceDirac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Espacio de nombres que contiene definiciones y utilidades para el álgebra de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -173,26 +178,41 @@ typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Funciones</h2></td></tr>
-<tr class="memitem:a014ad33afd9f382c542eed9f434453ed" id="r_a014ad33afd9f382c542eed9f434453ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDirac_1_1Spinor.html">Spinor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a> (<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="namespaceDirac.html#ae378be0c40e8c48158600e967e840cd2">Matrix4x4</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">M</a>, <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="structDirac_1_1Spinor.html">Spinor</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">s</a>)</td></tr>
-<tr class="separator:a014ad33afd9f382c542eed9f434453ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9af58cd7de1c86e45ca9dcc62627467" id="r_af9af58cd7de1c86e45ca9dcc62627467"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDirac_1_1Spinor.html">Spinor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#af9af58cd7de1c86e45ca9dcc62627467">Dirac::operator+</a> (<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="structDirac_1_1Spinor.html">Spinor</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">a</a>, <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="structDirac_1_1Spinor.html">Spinor</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">b</a>)</td></tr>
+<tr class="memdesc:af9af58cd7de1c86e45ca9dcc62627467"><td class="mdescLeft">&#160;</td><td class="mdescRight">Suma de dos espinores.  <br /></td></tr>
 <tr class="separator:af9af58cd7de1c86e45ca9dcc62627467"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95ddd3e3d99a234d5b255806fd5259d7" id="r_a95ddd3e3d99a234d5b255806fd5259d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDirac_1_1Spinor.html">Spinor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#a95ddd3e3d99a234d5b255806fd5259d7">Dirac::operator-</a> (<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="structDirac_1_1Spinor.html">Spinor</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">a</a>, <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="structDirac_1_1Spinor.html">Spinor</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">b</a>)</td></tr>
+<tr class="memdesc:a95ddd3e3d99a234d5b255806fd5259d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resta de dos espinores.  <br /></td></tr>
 <tr class="separator:a95ddd3e3d99a234d5b255806fd5259d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f077ea7aa7ba2d423eb8f80ae262d4d" id="r_a9f077ea7aa7ba2d423eb8f80ae262d4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDirac_1_1Spinor.html">Spinor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#a9f077ea7aa7ba2d423eb8f80ae262d4d">Dirac::operator*</a> (<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">complex</a> &amp;c, <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="structDirac_1_1Spinor.html">Spinor</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">s</a>)</td></tr>
+<tr class="memdesc:a9f077ea7aa7ba2d423eb8f80ae262d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplicación de un escalar por un espinor.  <br /></td></tr>
 <tr class="separator:a9f077ea7aa7ba2d423eb8f80ae262d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ca2e828fd9d4799c58cc8cf568159f7" id="r_a6ca2e828fd9d4799c58cc8cf568159f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDirac_1_1Spinor.html">Spinor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#a6ca2e828fd9d4799c58cc8cf568159f7">Dirac::operator*</a> (<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="structDirac_1_1Spinor.html">Spinor</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">s</a>, <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">complex</a> &amp;c)</td></tr>
+<tr class="memdesc:a6ca2e828fd9d4799c58cc8cf568159f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplicación de un espinor por un escalar (conmutativa).  <br /></td></tr>
+<tr class="separator:a6ca2e828fd9d4799c58cc8cf568159f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab727db7c9f6b8e998edbd15c816617e4" id="r_ab727db7c9f6b8e998edbd15c816617e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDirac_1_1Spinor.html">Spinor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#ab727db7c9f6b8e998edbd15c816617e4">Dirac::operator/</a> (<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="structDirac_1_1Spinor.html">Spinor</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">s</a>, <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">double</a> <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">d</a>)</td></tr>
+<tr class="memdesc:ab727db7c9f6b8e998edbd15c816617e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">División de un espinor por un escalar real.  <br /></td></tr>
+<tr class="separator:ab727db7c9f6b8e998edbd15c816617e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014ad33afd9f382c542eed9f434453ed" id="r_a014ad33afd9f382c542eed9f434453ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDirac_1_1Spinor.html">Spinor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#a014ad33afd9f382c542eed9f434453ed">Dirac::multiply</a> (<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="namespaceDirac.html#ae378be0c40e8c48158600e967e840cd2">Matrix4x4</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">M</a>, <a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="structDirac_1_1Spinor.html">Spinor</a> &amp;<a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">s</a>)</td></tr>
+<tr class="memdesc:a014ad33afd9f382c542eed9f434453ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplicación de una matriz \(4\times 4\) por un espinor.  <br /></td></tr>
+<tr class="separator:a014ad33afd9f382c542eed9f434453ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aeedf4a19be20c97daf8724926fe94f58" id="r_aeedf4a19be20c97daf8724926fe94f58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="namespaceDirac.html#ae378be0c40e8c48158600e967e840cd2">Matrix4x4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#aeedf4a19be20c97daf8724926fe94f58">Dirac::I4</a></td></tr>
+<tr class="memdesc:aeedf4a19be20c97daf8724926fe94f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matriz identidad \(4\times 4\).  <br /></td></tr>
 <tr class="separator:aeedf4a19be20c97daf8724926fe94f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37ac9610e8318abeed90f787c61954f9" id="r_a37ac9610e8318abeed90f787c61954f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="namespaceDirac.html#ae378be0c40e8c48158600e967e840cd2">Matrix4x4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#a37ac9610e8318abeed90f787c61954f9">Dirac::beta</a></td></tr>
+<tr class="memdesc:a37ac9610e8318abeed90f787c61954f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matriz beta (o \(\gamma^0\)) de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a> en representación estándar.  <br /></td></tr>
 <tr class="separator:a37ac9610e8318abeed90f787c61954f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a220c778fcf6de926d905379ca36d7b81" id="r_a220c778fcf6de926d905379ca36d7b81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="namespaceDirac.html#ae378be0c40e8c48158600e967e840cd2">Matrix4x4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#a220c778fcf6de926d905379ca36d7b81">Dirac::alpha_x</a></td></tr>
+<tr class="memdesc:a220c778fcf6de926d905379ca36d7b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matriz \(\alpha_x = \gamma^0 \gamma^1\) de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a>.  <br /></td></tr>
 <tr class="separator:a220c778fcf6de926d905379ca36d7b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ee219a1bed9ad5012b3ef6ba2f5e381" id="r_a1ee219a1bed9ad5012b3ef6ba2f5e381"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="namespaceDirac.html#ae378be0c40e8c48158600e967e840cd2">Matrix4x4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#a1ee219a1bed9ad5012b3ef6ba2f5e381">Dirac::alpha_y</a></td></tr>
+<tr class="memdesc:a1ee219a1bed9ad5012b3ef6ba2f5e381"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matriz \(\alpha_y = \gamma^0 \gamma^2\) de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a>.  <br /></td></tr>
 <tr class="separator:a1ee219a1bed9ad5012b3ef6ba2f5e381"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21dac9d07b94f2221878134ce3951549" id="r_a21dac9d07b94f2221878134ce3951549"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f">const</a> <a class="el" href="namespaceDirac.html#ae378be0c40e8c48158600e967e840cd2">Matrix4x4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDirac.html#a21dac9d07b94f2221878134ce3951549">Dirac::alpha_z</a></td></tr>
+<tr class="memdesc:a21dac9d07b94f2221878134ce3951549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matriz \(\alpha_z = \gamma^0 \gamma^3\) de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a>.  <br /></td></tr>
 <tr class="separator:a21dac9d07b94f2221878134ce3951549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -201,7 +221,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_a024a66a7998c4e7c99abbcbbca6ddaf.html">cpp_src</a></li><li class="navelem"><a class="el" href="DiracMatrices_8h.html">DiracMatrices.h</a></li>
-    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 09:37:59 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

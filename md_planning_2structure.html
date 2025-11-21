@@ -101,9 +101,9 @@ $(document).ready(function(){initNavTree('md_planning_2structure.html',''); init
   <div class="headertitle"><div class="title">Estructura del Proyecto dirac_solver</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md95"></a> Este documento describe la estructura modular del proyecto <code><a class="el" href="namespacedirac__solver.html">dirac_solver</a></code>, inspirada en el diseño de librerías como <b>DeepXDE</b>. La idea es mantener una organización clara, extensible y reutilizable para resolver la ecuación de <a class="el" href="namespaceDirac.html">Dirac</a> en diferentes escenarios físicos.</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md114"></a> Este documento describe la estructura modular del proyecto <code><a class="el" href="namespacedirac__solver.html" title="Librería para simulación de la ecuación de Dirac en unidades naturales.">dirac_solver</a></code>, inspirada en el diseño de librerías como <b>DeepXDE</b>. La idea es mantener una organización clara, extensible y reutilizable para resolver la ecuación de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a> en diferentes escenarios físicos.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md97"></a>
+<h1><a class="anchor" id="autotoc_md116"></a>
 📂 Esquema Visual</h1>
 <div class="fragment"><div class="line">dirac_solver/</div>
 <div class="line">├── pyproject.toml</div>
@@ -184,39 +184,39 @@ $(document).ready(function(){initNavTree('md_planning_2structure.html',''); init
 <div class="line">    ├── index.md</div>
 <div class="line">    ├── api_reference.md</div>
 <div class="line">    └── theory_background.md</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md98"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md117"></a>
 Raíz del Proyecto</h1>
 <ul>
 <li><b>pyproject.toml</b> <br  />
- Archivo de configuración para empaquetar e instalar la librería (<code>pip install <a class="el" href="namespacedirac__solver.html">dirac_solver</a></code>). Define dependencias, metadatos y backend de construcción.</li>
+ Archivo de configuración para empaquetar e instalar la librería (<code>pip install <a class="el" href="namespacedirac__solver.html" title="Librería para simulación de la ecuación de Dirac en unidades naturales.">dirac_solver</a></code>). Define dependencias, metadatos y backend de construcción.</li>
 <li><b><a class="el" href="README_8md.html">README.md</a></b> <br  />
  Introducción general al proyecto, instalación, ejemplos rápidos de uso y enlaces a documentación.</li>
 <li><b>LICENSE</b> <br  />
  Licencia del proyecto (ejemplo: MIT, GPL, BSD).</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md100"></a>
+<h1><a class="anchor" id="autotoc_md119"></a>
 &lt;tt&gt;src/dirac_solver/&lt;/tt&gt;</h1>
 <p>Contiene el <b>código fuente principal</b> de la librería.</p>
-<h2><a class="anchor" id="autotoc_md101"></a>
+<h2><a class="anchor" id="autotoc_md120"></a>
 1. &lt;tt&gt;solvers/&lt;/tt&gt; – Núcleo numérico</h2>
 <ul>
 <li><b>time_integrator.py</b>: Métodos de evolución temporal (Crank–Nicolson, Split-Operator, Runge–Kutta). <br  />
 </li>
 <li><b>eigensolver.py</b>: Resolución de problemas estacionarios (autovalores/autofunciones, bound states). <br  />
 </li>
-<li><b>observables.py</b>: Cálculo de valores esperados: energía, posición, momento, corrientes.</li>
+<li><b><a class="el" href="observables_8py.html">observables.py</a></b>: Cálculo de valores esperados: energía, posición, momento, corrientes.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md102"></a>
+<h2><a class="anchor" id="autotoc_md121"></a>
 2. &lt;tt&gt;physics/&lt;/tt&gt; – Definiciones físicas</h2>
 <ul>
-<li><b>gamma_matrices.py</b>: Representaciones de matrices de <a class="el" href="namespaceDirac.html">Dirac</a> en distintas dimensiones. <br  />
+<li><b>gamma_matrices.py</b>: Representaciones de matrices de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a> en distintas dimensiones. <br  />
 </li>
 <li><b>spinors.py</b>: Construcción de espinores iniciales (partícula libre, polarización de espín). <br  />
 </li>
 <li><b>relativistic_identities.py</b>: Utilidades analíticas (Zitterbewegung, relaciones de conmutación).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md103"></a>
+<h2><a class="anchor" id="autotoc_md122"></a>
 3. &lt;tt&gt;potentials/&lt;/tt&gt; – Potenciales</h2>
 <ul>
 <li><b>base.py</b>: Clase abstracta <code><a class="el" href="classPotential.html" title="Clase base abstracta para todos los potenciales escalares (patrón Template).">Potential</a></code> para herencia. <br  />
@@ -231,7 +231,7 @@ Raíz del Proyecto</h1>
 </li>
 <li><b>custom.py</b>: Permite definir potenciales personalizados por el usuario.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md104"></a>
+<h2><a class="anchor" id="autotoc_md123"></a>
 4. &lt;tt&gt;geometry/&lt;/tt&gt; – Geometrías y dominios</h2>
 <ul>
 <li><b>interval.py</b>: Intervalo unidimensional con discretización uniforme. <br  />
@@ -240,14 +240,14 @@ Raíz del Proyecto</h1>
 </li>
 <li><b>grid.py</b>: Utilidades para crear mallas, espaciamientos y operadores de diferencias finitas.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md105"></a>
+<h2><a class="anchor" id="autotoc_md124"></a>
 5. &lt;tt&gt;conditions/&lt;/tt&gt; – Condiciones</h2>
 <ul>
 <li><b>initial.py</b>: Estados iniciales (onda plana, paquete gaussiano, superposición). <br  />
 </li>
 <li><b>boundary.py</b>: Condiciones de frontera (Dirichlet, Neumann, absorbentes).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md106"></a>
+<h2><a class="anchor" id="autotoc_md125"></a>
 6. &lt;tt&gt;io/&lt;/tt&gt; – Entrada/Salida</h2>
 <ul>
 <li><b>saver.py</b>: Guardar snapshots de la evolución temporal. <br  />
@@ -256,7 +256,7 @@ Raíz del Proyecto</h1>
 </li>
 <li><b>config.py</b>: Configuración desde archivos YAML/JSON (ejecución reproducible).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md107"></a>
+<h2><a class="anchor" id="autotoc_md126"></a>
 7. &lt;tt&gt;visualization/&lt;/tt&gt; – Gráficos y análisis</h2>
 <ul>
 <li><b>plot_wavefunction.py</b>: Visualización de las componentes del bispinor. <br  />
@@ -265,7 +265,7 @@ Raíz del Proyecto</h1>
 </li>
 <li><b>animations.py</b>: Animaciones temporales (propagación, confinamiento).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md108"></a>
+<h2><a class="anchor" id="autotoc_md127"></a>
 8. &lt;tt&gt;utils/&lt;/tt&gt; – Utilidades generales</h2>
 <ul>
 <li><b>math_ops.py</b>: Operaciones auxiliares numéricas y algebraicas. <br  />
@@ -276,11 +276,11 @@ Raíz del Proyecto</h1>
 <li><b>coolsftuf.py</b>: Comentarios chistosos.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md110"></a>
+<h1><a class="anchor" id="autotoc_md129"></a>
 &lt;tt&gt;tests/&lt;/tt&gt;</h1>
 <p>Tests unitarios organizados por módulos. Verifican consistencia, conservación de probabilidad y reproducción de fenómenos físicos.</p>
 <ul>
-<li><b>test_potentials.py</b>: Comprueba la implementación de los potenciales. <br  />
+<li><b><a class="el" href="test__potentials_8py.html">test_potentials.py</a></b>: Comprueba la implementación de los potenciales. <br  />
 </li>
 <li><b>test_geometry.py</b>: Valida discretizaciones espaciales. <br  />
 </li>
@@ -297,7 +297,7 @@ Raíz del Proyecto</h1>
 <li><b>test_solver_yukawa.py</b>: Estados ligados en potencial de Yukawa.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md112"></a>
+<h1><a class="anchor" id="autotoc_md131"></a>
 &lt;tt&gt;examples/&lt;/tt&gt;</h1>
 <p>Ejemplos reproducibles de uso del solver en diferentes escenarios.</p>
 <ul>
@@ -312,7 +312,7 @@ Raíz del Proyecto</h1>
 <li><b>yukawa_bound_states.py</b>: Estados ligados en potencial de Yukawa.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md114"></a>
+<h1><a class="anchor" id="autotoc_md133"></a>
 &lt;tt&gt;docs/&lt;/tt&gt;</h1>
 <p>Documentación del proyecto.</p>
 <ul>
@@ -320,7 +320,7 @@ Raíz del Proyecto</h1>
 </li>
 <li><b>api_reference.md</b>: Referencia de clases, funciones y módulos. <br  />
 </li>
-<li><b>theory_background.md</b>: Fundamentos teóricos de la ecuación de <a class="el" href="namespaceDirac.html">Dirac</a> y fenómenos relativistas.</li>
+<li><b>theory_background.md</b>: Fundamentos teóricos de la ecuación de <a class="el" href="namespaceDirac.html" title="Espacio de nombres que contiene definiciones y utilidades para el álgebra de Dirac.">Dirac</a> y fenómenos relativistas.</li>
 </ul>
 <hr  />
  </div></div><!-- contents -->
@@ -329,7 +329,7 @@ Raíz del Proyecto</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 09:37:59 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

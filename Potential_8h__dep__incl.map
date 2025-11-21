@@ -1,17 +1,23 @@
 <map id="cpp_src/potentials/Potential.h" name="cpp_src/potentials/Potential.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="271,5,411,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="443,5,583,45"/>
 <area shape="rect" id="Node000002" href="$TimeIntegrator_8h.html" title=" " alt="" coords="5,101,188,126"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="275,52,130,103,128,98,273,47"/>
-<area shape="rect" id="Node000003" href="$bindings_8cpp.html" title="Enlaces de C++ a Python usando Pybind11 para el núcleo de simulación Dirac." alt="" coords="262,181,419,207"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="291,55,270,73,254,95,248,113,254,132,265,147,279,160,311,179,309,184,276,165,261,151,249,135,243,113,249,92,266,69,287,51"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="430,46,153,103,152,98,429,41"/>
+<area shape="rect" id="Node000003" href="$bindings_8cpp.html" title="Enlaces de C++ a Python usando Pybind11 para el núcleo de simulación Dirac." alt="" coords="434,181,591,207"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="429,35,354,46,286,64,261,77,246,92,243,110,253,132,264,141,281,150,326,164,434,183,433,188,325,170,279,155,261,146,249,135,237,111,241,90,258,73,284,59,353,40,428,30"/>
 <area shape="rect" id="Node000004" href="$CoulombPotential_8h.html" title=" " alt="" coords="263,93,418,133"/>
-<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="343,59,343,93,338,93,338,59"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="464,54,380,96,377,91,461,49"/>
 <area shape="rect" id="Node000005" href="$FreeParticle_8h.html" title=" " alt="" coords="443,93,583,133"/>
-<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="392,49,476,91,474,96,390,54"/>
-<area shape="rect" id="Node000006" href="$ScalarPotential_8h.html" title=" " alt="" coords="607,93,747,133"/>
-<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="424,45,607,92,605,97,423,50"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="146,128,306,179,304,184,145,133"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="343,147,343,181,338,181,338,147"/>
-<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="460,141,367,184,365,179,458,137"/>
-<area shape="poly" id="edge9_Node000006_Node000003" title=" " alt="" coords="594,137,391,184,389,179,593,131"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="515,59,515,93,510,93,510,59"/>
+<area shape="rect" id="Node000006" href="$InfiniteWellPotential_8h.html" title=" " alt="" coords="607,93,776,133"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="565,49,653,91,651,96,563,54"/>
+<area shape="rect" id="Node000007" href="$ScalarPotential_8h.html" title=" " alt="" coords="800,93,940,133"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="597,44,801,93,799,98,595,49"/>
+<area shape="rect" id="Node000008" href="$YukawaPotential_8h.html" title=" " alt="" coords="964,93,1109,133"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="597,35,762,59,953,91,964,93,963,98,952,96,761,64,596,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="171,126,453,179,452,184,170,131"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="395,137,488,179,486,184,393,141"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="515,147,515,181,510,181,510,147"/>
+<area shape="poly" id="edge9_Node000006_Node000003" title=" " alt="" coords="637,141,540,184,538,179,635,136"/>
+<area shape="poly" id="edge11_Node000007_Node000003" title=" " alt="" coords="787,136,567,184,566,179,786,131"/>
+<area shape="poly" id="edge13_Node000008_Node000003" title=" " alt="" coords="951,136,754,167,592,187,591,181,753,161,950,131"/>
 </map>

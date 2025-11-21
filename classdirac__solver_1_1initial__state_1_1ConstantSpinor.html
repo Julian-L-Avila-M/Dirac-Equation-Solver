@@ -140,7 +140,9 @@ Métodos protegidos</h2></td></tr>
 <tr class="memitem:af7eef6291b686a15e6c194c825fa5667" id="r_af7eef6291b686a15e6c194c825fa5667"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html#af7eef6291b686a15e6c194c825fa5667">_constant_spinor</a> (self)</td></tr>
 <tr class="separator:af7eef6291b686a15e6c194c825fa5667"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentación de constructores y destructores</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><pre class="fragment">Prepara el estado inicial de un espinor constante (sin considerar la geometría del espacio).
+</pre> </div><h2 class="groupheader">Documentación de constructores y destructores</h2>
 <a id="af89075e1a9d3455cdd678454d60e4765" name="af89075e1a9d3455cdd678454d60e4765"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af89075e1a9d3455cdd678454d60e4765">&#9670;&#160;</a></span>__init__()</h2>
 
@@ -184,30 +186,26 @@ Métodos protegidos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief se normaliza el vector (al necesitarse un vector unitario)
-</pre> <div class="fragment"><div class="line"><span class="lineno">   19</span>    <span class="keyword">def </span>__init__(self, spin_polarization=[0,0,1], spin_superposition=[1 + 0j, 0 + 0j], momentum=[1,0,0], mass=electron_mass):</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   22</span><span class="stringliteral">        @brief se normaliza el vector (al necesitarse un vector unitario)</span></div>
-<div class="line"><span class="lineno">   23</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   24</span>        norm_n = np.linalg.norm(spin_polarization)</div>
-<div class="line"><span class="lineno">   25</span>        self.spin_polarization = np.array(spin_polarization) / norm_n <span class="keywordflow">if</span> norm_n &gt; 0 <span class="keywordflow">else</span> np.array([0,0,1])</div>
-<div class="line"><span class="lineno">   26</span>        </div>
-<div class="line"><span class="lineno">   27</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   28</span><span class="stringliteral">        @brief se comprueba que la suma del modulo al cuadrado sea 1</span></div>
-<div class="line"><span class="lineno">   29</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   30</span>        norm_s = np.linalg.norm(spin_superposition)</div>
-<div class="line"><span class="lineno">   31</span>        self.spin_superposition = np.array(spin_superposition, dtype=np.complex128) / norm_s <span class="keywordflow">if</span> norm_s &gt; 0 <span class="keywordflow">else</span> np.array([1,0])</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>        self.momentum = np.array(momentum)</div>
-<div class="line"><span class="lineno">   34</span>        self.mass = mass</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>        self._base()</div>
-<div class="line"><span class="lineno">   37</span>        </div>
-<div class="line"><span class="lineno">   38</span>        self._pauli_spinor()</div>
-<div class="line"><span class="lineno">   39</span>    </div>
-<div class="line"><span class="lineno">   40</span>        self._constant_spinor()</div>
-<div class="line"><span class="lineno">   41</span> </div>
+<pre class="fragment">Constructor del espinor constante.
+</pre> <div class="fragment"><div class="line"><span class="lineno">   38</span>    <span class="keyword">def </span>__init__(self, spin_polarization=[0,0,1], spin_superposition=[1 + 0j, 0 + 0j], momentum=[1,0,0], mass=electron_mass):</div>
+<div class="line"><span class="lineno">   39</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   40</span><span class="stringliteral">        Constructor del espinor constante.</span></div>
+<div class="line"><span class="lineno">   41</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   42</span>        <span class="comment"># Se normaliza el vector (al necesitarse un vector unitario)</span></div>
+<div class="line"><span class="lineno">   43</span>        norm_n = np.linalg.norm(spin_polarization)</div>
+<div class="line"><span class="lineno">   44</span>        self.spin_polarization = np.array(spin_polarization) / norm_n <span class="keywordflow">if</span> norm_n &gt; 0 <span class="keywordflow">else</span> np.array([0,0,1])</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>        <span class="comment"># Se comprueba que la suma del módulo al cuadrado sea 1</span></div>
+<div class="line"><span class="lineno">   47</span>        norm_s = np.linalg.norm(spin_superposition)</div>
+<div class="line"><span class="lineno">   48</span>        self.spin_superposition = np.array(spin_superposition, dtype=np.complex128) / norm_s <span class="keywordflow">if</span> norm_s &gt; 0 <span class="keywordflow">else</span> np.array([1,0])</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>        self.momentum = np.array(momentum)</div>
+<div class="line"><span class="lineno">   51</span>        self.mass = mass</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>        self._base()</div>
+<div class="line"><span class="lineno">   54</span>        self._pauli_spinor()</div>
+<div class="line"><span class="lineno">   55</span>        self._constant_spinor()</div>
+<div class="line"><span class="lineno">   56</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -235,25 +233,25 @@ Métodos protegidos</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   42</span>    <span class="keyword">def </span>_base(self):</div>
-<div class="line"><span class="lineno">   43</span>        theta = np.arccos(self.spin_polarization[2])</div>
-<div class="line"><span class="lineno">   44</span>        phi = np.arctan2(self.spin_polarization[1],self.spin_polarization[0])</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   48</span><span class="stringliteral">        @brief Construcción base (vector columna 2x1) del spinor de Pauli</span></div>
-<div class="line"><span class="lineno">   49</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   50</span>        self.chi_up = np.array([</div>
-<div class="line"><span class="lineno">   51</span>            [np.cos(theta /2)],</div>
-<div class="line"><span class="lineno">   52</span>            [np.exp(1j * phi) * np.sin(theta / 2)]</div>
-<div class="line"><span class="lineno">   53</span>        ], dtype=np.complex128)</div>
-<div class="line"><span class="lineno">   54</span>        </div>
-<div class="line"><span class="lineno">   55</span>        self.chi_down = np.array([</div>
-<div class="line"><span class="lineno">   56</span>            [np.sin(theta /2)],</div>
-<div class="line"><span class="lineno">   57</span>            [-np.exp(1j * phi) * np.cos(theta / 2)]</div>
-<div class="line"><span class="lineno">   58</span>        ], dtype=np.complex128)</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span> </div>
+<pre class="fragment">Calcula la base del espinor de Pauli.
+</pre> <div class="fragment"><div class="line"><span class="lineno">   57</span>    <span class="keyword">def </span>_base(self):</div>
+<div class="line"><span class="lineno">   58</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   59</span><span class="stringliteral">        Calcula la base del espinor de Pauli.</span></div>
+<div class="line"><span class="lineno">   60</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   61</span>        theta = np.arccos(self.spin_polarization[2])</div>
+<div class="line"><span class="lineno">   62</span>        phi = np.arctan2(self.spin_polarization[1], self.spin_polarization[0])</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>        <span class="comment"># Construcción base (vector columna 2x1) del espinor de Pauli</span></div>
+<div class="line"><span class="lineno">   65</span>        self.chi_up = np.array([</div>
+<div class="line"><span class="lineno">   66</span>            [np.cos(theta / 2)],</div>
+<div class="line"><span class="lineno">   67</span>            [np.exp(1j * phi) * np.sin(theta / 2)]</div>
+<div class="line"><span class="lineno">   68</span>        ], dtype=np.complex128)</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>        self.chi_down = np.array([</div>
+<div class="line"><span class="lineno">   71</span>            [np.sin(theta / 2)],</div>
+<div class="line"><span class="lineno">   72</span>            [-np.exp(1j * phi) * np.cos(theta / 2)]</div>
+<div class="line"><span class="lineno">   73</span>        ], dtype=np.complex128)</div>
+<div class="line"><span class="lineno">   74</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -280,34 +278,31 @@ Métodos protegidos</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   69</span>    <span class="keyword">def </span>_constant_spinor(self):</div>
-<div class="line"><span class="lineno">   70</span>        </div>
-<div class="line"><span class="lineno">   71</span>        </div>
-<div class="line"><span class="lineno">   72</span>        <span class="comment">#proyeccion del spin en la direccion del momentum </span></div>
-<div class="line"><span class="lineno">   73</span>        norm_momentum = np.linalg.norm(self.momentum)</div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> norm_momentum == 0:</div>
-<div class="line"><span class="lineno">   76</span>            proyection_spin = np.zeros((2,2), dtype=np.complex128)</div>
-<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><span class="lineno">   78</span>            proyection_spin = ((self.momentum[0] * sigma_1 +</div>
-<div class="line"><span class="lineno">   79</span>                                self.momentum[1] * sigma_2 +</div>
-<div class="line"><span class="lineno">   80</span>                                self.momentum[2] * sigma_3) / norm_momentum)</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>        <span class="comment"># Energía relativista</span></div>
-<div class="line"><span class="lineno">   83</span>        energy = np.sqrt((norm_momentum)**2 + (self.mass)**2)</div>
-<div class="line"><span class="lineno">   84</span> </div>
-<div class="line"><span class="lineno">   85</span>        <span class="comment"># Partes superior e inferior del spinor</span></div>
-<div class="line"><span class="lineno">   86</span>        upper_part = np.sqrt(energy + self.mass) * self.pauli_spinor</div>
-<div class="line"><span class="lineno">   87</span>        lower_part = np.sqrt(energy - self.mass) * (proyection_spin @ self.pauli_spinor)</div>
-<div class="line"><span class="lineno">   88</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   89</span><span class="stringliteral">        @brief Construcción del spinor constante (por partes)</span></div>
-<div class="line"><span class="lineno">   90</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   91</span>        self.constant_spinor = np.vstack((upper_part, lower_part))</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span><span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   95</span><span class="stringliteral">@brief Clase que construye el estado inicial como un paquete de ondas gausianas</span></div>
-<div class="line"><span class="lineno">   96</span><span class="stringliteral">&quot;&quot;&quot;</span></div>
+<pre class="fragment">Construcción del espinor constante (por partes).
+</pre> <div class="fragment"><div class="line"><span class="lineno">   83</span>    <span class="keyword">def </span>_constant_spinor(self):</div>
+<div class="line"><span class="lineno">   84</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   85</span><span class="stringliteral">        Construcción del espinor constante (por partes).</span></div>
+<div class="line"><span class="lineno">   86</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   87</span>        <span class="comment"># Proyección del spin en la dirección del momento</span></div>
+<div class="line"><span class="lineno">   88</span>        norm_momentum = np.linalg.norm(self.momentum)</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">if</span> norm_momentum == 0:</div>
+<div class="line"><span class="lineno">   91</span>            proyection_spin = np.zeros((2, 2), dtype=np.complex128)</div>
+<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">   93</span>            proyection_spin = ((self.momentum[0] * sigma_1 +</div>
+<div class="line"><span class="lineno">   94</span>                                self.momentum[1] * sigma_2 +</div>
+<div class="line"><span class="lineno">   95</span>                                self.momentum[2] * sigma_3) / norm_momentum)</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>        <span class="comment"># Energía relativista</span></div>
+<div class="line"><span class="lineno">   98</span>        energy = np.sqrt((norm_momentum)**2 + (self.mass)**2)</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>        <span class="comment"># Partes superior e inferior del espinor</span></div>
+<div class="line"><span class="lineno">  101</span>        upper_part = np.sqrt(energy + self.mass) * self.pauli_spinor</div>
+<div class="line"><span class="lineno">  102</span>        lower_part = np.sqrt(energy - self.mass) * (proyection_spin @ self.pauli_spinor)</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>        self.constant_spinor = np.vstack((upper_part, lower_part))</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -334,15 +329,15 @@ Métodos protegidos</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Construcción del spinor de pauli
-</pre> <div class="fragment"><div class="line"><span class="lineno">   61</span>    <span class="keyword">def </span>_pauli_spinor(self):</div>
-<div class="line"><span class="lineno">   62</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   63</span><span class="stringliteral">        @brief Construcción del spinor de pauli</span></div>
-<div class="line"><span class="lineno">   64</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><span class="lineno">   65</span>        alpha = self.spin_superposition[0]</div>
-<div class="line"><span class="lineno">   66</span>        beta = self.spin_superposition[1]</div>
-<div class="line"><span class="lineno">   67</span>        self.pauli_spinor = (alpha * self.chi_up) + (beta * self.chi_down)</div>
-<div class="line"><span class="lineno">   68</span> </div>
+<pre class="fragment">Construcción del espinor de Pauli.
+</pre> <div class="fragment"><div class="line"><span class="lineno">   75</span>    <span class="keyword">def </span>_pauli_spinor(self):</div>
+<div class="line"><span class="lineno">   76</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   77</span><span class="stringliteral">        Construcción del espinor de Pauli.</span></div>
+<div class="line"><span class="lineno">   78</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   79</span>        alpha = self.spin_superposition[0]</div>
+<div class="line"><span class="lineno">   80</span>        beta = self.spin_superposition[1]</div>
+<div class="line"><span class="lineno">   81</span>        self.pauli_spinor = (alpha * self.chi_up) + (beta * self.chi_down)</div>
+<div class="line"><span class="lineno">   82</span> </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -468,7 +463,7 @@ Métodos protegidos</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacedirac__solver.html">dirac_solver</a></li><li class="navelem"><a class="el" href="namespacedirac__solver_1_1initial__state.html">initial_state</a></li><li class="navelem"><a class="el" href="classdirac__solver_1_1initial__state_1_1ConstantSpinor.html">ConstantSpinor</a></li>
-    <li class="footer">Generado el Miércoles, 15 de octubre de 2025 09:21:19 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 09:37:59 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

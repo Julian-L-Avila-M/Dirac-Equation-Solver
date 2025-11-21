@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['scalarpotential_2eh_0',['ScalarPotential.h',['../ScalarPotential_8h.html',1,'']]],
-  ['sources_2etxt_1',['SOURCES.txt',['../SOURCES_8txt.html',1,'']]],
-  ['spinor_2ddefinition_2emd_2',['spinor-definition.md',['../spinor-definition_8md.html',1,'']]],
-  ['structure_2emd_3',['structure.md',['../structure_8md.html',1,'']]]
+  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]],
+  ['requirements_2dengineering_2emd_1',['requirements-engineering.md',['../requirements-engineering_8md.html',1,'']]]
 ];
