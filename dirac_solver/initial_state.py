@@ -111,9 +111,9 @@ class GaussianPacket(InitialState):
     def __init__(self, constant_spinor, center=[0,0,0], spatial_width=1):
         """
         Constructor.
-        @param constant_spinor: El espinor constante base.
-        @param center: Centro del paquete gaussiano.
-        @param spatial_width: Ancho espacial del paquete.
+         constant_spinor: El espinor constante base.
+         center: Centro del paquete gaussiano.
+         spatial_width: Ancho espacial del paquete.
         """
         super().__init__(constant_spinor.mass)
         self.constant_spinor = constant_spinor
@@ -154,7 +154,7 @@ class GaussianPacket(InitialState):
     def evaluate_on_grid(self, grid):
         """
         Calcula el estado inicial en toda la malla.
-        @param grid: Objeto Grid sobre el que se evaluará el paquete.
+         grid: Objeto Grid sobre el que se evaluará el paquete.
         @return: Un array de NumPy con la forma (n_points, 4).
         """
         n_points = np.prod(grid.shape)
@@ -178,7 +178,7 @@ class PlaneWave(InitialState):
     def __init__(self, constant_spinor):
         """
         Constructor.
-        @param constant_spinor: El espinor constante base.
+         constant_spinor: El espinor constante base.
         """
         super().__init__(constant_spinor.mass)
         self.constant_spinor = constant_spinor
@@ -210,7 +210,7 @@ class PlaneWave(InitialState):
     def evaluate_on_grid(self, grid):
         """
         Calcula el estado inicial en toda la malla.
-        @param grid: Objeto Grid sobre el que se evaluará el paquete.
+         grid: Objeto Grid sobre el que se evaluará el paquete.
         @return: Un array de NumPy con la forma (n_points, 4).
         """
         n_points = np.prod(grid.shape)

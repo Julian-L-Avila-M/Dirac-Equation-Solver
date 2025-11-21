@@ -20,11 +20,11 @@ namespace Dirac {
      * @brief Representa un espinor de Dirac de 4 componentes.
      *
      * Esta estructura encapsula un array de 4 números complejos, que corresponde
-     * a la función de onda de una partícula de espín 1/2 en la teoría de Dirac.
+     * a la función de onda de una partícula de espín \\(1/2\\) en la teoría de Dirac.
      */
     struct Spinor {
         /**
-         * @brief Componentes del espinor (psi_1, psi_2, psi_3, psi_4).
+         * @brief Componentes del espinor (\\(\psi_1, \psi_2, \psi_3, \psi_4\\)).
          */
         std::array<complex, 4> components;
 
@@ -107,10 +107,10 @@ namespace Dirac {
     }
 
     /**
-     * @brief Multiplicación de una matriz 4x4 por un espinor.
-     * @param M Matriz compleja 4x4.
+     * @brief Multiplicación de una matriz \\(4\times 4\\) por un espinor.
+     * @param M Matriz compleja \\(4\times 4\\).
      * @param s Espinor de entrada.
-     * @return Espinor resultante de la operación M * s.
+     * @return Espinor resultante de la operación \\( M s \\).
      */
     inline Spinor multiply(const Matrix4x4& M, const Spinor& s) {
         std::array<complex, 4> result_comps;
@@ -124,7 +124,7 @@ namespace Dirac {
     }
 
     /**
-     * @brief Matriz identidad 4x4.
+     * @brief Matriz identidad \\(4\times 4\\).
      */
     const Matrix4x4 I4 = {{
         {complex(1,0), complex(0,0), complex(0,0), complex(0,0)},
@@ -134,7 +134,7 @@ namespace Dirac {
     }};
 
     /**
-     * @brief Matriz beta (o gamma^0) de Dirac en representación estándar.
+     * @brief Matriz beta (o \\(\gamma^0\\)) de Dirac en representación estándar.
      *
      * Utilizada para el término de masa en el Hamiltoniano.
      */
@@ -146,9 +146,7 @@ namespace Dirac {
     }};
 
     /**
-     * @brief Matriz alpha_x de Dirac.
-     *
-     * Definida como alpha_x = gamma^0 * gamma^1.
+     * @brief Matriz \\(\alpha_x = \gamma^0 \gamma^1\\) de Dirac.
      */
     const Matrix4x4 alpha_x = {{
         {complex(0,0), complex(0,0), complex(0,0), complex(1,0)},
@@ -158,9 +156,7 @@ namespace Dirac {
     }};
 
     /**
-     * @brief Matriz alpha_y de Dirac.
-     *
-     * Definida como alpha_y = gamma^0 * gamma^2.
+     * @brief Matriz \\(\alpha_y = \gamma^0 \gamma^2\\) de Dirac.
      */
     const Matrix4x4 alpha_y = {{
         {complex(0,0), complex(0,0), complex(0,0), complex(0,-1)},
@@ -170,9 +166,7 @@ namespace Dirac {
     }};
 
     /**
-     * @brief Matriz alpha_z de Dirac.
-     *
-     * Definida como alpha_z = gamma^0 * gamma^3.
+     * @brief Matriz \\(\alpha_z = \gamma^0 \gamma^3\\) de Dirac.
      */
     const Matrix4x4 alpha_z = {{
         {complex(0,0), complex(0,0), complex(1,0), complex(0,0)},

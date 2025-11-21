@@ -13,15 +13,15 @@
 /// y infinito fuera de ella.
 ///
 /// La expresión implementada es:
-/// \f[
-/// V(r) = 0 \text{ if } |r_i| < L_i/2 \text{ for all } i
-/// \f]
-/// \f[
-/// V(r) = \infty \text{ otherwise}
-/// \f]
+/// \\[
+/// V(r) = 0 \\text{ if } |r_i| < L_i/2 \\text{ for all } i
+/// \\]
+/// \\[
+/// V(r) = \\infty \\text{ otherwise}
+/// \\]
 ///
 /// donde:
-/// - \f$ L_i \f$ es el ancho del pozo en la dimensión i.
+/// - \\( L_i \\) es el ancho del pozo en la dimensión i.
 ///
 /// @note Este potencial puede emplearse tanto en simulaciones 1D, 2D o 3D.
 ///////////////////////////////////////////////////////////////
@@ -39,7 +39,7 @@ public:
     /// @brief Evalúa el potencial en un punto espacial.
     ///
     /// @param r Vector de posición (1D, 2D o 3D).
-    /// @return Valor escalar del potencial \f$ V(r) \f$.
+    /// @return Valor escalar del potencial \\( V(r) \\).
     ///////////////////////////////////////////////////////////
     double evaluate(const std::vector<double>& r) const override {
         for (size_t i = 0; i < r.size(); ++i) {

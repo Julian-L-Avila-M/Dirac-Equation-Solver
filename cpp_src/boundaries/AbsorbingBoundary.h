@@ -18,8 +18,8 @@
  * minimizando las reflexiones numéricas artificiales.
  *
  * El factor de amortiguamiento sigue la forma:
- * \f$ \Gamma(d) = 1 - \sigma_{max} \left( \frac{W - d}{W} \right)^2 \f$
- * donde $d$ es la distancia al borde y $W$ es el ancho de la capa.
+ *   \\[ \Gamma(d) = 1 - \sigma_{max} \left( \frac{W - d}{W} \right)^2 \\]
+ * donde \\(d \\) es la distancia al borde y \\(W\\) es el ancho de la capa.
  */
 class AbsorbingBoundary : public BoundaryCondition {
 public:
@@ -125,7 +125,7 @@ private:
     /**
      * @brief Aplica el factor de amortiguamiento a un espinor específico.
      * * Usa un perfil cuadrático: (1 - damping)
-     * damping = strength * ((width - dist) / width)^2
+     * \\[ damping = strength * ((width - dist) / width)^2 \\]
      */
     inline void apply_damping(std::vector<Dirac::Spinor>& psi, size_t idx, int dist) const {
         double normalized_pos = static_cast<double>(width_ - dist) / static_cast<double>(width_);
