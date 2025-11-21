@@ -1,5 +1,0 @@
-<map id="PeriodicBoundary" name="PeriodicBoundary">
-<area shape="rect" id="Node000001" title="Implementa condiciones de borde periódicas." alt="" coords="11,79,147,104"/>
-<area shape="rect" id="Node000002" href="$classBoundaryCondition.html" title="Clase base abstracta para condiciones de borde (patrón Strategy)." alt="" coords="5,5,152,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,44,81,79,76,79,76,44"/>
-</map>
