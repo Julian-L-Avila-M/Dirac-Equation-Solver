@@ -19,7 +19,7 @@ class Observables:
         """
         Inicializa el calculador de observables.
 
-        @param solver: Una instancia de `DiracSolver` para acceder a `psi` y la `grid`.
+         solver: Una instancia de `DiracSolver` para acceder a `psi` y la `grid`.
         """
         self.solver = solver
         self.grid = solver.problem.grid
@@ -29,7 +29,7 @@ class Observables:
         """
         Calcula todos los observables para un tiempo dado y los almacena.
 
-        @param time: El tiempo actual de la simulación (float).
+         time: El tiempo actual de la simulación (float).
         """
         psi = self.solver.get_psi()
 

@@ -1,7 +1,4 @@
-"""
-@file geometry.py
-@brief Definición de la malla espacial para las simulaciones de la ecuación de Dirac.
-"""
+
 
 # Se importan las librerias.
 import numpy as np
@@ -16,9 +13,9 @@ class Grid:
         """
         Constructor de la malla.
 
-        @param shape: Tupla con el número de puntos en cada dirección (nx, [ny], [nz]).
-        @param spacing: Tupla o escalar con el tamaño de la celda (dx, [dy], [dz]).
-        @param origin: Punto de inicio de la malla (default: centrado en 0).
+        shape: Tupla con el número de puntos en cada dirección (nx, [ny], [nz]).
+        spacing: Tupla o escalar con el tamaño de la celda (dx, [dy], [dz]).
+        origin: Punto de inicio de la malla (default: centrado en 0).
         """
 
         ## @brief Número de puntos en cada dirección del espacio.
