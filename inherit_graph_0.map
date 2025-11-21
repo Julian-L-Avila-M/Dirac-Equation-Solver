@@ -1,0 +1,7 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$classBoundaryCondition.html" title="Clase base abstracta para condiciones de borde (patrón Strategy)." alt="" coords="5,31,152,56"/>
+<area shape="rect" id="Node000001" href="$classAbsorbingBoundary.html" title="Implementación de una condición de frontera absorbente (ABC) para simulaciones 1D." alt="" coords="200,5,349,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="166,29,199,25,200,30,166,35"/>
+<area shape="rect" id="Node000002" href="$classPeriodicBoundary.html" title="Implementa condiciones de borde periódicas." alt="" coords="207,55,343,80"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="166,51,206,56,206,62,166,57"/>
+</map>

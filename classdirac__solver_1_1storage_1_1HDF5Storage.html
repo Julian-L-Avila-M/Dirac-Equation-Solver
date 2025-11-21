@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dirac_solver: Referencia de la clase dirac_solver.storage.HDF5Storage</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="LOGO.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">dirac_solver<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+   <div id="projectbrief">A Dirac ecuation Solver</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classdirac__solver_1_1storage_1_1HDF5Storage.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Métodos públicos</a> &#124;
+<a href="#pub-attribs">Atributos públicos</a> &#124;
+<a href="classdirac__solver_1_1storage_1_1HDF5Storage-members.html">Lista de todos los miembros</a>  </div>
+  <div class="headertitle"><div class="title">Referencia de la clase dirac_solver.storage.HDF5Storage</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:adc537d6780f768f2a1fc34207965f66a" id="r_adc537d6780f768f2a1fc34207965f66a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#adc537d6780f768f2a1fc34207965f66a">__init__</a> (self, str <a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#a0dae0be837690c6e7c5d29ded94e6cc5">filepath</a>, <a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html">SimulationProblem</a> <a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#ab0824585814a33ce51b9c37379f617f8">problem</a>)</td></tr>
+<tr class="separator:adc537d6780f768f2a1fc34207965f66a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fe3a9304aeb26ac673fd9fd0602c48e" id="r_a4fe3a9304aeb26ac673fd9fd0602c48e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#a4fe3a9304aeb26ac673fd9fd0602c48e">write_snapshot</a> (self, np.ndarray psi, float time)</td></tr>
+<tr class="separator:a4fe3a9304aeb26ac673fd9fd0602c48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e5bab394d4ac30840223ba58bb25cdc" id="r_a5e5bab394d4ac30840223ba58bb25cdc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#a5e5bab394d4ac30840223ba58bb25cdc">close</a> (self)</td></tr>
+<tr class="separator:a5e5bab394d4ac30840223ba58bb25cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac52e88b51fcba954770fea2500d18a9b" id="r_ac52e88b51fcba954770fea2500d18a9b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#ac52e88b51fcba954770fea2500d18a9b">__enter__</a> (self)</td></tr>
+<tr class="separator:ac52e88b51fcba954770fea2500d18a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fb0f71a0f946fc50782b7e9d938e88b" id="r_a9fb0f71a0f946fc50782b7e9d938e88b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#a9fb0f71a0f946fc50782b7e9d938e88b">__exit__</a> (self, exc_type, exc_val, exc_tb)</td></tr>
+<tr class="separator:a9fb0f71a0f946fc50782b7e9d938e88b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c6e21e585bcaaa61164cf1e86d66b4" id="r_a22c6e21e585bcaaa61164cf1e86d66b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#a22c6e21e585bcaaa61164cf1e86d66b4">write_observables</a> (self, observables_handler)</td></tr>
+<tr class="separator:a22c6e21e585bcaaa61164cf1e86d66b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atributos públicos</h2></td></tr>
+<tr class="memitem:a0dae0be837690c6e7c5d29ded94e6cc5" id="r_a0dae0be837690c6e7c5d29ded94e6cc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#a0dae0be837690c6e7c5d29ded94e6cc5">filepath</a></td></tr>
+<tr class="separator:a0dae0be837690c6e7c5d29ded94e6cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0824585814a33ce51b9c37379f617f8" id="r_ab0824585814a33ce51b9c37379f617f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#ab0824585814a33ce51b9c37379f617f8">problem</a></td></tr>
+<tr class="separator:ab0824585814a33ce51b9c37379f617f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a600121da6319549c164ce7c5364f27da" id="r_a600121da6319549c164ce7c5364f27da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#a600121da6319549c164ce7c5364f27da">file</a></td></tr>
+<tr class="separator:a600121da6319549c164ce7c5364f27da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbd3c857786cde437f8ff54a46fab3c0" id="r_afbd3c857786cde437f8ff54a46fab3c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#afbd3c857786cde437f8ff54a46fab3c0">psi_dataset</a></td></tr>
+<tr class="separator:afbd3c857786cde437f8ff54a46fab3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5658979dcf7bf6b7897bd4f5c33df903" id="r_a5658979dcf7bf6b7897bd4f5c33df903"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html#a5658979dcf7bf6b7897bd4f5c33df903">time_dataset</a></td></tr>
+<tr class="separator:a5658979dcf7bf6b7897bd4f5c33df903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><pre class="fragment">Maneja el almacenamiento de snapshots de simulación en un archivo HDF5.
+</pre> </div><h2 class="groupheader">Documentación de constructores y destructores</h2>
+<a id="adc537d6780f768f2a1fc34207965f66a" name="adc537d6780f768f2a1fc34207965f66a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc537d6780f768f2a1fc34207965f66a">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str&#160;</td>
+          <td class="paramname"><em>filepath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classdirac__solver_1_1core_1_1SimulationProblem.html">SimulationProblem</a>&#160;</td>
+          <td class="paramname"><em>problem</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Inicializa el archivo de salida y guarda los metadatos de la simulación.
+
+Parámetros:
+- filepath (str): Ruta al archivo .hdf5 que se creará.
+- problem (SimulationProblem): El objeto del problema para extraer metadatos.
+</pre> <div class="fragment"><div class="line"><span class="lineno">   16</span>    <span class="keyword">def </span>__init__(self, filepath: str, problem: SimulationProblem):</div>
+<div class="line"><span class="lineno">   17</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   18</span><span class="stringliteral">        Inicializa el archivo de salida y guarda los metadatos de la simulación.</span></div>
+<div class="line"><span class="lineno">   19</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">   20</span><span class="stringliteral">        Parámetros:</span></div>
+<div class="line"><span class="lineno">   21</span><span class="stringliteral">        - filepath (str): Ruta al archivo .hdf5 que se creará.</span></div>
+<div class="line"><span class="lineno">   22</span><span class="stringliteral">        - problem (SimulationProblem): El objeto del problema para extraer metadatos.</span></div>
+<div class="line"><span class="lineno">   23</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   24</span>        self.filepath = filepath</div>
+<div class="line"><span class="lineno">   25</span>        self.problem = problem</div>
+<div class="line"><span class="lineno">   26</span>        <span class="comment"># &#39;w&#39; = modo escritura (crea un archivo nuevo o sobrescribe si existe)</span></div>
+<div class="line"><span class="lineno">   27</span>        self.file = h5py.File(filepath, <span class="stringliteral">&#39;w&#39;</span>) </div>
+<div class="line"><span class="lineno">   28</span>        self.psi_dataset = <span class="keywordtype">None</span></div>
+<div class="line"><span class="lineno">   29</span>        self.time_dataset = <span class="keywordtype">None</span></div>
+<div class="line"><span class="lineno">   30</span>        </div>
+<div class="line"><span class="lineno">   31</span>        print(f<span class="stringliteral">&quot;HDF5Storage inicializado. Guardando datos en: {self.filepath}&quot;</span>)</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>        <span class="comment"># Guardar metadatos útiles como atributos en la raíz del archivo HDF5</span></div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">try</span>:</div>
+<div class="line"><span class="lineno">   35</span>            self.file.attrs[<span class="stringliteral">&#39;grid_dim&#39;</span>] = problem.grid.dim</div>
+<div class="line"><span class="lineno">   36</span>            self.file.attrs[<span class="stringliteral">&#39;grid_shape&#39;</span>] = problem.grid.shape</div>
+<div class="line"><span class="lineno">   37</span>            self.file.attrs[<span class="stringliteral">&#39;grid_spacing&#39;</span>] = problem.grid.spacing</div>
+<div class="line"><span class="lineno">   38</span>            self.file.attrs[<span class="stringliteral">&#39;grid_origin&#39;</span>] = problem.grid.origin</div>
+<div class="line"><span class="lineno">   39</span>            self.file.attrs[<span class="stringliteral">&#39;total_time&#39;</span>] = problem.total_time</div>
+<div class="line"><span class="lineno">   40</span>            self.file.attrs[<span class="stringliteral">&#39;time_step&#39;</span>] = problem.time_step</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
+<div class="line"><span class="lineno">   42</span>            print(f<span class="stringliteral">&quot;Advertencia: No se pudieron guardar algunos metadatos. {e}&quot;</span>)</div>
+<div class="line"><span class="lineno">   43</span> </div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones miembro</h2>
+<a id="ac52e88b51fcba954770fea2500d18a9b" name="ac52e88b51fcba954770fea2500d18a9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac52e88b51fcba954770fea2500d18a9b">&#9670;&#160;</a></span>__enter__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.__enter__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   94</span>    <span class="keyword">def </span>__enter__(self):</div>
+<div class="line"><span class="lineno">   95</span>        <span class="comment"># Esto permite usar: &#39;with HDF5Storage(...) as storage:&#39;</span></div>
+<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">return</span> self</div>
+<div class="line"><span class="lineno">   97</span> </div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9fb0f71a0f946fc50782b7e9d938e88b" name="a9fb0f71a0f946fc50782b7e9d938e88b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fb0f71a0f946fc50782b7e9d938e88b">&#9670;&#160;</a></span>__exit__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.__exit__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>exc_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>exc_val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>exc_tb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   98</span>    <span class="keyword">def </span>__exit__(self, exc_type, exc_val, exc_tb):</div>
+<div class="line"><span class="lineno">   99</span>        <span class="comment"># Esto asegura que .close() se llame automáticamente al salir del &#39;with&#39;</span></div>
+<div class="line"><span class="lineno">  100</span>        self.close()</div>
+<div class="line"><span class="lineno">  101</span> </div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5e5bab394d4ac30840223ba58bb25cdc" name="a5e5bab394d4ac30840223ba58bb25cdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e5bab394d4ac30840223ba58bb25cdc">&#9670;&#160;</a></span>close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.close </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Cierra el archivo HDF5. Es crucial llamar a esto al final.
+</pre> <div class="fragment"><div class="line"><span class="lineno">   85</span>    <span class="keyword">def </span>close(self):</div>
+<div class="line"><span class="lineno">   86</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   87</span><span class="stringliteral">        Cierra el archivo HDF5. Es crucial llamar a esto al final.</span></div>
+<div class="line"><span class="lineno">   88</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">if</span> self.file:</div>
+<div class="line"><span class="lineno">   90</span>            self.file.close()</div>
+<div class="line"><span class="lineno">   91</span>            self.file = <span class="keywordtype">None</span></div>
+<div class="line"><span class="lineno">   92</span>            print(f<span class="stringliteral">&quot;Datos guardados y archivo cerrado: {self.filepath}&quot;</span>)</div>
+<div class="line"><span class="lineno">   93</span> </div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a22c6e21e585bcaaa61164cf1e86d66b4" name="a22c6e21e585bcaaa61164cf1e86d66b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c6e21e585bcaaa61164cf1e86d66b4">&#9670;&#160;</a></span>write_observables()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.write_observables </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>observables_handler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Escribe el historial de todos los observables calculados a datasets.
+</pre> <div class="fragment"><div class="line"><span class="lineno">  102</span>    <span class="keyword">def </span>write_observables(self, observables_handler):</div>
+<div class="line"><span class="lineno">  103</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  104</span><span class="stringliteral">        Escribe el historial de todos los observables calculados a datasets.</span></div>
+<div class="line"><span class="lineno">  105</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  106</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> self.file:</div>
+<div class="line"><span class="lineno">  107</span>            print(<span class="stringliteral">&quot;Error: El archivo HDF5 está cerrado. No se pueden escribir observables.&quot;</span>)</div>
+<div class="line"><span class="lineno">  108</span>            <span class="keywordflow">return</span></div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>        print(<span class="stringliteral">&quot;Guardando historial de observables en HDF5...&quot;</span>)</div>
+<div class="line"><span class="lineno">  111</span>        <span class="keywordflow">try</span>:</div>
+<div class="line"><span class="lineno">  112</span>            <span class="comment"># Crear un grupo para los observables para mantener el orden</span></div>
+<div class="line"><span class="lineno">  113</span>            obs_group = self.file.create_group(<span class="stringliteral">&quot;observables&quot;</span>)</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>            <span class="keywordflow">for</span> key, history <span class="keywordflow">in</span> observables_handler.history.items():</div>
+<div class="line"><span class="lineno">  116</span>                <span class="comment"># Convertir la lista de historial a un array de NumPy</span></div>
+<div class="line"><span class="lineno">  117</span>                data = np.array(history)</div>
+<div class="line"><span class="lineno">  118</span>                <span class="comment"># Crear un dataset para cada observable</span></div>
+<div class="line"><span class="lineno">  119</span>                obs_group.create_dataset(key, data=data)</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>            print(<span class="stringliteral">&quot;Historial de observables guardado correctamente.&quot;</span>)</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
+<div class="line"><span class="lineno">  124</span>            print(f<span class="stringliteral">&quot;Error al guardar los observables en HDF5: {e}&quot;</span>)</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span> </div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4fe3a9304aeb26ac673fd9fd0602c48e" name="a4fe3a9304aeb26ac673fd9fd0602c48e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fe3a9304aeb26ac673fd9fd0602c48e">&#9670;&#160;</a></span>write_snapshot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.write_snapshot </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">np.ndarray&#160;</td>
+          <td class="paramname"><em>psi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Escribe un nuevo snapshot (psi y tiempo) al archivo.
+Crea los datasets en la primera llamada, y luego los extiende.
+</pre> <div class="fragment"><div class="line"><span class="lineno">   44</span>    <span class="keyword">def </span>write_snapshot(self, psi: np.ndarray, time: float):</div>
+<div class="line"><span class="lineno">   45</span>        <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   46</span><span class="stringliteral">        Escribe un nuevo snapshot (psi y tiempo) al archivo.</span></div>
+<div class="line"><span class="lineno">   47</span><span class="stringliteral">        Crea los datasets en la primera llamada, y luego los extiende.</span></div>
+<div class="line"><span class="lineno">   48</span><span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">try</span>:</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> self.psi_dataset <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><span class="lineno">   51</span>                <span class="comment"># --- Primera escritura: crear los datasets ---</span></div>
+<div class="line"><span class="lineno">   52</span>                <span class="comment"># Shape inicial (1, N_points, 4)</span></div>
+<div class="line"><span class="lineno">   53</span>                self.psi_dataset = self.file.create_dataset(</div>
+<div class="line"><span class="lineno">   54</span>                    <span class="stringliteral">&quot;psi&quot;</span>,</div>
+<div class="line"><span class="lineno">   55</span>                    shape=(1,) + psi.shape,       </div>
+<div class="line"><span class="lineno">   56</span>                    <span class="comment"># Habilita &#39;append&#39; (eje 0 extensible)</span></div>
+<div class="line"><span class="lineno">   57</span>                    maxshape=(<span class="keywordtype">None</span>,) + psi.shape, </div>
+<div class="line"><span class="lineno">   58</span>                    dtype=<span class="stringliteral">&#39;complex128&#39;</span>,</div>
+<div class="line"><span class="lineno">   59</span>                    chunks=<span class="keyword">True</span>  <span class="comment"># Habilita chunking para I/O eficiente</span></div>
+<div class="line"><span class="lineno">   60</span>                )</div>
+<div class="line"><span class="lineno">   61</span>                self.time_dataset = self.file.create_dataset(</div>
+<div class="line"><span class="lineno">   62</span>                    <span class="stringliteral">&quot;time&quot;</span>,</div>
+<div class="line"><span class="lineno">   63</span>                    shape=(1,),</div>
+<div class="line"><span class="lineno">   64</span>                    maxshape=(<span class="keywordtype">None</span>,),</div>
+<div class="line"><span class="lineno">   65</span>                    dtype=<span class="stringliteral">&#39;float64&#39;</span></div>
+<div class="line"><span class="lineno">   66</span>                )</div>
+<div class="line"><span class="lineno">   67</span>                <span class="comment"># Guardar los primeros datos (t=0)</span></div>
+<div class="line"><span class="lineno">   68</span>                self.psi_dataset[0] = psi</div>
+<div class="line"><span class="lineno">   69</span>                self.time_dataset[0] = time</div>
+<div class="line"><span class="lineno">   70</span>            </div>
+<div class="line"><span class="lineno">   71</span>            <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">   72</span>                <span class="comment"># --- Escrituras subsiguientes: redimensionar y añadir ---</span></div>
+<div class="line"><span class="lineno">   73</span>                new_size = self.psi_dataset.shape[0] + 1</div>
+<div class="line"><span class="lineno">   74</span>                </div>
+<div class="line"><span class="lineno">   75</span>                <span class="comment"># Redimensionar el eje 0 (el de los snapshots)</span></div>
+<div class="line"><span class="lineno">   76</span>                self.psi_dataset.resize(new_size, axis=0) </div>
+<div class="line"><span class="lineno">   77</span>                self.psi_dataset[-1] = psi <span class="comment"># Añadir en la última posición</span></div>
+<div class="line"><span class="lineno">   78</span>                </div>
+<div class="line"><span class="lineno">   79</span>                self.time_dataset.resize(new_size, axis=0)</div>
+<div class="line"><span class="lineno">   80</span>                self.time_dataset[-1] = time</div>
+<div class="line"><span class="lineno">   81</span>        </div>
+<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
+<div class="line"><span class="lineno">   83</span>            print(f<span class="stringliteral">&quot;Error al escribir snapshot en HDF5 (t={time}): {e}&quot;</span>)</div>
+<div class="line"><span class="lineno">   84</span> </div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentación de datos miembro</h2>
+<a id="a600121da6319549c164ce7c5364f27da" name="a600121da6319549c164ce7c5364f27da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a600121da6319549c164ce7c5364f27da">&#9670;&#160;</a></span>file</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.file</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0dae0be837690c6e7c5d29ded94e6cc5" name="a0dae0be837690c6e7c5d29ded94e6cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dae0be837690c6e7c5d29ded94e6cc5">&#9670;&#160;</a></span>filepath</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.filepath</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0824585814a33ce51b9c37379f617f8" name="ab0824585814a33ce51b9c37379f617f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0824585814a33ce51b9c37379f617f8">&#9670;&#160;</a></span>problem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.problem</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afbd3c857786cde437f8ff54a46fab3c0" name="afbd3c857786cde437f8ff54a46fab3c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbd3c857786cde437f8ff54a46fab3c0">&#9670;&#160;</a></span>psi_dataset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.psi_dataset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5658979dcf7bf6b7897bd4f5c33df903" name="a5658979dcf7bf6b7897bd4f5c33df903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5658979dcf7bf6b7897bd4f5c33df903">&#9670;&#160;</a></span>time_dataset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dirac_solver.storage.HDF5Storage.time_dataset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li>dirac_solver/<a class="el" href="storage_8py.html">storage.py</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacedirac__solver.html">dirac_solver</a></li><li class="navelem"><a class="el" href="namespacedirac__solver_1_1storage.html">storage</a></li><li class="navelem"><a class="el" href="classdirac__solver_1_1storage_1_1HDF5Storage.html">HDF5Storage</a></li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 02:47:29 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

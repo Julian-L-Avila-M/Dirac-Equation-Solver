@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dirac_solver: Archivo de código fuente cpp_src/potentials/YukawaPotential.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="LOGO.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">dirac_solver<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+   <div id="projectbrief">A Dirac ecuation Solver</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('YukawaPotential_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">YukawaPotential.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="YukawaPotential_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="Potential_8h.html">Potential.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;numeric&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classYukawaPotential.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="classYukawaPotential.html">YukawaPotential</a> : <span class="keyword">public</span> <a class="code hl_class" href="classPotential.html">Potential</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classYukawaPotential.html#a21661064c0ceead04894d78b3e71e558">   33</a></span>    <a class="code hl_function" href="classYukawaPotential.html#a21661064c0ceead04894d78b3e71e558">YukawaPotential</a>(<span class="keywordtype">double</span> strength, <span class="keywordtype">double</span> range)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        : strength_(strength), range_(range) {}</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classYukawaPotential.html#a0c3d693ed2370c69b2fca9560bed84dd">   42</a></span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classYukawaPotential.html#a0c3d693ed2370c69b2fca9560bed84dd">evaluate</a>(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; r)<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordtype">double</span> r_norm = 0.0;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">for</span> (<span class="keywordtype">double</span> val : r) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            r_norm += val * val;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        r_norm = std::sqrt(r_norm);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">if</span> (r_norm == 0.0) {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordflow">return</span> -strength_;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">return</span> -strength_ * std::exp(-range_ * r_norm) / r_norm;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
+</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classYukawaPotential.html#a56b17b8207562e4924de8deaa8b57e49">   61</a></span>    std::string <a class="code hl_function" href="classYukawaPotential.html#a56b17b8207562e4924de8deaa8b57e49">get_name</a>()<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;YukawaPotential&quot;</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">double</span> strength_;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">double</span> range_;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>};</div>
+</div>
+<div class="ttc" id="aPotential_8h_html"><div class="ttname"><a href="Potential_8h.html">Potential.h</a></div></div>
+<div class="ttc" id="aclassPotential_html"><div class="ttname"><a href="classPotential.html">Potential</a></div><div class="ttdoc">Clase base abstracta para todos los potenciales escalares (patrón Template).</div><div class="ttdef"><b>Definition</b> Potential.h:15</div></div>
+<div class="ttc" id="aclassYukawaPotential_html"><div class="ttname"><a href="classYukawaPotential.html">YukawaPotential</a></div><div class="ttdoc">Implementación de un potencial de Yukawa.</div><div class="ttdef"><b>Definition</b> YukawaPotential.h:25</div></div>
+<div class="ttc" id="aclassYukawaPotential_html_a0c3d693ed2370c69b2fca9560bed84dd"><div class="ttname"><a href="classYukawaPotential.html#a0c3d693ed2370c69b2fca9560bed84dd">YukawaPotential::evaluate</a></div><div class="ttdeci">double evaluate(const std::vector&lt; double &gt; &amp;r) const override</div><div class="ttdoc">Evalúa el potencial en un punto espacial.</div><div class="ttdef"><b>Definition</b> YukawaPotential.h:42</div></div>
+<div class="ttc" id="aclassYukawaPotential_html_a21661064c0ceead04894d78b3e71e558"><div class="ttname"><a href="classYukawaPotential.html#a21661064c0ceead04894d78b3e71e558">YukawaPotential::YukawaPotential</a></div><div class="ttdeci">YukawaPotential(double strength, double range)</div><div class="ttdoc">Constructor principal del potencial de Yukawa.</div><div class="ttdef"><b>Definition</b> YukawaPotential.h:33</div></div>
+<div class="ttc" id="aclassYukawaPotential_html_a56b17b8207562e4924de8deaa8b57e49"><div class="ttname"><a href="classYukawaPotential.html#a56b17b8207562e4924de8deaa8b57e49">YukawaPotential::get_name</a></div><div class="ttdeci">std::string get_name() const override</div><div class="ttdoc">Devuelve el nombre simbólico del potencial.</div><div class="ttdef"><b>Definition</b> YukawaPotential.h:61</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_a024a66a7998c4e7c99abbcbbca6ddaf.html">cpp_src</a></li><li class="navelem"><a class="el" href="dir_54a4f50ebce9aa4663d2f29eef436b9c.html">potentials</a></li><li class="navelem"><a class="el" href="YukawaPotential_8h.html">YukawaPotential.h</a></li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 02:47:29 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>
