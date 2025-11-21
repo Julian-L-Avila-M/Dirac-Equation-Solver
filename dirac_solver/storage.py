@@ -164,27 +164,46 @@ def create_animation(storage_path: str, output_path: str, interval=50):
                 ax.set_title(f"Time: {time_dset[frame]:.2f}")
                 ax.set_xlabel("Posición (x)")
                 ax.set_ylabel("Posición (y)")
-
             elif grid_dim == 3:
                 ax.set_facecolor('black')
-                coords = np.mgrid[grid_origin[0]:grid_origin[0] + grid_shape[0] * grid_spacing[0]:grid_spacing[0],
-                                  grid_origin[1]:grid_origin[1] + grid_shape[1] * grid_spacing[1]:grid_spacing[1],
-                                  grid_origin[2]:grid_origin[2] + grid_shape[2] * grid_spacing[2]:grid_spacing[2]]
 
-                skip = 2
+                coords = np.mgrid[
+                    grid_origin[0]:grid_origin[0] + grid_shape[0] * grid_spacing[0]:grid_spacing[0],
+                    grid_origin[1]:grid_origin[1] + grid_shape[1] * grid_spacing[1]:grid_spacing[1],
+                    grid_origin[2]:grid_origin[2] + grid_shape[2] * grid_spacing[2]:grid_spacing[2]
+                ]
+
+                skip = 3
                 x = coords[0, ::skip, ::skip, ::skip].ravel()
                 y = coords[1, ::skip, ::skip, ::skip].ravel()
                 z = coords[2, ::skip, ::skip, ::skip].ravel()
 
                 rho_flat = rho_grid[::skip, ::skip, ::skip].ravel()
 
-                sc = ax.scatter(x, y, z, c=rho_flat, cmap='viridis', alpha=0.3)
+                # ✔ Compatibilidad NumPy 2.0
+                rho_safe = rho_flat + 1e-12
+                sizes = 5 + 60 * np.log10(1 + 10 * rho_safe / rho_safe.max())
 
-                ax.set_xlabel("Posición (x)", color="white")
-                ax.set_ylabel("Posición (y)", color="white")
-                ax.set_zlabel("Posición (z)", color="white")
+                alphas = 0.1 + 0.85 * (rho_flat / rho_flat.max())**0.6
+
+
+                cmap = plt.cm.plasma
+                colors = cmap(rho_safe)
+                colors[:, 3] = alphas
+
+                sc = ax.scatter(
+                    x, y, z,
+                    s=sizes,
+                    facecolors=colors,
+                    edgecolors='none'
+                )
+
+                ax.set_xlabel("Position (x)", color="white")
+                ax.set_ylabel("Position (y)", color="white")
+                ax.set_zlabel("Position (z)", color="white")
                 ax.tick_params(colors='white')
                 ax.set_title(f"Time: {time_dset[frame]:.2f}", color="white")
+
 
 
         anim = FuncAnimation(fig, update, frames=len(time_dset), interval=interval)
