@@ -107,7 +107,9 @@ class Observables:
         dV = self.grid.get_cell_volume()
 
         # Obtener las coordenadas de cada punto de la malla
-        coords = self.grid.coords
+        # self.grid.coords tiene forma (nx, ny, ..., dim), debemos aplanarla
+        # para que coincida con prob_density (N_points,)
+        coords = self.grid.coords.reshape(-1, self.grid.dim)
 
         # <x_k> = ∫ x_k * ρ(x) dV
         expected_pos = np.zeros(self.grid.dim)
@@ -162,7 +164,9 @@ class Observables:
         potential_term = np.zeros_like(psi)
         if V is not None:
             # V_grid debe tener forma (N_points,)
-            V_grid = np.array([V.evaluate(r) for r in self.grid.coords])
+            # Aplanamos coords para iterar sobre cada punto
+            coords_flat = self.grid.coords.reshape(-1, self.grid.dim)
+            V_grid = np.array([V.evaluate(r) for r in coords_flat])
             # Multiplicar V en cada componente del espinor
             potential_term = (V_grid[:, np.newaxis] * psi)
 
