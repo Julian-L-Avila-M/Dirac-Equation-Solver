@@ -7,9 +7,9 @@
 /// @brief Implementación concreta del potencial para una partícula libre.
 ///
 /// Esta clase representa el caso en el que el potencial externo es nulo:
-/// \f[
-/// V(\mathbf{r}) = 0
-/// \f]
+/// \\[
+/// V(\\mathbf{r}) = 0
+/// \\]
 ///
 /// Se utiliza como referencia base o caso de prueba para simulaciones
 /// sin interacción, cumpliendo el requisito **FR-3** del modelo.

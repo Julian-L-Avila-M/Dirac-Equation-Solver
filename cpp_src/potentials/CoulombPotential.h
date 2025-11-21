@@ -13,13 +13,13 @@
 /// en el origen (r = 0) para evitar singularidades numéricas.
 ///
 /// La expresión implementada es:
-/// \f[
-/// V(r) = -\frac{Z}{\|r\| + \epsilon}
-/// \f]
+/// 
+/// \\[ V(r) = -\\frac{Z}{\\|r\\| + \\epsilon} \\] 
+/// 
 ///
 /// donde:
-/// - \f$ Z \f$ es la carga nuclear o constante de acoplamiento.
-/// - \f$ \epsilon \f$ es un parámetro de regularización pequeño para estabilizar el cálculo.
+/// - \\( Z \\) es la carga nuclear o constante de acoplamiento.
+/// - \\( \\epsilon \\) es un parámetro de regularización pequeño para estabilizar el cálculo.
 ///
 /// @note Este potencial puede emplearse tanto en simulaciones 1D, 2D o 3D.
 /// @warning Si se usa un valor de `epsilon_` demasiado pequeño, el integrador
@@ -46,12 +46,12 @@ public:
     /// @brief Evalúa el potencial en un punto espacial.
     ///
     /// @param r Vector de posición (1D, 2D o 3D).
-    /// @return Valor escalar del potencial \f$ V(r) \f$.
+    /// @return Valor escalar del potencial \\( V(r) \\).
     ///
     /// @details
-    /// Calcula la norma euclidiana \f$ \|r\| \f$ del vector `r`
+    /// Calcula la norma euclidiana \\( \\|r\\| \\) del vector `r`
     /// y devuelve el valor regularizado del potencial de Coulomb:
-    /// \f$ -Z / (\|r\| + \epsilon) \f$.
+    /// \\( -Z / (\\|r\\| + \\epsilon) \\).
     ///
     /// @warning No se asume normalización previa del vector `r`.
     ///////////////////////////////////////////////////////////

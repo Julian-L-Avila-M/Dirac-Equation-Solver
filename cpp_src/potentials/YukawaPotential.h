@@ -12,13 +12,13 @@
 /// un potencial de Yukawa, que es un potencial de corto alcance.
 ///
 /// La expresión implementada es:
-/// \f[
-/// V(r) = -V_0 \frac{e^{-ar}}{r}
-/// \f]
+/// 
+///   \\[   V(r) = -V_0 \\frac{e^{-ar}}{r} \\]
+/// 
 ///
 /// donde:
-/// - \f$ V_0 \f$ es la fuerza del potencial.
-/// - \f$ a \f$ es el parámetro de rango.
+/// - \\( V_0 \\) es la fuerza del potencial.
+/// - \\( a \\) es el parámetro de rango.
 ///
 /// @note Este potencial puede emplearse tanto en simulaciones 1D, 2D o 3D.
 ///////////////////////////////////////////////////////////////
@@ -37,7 +37,7 @@ public:
     /// @brief Evalúa el potencial en un punto espacial.
     ///
     /// @param r Vector de posición (1D, 2D o 3D).
-    /// @return Valor escalar del potencial \f$ V(r) \f$.
+    /// @return Valor escalar del potencial \\( V(r) \\).
     ///////////////////////////////////////////////////////////
     double evaluate(const std::vector<double>& r) const override {
         double r_norm = 0.0;
