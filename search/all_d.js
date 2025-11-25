@@ -6,7 +6,7 @@ var searchData=
   ['de_20coulomb_3',['4. Potencial Central (Interacción de Coulomb)',['../md_planning_2problems-to-solve.html#autotoc_md77',1,'']]],
   ['de_20dirac_5fsolver_4',['Diagramas UML para la Arquitectura de dirac_solver',['../md_planning_2ulm-diagrams.html',1,'']]],
   ['de_20diseño_20de_20dirac_5fsolver_5',['Arquitectura y Patrones de Diseño de dirac_solver',['../md_planning_2design-pattern.html',1,'']]],
-  ['de_20entrada_6',['de entrada',['../md_planning_2problems-to-solve.html#autotoc_md69',1,'Parámetros de Entrada'],['../md_planning_2problems-to-solve.html#autotoc_md64',1,'Parámetros de Entrada'],['../md_planning_2problems-to-solve.html#autotoc_md84',1,'Parámetros de Entrada'],['../md_planning_2problems-to-solve.html#autotoc_md74',1,'Parámetros de Entrada'],['../md_planning_2problems-to-solve.html#autotoc_md79',1,'Parámetros de Entrada']]],
+  ['de_20entrada_6',['de entrada',['../md_planning_2problems-to-solve.html#autotoc_md84',1,'Parámetros de Entrada'],['../md_planning_2problems-to-solve.html#autotoc_md79',1,'Parámetros de Entrada'],['../md_planning_2problems-to-solve.html#autotoc_md74',1,'Parámetros de Entrada'],['../md_planning_2problems-to-solve.html#autotoc_md69',1,'Parámetros de Entrada'],['../md_planning_2problems-to-solve.html#autotoc_md64',1,'Parámetros de Entrada']]],
   ['de_20errores_20bugs_20y_20sugerencias_7',['Reporte de Errores (Bugs) y Sugerencias',['../md_CONTRIBUTING.html#autotoc_md14',1,'']]],
   ['de_20funcionalidades_8',['7. Patrón Decorator – Extensión Dinámica de Funcionalidades',['../md_planning_2design-pattern.html#autotoc_md44',1,'']]],
   ['de_20i_20o_9',['6. Patrón Facade - Interfaz Simplificada de I/O',['../md_planning_2design-pattern.html#autotoc_md43',1,'']]],
@@ -27,13 +27,13 @@ var searchData=
   ['definiciones_20físicas_24',['2. &lt;tt&gt;physics/&lt;/tt&gt; – Definiciones físicas',['../md_planning_2structure.html#autotoc_md121',1,'']]],
   ['definidas_20en_20tt_20_5f_5finit_5f_5f_20py_20tt_25',['2. Nuevas constantes globales definidas en &lt;tt&gt;__init__.py&lt;/tt&gt;',['../md_planning_2Actualizaci_xC3_xB3n__constants.html#autotoc_md28',1,'']]],
   ['del_20espinor_20de_20pauli_20general_26',['Construcción del Espinor de Pauli General',['../md_planning_2spinor-definition.html',1,'']]],
-  ['del_20problema_27',['del problema',['../md_planning_2problems-to-solve.html#autotoc_md63',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md68',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md73',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md78',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md83',1,'Descripción del Problema']]],
+  ['del_20problema_27',['del problema',['../md_planning_2problems-to-solve.html#autotoc_md63',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md78',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md68',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md83',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md73',1,'Descripción del Problema']]],
   ['del_20proyecto_28',['del proyecto',['../index.html#autotoc_md148',1,'Estructura del proyecto'],['../md_planning_2structure.html#autotoc_md117',1,'Raíz del Proyecto']]],
   ['del_20proyecto_20dirac_5fsolver_29',['Estructura del Proyecto dirac_solver',['../md_planning_2structure.html',1,'']]],
   ['del_20proyecto_20para_20un_20solucionador_20de_20la_20ecuación_20de_20dirac_30',['Plan del Proyecto para un Solucionador de la Ecuación de Dirac',['../md_planning_2problems-to-solve.html',1,'']]],
   ['delta_20t_31',['Inicialización de \(\psi(t - \Delta t)\)',['../classFDTDLeapfrogIntegrator.html#autotoc_md22',1,'']]],
   ['descartadas_32',['10. Alternativas Consideradas y Descartadas',['../md_planning_2design-pattern.html#autotoc_md50',1,'']]],
-  ['descripción_20del_20problema_33',['descripción del problema',['../md_planning_2problems-to-solve.html#autotoc_md73',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md83',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md78',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md68',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md63',1,'Descripción del Problema']]],
+  ['descripción_20del_20problema_33',['descripción del problema',['../md_planning_2problems-to-solve.html#autotoc_md73',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md83',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md68',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md63',1,'Descripción del Problema'],['../md_planning_2problems-to-solve.html#autotoc_md78',1,'Descripción del Problema']]],
   ['design_2dpattern_2emd_34',['design-pattern.md',['../design-pattern_8md.html',1,'']]],
   ['diagramas_20uml_20para_20la_20arquitectura_20de_20dirac_5fsolver_35',['Diagramas UML para la Arquitectura de dirac_solver',['../md_planning_2ulm-diagrams.html',1,'']]],
   ['dim_36',['dim',['../classdirac__solver_1_1geometry_1_1Grid.html#a015c3ec7ba74fddfa326bde8a1b27cb6',1,'dirac_solver::geometry::Grid']]],
@@ -58,5 +58,6 @@ var searchData=
   ['diseño_20de_20dirac_5fsolver_55',['Arquitectura y Patrones de Diseño de dirac_solver',['../md_planning_2design-pattern.html',1,'']]],
   ['do_20em_20strong_56',['&lt;strong&gt;2. Functional Requirements (What the System &lt;em&gt;Must Do&lt;/em&gt;)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md90',1,'']]],
   ['docs_20tt_57',['&lt;tt&gt;docs/&lt;/tt&gt;',['../md_planning_2structure.html#autotoc_md133',1,'']]],
-  ['dominios_58',['4. &lt;tt&gt;geometry/&lt;/tt&gt; – Geometrías y dominios',['../md_planning_2structure.html#autotoc_md123',1,'']]]
+  ['documentación_58',['Documentación',['../index.html#autotoc_md155',1,'']]],
+  ['dominios_59',['4. &lt;tt&gt;geometry/&lt;/tt&gt; – Geometrías y dominios',['../md_planning_2structure.html#autotoc_md123',1,'']]]
 ];

@@ -121,35 +121,48 @@ Características principales</h1>
 <hr  />
 <h1><a class="anchor" id="autotoc_md148"></a>
 Estructura del proyecto</h1>
-<p>dirac_solver/ ├── cpp_src/ # Código fuente C++ (núcleo numérico) ├── dirac_solver/ # API Python ├── examples/ # Notebooks de ejemplos ├── docs/ # Documentación Doxygen (HTML y LaTeX) ├── tests/ # Pruebas unitarias ├── save_data/ # Resultados de simulaciones (HDF5) ├── planning/ # Diseño, requisitos, notas técnicas └── pyproject.toml # Configuración del paquete Python</p>
-<hr  />
+<div class="fragment"><div class="line">dirac_solver/</div>
+<div class="line">├── cpp_src/              # Código fuente C++ (núcleo numérico)</div>
+<div class="line">├── dirac_solver/         # API Python</div>
+<div class="line">├── examples/             # Notebooks de ejemplos</div>
+<div class="line">├── docs/                 # Documentación Doxygen (HTML y LaTeX)</div>
+<div class="line">├── tests/                # Pruebas unitarias</div>
+<div class="line">├── save_data/            # Resultados de simulaciones (HDF5)</div>
+<div class="line">├── planning/             # Diseño, requisitos, notas técnicas</div>
+<div class="line">└── pyproject.toml        # Configuración del paquete Python</div>
+</div><!-- fragment --><hr  />
 <h1><a class="anchor" id="autotoc_md150"></a>
 Instalación</h1>
 <h2><a class="anchor" id="autotoc_md151"></a>
-Instalación local editable</h2>
-<div class="fragment"><div class="line">pip install -e .</div>
-<div class="line">````</div>
-<div class="line"> </div>
-<div class="line">### Compilación del núcleo C++</div>
-</div><!-- fragment --><p> bash mkdir -p cpp_build cd cpp_build cmake ../cpp_src make -j </p><div class="fragment"><div class="line">---</div>
-<div class="line"> </div>
-<div class="line">## Uso básico</div>
-<div class="line"> </div>
-<div class="line">Ejemplo mínimo en Python:</div>
-</div><!-- fragment --><p> python from <a class="el" href="namespacedirac__solver.html" title="Librería para simulación de la ecuación de Dirac en unidades naturales.">dirac_solver</a> import core, potentials, initial_state, observables</p>
-<p>grid = core.Grid(shape=(200,), spacing=0.05)</p>
-<p>V = potentials.Coulomb(Z=1)</p>
-<p>psi0 = initial_state.gaussian(grid)</p>
-<p>solver = core.TimeIntegrator(grid, V) psi_t = solver.evolve(psi0, dt=0.001, steps=1000)</p>
-<p>obs = observables.Observables(psi_t) density = obs.probability_density() </p><div class="fragment"><div class="line">---</div>
-<div class="line"> </div>
-<div class="line">## Documentación</div>
-<div class="line"> </div>
-<div class="line">Para compilar la documentación, en el directorio principal ejecutar:</div>
-</div><!-- fragment --><p> bash doxygen </p><div class="fragment"><div class="line">La salida se genera en:</div>
-</div><!-- fragment --><p> docs/html/index.html docs/latex/ ```</p>
-<hr  />
+Instalación mediante pipy</h2>
+<div class="fragment"><div class="line">pip install dirac-solver</div>
+</div><!-- fragment --><hr  />
 <h1><a class="anchor" id="autotoc_md153"></a>
+Uso básico</h1>
+<p>Ejemplo mínimo en Python:</p>
+<div class="fragment"><div class="line"><span class="keyword">from</span> dirac_solver <span class="keyword">import</span> core, potentials, initial_state, observables</div>
+<div class="line"> </div>
+<div class="line">grid = core.Grid(shape=(200,), spacing=0.05)</div>
+<div class="line"> </div>
+<div class="line">V = potentials.Coulomb(Z=1)</div>
+<div class="line"> </div>
+<div class="line">psi0 = initial_state.gaussian(grid)</div>
+<div class="line"> </div>
+<div class="line">solver = core.TimeIntegrator(grid, V)</div>
+<div class="line">psi_t = solver.evolve(psi0, dt=0.001, steps=1000)</div>
+<div class="line"> </div>
+<div class="line">obs = observables.Observables(psi_t)</div>
+<div class="line">density = obs.probability_density()</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md155"></a>
+Documentación</h1>
+<p>Para compilar la documentación, en el directorio principal ejecutar:</p>
+<div class="fragment"><div class="line">doxygen</div>
+</div><!-- fragment --><p>La salida se genera en:</p>
+<div class="fragment"><div class="line">docs/html/index.html</div>
+<div class="line">docs/latex/</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md157"></a>
 Ejemplos</h1>
 <p>En el directorio <code>examples/</code> encontrarás notebooks que cubren:</p>
 <ul>
@@ -160,7 +173,7 @@ Ejemplos</h1>
 <li>Ondas gaussianas</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md155"></a>
+<h1><a class="anchor" id="autotoc_md159"></a>
 Contribuir</h1>
 <p>Las contribuciones son bienvenidas.</p>
 <ul>
@@ -170,7 +183,7 @@ Contribuir</h1>
 <li>Actualizar la documentación cuando corresponda</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md157"></a>
+<h1><a class="anchor" id="autotoc_md161"></a>
 Licencia</h1>
 <p>Este proyecto se distribuye bajo la licencia <b>MIT</b>. Ver <code>LICENSE</code> para más detalles. </p>
 </div></div><!-- PageDoc -->
@@ -179,7 +192,7 @@ Licencia</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 09:37:59 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generado el Viernes, 21 de noviembre de 2025 12:42:05 para dirac_solver por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -16,7 +16,7 @@ var searchData=
   ['initial_5fstate_2epy_13',['initial_state.py',['../initial__state_8py.html',1,'']]],
   ['initialstate_14',['InitialState',['../classdirac__solver_1_1initial__state_1_1InitialState.html',1,'dirac_solver::initial_state']]],
   ['instalación_15',['Instalación',['../index.html#autotoc_md150',1,'']]],
-  ['instalación_20local_20editable_16',['Instalación local editable',['../index.html#autotoc_md151',1,'']]],
+  ['instalación_20mediante_20pipy_16',['Instalación mediante pipy',['../index.html#autotoc_md151',1,'']]],
   ['integrator_17',['integrator',['../classdirac__solver_1_1core_1_1DiracSolver.html#aa9cedd48767038ef89b08b70879868af',1,'dirac_solver::core::DiracSolver']]],
   ['interacción_20de_20coulomb_18',['4. Potencial Central (Interacción de Coulomb)',['../md_planning_2problems-to-solve.html#autotoc_md77',1,'']]],
   ['interface_20strong_19',['&lt;strong&gt;B. Python API (The User Interface)&lt;/strong&gt;',['../md_planning_2requirements-engineering.html#autotoc_md92',1,'']]],

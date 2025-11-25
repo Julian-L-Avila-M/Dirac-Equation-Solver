@@ -43,7 +43,7 @@ var searchData=
   ['constantspinor_40',['ConstantSpinor',['../classdirac__solver_1_1initial__state_1_1ConstantSpinor.html',1,'dirac_solver::initial_state']]],
   ['construcción_20del_20espinor_20de_20pauli_20general_41',['Construcción del Espinor de Pauli General',['../md_planning_2spinor-definition.html',1,'']]],
   ['contribuciones_42',['Tipos de Contribuciones',['../md_CONTRIBUTING.html#autotoc_md13',1,'']]],
-  ['contribuir_43',['Contribuir',['../index.html#autotoc_md155',1,'']]],
+  ['contribuir_43',['Contribuir',['../index.html#autotoc_md159',1,'']]],
   ['contribuir_20a_20dirac_20solver_44',['Cómo Contribuir a Dirac-Solver',['../md_CONTRIBUTING.html',1,'']]],
   ['contribuir_20con_20código_20pull_20requests_45',['Contribuir con Código (Pull Requests)',['../md_CONTRIBUTING.html#autotoc_md15',1,'']]],
   ['contributing_2emd_46',['CONTRIBUTING.md',['../CONTRIBUTING_8md.html',1,'']]],

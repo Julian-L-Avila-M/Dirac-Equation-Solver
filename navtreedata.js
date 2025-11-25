@@ -170,7 +170,7 @@ var NAVTREEINDEX =
 [
 "AbsorbingBoundary_8h.html",
 "classdirac__solver_1_1initial__state_1_1GaussianPacket.html#a562d854fc1b27c34e2cec3a0fc874378",
-"namespaceDirac.html#a6ca2e828fd9d4799c58cc8cf568159f7"
+"namespaceDirac.html#a2e719c31ef0cb57b9d03fd37c0100e8f"
 ];
 
 var SYNCONMSG = 'pulsar para deshabilitar sincronización';
