@@ -162,7 +162,7 @@ var NAVTREE =
         [ "Variables", "globals_vars.html", null ],
         [ "defines", "globals_defs.html", null ]
       ] ]
-    ] ]
+    ] ],[ "Contacto", "https://docs.google.com/forms/d/e/1FAIpQLSdi1lMxIve7q4tEvxAs3IuugPY1WkZBLD_bVQxRVdPQm7_eOA/viewform?usp=header", null ]
   ] ]
 ];
 
