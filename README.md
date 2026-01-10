@@ -5,7 +5,7 @@ Este proyecto implementa un solucionador numérico para la ecuación de Dirac en
 La ecuación resuelta es:
 
 
-\\[  (i\gamma^\mu \partial_\mu - m)\psi = 0 \\]
+$$ (i\gamma^\mu \partial_\mu - m)\psi = 0 $$
 
 
 en unidades naturales, donde el bispinor \\(\psi \in \mathbb{C}^4\\) es un vector columna complejo. El proyecto implementa métodos explícitos tipo FDTD (Leapfrog), potenciales personalizables, condiciones de frontera modulares y manejo de datos en HDF5.
