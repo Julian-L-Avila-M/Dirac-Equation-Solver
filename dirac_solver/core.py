@@ -125,6 +125,16 @@ class DiracProblemBuilder:
 
         if self._potential is None:
             print("Advertencia: Potencial no establecido. Usando partícula libre (V=0) por defecto.")
+            self._potential = _core.FreeParticle()
+
+        if isinstance(self._boundary_condition, str):
+            bc_lower = self._boundary_condition.strip().lower()
+            if bc_lower == "periodic":
+                self._boundary_condition = _core.PeriodicBoundary()
+            elif bc_lower == "absorbing":
+                self._boundary_condition = _core.AbsorbingBoundary(0.3, 20)
+            else:
+                raise ValueError(f"Condición de borde desconocida: '{self._boundary_condition}'.")
 
         return SimulationProblem(
                 grid=self._grid,
@@ -157,14 +167,21 @@ class DiracSolver:
         self._initial_psi_for_storage = psi_0
         cpp_grid = _core.Grid(problem.grid.shape, problem.grid.spacing)
 
+        core_potential = getattr(problem.potential, "core_potential", problem.potential)
+        if core_potential is None:
+            core_potential = _core.FreeParticle()
+
+        core_boundary = getattr(problem.boundary_condition, "core_boundary", problem.boundary_condition)
+        mass = getattr(problem.initial_state, "mass", electron_mass)
+
         # Inicializar el integrador Leapfrog de C++
         self.integrator = _core.FDTDLeapfrogIntegrator(
             psi_0,
             cpp_grid,
-            problem.potential,
-            problem.boundary_condition,
+            core_potential,
+            core_boundary,
             problem.time_step,
-            electron_mass
+            mass
         )
 
         print(f"DiracSolver inicializado con el motor C++ '{self.integrator.get_name()}'.")

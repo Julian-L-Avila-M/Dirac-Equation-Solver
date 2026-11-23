@@ -139,6 +139,13 @@ public:
         bool is_periodic = (boundary_condition_->get_name() == "PeriodicBoundary");
 
         for(size_t i=0; i<n_points; ++i) {
+            std::vector<double> coords = grid_.get_coords(i);
+            double v_at_i = potential_->evaluate(coords);
+            if (!std::isfinite(v_at_i)) {
+                psi_curr_[i] = Dirac::Spinor();
+                psi_prev_[i] = Dirac::Spinor();
+                continue;
+            }
 
             Dirac::Spinor h_psi = compute_hamiltonian_at_point(i, psi_curr_, is_periodic);
 
@@ -154,17 +161,21 @@ public:
      *
      * Para cada punto se evalúa:
      *
-     * \\( \\psi(t+\\Delta t) = \\psi(t-\\Delta t) - 2i\\),\\(\\Delta t\\ \\), \\( H\\psi(t)
-     *     
-     * 
-     *     
-     * 
+     * \\[
+     * \\psi(t+\\Delta t) = \\psi(t-\\Delta t) - 2i\\, \\Delta t\\, H\\psi(t)
+     * \\]
      */
     void step() override {
         size_t n_points = grid_.get_total_points();
         bool is_periodic = (boundary_condition_->get_name() == "PeriodicBoundary");
 
         for (size_t i = 0; i < n_points; ++i) {
+            std::vector<double> coords = grid_.get_coords(i);
+            double v_at_i = potential_->evaluate(coords);
+            if (!std::isfinite(v_at_i)) {
+                psi_next_[i] = Dirac::Spinor();
+                continue;
+            }
 
             Dirac::Spinor h_psi = compute_hamiltonian_at_point(i, psi_curr_, is_periodic);
 
@@ -194,15 +205,140 @@ public:
     {
         const auto& shape = grid_.get_shape();
         const auto& spacing = grid_.get_spacing();
+        size_t n_points = grid_.get_total_points();
 
         Dirac::Spinor h_spatial_psi;
 
-        // ... (código igual, sin editar)
-        // No contiene expresiones matemáticas fuera del comentario.
+        // --- Operador diferencial espacial según la dimensionalidad ---
+        if (grid_.get_dim() == 1) {
+            Dirac::Spinor dx_psi;
+
+            if (is_periodic) {
+                size_t i_prev = (i == 0) ? n_points - 1 : i - 1;
+                size_t i_next = (i == n_points - 1) ? 0 : i + 1;
+                dx_psi = (psi[i_next] - psi[i_prev]) / (2.0 * spacing[0]);
+            } else {
+                if (i == 0) {
+                    dx_psi = (psi[i + 1] - psi[i]) / spacing[0];
+                } else if (i == n_points - 1) {
+                    dx_psi = (psi[i] - psi[i - 1]) / spacing[0];
+                } else {
+                    dx_psi = (psi[i + 1] - psi[i - 1]) / (2.0 * spacing[0]);
+                }
+            }
+            h_spatial_psi = Dirac::complex(0, -1.0) * Dirac::multiply(Dirac::alpha_x, dx_psi);
+        }
+        else if (grid_.get_dim() == 2) {
+            size_t nx = shape[0];
+            size_t ny = shape[1];
+            size_t ix = i / ny;
+            size_t iy = i % ny;
+
+            Dirac::Spinor dx_psi_term, dy_psi_term;
+
+            // X derivative
+            if (is_periodic) {
+                size_t ix_prev = (ix == 0) ? nx - 1 : ix - 1;
+                size_t ix_next = (ix == nx - 1) ? 0 : ix + 1;
+                dx_psi_term = (psi[ix_next * ny + iy] - psi[ix_prev * ny + iy]) / (2.0 * spacing[0]);
+            } else {
+                if (ix == 0) {
+                    dx_psi_term = (psi[(ix + 1) * ny + iy] - psi[ix * ny + iy]) / spacing[0];
+                } else if (ix == nx - 1) {
+                    dx_psi_term = (psi[ix * ny + iy] - psi[(ix - 1) * ny + iy]) / spacing[0];
+                } else {
+                    dx_psi_term = (psi[(ix + 1) * ny + iy] - psi[(ix - 1) * ny + iy]) / (2.0 * spacing[0]);
+                }
+            }
+
+            // Y derivative
+            if (is_periodic) {
+                size_t iy_prev = (iy == 0) ? ny - 1 : iy - 1;
+                size_t iy_next = (iy == ny - 1) ? 0 : iy + 1;
+                dy_psi_term = (psi[ix * ny + iy_next] - psi[ix * ny + iy_prev]) / (2.0 * spacing[1]);
+            } else {
+                if (iy == 0) {
+                    dy_psi_term = (psi[ix * ny + (iy + 1)] - psi[ix * ny + iy]) / spacing[1];
+                } else if (iy == ny - 1) {
+                    dy_psi_term = (psi[ix * ny + iy] - psi[ix * ny + (iy - 1)]) / spacing[1];
+                } else {
+                    dy_psi_term = (psi[ix * ny + (iy + 1)] - psi[ix * ny + (iy - 1)]) / (2.0 * spacing[1]);
+                }
+            }
+
+            h_spatial_psi = Dirac::complex(0, -1.0) * (
+                Dirac::multiply(Dirac::alpha_x, dx_psi_term) +
+                Dirac::multiply(Dirac::alpha_y, dy_psi_term)
+            );
+        }
+        else if (grid_.get_dim() == 3) {
+            size_t nx = shape[0];
+            size_t ny = shape[1];
+            size_t nz = shape[2];
+            size_t iz = i % nz;
+            size_t iy = (i / nz) % ny;
+            size_t ix = i / (ny * nz);
+
+            Dirac::Spinor dx_psi_term, dy_psi_term, dz_psi_term;
+
+            // X derivative
+            if (is_periodic) {
+                size_t ix_prev = (ix == 0) ? nx - 1 : ix - 1;
+                size_t ix_next = (ix == nx - 1) ? 0 : ix + 1;
+                dx_psi_term = (psi[(ix_next * ny + iy) * nz + iz] - psi[(ix_prev * ny + iy) * nz + iz]) / (2.0 * spacing[0]);
+            } else {
+                if (ix == 0) {
+                    dx_psi_term = (psi[((ix + 1) * ny + iy) * nz + iz] - psi[(ix * ny + iy) * nz + iz]) / spacing[0];
+                } else if (ix == nx - 1) {
+                    dx_psi_term = (psi[(ix * ny + iy) * nz + iz] - psi[((ix - 1) * ny + iy) * nz + iz]) / spacing[0];
+                } else {
+                    dx_psi_term = (psi[((ix + 1) * ny + iy) * nz + iz] - psi[((ix - 1) * ny + iy) * nz + iz]) / (2.0 * spacing[0]);
+                }
+            }
+
+            // Y derivative
+            if (is_periodic) {
+                size_t iy_prev = (iy == 0) ? ny - 1 : iy - 1;
+                size_t iy_next = (iy == ny - 1) ? 0 : iy + 1;
+                dy_psi_term = (psi[(ix * ny + iy_next) * nz + iz] - psi[(ix * ny + iy_prev) * nz + iz]) / (2.0 * spacing[1]);
+            } else {
+                if (iy == 0) {
+                    dy_psi_term = (psi[(ix * ny + (iy + 1)) * nz + iz] - psi[(ix * ny + iy) * nz + iz]) / spacing[1];
+                } else if (iy == ny - 1) {
+                    dy_psi_term = (psi[(ix * ny + iy) * nz + iz] - psi[(ix * ny + (iy - 1)) * nz + iz]) / spacing[1];
+                } else {
+                    dy_psi_term = (psi[(ix * ny + (iy + 1)) * nz + iz] - psi[(ix * ny + (iy - 1)) * nz + iz]) / (2.0 * spacing[1]);
+                }
+            }
+
+            // Z derivative
+            if (is_periodic) {
+                size_t iz_prev = (iz == 0) ? nz - 1 : iz - 1;
+                size_t iz_next = (iz == nz - 1) ? 0 : iz + 1;
+                dz_psi_term = (psi[(ix * ny + iy) * nz + iz_next] - psi[(ix * ny + iy) * nz + iz_prev]) / (2.0 * spacing[2]);
+            } else {
+                if (iz == 0) {
+                    dz_psi_term = (psi[(ix * ny + iy) * nz + (iz + 1)] - psi[(ix * ny + iy) * nz + iz]) / spacing[2];
+                } else if (iz == nz - 1) {
+                    dz_psi_term = (psi[(ix * ny + iy) * nz + iz] - psi[(ix * ny + iy) * nz + (iz - 1)]) / spacing[2];
+                } else {
+                    dz_psi_term = (psi[(ix * ny + iy) * nz + (iz + 1)] - psi[(ix * ny + iy) * nz + (iz - 1)]) / (2.0 * spacing[2]);
+                }
+            }
+
+            h_spatial_psi = Dirac::complex(0, -1.0) * (
+                Dirac::multiply(Dirac::alpha_x, dx_psi_term) +
+                Dirac::multiply(Dirac::alpha_y, dy_psi_term) +
+                Dirac::multiply(Dirac::alpha_z, dz_psi_term)
+            );
+        }
 
         // --- Término local ---
         std::vector<double> coords = grid_.get_coords(i);
         double v_at_i = potential_->evaluate(coords);
+        if (!std::isfinite(v_at_i)) {
+            return Dirac::Spinor();
+        }
 
         Dirac::Spinor h_local_psi =
             mass_ * Dirac::multiply(Dirac::beta, psi[i]) +

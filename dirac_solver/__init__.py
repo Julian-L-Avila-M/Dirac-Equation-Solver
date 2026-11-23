@@ -52,6 +52,7 @@ from .initial_state import InitialState, ConstantSpinor, GaussianPacket, PlaneWa
 from .core import DiracSolver, DiracProblemBuilder, SimulationProblem
 from .storage import HDF5Storage
 from .potentials import FreeParticle, ScalarPotential, CoulombPotential, YukawaPotential, InfiniteWellPotential
+from .observables import Observables
 
 # ---------------------------------------------------------------------------
 # Símbolos exportados
@@ -60,7 +61,8 @@ from .potentials import FreeParticle, ScalarPotential, CoulombPotential, YukawaP
 __all__ = [
     "hbar", "c", "electron_mass", "electron_charge",
     "sigma_1", "sigma_2", "sigma_3",
-    "Grid", "ConstantSpinor", "GaussianPacket", "DiracSolver",
-    "DiracProblemBuilder", "SimulationProblem",
-    "HDF5Storage", "FreeParticle", "ScalarPotential", "CoulombPotential", "YukawaPotential", "InfiniteWellPotential"
+    "Grid", "InitialState", "ConstantSpinor", "GaussianPacket", "PlaneWave",
+    "DiracSolver", "DiracProblemBuilder", "SimulationProblem",
+    "HDF5Storage", "Observables",
+    "FreeParticle", "ScalarPotential", "CoulombPotential", "YukawaPotential", "InfiniteWellPotential"
 ]

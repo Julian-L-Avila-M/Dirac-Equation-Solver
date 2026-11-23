@@ -163,12 +163,14 @@ class Observables:
         V = self.solver.problem.potential
         potential_term = np.zeros_like(psi)
         if V is not None:
+            core_V = getattr(V, "core_potential", V)
             # V_grid debe tener forma (N_points,)
             # Aplanamos coords para iterar sobre cada punto
             coords_flat = self.grid.coords.reshape(-1, self.grid.dim)
-            V_grid = np.array([V.evaluate(r) for r in coords_flat])
-            # Multiplicar V en cada componente del espinor
-            potential_term = (V_grid[:, np.newaxis] * psi)
+            V_grid = np.array([core_V.evaluate(r.tolist() if hasattr(r, "tolist") else list(r)) for r in coords_flat])
+            # Multiplicar V en cada componente del espinor evitando NaN cuando V=inf y psi=0
+            finite_mask = np.isfinite(V_grid)[:, np.newaxis]
+            potential_term = np.where(finite_mask, np.where(finite_mask, V_grid[:, np.newaxis], 0.0) * psi, 0.0)
 
         # --- Hamiltoniano aplicado a psi: Hψ ---
         H_psi = kinetic_term + mass_term + potential_term
