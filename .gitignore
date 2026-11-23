@@ -51,3 +51,15 @@ dirac_solver/__pycache__/
 
 # Temporary files
 *.hdf5
+notebook_execution.log
+
+# Build and test caches
+cpp_build/
+build/
+dist/
+.pytest_cache/
+
+# Sensitive / private legal and copyright registration documents (local only)
+registro_dnda/
+*.docx
+

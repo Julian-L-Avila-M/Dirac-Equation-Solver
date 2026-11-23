@@ -10,9 +10,9 @@ authors = [
   { name = "Julian Leonardo Avila Martinez", email = "jlavilam@udistrital.edu.co" },
   { name = "Camilo Andres Huertas Archila", email = "cahuertasa@udistrital.edu.co" }
 ]
-description = "Librería de ejemplo para iniciar un solver de Dirac"
+description = "Solucionador numérico de la ecuación de Dirac en 1D, 2D y 3D con núcleo en C++ e interfaz en Python / Numerical solver for the 1D, 2D, and 3D Dirac equation"
 readme = "README.md"
-license = { text = "MIT" }
+license = { text = "GPL-3.0-or-later" }
 requires-python = ">=3.8"
 
 dependencies = [
