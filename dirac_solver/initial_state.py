@@ -108,13 +108,19 @@ class GaussianPacket(InitialState):
     """
     Clase que construye el estado inicial como un paquete de ondas gaussianas.
     """
-    def __init__(self, constant_spinor, center=[0,0,0], spatial_width=1):
+    def __init__(self, constant_spinor=None, center=[0,0,0], spatial_width=1, spinor=None, width=None):
         """
         Constructor.
          constant_spinor: El espinor constante base.
          center: Centro del paquete gaussiano.
          spatial_width: Ancho espacial del paquete.
         """
+        if constant_spinor is None and spinor is not None:
+            constant_spinor = spinor
+        if constant_spinor is None:
+            raise ValueError("Se debe proporcionar un objeto ConstantSpinor.")
+        if width is not None:
+            spatial_width = width
         super().__init__(constant_spinor.mass)
         self.constant_spinor = constant_spinor
         self.center = np.array(center)

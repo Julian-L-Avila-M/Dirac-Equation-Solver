@@ -12,6 +12,12 @@ class FreeParticle:
     def core_potential(self):
         return self._potential
 
+    def evaluate(self, r):
+        return self._potential.evaluate(list(r))
+
+    def get_name(self):
+        return self._potential.get_name()
+
 class ScalarPotential:
     """
     Potencial escalar definido por una función arbitraria.
@@ -28,6 +34,12 @@ class ScalarPotential:
     @property
     def core_potential(self):
         return self._potential
+
+    def evaluate(self, r):
+        return self._potential.evaluate(list(r))
+
+    def get_name(self):
+        return self._potential.get_name()
 
 class CoulombPotential:
     """
@@ -47,6 +59,12 @@ class CoulombPotential:
     @property
     def core_potential(self):
         return self._potential
+
+    def evaluate(self, r):
+        return self._potential.evaluate(list(r))
+
+    def get_name(self):
+        return self._potential.get_name()
 
 class YukawaPotential:
     """
@@ -69,6 +87,12 @@ class YukawaPotential:
     def core_potential(self):
         return self._potential
 
+    def evaluate(self, r):
+        return self._potential.evaluate(list(r))
+
+    def get_name(self):
+        return self._potential.get_name()
+
 class InfiniteWellPotential:
     """
     Potencial de pozo infinito, que confina una partícula a una región del espacio.
@@ -85,3 +109,9 @@ class InfiniteWellPotential:
     @property
     def core_potential(self):
         return self._potential
+
+    def evaluate(self, r):
+        return self._potential.evaluate(list(r))
+
+    def get_name(self):
+        return self._potential.get_name()

@@ -68,17 +68,17 @@ public:
         if (dim_ == 1) {
             coords[0] = origin_[0] + static_cast<double>(index) * spacing_[0];
         } else if (dim_ == 2) {
-            size_t nx = shape_[0];
-            size_t ix = temp_index % nx;
-            size_t iy = temp_index / nx;
+            size_t ny = shape_[1];
+            size_t ix = temp_index / ny;
+            size_t iy = temp_index % ny;
             coords[0] = origin_[0] + static_cast<double>(ix) * spacing_[0];
             coords[1] = origin_[1] + static_cast<double>(iy) * spacing_[1];
         } else if (dim_ == 3) {
-            size_t nx = shape_[0];
             size_t ny = shape_[1];
-            size_t ix = temp_index % nx;
-            size_t iy = (temp_index / nx) % ny;
-            size_t iz = temp_index / (nx * ny);
+            size_t nz = shape_[2];
+            size_t iz = temp_index % nz;
+            size_t iy = (temp_index / nz) % ny;
+            size_t ix = temp_index / (ny * nz);
             coords[0] = origin_[0] + static_cast<double>(ix) * spacing_[0];
             coords[1] = origin_[1] + static_cast<double>(iy) * spacing_[1];
             coords[2] = origin_[2] + static_cast<double>(iz) * spacing_[2];
